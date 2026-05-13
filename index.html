@@ -103,14 +103,29 @@
         .img-container {
             width: 100%; aspect-ratio: 3/4; overflow: hidden;
             background: var(--brand-zinc); border-radius: 2px;
+            position: relative;
+        }
+
+        /* ACTUALIZACIÓN: Skeleton & Smooth Load */
+        .skeleton {
+            background: linear-gradient(90deg, #f4f4f5 25%, #e4e4e7 50%, #f4f4f5 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite linear;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
         .img-container img {
             width: 100%; height: 100%; object-fit: cover;
-            transition: transform 1.5s var(--ease-luxury);
+            transition: transform 1.5s var(--ease-luxury), opacity 0.8s var(--ease-luxury);
+            opacity: 0;
         }
 
-        .product-card:hover .img-container img { transform: scale(1.08); }
+        .img-container img.loaded { opacity: 1; }
+        .product-card:hover .img-container img.loaded { transform: scale(1.08); }
 
         .size-btn {
             width: 38px; height: 38px; border: 1px solid #eee;
@@ -268,7 +283,8 @@
         function filterShop(cat) {
             currentCategory = cat;
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`btn-${cat}`).classList.add('active');
+            const btn = document.getElementById(`btn-${cat}`);
+            if(btn) btn.classList.add('active');
             mountShop();
         }
 
@@ -276,23 +292,39 @@
             const container = document.getElementById('grid-mount');
             const filtered = currentCategory === 'all' ? MOCK_DB : MOCK_DB.filter(p => p.category === currentCategory);
             
-            container.innerHTML = filtered.map((p, index) => `
-                <div class="product-card" style="animation-delay: ${index * 0.1}s">
-                    <div class="img-container">
-                        <img src="${p.img}" alt="${p.name}" loading="lazy">
-                    </div>
-                    <div class="py-6 lg:py-8">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-[10px] lg:text-[12px] font-black uppercase italic tracking-tight w-2/3 leading-tight">${p.name}</h3>
-                            <span class="text-[11px] lg:text-[12px] font-black text-[#6DAE5A] tracking-tighter">$${p.price.toFixed(2)}</span>
-                        </div>
-                        <div class="flex gap-2 mb-4" id="sizes-${p.id}">
-                            ${['S','M','L','XL'].map(s => `<div class="size-btn" onclick="setUISize(this)">${s}</div>`).join('')}
-                        </div>
-                        <button onclick="handleAddToCart(${p.id})" class="add-to-cart-trigger">Añadir a Bolsa</button>
+            // Paso 1: Mostrar Skeletons para carga instantánea percibida
+            container.innerHTML = filtered.map(() => `
+                <div class="product-card">
+                    <div class="img-container skeleton"></div>
+                    <div class="py-6 lg:py-8 h-32">
+                        <div class="h-4 w-3/4 skeleton mb-2"></div>
+                        <div class="h-4 w-1/4 skeleton"></div>
                     </div>
                 </div>
             `).join('');
+
+            // Paso 2: Cargar contenido real con fade-in
+            setTimeout(() => {
+                container.innerHTML = filtered.map((p, index) => `
+                    <div class="product-card" style="animation-delay: ${index * 0.05}s">
+                        <div class="img-container bg-zinc-100">
+                            <img src="${p.img}" alt="${p.name}" 
+                                 onload="this.classList.add('loaded')" 
+                                 loading="lazy">
+                        </div>
+                        <div class="py-6 lg:py-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-[10px] lg:text-[12px] font-black uppercase italic tracking-tight w-2/3 leading-tight">${p.name}</h3>
+                                <span class="text-[11px] lg:text-[12px] font-black text-[#6DAE5A] tracking-tighter">$${p.price.toFixed(2)}</span>
+                            </div>
+                            <div class="flex gap-2 mb-4" id="sizes-${p.id}">
+                                ${['S','M','L','XL'].map(s => `<div class="size-btn" onclick="setUISize(this)">${s}</div>`).join('')}
+                            </div>
+                            <button onclick="handleAddToCart(${p.id})" class="add-to-cart-trigger">Añadir a Bolsa</button>
+                        </div>
+                    </div>
+                `).join('');
+            }, 100); 
         }
 
         function setUISize(el) {
