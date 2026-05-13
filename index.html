@@ -224,8 +224,8 @@
                     <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
                     <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
                     <button onclick="filterShop('mujer')" class="filter-btn" id="btn-mujer">Mujer</button>
-                    <button onclick="filterShop('sets')" class="filter-btn" id="btn-sets">Outfits</button>
-                    <button onclick="filterShop('archive')" class="filter-btn" id="btn-archive">Promociones</button>
+                    <button onclick="filterShop('outfits')" class="filter-btn" id="btn-outfits">Outfits</button>
+                    <button onclick="filterShop('promociones')" class="filter-btn" id="btn-promociones">Promociones</button>
                 </div>
             </header>
             <div id="grid-mount" class="catalogue-grid"></div>
@@ -292,7 +292,7 @@
             const container = document.getElementById('grid-mount');
             const filtered = currentCategory === 'all' ? MOCK_DB : MOCK_DB.filter(p => p.category === currentCategory);
             
-            // Paso 1: Mostrar Skeletons para carga instantánea percibida
+            // Paso 1: Skeletons
             container.innerHTML = filtered.map(() => `
                 <div class="product-card">
                     <div class="img-container skeleton"></div>
@@ -303,7 +303,7 @@
                 </div>
             `).join('');
 
-            // Paso 2: Cargar contenido real con fade-in
+            // Paso 2: Cargar contenido real
             setTimeout(() => {
                 container.innerHTML = filtered.map((p, index) => `
                     <div class="product-card" style="animation-delay: ${index * 0.05}s">
