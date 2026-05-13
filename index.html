@@ -125,9 +125,10 @@
 
         /* --- COLORES --- */
         .color-dot {
-            width: 32px; height: 32px; border-radius: 50%;
+            width: 28px; height: 28px; border-radius: 50%;
             cursor: pointer; border: 2px solid transparent;
             transition: 0.3s var(--ease-luxury);
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
         }
         .color-dot.active { border-color: #000; transform: scale(1.1); }
 
@@ -301,7 +302,6 @@
     </main>
 
     <script>
-        // DB Actualizada con Outfits
         const MOCK_DB = [
             { id: 1, name: "Navy Dayslay Hoodie", price: 85, img: "1000813647.webp", gallery: ["1000813647.webp", "1000813649.webp"], category: "hombre" },
             { id: 2, name: "Tech Cargo Graphite", price: 115, img: "1000813649.webp", gallery: ["1000813649.webp", "1000813647.webp"], category: "hombre" },
@@ -317,6 +317,15 @@
         let cart = JSON.parse(localStorage.getItem('lem_cart')) || [];
         let currentCategory = 'all';
         let selectedColor = "";
+
+        // Paleta de colores consistente
+        const COLOR_PALETTE = [
+            { code: "#FDFCF0", name: "Crema Hueso" },
+            { code: "#E5E7E9", name: "Gris Nube" },
+            { code: "#D5DBDB", name: "Verde Salvia" },
+            { code: "#FADBD8", name: "Rosa Ceniza" },
+            { code: "#D6EAF8", name: "Azul Bruma" }
+        ];
 
         function goTo(id) {
             document.querySelectorAll('.view-layer').forEach(v => v.classList.remove('active'));
@@ -347,22 +356,42 @@
                             <h3 class="text-[10px] font-black uppercase italic leading-tight w-2/3">${p.name}</h3>
                             <span class="text-[11px] font-black text-[#6DAE5A]">$${p.price.toFixed(2)}</span>
                         </div>
+                        
                         <div class="flex gap-2 mb-4" id="sizes-${p.id}">
                             ${['S','M','L','XL'].map(s => `<div class="size-btn" onclick="setUISize(this)">${s}</div>`).join('')}
                         </div>
-                        <button onclick="handleAddToCart(${p.id}, 'sizes-${p.id}')" class="add-to-cart-trigger">Añadir a Bolsa</button>
+
+                        <div class="flex gap-2 mb-6" id="colors-${p.id}">
+                            ${COLOR_PALETTE.map(c => `
+                                <div class="color-dot" 
+                                     style="background-color: ${c.code}; width: 22px; height: 22px;" 
+                                     title="${c.name}" 
+                                     onclick="setUIColorDirect(this, '${c.name}', 'colors-${p.id}')">
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <button onclick="handleAddToCart(${p.id}, 'sizes-${p.id}', 'colors-${p.id}')" class="add-to-cart-trigger">Añadir a Bolsa</button>
                     </div>
                 </div>
             `).join('');
+        }
+
+        // Función para setear color desde la tarjeta principal
+        function setUIColorDirect(el, colorName, containerId) {
+            document.querySelectorAll(`#${containerId} .color-dot`).forEach(d => d.classList.remove('active'));
+            el.classList.add('active');
+            // Guardamos temporalmente el color seleccionado para esta acción
+            el.parentElement.dataset.selectedColor = colorName;
         }
 
         function openProductModal(id) {
             const p = MOCK_DB.find(item => item.id === id);
             const modal = document.getElementById('product-modal');
             
-            selectedColor = ""; // Reset color
+            selectedColor = ""; 
             document.getElementById('selected-color-name').innerText = "Sin seleccionar";
-            document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+            document.querySelectorAll('#modal-colors .color-dot').forEach(d => d.classList.remove('active'));
 
             document.getElementById('modal-main-img').src = p.img;
             document.getElementById('modal-name').innerText = p.name;
@@ -375,7 +404,7 @@
             `).join('');
 
             document.querySelectorAll('#modal-sizes .size-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('modal-add-btn').onclick = () => handleAddToCart(p.id, 'modal-sizes');
+            document.getElementById('modal-add-btn').onclick = () => handleAddToCart(p.id, 'modal-sizes', 'modal-colors');
 
             modal.style.display = 'block';
             setTimeout(() => modal.classList.add('open'), 10);
@@ -401,7 +430,7 @@
         }
 
         function setUIColor(el, colorName) {
-            document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+            document.querySelectorAll('#modal-colors .color-dot').forEach(d => d.classList.remove('active'));
             el.classList.add('active');
             selectedColor = colorName;
             document.getElementById('selected-color-name').innerText = colorName;
@@ -411,23 +440,30 @@
             document.getElementById('cart-sidebar').classList.toggle('open');
         }
 
-        function handleAddToCart(id, containerId) {
-            const size = document.querySelector(`#${containerId} .active`)?.innerText;
-            if(!size) return alert("Por favor, selecciona una talla.");
+        function handleAddToCart(id, sizeContainerId, colorContainerId) {
+            const size = document.querySelector(`#${sizeContainerId} .active`)?.innerText;
             
-            // Si es desde el modal, obligamos color
-            if(containerId === 'modal-sizes' && !selectedColor) return alert("Por favor, selecciona un color.");
+            // Lógica para obtener el color dependiendo de si viene del modal o de la grid
+            let color;
+            if(colorContainerId === 'modal-colors') {
+                color = selectedColor;
+            } else {
+                color = document.getElementById(colorContainerId).dataset.selectedColor;
+            }
+
+            if(!size) return alert("Por favor, selecciona una talla.");
+            if(!color) return alert("Por favor, selecciona un tono sugerido.");
 
             const product = MOCK_DB.find(p => p.id === id);
             cart.push({ 
                 ...product, 
                 size, 
-                color: selectedColor || "N/A",
+                color: color,
                 uid: Date.now() 
             });
             
             syncStorage();
-            if(containerId === 'modal-sizes') closeProductModal();
+            if(sizeContainerId === 'modal-sizes') closeProductModal();
             if(!document.getElementById('cart-sidebar').classList.contains('open')) toggleCartDrawer();
         }
 
@@ -464,17 +500,31 @@
             syncStorage();
         }
 
-        function sendOrder() {
+       function sendOrder() {
             if(cart.length === 0) return;
-            let text = "⚜️ *LEM MODA | ORDEN DE ADQUISICIÓN* ⚜️\n\n";
+
+            // Cabecera con estética de lujo
+            let text = "⚜️ LEM MODA | ORDEN DE ADQUISICIÓN ⚜️\n";
+            text += "____________\n\n";
+            text += "He seleccionado las siguientes piezas de la mística urbana:\n\n";
+
+            // Listado de productos con formato jerárquico
             cart.forEach((p, i) => {
-                text += `*${i+1}. ${p.name}*\n`;
+                const index = (i + 1).toString().padStart(2, '0'); // Formato 01, 02...
+                text += `${index}. ${p.name}\n`;
                 text += `   ↳ Talla: ${p.size}\n`;
                 text += `   ↳ Color: ${p.color}\n`;
                 text += `   ↳ Valor: $${p.price.toFixed(2)}\n\n`;
             });
-            text += `*INVERSIÓN TOTAL: ${document.getElementById('cart-total').innerText}*`;
-            window.open(`https://wa.me/593984909967?text=${encodeURIComponent(text)}`);
+
+            // Pie de mensaje y total
+            text += "____________\n";
+            text += `TOTAL ESTIMADO: ${document.getElementById('cart-total').innerText}\n\n`;
+            text += "Quedo a la espera de la confirmación de disponibilidad para proceder con el estatus de mi pedido.";
+
+            // Codificación y apertura de WhatsApp
+            const whatsappUrl = `https://wa.me/593984909967?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
         }
 
         window.addEventListener('scroll', () => {
@@ -488,6 +538,7 @@
                 if(pre) { pre.style.opacity = '0'; setTimeout(() => pre.style.display = 'none', 1000); }
             }, 2000);
             renderCartItems();
+            mountShop(); // Asegura carga inicial
         };
     </script>
 </body>
