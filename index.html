@@ -96,6 +96,7 @@
         .product-card { 
             opacity: 0; transform: translateY(30px);
             animation: revealUp 0.8s var(--ease-luxury) forwards;
+            cursor: pointer;
         }
 
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
@@ -126,22 +127,32 @@
         .img-container img.loaded { opacity: 1; }
         .product-card:hover .img-container img.loaded { transform: scale(1.08); }
 
+        /* --- MODAL DE PRODUCTO (ZOOM & INFO) --- */
+        #product-modal {
+            position: fixed; inset: 0; background: #fff; z-index: 7000;
+            display: none; grid-template-columns: 1fr; overflow-y: auto;
+        }
+        @media (min-width: 1024px) {
+            #product-modal { grid-template-columns: 1.2fr 1fr; overflow: hidden; }
+        }
+        #product-modal.active { display: grid; animation: modalFade 0.6s var(--ease-luxury); }
+
+        @keyframes modalFade { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
+
+        .modal-gallery { position: relative; background: var(--brand-zinc); height: 70vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        @media (min-width: 1024px) { .modal-gallery { height: 100vh; } }
+        .modal-gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-luxury); }
+        .modal-gallery img:hover { transform: scale(1.1); }
+
+        .color-dot { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #eee; cursor: pointer; transition: 0.3s; position: relative; }
+        .color-dot.active { ring: 2px offset 2px var(--brand-black); border: 2px solid #000; transform: scale(1.1); }
+
         .size-btn {
-            width: 38px; height: 38px; border: 1px solid #eee;
+            width: 45px; height: 45px; border: 1px solid #eee;
             display: flex; align-items: center; justify-content: center;
             font-size: 10px; font-weight: 800; cursor: pointer; transition: 0.3s;
         }
-
         .size-btn.active { background: #000; color: #fff; border-color: #000; }
-
-        .add-to-cart-trigger {
-            width: 100%; padding: 16px; background: #000; color: #fff;
-            font-size: 9px; font-weight: 900; text-transform: uppercase;
-            letter-spacing: 2px; transition: 0.5s var(--ease-luxury);
-            margin-top: 10px;
-        }
-
-        .add-to-cart-trigger:hover { background: var(--brand-green); }
 
         /* --- CARRITO --- */
         #cart-sidebar {
@@ -181,6 +192,35 @@
         </button>
     </nav>
 
+    <div id="product-modal">
+        <div class="modal-gallery">
+            <button onclick="closeProductModal()" class="absolute top-8 left-8 z-[80] bg-white/90 backdrop-blur w-12 h-12 rounded-full flex items-center justify-center font-bold">✕</button>
+            <img id="modal-img-main" src="" alt="Zoom">
+            <div id="modal-thumbnails" class="absolute bottom-8 left-8 flex gap-3 z-50"></div>
+        </div>
+        <div class="p-10 lg:p-24 flex flex-col justify-center">
+            <span id="modal-cat" class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#6DAE5A] mb-4">Categoría</span>
+            <h2 id="modal-name" class="text-5xl lg:text-7xl font-black italic uppercase leading-tight mb-6 tracking-tighter">Nombre</h2>
+            <p id="modal-price" class="text-3xl font-light mb-12">$0.00</p>
+            
+            <div class="mb-10">
+                <p class="text-[10px] font-black uppercase mb-5 tracking-widest text-zinc-400">Color</p>
+                <div id="modal-colors" class="flex gap-4"></div>
+            </div>
+
+            <div class="mb-12">
+                <p class="text-[10px] font-black uppercase mb-5 tracking-widest text-zinc-400">Talla</p>
+                <div id="modal-sizes" class="flex gap-3">
+                    ${['S','M','L','XL'].map(s => `<div class="size-btn" onclick="setModalSize(this)">${s}</div>`).join('')}
+                </div>
+            </div>
+
+            <button onclick="addToCartFromModal()" class="w-full bg-black text-white py-6 font-black uppercase text-[10px] tracking-[0.4em] hover:bg-[#6DAE5A] transition-all">
+                Añadir a mi selección
+            </button>
+        </div>
+    </div>
+
     <aside id="cart-sidebar">
         <div class="flex justify-between items-center mb-10 lg:mb-16">
             <h3 class="text-3xl lg:text-4xl font-black italic uppercase tracking-tighter">Mi Bolsa</h3>
@@ -218,7 +258,6 @@
         <div class="max-w-[1800px] mx-auto">
             <header class="px-6 lg:px-10 mb-12 lg:mb-24 text-center lg:text-left">
                 <h2 class="text-[5rem] lg:text-[10rem] font-black italic uppercase leading-none tracking-tighter">Tienda<span class="text-[#6DAE5A]">.</span></h2>
-                
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
                     <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
                     <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
@@ -250,27 +289,20 @@
     </main>
 
     <script>
+        // DB Mejorada con Colores e Imágenes (Arrays)
         const MOCK_DB = [
-            { id: 1, name: "Navy Dayslay Hoodie", price: 85, img: "1000813647.webp", category: "hombre" },
-            { id: 2, name: "Tech Cargo Graphite", price: 115, img: "1000813649.webp", category: "hombre" },
-            { id: 3, name: "Leaf Pink Zip Hoodie", price: 95, img: "1000813651.webp", category: "mujer" },
-            { id: 4, name: "Oversized Black Leaf", price: 45, img: "1000813670.webp", category: "mujer" },
-            { id: 5, name: "Grey Urban Core", price: 90, img: "1000813671.webp", category: "hombre" },
-            { id: 6, name: "Essential White Tee", price: 38, img: "1000813673.webp", category: "hombre" },
-            { id: 7, name: "Midnight Cargo Dama", price: 105, img: "1000813672.webp", category: "mujer" },
-            { id: 8, name: "Acid Wash Street", price: 55, img: "1000813674.webp", category: "hombre" },
-            { id: 9, name: "Carbon Tech Pant", price: 130, img: "1000813675.webp", category: "mujer" },
-            { id: 10, name: "Mystic Urban Jacket", price: 145, img: "1000813683.webp", category: "hombre" },
-            { id: 11, name: "Galleta", price: 12.99, img: "1000813684.webp", category: "promociones" },
-            { id: 12, name: "Elite Summer Set", price: 180, img: "1000813693.webp", category: "outfits" },
-            { id: 13, name: "Urban Pack Pro", price: 210, img: "1000813697.webp", category: "outfits" },
-            { id: 14, name: "Last Unit Hoodie", price: 65, img: "1000813698.webp", category: "promociones" },
-            { id: 17, name: "Leaf Pink Zip Hoodie", price: 95, img: "1000813700.webp", category: "hombre" },
-            { id: 18, name: "Leaf Pink Zip Hoodie", price: 95, img: "1000813701.webp", category: "hombre" }
+            { id: 1, name: "Navy Dayslay Hoodie", price: 85, img: ["1000813647.webp"], category: "hombre", colors: ["#1a2a44", "#000000"] },
+            { id: 2, name: "Tech Cargo Graphite", price: 115, img: ["1000813649.webp"], category: "hombre", colors: ["#4b4b4b", "#000000"] },
+            { id: 3, name: "Leaf Pink Zip Hoodie", price: 95, img: ["1000813651.webp"], category: "mujer", colors: ["#ffc0cb", "#ffffff"] },
+            { id: 4, name: "Oversized Black Leaf", price: 45, img: ["1000813670.webp"], category: "mujer", colors: ["#000000"] },
+            { id: 11, name: "Galleta", price: 12.99, img: ["1000813684.webp"], category: "promociones", colors: ["#d2b48c"] }
         ];
 
         let cart = JSON.parse(localStorage.getItem('lem_cart')) || [];
         let currentCategory = 'all';
+        let activeProduct = null;
+        let selectedModalColor = "";
+        let selectedModalSize = "";
 
         function goTo(id) {
             document.querySelectorAll('.view-layer').forEach(v => v.classList.remove('active'));
@@ -292,54 +324,82 @@
             const filtered = currentCategory === 'all' ? MOCK_DB : MOCK_DB.filter(p => p.category === currentCategory);
             
             container.innerHTML = filtered.map(() => `
-                <div class="product-card">
-                    <div class="img-container skeleton"></div>
-                    <div class="py-6 lg:py-8 h-32">
-                        <div class="h-4 w-3/4 skeleton mb-2"></div>
-                        <div class="h-4 w-1/4 skeleton"></div>
-                    </div>
-                </div>
+                <div class="product-card"><div class="img-container skeleton"></div></div>
             `).join('');
 
             setTimeout(() => {
                 container.innerHTML = filtered.map((p, index) => `
-                    <div class="product-card" style="animation-delay: ${index * 0.05}s">
+                    <div class="product-card" onclick="openProductModal(${p.id})" style="animation-delay: ${index * 0.05}s">
                         <div class="img-container bg-zinc-100">
-                            <img src="${p.img}" alt="${p.name}" 
-                                 onload="this.classList.add('loaded')" 
-                                 loading="lazy">
+                            <img src="${p.img[0]}" alt="${p.name}" onload="this.classList.add('loaded')" loading="lazy">
                         </div>
                         <div class="py-6 lg:py-8">
-                            <div class="flex justify-between items-start mb-4">
+                            <div class="flex justify-between items-start">
                                 <h3 class="text-[10px] lg:text-[12px] font-black uppercase italic tracking-tight w-2/3 leading-tight">${p.name}</h3>
                                 <span class="text-[11px] lg:text-[12px] font-black text-[#6DAE5A] tracking-tighter">$${p.price.toFixed(2)}</span>
                             </div>
-                            <div class="flex gap-2 mb-4" id="sizes-${p.id}">
-                                ${['S','M','L','XL'].map(s => `<div class="size-btn" onclick="setUISize(this)">${s}</div>`).join('')}
-                            </div>
-                            <button onclick="handleAddToCart(${p.id})" class="add-to-cart-trigger">Añadir a Bolsa</button>
+                            <p class="text-[8px] text-zinc-400 mt-2 uppercase tracking-widest font-bold">Ver detalles</p>
                         </div>
                     </div>
                 `).join('');
             }, 100); 
         }
 
-        function setUISize(el) {
-            el.parentElement.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        function openProductModal(id) {
+            activeProduct = MOCK_DB.find(p => p.id === id);
+            selectedModalColor = activeProduct.colors[0];
+            selectedModalSize = "";
+
+            document.getElementById('modal-img-main').src = activeProduct.img[0];
+            document.getElementById('modal-name').innerText = activeProduct.name;
+            document.getElementById('modal-price').innerText = `$${activeProduct.price.toFixed(2)}`;
+            document.getElementById('modal-cat').innerText = activeProduct.category;
+
+            const colorMount = document.getElementById('modal-colors');
+            colorMount.innerHTML = activeProduct.colors.map(c => `
+                <div class="color-dot ${c === selectedModalColor ? 'active' : ''}" 
+                     style="background: ${c}" 
+                     onclick="setModalColor('${c}', this)"></div>
+            `).join('');
+
+            document.querySelectorAll('#modal-sizes .size-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById('product-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setModalColor(color, el) {
+            selectedModalColor = color;
+            document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
             el.classList.add('active');
+        }
+
+        function setModalSize(el) {
+            selectedModalSize = el.innerText;
+            document.querySelectorAll('#modal-sizes .size-btn').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function addToCartFromModal() {
+            if(!selectedModalSize) return alert("Selecciona una talla.");
+            cart.push({ 
+                ...activeProduct, 
+                size: selectedModalSize, 
+                color: selectedModalColor, 
+                uid: Date.now() 
+            });
+            syncStorage();
+            closeProductModal();
+            toggleCartDrawer();
         }
 
         function toggleCartDrawer() {
             document.getElementById('cart-sidebar').classList.toggle('open');
-        }
-
-        function handleAddToCart(id) {
-            const size = document.querySelector(`#sizes-${id} .active`)?.innerText;
-            if(!size) return alert("Por favor, selecciona una talla.");
-            const product = MOCK_DB.find(p => p.id === id);
-            cart.push({ ...product, size, uid: Date.now() });
-            syncStorage();
-            if(!document.getElementById('cart-sidebar').classList.contains('open')) toggleCartDrawer();
         }
 
         function syncStorage() {
@@ -356,13 +416,15 @@
             document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
 
             container.innerHTML = cart.map((item, index) => `
-                <div class="flex gap-4 lg:gap-6 items-center">
+                <div class="flex gap-4 lg:gap-6 items-center animate-revealUp">
                     <div class="w-16 lg:w-20 aspect-[3/4] bg-zinc-100 overflow-hidden rounded">
-                        <img src="${item.img}" class="w-full h-full object-cover">
+                        <img src="${item.img[0]}" class="w-full h-full object-cover">
                     </div>
                     <div class="flex-grow">
                         <h4 class="text-[9px] lg:text-[10px] font-black uppercase italic leading-none">${item.name}</h4>
-                        <p class="text-[8px] lg:text-[9px] text-zinc-400 font-bold uppercase mt-2 tracking-widest">Talla: ${item.size}</p>
+                        <p class="text-[8px] text-zinc-400 font-bold uppercase mt-2 tracking-widest">
+                            Talla: ${item.size} | Color: <span style="display:inline-block; width:8px; height:8px; background:${item.color}; border-radius:50%"></span>
+                        </p>
                         <p class="text-[10px] lg:text-[11px] font-black mt-2 text-[#6DAE5A]">$${item.price.toFixed(2)}</p>
                     </div>
                     <button onclick="removeItem(${index})" class="text-zinc-300 px-2">✕</button>
@@ -377,23 +439,17 @@
 
         function sendOrder() {
             if(cart.length === 0) return;
-            
             let text = "⚜️ *LEM MODA | ORDEN DE ADQUISICIÓN* ⚜️\n";
             text += "________________________________\n\n";
-            text += "He seleccionado las siguientes piezas de la mística urbana:\n\n";
-            
             cart.forEach((p, i) => {
                 text += `*0${i+1}. ${p.name}*\n`;
                 text += `   ↳ Talla: ${p.size}\n`;
+                text += `   ↳ Color: ${p.color}\n`;
                 text += `   ↳ Valor: $${p.price.toFixed(2)}\n\n`;
             });
-            
             text += "________________________________\n";
             text += `*TOTAL ESTIMADO: ${document.getElementById('cart-total').innerText}*\n\n`;
-            text += "_Quedo a la espera de la confirmación de disponibilidad para proceder con el estatus de mi pedido._";
-            
-            const whatsappUrl = `https://wa.me/593984909967?text=${encodeURIComponent(text)}`;
-            window.open(whatsappUrl);
+            window.open(`https://wa.me/593984909967?text=${encodeURIComponent(text)}`);
         }
 
         window.addEventListener('scroll', () => {
