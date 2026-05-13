@@ -123,6 +123,14 @@
 
         .size-btn.active { background: #000; color: #fff; border-color: #000; }
 
+        /* --- COLORES --- */
+        .color-dot {
+            width: 32px; height: 32px; border-radius: 50%;
+            cursor: pointer; border: 2px solid transparent;
+            transition: 0.3s var(--ease-luxury);
+        }
+        .color-dot.active { border-color: #000; transform: scale(1.1); }
+
         .add-to-cart-trigger {
             width: 100%; padding: 16px; background: #000; color: #fff;
             font-size: 9px; font-weight: 900; text-transform: uppercase;
@@ -196,6 +204,18 @@
                 <h2 id="modal-name" class="text-5xl lg:text-7xl font-black italic uppercase leading-[0.9] tracking-tighter mb-6">Producto</h2>
                 <p id="modal-price" class="text-2xl font-light mb-10 text-zinc-400">$0.00</p>
                 
+                <div class="mb-8">
+                    <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Tono Sugerido</p>
+                    <div class="flex gap-4" id="modal-colors">
+                        <div class="color-dot" style="background-color: #FDFCF0;" title="Crema Hueso" onclick="setUIColor(this, 'Crema Hueso')"></div>
+                        <div class="color-dot" style="background-color: #E5E7E9;" title="Gris Nube" onclick="setUIColor(this, 'Gris Nube')"></div>
+                        <div class="color-dot" style="background-color: #D5DBDB;" title="Verde Salvia" onclick="setUIColor(this, 'Verde Salvia')"></div>
+                        <div class="color-dot" style="background-color: #FADBD8;" title="Rosa Ceniza" onclick="setUIColor(this, 'Rosa Ceniza')"></div>
+                        <div class="color-dot" style="background-color: #D6EAF8;" title="Azul Bruma" onclick="setUIColor(this, 'Azul Bruma')"></div>
+                    </div>
+                    <p id="selected-color-name" class="text-[9px] uppercase mt-2 font-bold text-zinc-400 tracking-tighter">Sin seleccionar</p>
+                </div>
+
                 <div class="mb-10">
                     <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Seleccionar Talla</p>
                     <div class="flex gap-3" id="modal-sizes">
@@ -254,6 +274,7 @@
                     <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
                     <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
                     <button onclick="filterShop('mujer')" class="filter-btn" id="btn-mujer">Mujer</button>
+                    <button onclick="filterShop('outfits')" class="filter-btn" id="btn-outfits">Outfits</button>
                     <button onclick="filterShop('promociones')" class="filter-btn" id="btn-promociones">Promos</button>
                 </div>
             </header>
@@ -280,7 +301,7 @@
     </main>
 
     <script>
-        // DB Actualizada a .webp
+        // DB Actualizada con Outfits
         const MOCK_DB = [
             { id: 1, name: "Navy Dayslay Hoodie", price: 85, img: "1000813647.webp", gallery: ["1000813647.webp", "1000813649.webp"], category: "hombre" },
             { id: 2, name: "Tech Cargo Graphite", price: 115, img: "1000813649.webp", gallery: ["1000813649.webp", "1000813647.webp"], category: "hombre" },
@@ -289,11 +310,13 @@
             { id: 5, name: "Grey Urban Core", price: 90, img: "1000813671.webp", gallery: ["1000813671.webp"], category: "hombre" },
             { id: 6, name: "Essential White Tee", price: 38, img: "1000813673.webp", gallery: ["1000813673.webp"], category: "hombre" },
             { id: 7, name: "Midnight Cargo Dama", price: 105, img: "1000813672.webp", gallery: ["1000813672.webp"], category: "mujer" },
+            { id: 8, name: "Full Zen Outfit", price: 180, img: "1000813647.webp", gallery: ["1000813647.webp"], category: "outfits" },
             { id: 11, name: "Galleta", price: 12.99, img: "1000813673.webp", gallery: ["1000813673.webp"], category: "promociones" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('lem_cart')) || [];
         let currentCategory = 'all';
+        let selectedColor = "";
 
         function goTo(id) {
             document.querySelectorAll('.view-layer').forEach(v => v.classList.remove('active'));
@@ -337,6 +360,10 @@
             const p = MOCK_DB.find(item => item.id === id);
             const modal = document.getElementById('product-modal');
             
+            selectedColor = ""; // Reset color
+            document.getElementById('selected-color-name').innerText = "Sin seleccionar";
+            document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+
             document.getElementById('modal-main-img').src = p.img;
             document.getElementById('modal-name').innerText = p.name;
             document.getElementById('modal-price').innerText = `$${p.price.toFixed(2)}`;
@@ -373,6 +400,13 @@
             el.classList.add('active');
         }
 
+        function setUIColor(el, colorName) {
+            document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+            el.classList.add('active');
+            selectedColor = colorName;
+            document.getElementById('selected-color-name').innerText = colorName;
+        }
+
         function toggleCartDrawer() {
             document.getElementById('cart-sidebar').classList.toggle('open');
         }
@@ -380,8 +414,18 @@
         function handleAddToCart(id, containerId) {
             const size = document.querySelector(`#${containerId} .active`)?.innerText;
             if(!size) return alert("Por favor, selecciona una talla.");
+            
+            // Si es desde el modal, obligamos color
+            if(containerId === 'modal-sizes' && !selectedColor) return alert("Por favor, selecciona un color.");
+
             const product = MOCK_DB.find(p => p.id === id);
-            cart.push({ ...product, size, uid: Date.now() });
+            cart.push({ 
+                ...product, 
+                size, 
+                color: selectedColor || "N/A",
+                uid: Date.now() 
+            });
+            
             syncStorage();
             if(containerId === 'modal-sizes') closeProductModal();
             if(!document.getElementById('cart-sidebar').classList.contains('open')) toggleCartDrawer();
@@ -407,7 +451,7 @@
                     </div>
                     <div class="flex-grow">
                         <h4 class="text-[9px] font-black uppercase italic leading-none">${item.name}</h4>
-                        <p class="text-[8px] text-zinc-400 font-bold uppercase mt-2">Talla: ${item.size}</p>
+                        <p class="text-[8px] text-zinc-400 font-bold uppercase mt-2">Talla: ${item.size} | Color: ${item.color}</p>
                         <p class="text-[10px] font-black mt-2 text-[#6DAE5A]">$${item.price.toFixed(2)}</p>
                     </div>
                     <button onclick="removeItem(${index})" class="text-zinc-300 px-2">✕</button>
@@ -422,11 +466,14 @@
 
         function sendOrder() {
             if(cart.length === 0) return;
-            let text = "⚜️ *LEM MODA | ORDEN* ⚜️\n\n";
+            let text = "⚜️ *LEM MODA | ORDEN DE ADQUISICIÓN* ⚜️\n\n";
             cart.forEach((p, i) => {
-                text += `*${i+1}. ${p.name}* (Talla: ${p.size}) - $${p.price.toFixed(2)}\n`;
+                text += `*${i+1}. ${p.name}*\n`;
+                text += `   ↳ Talla: ${p.size}\n`;
+                text += `   ↳ Color: ${p.color}\n`;
+                text += `   ↳ Valor: $${p.price.toFixed(2)}\n\n`;
             });
-            text += `\n*TOTAL: ${document.getElementById('cart-total').innerText}*`;
+            text += `*INVERSIÓN TOTAL: ${document.getElementById('cart-total').innerText}*`;
             window.open(`https://wa.me/593984909967?text=${encodeURIComponent(text)}`);
         }
 
