@@ -106,7 +106,6 @@
             position: relative;
         }
 
-        /* ACTUALIZACIÓN: Skeleton & Smooth Load */
         .skeleton {
             background: linear-gradient(90deg, #f4f4f5 25%, #e4e4e7 50%, #f4f4f5 75%);
             background-size: 200% 100%;
@@ -225,7 +224,7 @@
                     <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
                     <button onclick="filterShop('mujer')" class="filter-btn" id="btn-mujer">Mujer</button>
                     <button onclick="filterShop('outfits')" class="filter-btn" id="btn-outfits">Outfits</button>
-                    <button onclick="filterShop('promociones')" class="filter-btn" id="btn-promociones">Promociones</button>
+                    <button onclick="filterShop('promociones')" class="filter-btn" id="btn-promociones">Promos</button>
                 </div>
             </header>
             <div id="grid-mount" class="catalogue-grid"></div>
@@ -252,22 +251,22 @@
 
     <script>
         const MOCK_DB = [
-            { id: 1, name: "Navy Dayslay Hoodie", price: 85, img: "1000813647.jpg", category: "hombre" },
-            { id: 2, name: "Tech Cargo Graphite", price: 115, img: "1000813649.jpg", category: "hombre" },
-            { id: 3, name: "Leaf Pink Zip Hoodie", price: 95, img: "1000813651.jpg", category: "mujer" },
-            { id: 4, name: "Oversized Black Leaf", price: 45, img: "1000813670.jpg", category: "mujer" },
-            { id: 5, name: "Grey Urban Core", price: 90, img: "1000813671.jpg", category: "hombre" },
-            { id: 6, name: "Essential White Tee", price: 38, img: "1000813673.jpg", category: "hombre" },
-            { id: 7, name: "Midnight Cargo Dama", price: 105, img: "1000813672.jpg", category: "mujer" },
-            { id: 8, name: "Acid Wash Street", price: 55, img: "1000813674.jpg", category: "hombre" },
-            { id: 9, name: "Carbon Tech Pant", price: 130, img: "1000813675.jpg", category: "mujer" },
-            { id: 10, name: "Mystic Urban Jacket", price: 145, img: "1000813683.jpg", category: "hombre" },
-            { id: 11, name: "Galleta", price: 12.99, img: "1000813684.jpg", category: "promociones" },
-            { id: 12, name: "Elite Summer Set", price: 180, img: "1000813693.jpg", category: "outfits" },
-            { id: 13, name: "Urban Pack Pro", price: 210, img: "1000813697.jpg", category: "outfits" },
-            { id: 14, name: "Last Unit Hoodie", price: 65, img: "1000813698.jpg", category: "promociones" },
-            { id: 17, name: "Leaf Pink Zip Hoodie", price: 95, img: "1000813700.jpg", category: "hombre" },
-            { id: 18, name: "Leaf Pink Zip Hoodie", price: 95, img: "1000813701.jpg", category: "hombre" }
+            { id: 1, name: "Navy Dayslay Hoodie", price: 85, img: "1000813647.webp", category: "hombre" },
+            { id: 2, name: "Tech Cargo Graphite", price: 115, img: "1000813649.webp", category: "hombre" },
+            { id: 3, name: "Leaf Pink Zip Hoodie", price: 95, img: "1000813651.webp", category: "mujer" },
+            { id: 4, name: "Oversized Black Leaf", price: 45, img: "1000813670.webp", category: "mujer" },
+            { id: 5, name: "Grey Urban Core", price: 90, img: "1000813671.webp", category: "hombre" },
+            { id: 6, name: "Essential White Tee", price: 38, img: "1000813673.webp", category: "hombre" },
+            { id: 7, name: "Midnight Cargo Dama", price: 105, img: "1000813672.webp", category: "mujer" },
+            { id: 8, name: "Acid Wash Street", price: 55, img: "1000813674.webp", category: "hombre" },
+            { id: 9, name: "Carbon Tech Pant", price: 130, img: "1000813675.webp", category: "mujer" },
+            { id: 10, name: "Mystic Urban Jacket", price: 145, img: "1000813683.webp", category: "hombre" },
+            { id: 11, name: "Galleta", price: 12.99, img: "1000813684.webp", category: "promociones" },
+            { id: 12, name: "Elite Summer Set", price: 180, img: "1000813693.webp", category: "outfits" },
+            { id: 13, name: "Urban Pack Pro", price: 210, img: "1000813697.webp", category: "outfits" },
+            { id: 14, name: "Last Unit Hoodie", price: 65, img: "1000813698.webp", category: "promociones" },
+            { id: 17, name: "Leaf Pink Zip Hoodie", price: 95, img: "1000813700.webp", category: "hombre" },
+            { id: 18, name: "Leaf Pink Zip Hoodie", price: 95, img: "1000813701.webp", category: "hombre" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('lem_cart')) || [];
@@ -292,7 +291,6 @@
             const container = document.getElementById('grid-mount');
             const filtered = currentCategory === 'all' ? MOCK_DB : MOCK_DB.filter(p => p.category === currentCategory);
             
-            // Paso 1: Skeletons
             container.innerHTML = filtered.map(() => `
                 <div class="product-card">
                     <div class="img-container skeleton"></div>
@@ -303,7 +301,6 @@
                 </div>
             `).join('');
 
-            // Paso 2: Cargar contenido real
             setTimeout(() => {
                 container.innerHTML = filtered.map((p, index) => `
                     <div class="product-card" style="animation-delay: ${index * 0.05}s">
@@ -352,7 +349,9 @@
 
         function renderCartItems() {
             const container = document.getElementById('cart-list');
-            document.getElementById('cart-badge').innerText = cart.length;
+            const badge = document.getElementById('cart-badge');
+            if(badge) badge.innerText = cart.length;
+            
             const total = cart.reduce((acc, p) => acc + p.price, 0);
             document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
 
@@ -404,8 +403,11 @@
 
         window.onload = () => {
             setTimeout(() => {
-                document.getElementById('preloader').style.opacity = '0';
-                setTimeout(() => document.getElementById('preloader').style.display = 'none', 1000);
+                const preloader = document.getElementById('preloader');
+                if(preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 1000);
+                }
             }, 2000);
             renderCartItems();
         };
