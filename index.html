@@ -115,13 +115,24 @@
         .img-container img.loaded { opacity: 1; }
         .product-card:hover .img-container img.loaded { transform: scale(1.08); }
 
+        /* --- AJUSTE DE TALLAS CON NÚMERO --- */
         .size-btn {
-            width: 38px; height: 38px; border: 1px solid #eee;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 10px; font-weight: 800; cursor: pointer; transition: 0.3s;
+            width: 42px; height: 50px; border: 1px solid #eee;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s; gap: 1px;
         }
 
-        .size-btn.active { background: #000; color: #fff; border-color: #000; }
+        .size-num {
+            font-size: 7px; font-weight: 400; color: #a1a1aa; letter-spacing: 0.5px;
+        }
+
+        .size-let {
+            font-size: 10px; font-weight: 800;
+        }
+
+        .size-btn.active { background: #000; border-color: #000; }
+        .size-btn.active .size-num { color: #fff; opacity: 0.7; }
+        .size-btn.active .size-let { color: #fff; }
 
         /* --- COLORES --- */
         .color-dot {
@@ -237,24 +248,13 @@
                 
                 <div class="mb-8">
                     <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Tono Sugerido</p>
-                    <div class="flex gap-4" id="modal-colors">
-                        <div class="color-dot" style="background-color: #FDFCF0;" title="Crema Hueso" onclick="setUIColor(this, 'Crema Hueso')"></div>
-                        <div class="color-dot" style="background-color: #E5E7E9;" title="Gris Nube" onclick="setUIColor(this, 'Gris Nube')"></div>
-                        <div class="color-dot" style="background-color: #D5DBDB;" title="Verde Salvia" onclick="setUIColor(this, 'Verde Salvia')"></div>
-                        <div class="color-dot" style="background-color: #FADBD8;" title="Rosa Ceniza" onclick="setUIColor(this, 'Rosa Ceniza')"></div>
-                        <div class="color-dot" style="background-color: #D6EAF8;" title="Azul Bruma" onclick="setUIColor(this, 'Azul Bruma')"></div>
-                    </div>
+                    <div class="flex gap-4" id="modal-colors"></div>
                     <p id="selected-color-name" class="text-[9px] uppercase mt-2 font-bold text-zinc-400 tracking-tighter">Sin seleccionar</p>
                 </div>
 
                 <div class="mb-10">
                     <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Seleccionar Talla</p>
-                    <div class="flex gap-3" id="modal-sizes">
-                        <div class="size-btn" onclick="setUISize(this)">S</div>
-                        <div class="size-btn" onclick="setUISize(this)">M</div>
-                        <div class="size-btn" onclick="setUISize(this)">L</div>
-                        <div class="size-btn" onclick="setUISize(this)">XL</div>
-                    </div>
+                    <div class="flex gap-3" id="modal-sizes"></div>
                 </div>
 
                 <button id="modal-add-btn" class="w-full bg-black text-white py-6 font-black uppercase tracking-[0.4em] text-[11px] hover:bg-[#6DAE5A] transition-all">
@@ -357,6 +357,14 @@
             { code: "#D6EAF8", name: "Azul Bruma" }
         ];
 
+        const SIZE_GUIDE = [
+            { let: 'XS', num: '32-34' },
+            { let: 'S', num: '36-38' },
+            { let: 'M', num: '40-42' },
+            { let: 'L', num: '44-46' },
+            { let: 'XL', num: '48-50' }
+        ];
+
         function goTo(id, pushState = true) {
             document.querySelectorAll('.view-layer').forEach(v => v.classList.remove('active'));
             const target = document.getElementById(id);
@@ -369,7 +377,6 @@
                 history.pushState({ viewId: id }, "", `#${id}`);
             }
 
-            // Ocultar footer móvil en el Home para que no estorbe el video
             const mobNav = document.getElementById('mobile-nav');
             if(id === 'home') mobNav.style.transform = 'translateY(100%)';
             else mobNav.style.transform = 'translateY(0)';
@@ -410,7 +417,12 @@
                             <span class="text-[11px] font-black text-[#6DAE5A]">$${p.price.toFixed(2)}</span>
                         </div>
                         <div class="flex gap-2 mb-4" id="sizes-${p.id}">
-                            ${['S','M','L','XL'].map(s => `<div class="size-btn" onclick="setUISize(this)">${s}</div>`).join('')}
+                            ${SIZE_GUIDE.map(s => `
+                                <div class="size-btn" onclick="setUISize(this)">
+                                    <span class="size-num">${s.num}</span>
+                                    <span class="size-let">${s.let}</span>
+                                </div>
+                            `).join('')}
                         </div>
                         <div class="flex gap-2 mb-6" id="colors-${p.id}">
                             ${COLOR_PALETTE.map(c => `
@@ -438,17 +450,34 @@
             const modal = document.getElementById('product-modal');
             selectedColor = ""; 
             document.getElementById('selected-color-name').innerText = "Sin seleccionar";
-            document.querySelectorAll('#modal-colors .color-dot').forEach(d => d.classList.remove('active'));
+            
+            // Renderizar colores en modal
+            const colorContainer = document.getElementById('modal-colors');
+            colorContainer.innerHTML = COLOR_PALETTE.map(c => `
+                <div class="color-dot" style="background-color: ${c.code};" title="${c.name}" onclick="setUIColor(this, '${c.name}')"></div>
+            `).join('');
+
+            // Renderizar tallas en modal con la nueva guía
+            const sizeContainer = document.getElementById('modal-sizes');
+            sizeContainer.innerHTML = SIZE_GUIDE.map(s => `
+                <div class="size-btn" onclick="setUISize(this)">
+                    <span class="size-num">${s.num}</span>
+                    <span class="size-let">${s.let}</span>
+                </div>
+            `).join('');
+
             document.getElementById('modal-main-img').src = p.img;
             document.getElementById('modal-name').innerText = p.name;
             document.getElementById('modal-price').innerText = `$${p.price.toFixed(2)}`;
             document.getElementById('modal-category').innerText = p.category;
+            
             const thumbContainer = document.getElementById('modal-thumbnails');
             thumbContainer.innerHTML = p.gallery.map(img => `
                 <img src="${img}" class="thumb-img ${img === p.img ? 'active' : ''}" onclick="changeModalImg(this)">
             `).join('');
-            document.querySelectorAll('#modal-sizes .size-btn').forEach(b => b.classList.remove('active'));
+
             document.getElementById('modal-add-btn').onclick = () => handleAddToCart(p.id, 'modal-sizes', 'modal-colors');
+            
             modal.style.display = 'block';
             setTimeout(() => modal.classList.add('open'), 10);
             document.body.style.overflow = 'hidden';
@@ -486,12 +515,16 @@
         }
 
         function handleAddToCart(id, sizeContainerId, colorContainerId) {
-            const size = document.querySelector(`#${sizeContainerId} .active`)?.innerText;
+            const activeBtn = document.querySelector(`#${sizeContainerId} .active`);
+            const size = activeBtn ? activeBtn.querySelector('.size-let').innerText : null;
+            
             let color;
             if(colorContainerId === 'modal-colors') color = selectedColor;
             else color = document.getElementById(colorContainerId).dataset.selectedColor;
+
             if(!size) return alert("Por favor, selecciona una talla.");
             if(!color) return alert("Por favor, selecciona un tono sugerido.");
+            
             const product = MOCK_DB.find(p => p.id === id);
             cart.push({ ...product, size, color: color, uid: Date.now() });
             syncStorage();
@@ -556,7 +589,6 @@
 
         window.onload = () => {
             history.replaceState({ viewId: 'home' }, "", "#home");
-            // El nav móvil inicia oculto porque cargamos en Home
             document.getElementById('mobile-nav').style.transform = 'translateY(100%)';
 
             setTimeout(() => {
