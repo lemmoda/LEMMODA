@@ -192,7 +192,7 @@
 
     <div id="product-modal" class="overflow-y-auto">
         <div class="max-w-[1400px] mx-auto min-h-screen flex flex-col lg:flex-row">
-            <button onclick="closeProductModal()" class="absolute top-8 right-8 z-[7001] text-2xl">✕</button>
+            <button onclick="history.back()" class="absolute top-8 right-8 z-[7001] text-2xl">✕</button>
             <div class="w-full lg:w-1/2 p-4 lg:p-10">
                 <div class="aspect-[3/4] bg-zinc-100 overflow-hidden rounded-sm">
                     <img id="modal-main-img" src="" class="w-full h-full object-cover">
@@ -318,7 +318,6 @@
         let currentCategory = 'all';
         let selectedColor = "";
 
-        // Paleta de colores consistente
         const COLOR_PALETTE = [
             { code: "#FDFCF0", name: "Crema Hueso" },
             { code: "#E5E7E9", name: "Gris Nube" },
@@ -327,12 +326,36 @@
             { code: "#D6EAF8", name: "Azul Bruma" }
         ];
 
-        function goTo(id) {
+        // --- NAVEGACIÓN CON HISTORIAL ---
+        function goTo(id, pushState = true) {
             document.querySelectorAll('.view-layer').forEach(v => v.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+            const target = document.getElementById(id);
+            if(target) target.classList.add('active');
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
             if(id === 'shop') mountShop();
+
+            if (pushState) {
+                history.pushState({ viewId: id }, "", `#${id}`);
+            }
         }
+
+        // Escucha el botón atrás del navegador
+        window.addEventListener('popstate', (event) => {
+            const modal = document.getElementById('product-modal');
+            
+            // Si el usuario da atrás y el modal está abierto, lo cerramos
+            if (modal.classList.contains('open')) {
+                closeProductModal(false); // false para no disparar history.back() de nuevo
+                return;
+            }
+
+            if (event.state && event.state.viewId) {
+                goTo(event.state.viewId, false);
+            } else {
+                goTo('home', false);
+            }
+        });
 
         function filterShop(cat) {
             currentCategory = cat;
@@ -377,11 +400,9 @@
             `).join('');
         }
 
-        // Función para setear color desde la tarjeta principal
         function setUIColorDirect(el, colorName, containerId) {
             document.querySelectorAll(`#${containerId} .color-dot`).forEach(d => d.classList.remove('active'));
             el.classList.add('active');
-            // Guardamos temporalmente el color seleccionado para esta acción
             el.parentElement.dataset.selectedColor = colorName;
         }
 
@@ -409,13 +430,21 @@
             modal.style.display = 'block';
             setTimeout(() => modal.classList.add('open'), 10);
             document.body.style.overflow = 'hidden';
+
+            // Registramos el estado del modal en el historial
+            history.pushState({ viewId: 'modal' }, "", "#details");
         }
 
-        function closeProductModal() {
+        function closeProductModal(triggerBack = true) {
             const modal = document.getElementById('product-modal');
             modal.classList.remove('open');
             setTimeout(() => modal.style.display = 'none', 500);
             document.body.style.overflow = 'auto';
+            
+            // Si cerramos el modal manualmente (X), debemos limpiar el historial
+            if(triggerBack && window.location.hash === "#details") {
+                history.back();
+            }
         }
 
         function changeModalImg(el) {
@@ -442,8 +471,6 @@
 
         function handleAddToCart(id, sizeContainerId, colorContainerId) {
             const size = document.querySelector(`#${sizeContainerId} .active`)?.innerText;
-            
-            // Lógica para obtener el color dependiendo de si viene del modal o de la grid
             let color;
             if(colorContainerId === 'modal-colors') {
                 color = selectedColor;
@@ -502,27 +529,19 @@
 
        function sendOrder() {
             if(cart.length === 0) return;
-
-            // Cabecera con estética de lujo
             let text = "⚜️ LEM MODA | ORDEN DE ADQUISICIÓN ⚜️\n";
             text += "____________\n\n";
             text += "He seleccionado las siguientes piezas de la mística urbana:\n\n";
-
-            // Listado de productos con formato jerárquico
             cart.forEach((p, i) => {
-                const index = (i + 1).toString().padStart(2, '0'); // Formato 01, 02...
+                const index = (i + 1).toString().padStart(2, '0');
                 text += `${index}. ${p.name}\n`;
                 text += `   ↳ Talla: ${p.size}\n`;
                 text += `   ↳ Color: ${p.color}\n`;
                 text += `   ↳ Valor: $${p.price.toFixed(2)}\n\n`;
             });
-
-            // Pie de mensaje y total
             text += "____________\n";
             text += `TOTAL ESTIMADO: ${document.getElementById('cart-total').innerText}\n\n`;
             text += "Quedo a la espera de la confirmación de disponibilidad para proceder con el estatus de mi pedido.";
-
-            // Codificación y apertura de WhatsApp
             const whatsappUrl = `https://wa.me/593984909967?text=${encodeURIComponent(text)}`;
             window.open(whatsappUrl, '_blank');
         }
@@ -533,12 +552,15 @@
         });
 
         window.onload = () => {
+            // Inicializar historial
+            history.replaceState({ viewId: 'home' }, "", "#home");
+
             setTimeout(() => {
                 const pre = document.getElementById('preloader');
                 if(pre) { pre.style.opacity = '0'; setTimeout(() => pre.style.display = 'none', 1000); }
             }, 2000);
             renderCartItems();
-            mountShop(); // Asegura carga inicial
+            mountShop(); 
         };
     </script>
 </body>
