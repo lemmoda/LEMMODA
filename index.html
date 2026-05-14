@@ -195,7 +195,7 @@
         }
 
         .mobile-footer span {
-            font-[9px]; font-black uppercase tracking-widest text-zinc-400;
+            font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa;
         }
         .mobile-footer span.active { color: var(--brand-black); }
     </style>
@@ -424,7 +424,7 @@
                                 </div>
                             `).join('')}
                         </div>
-                        <div class="flex gap-2 mb-6" id="colors-${p.id}">
+                        <div class="flex gap-2 mb-6" id="colors-${p.id}" data-selected-color="">
                             ${COLOR_PALETTE.map(c => `
                                 <div class="color-dot" 
                                      style="background-color: ${c.code}; width: 22px; height: 22px;" 
@@ -442,7 +442,7 @@
         function setUIColorDirect(el, colorName, containerId) {
             document.querySelectorAll(`#${containerId} .color-dot`).forEach(d => d.classList.remove('active'));
             el.classList.add('active');
-            el.parentElement.dataset.selectedColor = colorName;
+            document.getElementById(containerId).dataset.selectedColor = colorName;
         }
 
         function openProductModal(id) {
@@ -451,13 +451,11 @@
             selectedColor = ""; 
             document.getElementById('selected-color-name').innerText = "Sin seleccionar";
             
-            // Renderizar colores en modal
             const colorContainer = document.getElementById('modal-colors');
             colorContainer.innerHTML = COLOR_PALETTE.map(c => `
                 <div class="color-dot" style="background-color: ${c.code};" title="${c.name}" onclick="setUIColor(this, '${c.name}')"></div>
             `).join('');
 
-            // Renderizar tallas en modal con la nueva guía
             const sizeContainer = document.getElementById('modal-sizes');
             sizeContainer.innerHTML = SIZE_GUIDE.map(s => `
                 <div class="size-btn" onclick="setUISize(this)">
