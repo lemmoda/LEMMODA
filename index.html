@@ -163,6 +163,30 @@
         }
 
         #cart-sidebar.open { right: 0; }
+
+        /* --- FOOTER MOVIL ELEGANTE --- */
+        .mobile-footer {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 4000;
+            padding: 15px;
+            justify-content: space-around;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.5s var(--ease-luxury);
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-footer { display: none; }
+        }
+
+        .mobile-footer span {
+            font-[9px]; font-black uppercase tracking-widest text-zinc-400;
+        }
+        .mobile-footer span.active { color: var(--brand-black); }
     </style>
 </head>
 <body>
@@ -189,6 +213,12 @@
             <span id="cart-badge" class="absolute -top-2 -right-2 bg-[#6DAE5A] text-white text-[9px] w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
         </button>
     </nav>
+
+    <div class="mobile-footer" id="mobile-nav">
+        <span onclick="goTo('home')" class="text-[9px] font-black uppercase tracking-widest">Inicio</span>
+        <span onclick="goTo('shop')" class="text-[9px] font-black uppercase tracking-widest">Tienda</span>
+        <span onclick="goTo('essence')" class="text-[9px] font-black uppercase tracking-widest">Identidad</span>
+    </div>
 
     <div id="product-modal" class="overflow-y-auto">
         <div class="max-w-[1400px] mx-auto min-h-screen flex flex-col lg:flex-row">
@@ -298,6 +328,7 @@
                     <p class="text-zinc-500 text-lg font-light leading-relaxed">Evolución constante del estilo urbano.</p>
                 </div>
             </div>
+            <button onclick="goTo('home')" class="mt-20 border border-white/20 px-10 py-4 text-[9px] uppercase tracking-[0.5em] lg:hidden">Regresar</button>
         </div>
     </main>
 
@@ -326,7 +357,6 @@
             { code: "#D6EAF8", name: "Azul Bruma" }
         ];
 
-        // --- NAVEGACIÓN CON HISTORIAL ---
         function goTo(id, pushState = true) {
             document.querySelectorAll('.view-layer').forEach(v => v.classList.remove('active'));
             const target = document.getElementById(id);
@@ -338,18 +368,19 @@
             if (pushState) {
                 history.pushState({ viewId: id }, "", `#${id}`);
             }
+
+            // Ocultar footer móvil en el Home para que no estorbe el video
+            const mobNav = document.getElementById('mobile-nav');
+            if(id === 'home') mobNav.style.transform = 'translateY(100%)';
+            else mobNav.style.transform = 'translateY(0)';
         }
 
-        // Escucha el botón atrás del navegador
         window.addEventListener('popstate', (event) => {
             const modal = document.getElementById('product-modal');
-            
-            // Si el usuario da atrás y el modal está abierto, lo cerramos
             if (modal.classList.contains('open')) {
-                closeProductModal(false); // false para no disparar history.back() de nuevo
+                closeProductModal(false);
                 return;
             }
-
             if (event.state && event.state.viewId) {
                 goTo(event.state.viewId, false);
             } else {
@@ -368,7 +399,6 @@
         function mountShop() {
             const container = document.getElementById('grid-mount');
             const filtered = currentCategory === 'all' ? MOCK_DB : MOCK_DB.filter(p => p.category === currentCategory);
-            
             container.innerHTML = filtered.map((p, index) => `
                 <div class="product-card" style="animation-delay: ${index * 0.05}s">
                     <div class="img-container bg-zinc-100 cursor-pointer" onclick="openProductModal(${p.id})">
@@ -379,11 +409,9 @@
                             <h3 class="text-[10px] font-black uppercase italic leading-tight w-2/3">${p.name}</h3>
                             <span class="text-[11px] font-black text-[#6DAE5A]">$${p.price.toFixed(2)}</span>
                         </div>
-                        
                         <div class="flex gap-2 mb-4" id="sizes-${p.id}">
                             ${['S','M','L','XL'].map(s => `<div class="size-btn" onclick="setUISize(this)">${s}</div>`).join('')}
                         </div>
-
                         <div class="flex gap-2 mb-6" id="colors-${p.id}">
                             ${COLOR_PALETTE.map(c => `
                                 <div class="color-dot" 
@@ -393,7 +421,6 @@
                                 </div>
                             `).join('')}
                         </div>
-
                         <button onclick="handleAddToCart(${p.id}, 'sizes-${p.id}', 'colors-${p.id}')" class="add-to-cart-trigger">Añadir a Bolsa</button>
                     </div>
                 </div>
@@ -409,29 +436,22 @@
         function openProductModal(id) {
             const p = MOCK_DB.find(item => item.id === id);
             const modal = document.getElementById('product-modal');
-            
             selectedColor = ""; 
             document.getElementById('selected-color-name').innerText = "Sin seleccionar";
             document.querySelectorAll('#modal-colors .color-dot').forEach(d => d.classList.remove('active'));
-
             document.getElementById('modal-main-img').src = p.img;
             document.getElementById('modal-name').innerText = p.name;
             document.getElementById('modal-price').innerText = `$${p.price.toFixed(2)}`;
             document.getElementById('modal-category').innerText = p.category;
-            
             const thumbContainer = document.getElementById('modal-thumbnails');
             thumbContainer.innerHTML = p.gallery.map(img => `
                 <img src="${img}" class="thumb-img ${img === p.img ? 'active' : ''}" onclick="changeModalImg(this)">
             `).join('');
-
             document.querySelectorAll('#modal-sizes .size-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('modal-add-btn').onclick = () => handleAddToCart(p.id, 'modal-sizes', 'modal-colors');
-
             modal.style.display = 'block';
             setTimeout(() => modal.classList.add('open'), 10);
             document.body.style.overflow = 'hidden';
-
-            // Registramos el estado del modal en el historial
             history.pushState({ viewId: 'modal' }, "", "#details");
         }
 
@@ -440,11 +460,7 @@
             modal.classList.remove('open');
             setTimeout(() => modal.style.display = 'none', 500);
             document.body.style.overflow = 'auto';
-            
-            // Si cerramos el modal manualmente (X), debemos limpiar el historial
-            if(triggerBack && window.location.hash === "#details") {
-                history.back();
-            }
+            if(triggerBack && window.location.hash === "#details") history.back();
         }
 
         function changeModalImg(el) {
@@ -472,23 +488,12 @@
         function handleAddToCart(id, sizeContainerId, colorContainerId) {
             const size = document.querySelector(`#${sizeContainerId} .active`)?.innerText;
             let color;
-            if(colorContainerId === 'modal-colors') {
-                color = selectedColor;
-            } else {
-                color = document.getElementById(colorContainerId).dataset.selectedColor;
-            }
-
+            if(colorContainerId === 'modal-colors') color = selectedColor;
+            else color = document.getElementById(colorContainerId).dataset.selectedColor;
             if(!size) return alert("Por favor, selecciona una talla.");
             if(!color) return alert("Por favor, selecciona un tono sugerido.");
-
             const product = MOCK_DB.find(p => p.id === id);
-            cart.push({ 
-                ...product, 
-                size, 
-                color: color,
-                uid: Date.now() 
-            });
-            
+            cart.push({ ...product, size, color: color, uid: Date.now() });
             syncStorage();
             if(sizeContainerId === 'modal-sizes') closeProductModal();
             if(!document.getElementById('cart-sidebar').classList.contains('open')) toggleCartDrawer();
@@ -503,10 +508,8 @@
             const container = document.getElementById('cart-list');
             const badge = document.getElementById('cart-badge');
             if(badge) badge.innerText = cart.length;
-            
             const total = cart.reduce((acc, p) => acc + p.price, 0);
             document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
-
             container.innerHTML = cart.map((item, index) => `
                 <div class="flex gap-4 items-center">
                     <div class="w-16 aspect-[3/4] bg-zinc-100 overflow-hidden rounded">
@@ -552,8 +555,9 @@
         });
 
         window.onload = () => {
-            // Inicializar historial
             history.replaceState({ viewId: 'home' }, "", "#home");
+            // El nav móvil inicia oculto porque cargamos en Home
+            document.getElementById('mobile-nav').style.transform = 'translateY(100%)';
 
             setTimeout(() => {
                 const pre = document.getElementById('preloader');
