@@ -1,0 +1,95 @@
+[
+  {
+    "id": 1,
+    "name": "Navy Dayslay Hoodie",
+    "price": 85,
+    "category": "hombre",
+    "img_default": "1000813647.webp",
+    "variants": [
+      { "color_name": "Navy", "hex": "#000080", "img": "1000813647.webp" },
+      { "color_name": "Grey", "hex": "#808080", "img": "1000813649.webp" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Tech Cargo Graphite",
+    "price": 115,
+    "category": "hombre",
+    "img_default": "1000813649.webp",
+    "variants": [
+      { "color_name": "Graphite", "hex": "#383838", "img": "1000813649.webp" },
+      { "color_name": "Black", "hex": "#000000", "img": "1000813647.webp" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Leaf Pink Zip Hoodie",
+    "price": 95,
+    "category": "mujer",
+    "img_default": "1000813651.webp",
+    "variants": [
+      { "color_name": "Pink", "hex": "#FFC0CB", "img": "1000813651.webp" },
+      { "color_name": "White", "hex": "#FFFFFF", "img": "1000813670.webp" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Oversized Black Leaf",
+    "price": 45,
+    "category": "mujer",
+    "img_default": "1000813670.webp",
+    "variants": [
+      { "color_name": "Black", "hex": "#000000", "img": "1000813670.webp" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Grey Urban Core",
+    "price": 90,
+    "category": "hombre",
+    "img_default": "1000813671.webp",
+    "variants": [
+      { "color_name": "Grey", "hex": "#A9A9A9", "img": "1000813671.webp" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Essential White Tee",
+    "price": 38,
+    "category": "hombre",
+    "img_default": "1000813673.webp",
+    "variants": [
+      { "color_name": "White", "hex": "#FFFFFF", "img": "1000813673.webp" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Midnight Cargo Dama",
+    "price": 105,
+    "category": "mujer",
+    "img_default": "1000813672.webp",
+    "variants": [
+      { "color_name": "Midnight Blue", "hex": "#191970", "img": "1000813672.webp" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Full Zen Outfit",
+    "price": 180,
+    "category": "outfits",
+    "img_default": "1000813647.webp",
+    "variants": [
+      { "color_name": "Zen Sand", "hex": "#C2B280", "img": "1000813647.webp" }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Galleta",
+    "price": 12.99,
+    "category": "promociones",
+    "img_default": "1000813673.webp",
+    "variants": [
+      { "color_name": "Original", "hex": "#D2691E", "img": "1000813673.webp" }
+    ]
+  }
+]
