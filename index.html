@@ -117,13 +117,18 @@
 
         /* --- AJUSTE DE TALLAS CON NÚMERO --- */
         .size-btn {
-            width: 42px; height: 50px; border: 1px solid #eee;
+            flex: 1; /* Permite que se adapten al espacio en celular */
+            min-width: 0;
+            max-width: 42px; /* Mantiene el tope máximo para que se vea igual en desktop */
+            height: 50px; 
+            border: 1px solid #eee;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             cursor: pointer; transition: 0.3s; gap: 1px;
+            padding: 0 1px;
         }
 
         .size-num {
-            font-size: 7px; font-weight: 400; color: #a1a1aa; letter-spacing: 0.5px;
+            font-size: 7.5px; font-weight: 700; color: #444444; letter-spacing: 0.5px; /* Más oscuro y legible */
         }
 
         .size-let {
@@ -248,7 +253,7 @@
                 
                 <div class="mb-8">
                     <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Tono Sugerido</p>
-                    <div class="flex gap-4" id="modal-colors"></div>
+                    <div class="flex flex-wrap gap-4" id="modal-colors"></div>
                     <p id="selected-color-name" class="text-[9px] uppercase mt-2 font-bold text-zinc-400 tracking-tighter">Sin seleccionar</p>
                 </div>
 
@@ -300,7 +305,7 @@
     <main id="shop" class="view-layer pt-32 lg:pt-48 pb-32">
         <div class="max-w-[1800px] mx-auto">
             <header class="px-6 mb-12 lg:mb-24 text-center">
-                <h2 class="text-[5rem] lg:text-[10rem] font-black italic uppercase leading-none tracking-tighter">Tienda<span class="text-[#6DAE5A]">.</span></h2>
+                <h2 class="text-6xl md:text-[5rem] lg:text-[10rem] font-black italic uppercase leading-none tracking-tighter">Tienda<span class="text-[#6DAE5A]">.</span></h2>
                 <div class="flex flex-wrap justify-center gap-4 mt-8">
                     <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
                     <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
@@ -416,7 +421,7 @@
                             <h3 class="text-[10px] font-black uppercase italic leading-tight w-2/3">${p.name}</h3>
                             <span class="text-[11px] font-black text-[#6DAE5A]">$${p.price.toFixed(2)}</span>
                         </div>
-                        <div class="flex gap-2 mb-4" id="sizes-${p.id}">
+                        <div class="flex gap-1 md:gap-2 mb-4" id="sizes-${p.id}">
                             ${SIZE_GUIDE.map(s => `
                                 <div class="size-btn" onclick="setUISize(this)">
                                     <span class="size-num">${s.num}</span>
@@ -424,7 +429,7 @@
                                 </div>
                             `).join('')}
                         </div>
-                        <div class="flex gap-2 mb-6" id="colors-${p.id}">
+                        <div class="flex flex-wrap gap-2 mb-6" id="colors-${p.id}">
                             ${COLOR_PALETTE.map(c => `
                                 <div class="color-dot" 
                                      style="background-color: ${c.code}; width: 22px; height: 22px;" 
@@ -451,13 +456,11 @@
             selectedColor = ""; 
             document.getElementById('selected-color-name').innerText = "Sin seleccionar";
             
-            // Renderizar colores en modal
             const colorContainer = document.getElementById('modal-colors');
             colorContainer.innerHTML = COLOR_PALETTE.map(c => `
                 <div class="color-dot" style="background-color: ${c.code};" title="${c.name}" onclick="setUIColor(this, '${c.name}')"></div>
             `).join('');
 
-            // Renderizar tallas en modal con la nueva guía
             const sizeContainer = document.getElementById('modal-sizes');
             sizeContainer.innerHTML = SIZE_GUIDE.map(s => `
                 <div class="size-btn" onclick="setUISize(this)">
