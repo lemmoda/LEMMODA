@@ -621,22 +621,23 @@
         <span onclick="goTo('essence')" class="mobile-link-text" id="mob-lnk-essence">Identidad</span>
     </div>
 
-    <main id="home" class="view-layer active">
+   <main id="home" class="view-layer active">
         <div class="relative h-[100vh] w-full bg-black flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 z-10"></div>
             <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-35">
                 <source src="assets/images/videos/pasarela.mp4" type="video/mp4">
             </video>
-            <div class="relative z-20 text-center text-white px-6">
-                <h1 class="text-6xl md:text-[11rem] lg:text-[14rem] font-black italic uppercase leading-[0.85] tracking-tighter mb-16">
+            <div class="relative z-20 text-center text-white px-6 max-w-7xl mx-auto">
+                <h1 class="text-5xl md:text-8xl lg:text-[8rem] xl:text-[9.5rem] font-black italic uppercase leading-[0.9] tracking-tighter mb-12">
                     Mística<br><span class="text-[#6DAE5A]">Urbana</span>
                 </h1>
-                <button onclick="goTo('shop')" class="bg-white text-black px-14 lg:px-24 py-6 lg:py-8 rounded-full font-black uppercase text-[9.5px] tracking-[0.5em] hover:bg-[#6DAE5A] hover:text-white transition-all duration-500 shadow-xl">
+                <button onclick="goTo('shop')" class="bg-white text-black px-14 lg:px-20 py-5 lg:py-6 rounded-full font-black uppercase text-[9px] tracking-[0.5em] hover:bg-[#6DAE5A] hover:text-white transition-all duration-500 shadow-xl">
                     Explorar Catálogo
                 </button>
             </div>
             <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 opacity-30 text-[9px] font-bold uppercase tracking-[0.6em] text-white" style="animation: pulseSoft 2.5s infinite ease-in-out;">
-                Deslizar para descubrir
+                <span class="hidden md:inline">Scroll para descubrir</span>
+                <span class="inline md:hidden">Deslizar para descubrir</span>
             </div>
         </div>
     </main>
