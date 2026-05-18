@@ -1,25 +1,32 @@
 [
   {
     "id": 1,
-    "name": "Navy Dayslay Hoodie",
-    "price": 85,
-    "category": "hombre",
-    "img_default": "1000813647.webp",
-    "variants": [
-      { "color_name": "Navy", "hex": "#000080", "img": "1000813647.webp" },
-      { "color_name": "Grey", "hex": "#808080", "img": "1000813649.webp" }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Tech Cargo Graphite",
-    "price": 115,
-    "category": "hombre",
-    "img_default": "1000813649.webp",
-    "variants": [
-      { "color_name": "Graphite", "hex": "#383838", "img": "1000813649.webp" },
-      { "color_name": "Black", "hex": "#000000", "img": "1000813647.webp" }
-    ]
+    "name": "Urban Essence Collection",
+    "category": "modular",
+    "description": "Set premium de silueta relajada con textura waffle y sutil bordado dorado LEM.",
+    "img_default": "1000813684.webp",
+    "pieces": {
+      "top": {
+        "name": "Urban Hoodie Top",
+        "price": 85,
+        "variants": [
+          { "color_name": "Sage", "hex": "#E2E7E1", "img": "1000813684.webp" },
+          { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "1000813670.webp" },
+          { "color_name": "Sand", "hex": "#D2C4B4", "img": "1000813683.webp" },
+          { "color_name": "Terra", "hex": "#B07255", "img": "lv_0_20260502144922.jpg" }
+        ]
+      },
+      "pants": {
+        "name": "Urban Tech Cargo",
+        "price": 115,
+        "variants": [
+          { "color_name": "Sage", "hex": "#E2E7E1", "img": "1000813684.webp" },
+          { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "1000813670.webp" },
+          { "color_name": "Sand", "hex": "#D2C4B4", "img": "1000813683.webp" },
+          { "color_name": "Terra", "hex": "#B07255", "img": "lv_0_20260502144922.jpg" }
+        ]
+      }
+    }
   },
   {
     "id": 3,
@@ -40,16 +47,6 @@
     "img_default": "1000813670.webp",
     "variants": [
       { "color_name": "Black", "hex": "#000000", "img": "1000813670.webp" }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Grey Urban Core",
-    "price": 90,
-    "category": "hombre",
-    "img_default": "1000813671.webp",
-    "variants": [
-      { "color_name": "Grey", "hex": "#A9A9A9", "img": "1000813671.webp" }
     ]
   },
   {
