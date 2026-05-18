@@ -315,26 +315,30 @@
     </main>
 
     <script>
-        // BASE DE DATOS ACTUALIZADA CON VARIANTES
+        // BASE DE DATOS OPTIMIZADA CON LAS PIEZAS DE LA URBAN ESSENCE COLLECTION
         const MOCK_DB = [
             { 
-                id: 1, name: "Navy Dayslay Hoodie", price: 85, category: "hombre",
+                id: 1, name: "Urban Hoodie Top (Essence Coll.)", price: 85, category: "hombre",
                 variants: [
-                    { color_name: "Navy Blue", hex: "#000080", img: "1000813647.webp" },
-                    { color_name: "Graphite", hex: "#383838", img: "1000813649.webp" }
+                    { color_name: "Sage Waffle", hex: "#E2E7E1", img: "1000813684.webp" },
+                    { color_name: "Obsidian Waffle", hex: "#1A1A1A", img: "1000813670.webp" },
+                    { color_name: "Sand Waffle", hex: "#D2C4B4", img: "1000813683.webp" },
+                    { color_name: "Terra Waffle", hex: "#B07255", img: "lv_0_20260502144922.jpg" }
                 ]
             },
             { 
-                id: 2, name: "Tech Cargo Graphite", price: 115, category: "hombre",
+                id: 2, name: "Urban Tech Cargo (Essence Coll.)", price: 115, category: "hombre",
                 variants: [
-                    { color_name: "Graphite", hex: "#383838", img: "1000813649.webp" },
-                    { color_name: "Black Night", hex: "#080808", img: "1000813647.webp" }
+                    { color_name: "Sage Waffle", hex: "#E2E7E1", img: "1000813684.webp" },
+                    { color_name: "Obsidian Waffle", hex: "#1A1A1A", img: "1000813670.webp" },
+                    { color_name: "Sand Waffle", hex: "#D2C4B4", img: "1000813683.webp" },
+                    { color_name: "Terra Waffle", hex: "#B07255", img: "lv_0_20260502144922.jpg" }
                 ]
             },
             { 
                 id: 3, name: "Leaf Pink Zip Hoodie", price: 95, category: "mujer",
                 variants: [
-                    { color_name: "Pink Leaf", hex: "#FADBD8", img: "1000813651.webp" },
+                    { color_name: "Pink Leaf", hex: "#FFC0CB", img: "1000813651.webp" },
                     { color_name: "Pure White", hex: "#FFFFFF", img: "1000813670.webp" }
                 ]
             },
@@ -342,12 +346,6 @@
                 id: 4, name: "Oversized Black Leaf", price: 45, category: "mujer",
                 variants: [
                     { color_name: "Deep Black", hex: "#000000", img: "1000813670.webp" }
-                ]
-            },
-            { 
-                id: 5, name: "Grey Urban Core", price: 90, category: "hombre",
-                variants: [
-                    { color_name: "Urban Grey", hex: "#A1A1AA", img: "1000813671.webp" }
                 ]
             },
             { 
@@ -365,7 +363,7 @@
             { 
                 id: 8, name: "Full Zen Outfit", price: 180, category: "outfits",
                 variants: [
-                    { color_name: "Zen Sand", hex: "#D2B48C", img: "1000813647.webp" }
+                    { color_name: "Zen Sand", hex: "#C2B280", img: "1000813647.webp" }
                 ]
             },
             { 
@@ -454,7 +452,6 @@
             `).join('');
         }
 
-        // FUNCIÓN CLAVE: CAMBIA LA IMAGEN AL SELECCIONAR COLOR
         function setUIColorDirect(el, colorName, containerId, imgId, newImg) {
             const container = document.getElementById(containerId);
             container.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
@@ -560,7 +557,6 @@
             if(!color) return alert("Por favor, selecciona un tono sugerido.");
             
             const product = MOCK_DB.find(p => p.id === id);
-            // Capturamos la imagen actual del producto para el carrito
             const currentImg = colorContainerId === 'modal-colors' ? document.getElementById('modal-main-img').src : document.getElementById(`main-img-${id}`).src;
 
             cart.push({ ...product, size, color: color, img: currentImg, uid: Date.now() });
@@ -600,7 +596,7 @@
             syncStorage();
         }
 
-       function sendOrder() {
+        function sendOrder() {
             if(cart.length === 0) return;
             let text = "⚜️ LEM MODA | ORDEN DE ADQUISICIÓN ⚜️\n";
             text += "____________\n\n";
