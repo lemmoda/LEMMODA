@@ -48,7 +48,7 @@
 
         @keyframes fillProgress { to { width: 100%; } }
 
-        /* --- NAVEGACIÓN --- */
+        /* --- NAVEGACIÓN MODULAR CON LOGO --- */
         .nav-master {
             position: fixed; top: 0; width: 100%; z-index: 5000;
             padding: 20px 30px; display: flex; justify-content: space-between; align-items: center;
@@ -63,6 +63,13 @@
             padding: 15px 30px; background: rgba(255,255,255,0.9);
             backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05);
         }
+
+        /* Lógica de cambio de logo basada en el estado del navbar */
+        .nav-master .logo-night { display: none; }
+        .nav-master .logo-day { display: block; }
+
+        .nav-master.scrolled .logo-day { display: none; }
+        .nav-master.scrolled .logo-night { display: block; }
 
         .logo-box img { height: 32px; width: auto; object-fit: contain; }
         @media (min-width: 1024px) { .logo-box img { height: 40px; } }
@@ -191,8 +198,8 @@
 
     <nav class="nav-master" id="header-nav">
         <div class="logo-box cursor-pointer" onclick="goTo('home')">
-            <img src="assets/images/logos/logo_lem.webp" alt="LEM MODA" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-            <span style="display:none" class="text-2xl font-black italic tracking-tighter uppercase">LEM <span class="text-[#6DAE5A]">MODA</span></span>
+            <img src="assets/images/logos/logo_lem-05.webp" alt="LEM MODA" class="logo-day">
+            <img src="assets/images/logos/logo_lem-04.webp" alt="LEM MODA" class="logo-night">
         </div>
         
         <div class="hidden lg:flex gap-16 text-[10px] font-black uppercase tracking-[0.4em]">
@@ -316,7 +323,6 @@
 
     <script>
         // BASE DE DATOS OPTIMIZADA CON LAS PIEZAS DE LA URBAN ESSENCE COLLECTION
-        // Todas las imágenes han sido mapeadas hacia la nueva estructura: assets/images/productos/
         const MOCK_DB = [
             { 
                 id: 1, name: "Urban Hoodie Top (Essence Coll.)", price: 85, category: "hombre",
