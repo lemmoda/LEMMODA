@@ -23,23 +23,21 @@
             -webkit-tap-highlight-color: transparent; 
         }
 
-        /* --- PROTECCIÓN POR CSS PARA MÓVILES y ESCRITORIO --- */
+        /* --- BLINDAJE PERIMETRAL ANTI-DESCARGA (REFINADO) --- */
         img, video {
-            /* Desactiva el menú contextual flotante en iOS y Android (guardar imagen) */
             -webkit-touch-callout: none;
-            /* Evita que el usuario seleccione la imagen como texto */
             -webkit-user-select: none;
             -khtml-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            /* Bloquea el arrastre nativo en navegadores de escritorio */
             -webkit-user-drag: none;
-            -khtml-user-drag: none;
-            -moz-user-drag: none;
-            -o-user-drag: none;
             user-drag: none;
-            pointer-events: none; /* Hace invisible la imagen a interacciones directas, delegándolas al contenedor */
+        }
+        
+        /* Protegemos la imagen principal pero permitimos interacción en contenedores interactivos */
+        .protected-img {
+            pointer-events: none;
         }
 
         body {
@@ -70,16 +68,14 @@
 
         @keyframes fillProgress { to { width: 100%; } }
 
-        /* --- NAVEGACIÓN MODULAR CON LOGO --- */
+        /* --- NAVEGACIÓN --- */
         .nav-master {
             position: fixed; top: 0; width: 100%; z-index: 5000;
             padding: 20px 30px; display: flex; justify-content: space-between; align-items: center;
             transition: all 0.6s var(--ease-luxury);
         }
 
-        @media (min-width: 1024px) {
-            .nav-master { padding: 30px 60px; }
-        }
+        @media (min-width: 1024px) { .nav-master { padding: 30px 60px; } }
 
         .nav-master.scrolled {
             padding: 15px 30px; background: rgba(255,255,255,0.9);
@@ -88,11 +84,9 @@
 
         .nav-master .logo-night { display: none; }
         .nav-master .logo-day { display: block; }
-
         .nav-master.scrolled .logo-day { display: none; }
         .nav-master.scrolled .logo-night { display: block; }
-
-        .logo-box img { height: 32px; width: auto; object-fit: contain; pointer-events: none; }
+        .logo-box img { height: 32px; width: auto; object-fit: contain; }
         @media (min-width: 1024px) { .logo-box img { height: 40px; } }
 
         /* --- FILTROS TIENDA --- */
@@ -108,10 +102,9 @@
             display: none; opacity: 0; transform: translateY(20px);
             transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
         }
-
         .view-layer.active { display: block; opacity: 1; transform: translateY(0); }
 
-        /* --- CATÁLOGO --- */
+        /* --- CATÁLOGO CON BOTÓN "VER DETALLES" INTERACTIVO --- */
         .catalogue-grid {
             display: grid; grid-template-columns: repeat(2, 1fr);
             gap: 15px; padding: 15px;
@@ -141,9 +134,38 @@
         }
 
         .img-container img.loaded { opacity: 1; }
-        .product-card:hover .img-container img.loaded { transform: scale(1.08); }
+        .product-card:hover .img-container img.loaded { transform: scale(1.04); }
 
-        /* --- AJUSTE DE TALLAS --- */
+        /* Capa superpuesta del botón Ver Detalles */
+        .details-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0, 0, 0, 0.15);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.4s var(--ease-luxury);
+        }
+
+        /* En Desktop aparece al hacer Hover */
+        @media (min-width: 1024px) {
+            .product-card:hover .details-overlay { opacity: 1; }
+        }
+        /* En móviles se mantiene sutilmente visible para guiar al usuario */
+        @media (max-width: 1023px) {
+            .details-overlay { opacity: 1; background: transparent; align-items: flex-end; padding-bottom: 12px; }
+        }
+
+        .btn-view-details {
+            background: var(--brand-white); color: var(--brand-black);
+            font-size: 8px; font-weight: 900; text-transform: uppercase;
+            letter-spacing: 2px; padding: 12px 24px; border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transform: translateY(10px); transition: all 0.4s var(--ease-luxury);
+        }
+        .product-card:hover .btn-view-details { transform: translateY(0); }
+        @media (max-width: 1023px) {
+            .btn-view-details { transform: translateY(0); background: rgba(255,255,255,0.95); padding: 8px 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        }
+
+        /* --- AJUSTE DE RECOLECCIÓN DE TALLAS --- */
         .size-btn {
             flex: 1; min-width: 0; max-width: 42px; height: 50px; 
             border: 1px solid #eee;
@@ -153,7 +175,6 @@
 
         .size-num { font-size: 7.5px; font-weight: 700; color: #444444; letter-spacing: 0.5px; }
         .size-let { font-size: 10px; font-weight: 800; }
-
         .size-btn.active { background: #000; border-color: #000; }
         .size-btn.active .size-num { color: #fff; opacity: 0.7; }
         .size-btn.active .size-let { color: #fff; }
@@ -173,21 +194,44 @@
             letter-spacing: 2px; transition: 0.5s var(--ease-luxury);
             margin-top: 10px;
         }
-
         .add-to-cart-trigger:hover { background: var(--brand-green); }
 
-        /* --- CARRITO & MODAL --- */
+        /* --- MODAL DETALLES MULTIMEDIA --- */
         #product-modal {
             position: fixed; inset: 0; background: #fff; z-index: 7000;
             display: none; opacity: 0; transition: all 0.5s var(--ease-luxury);
         }
         #product-modal.open { display: block; opacity: 1; }
 
-        .thumb-img {
-            width: 60px; height: 80px; object-fit: cover; cursor: pointer;
-            opacity: 0.5; transition: 0.3s; border-radius: 2px;
+        /* Miniaturas corregidas con pointer-events: auto para permitir el click de cambio */
+        .thumb-wrapper {
+            position: relative; cursor: pointer; flex-shrink: 0;
+            width: 70px; height: 90px; border-radius: 2px; overflow: hidden;
         }
-        .thumb-img.active { opacity: 1; border: 1px solid var(--brand-black); }
+        .thumb-img-element {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.4;
+            transition: opacity 0.3s var(--ease-luxury);
+        }
+        .thumb-wrapper.active .thumb-img-element { opacity: 1; }
+        .thumb-shield { position: absolute; inset: 0; z-index: 10; }
+
+        /* Contenedor Principal de la imagen en el modal */
+        .modal-carousel-container {
+            position: relative; width: 100%; aspect-ratio: 3/4;
+            overflow: hidden; background: var(--brand-zinc); border-radius: 2px;
+        }
+
+        /* Flechas de navegación minimalistas */
+        .nav-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.85); backdrop-filter: blur(4px);
+            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; z-index: 40; font-size: 14px; font-weight: bold;
+            transition: all 0.3s var(--ease-luxury); box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .nav-arrow:hover { background: #000; color: #fff; }
+        .nav-arrow.prev { left: 15px; }
+        .nav-arrow.next { right: 15px; }
 
         #cart-sidebar {
             position: fixed; top: 0; right: -100%; width: 100%; max-width: 480px;
@@ -196,7 +240,6 @@
             transition: right 0.8s var(--ease-luxury);
             display: flex; flex-direction: column; padding: 30px;
         }
-
         #cart-sidebar.open { right: 0; }
 
         .mobile-footer {
@@ -206,11 +249,12 @@
             border-top: 1px solid rgba(0,0,0,0.05);
             transition: transform 0.5s var(--ease-luxury);
         }
-
         @media (min-width: 1024px) { .mobile-footer { display: none; } }
     </style>
 </head>
-<body oncontextmenu="return false;"> <div id="preloader">
+<body oncontextmenu="return false;">
+
+    <div id="preloader">
         <h2 class="text-white text-3xl font-black italic tracking-tighter uppercase">LEM MODA</h2>
         <div class="loader-line"><div class="loader-fill"></div></div>
     </div>
@@ -241,12 +285,15 @@
 
     <div id="product-modal" class="overflow-y-auto">
         <div class="max-w-[1400px] mx-auto min-h-screen flex flex-col lg:flex-row">
-            <button onclick="history.back()" class="absolute top-8 right-8 z-[7001] text-2xl">✕</button>
-            <div class="w-full lg:w-1/2 p-4 lg:p-10">
-                <div class="aspect-[3/4] bg-zinc-100 overflow-hidden rounded-sm">
-                    <img id="modal-main-img" src="" class="w-full h-full object-cover transition-opacity duration-300">
+            <button onclick="history.back()" class="absolute top-8 right-8 z-[7001] text-2xl hover:scale-110 transition-transform">✕</button>
+            
+            <div class="w-full lg:w-1/2 p-4 lg:p-10 flex flex-col justify-center">
+                <div class="modal-carousel-container" id="modal-carousel">
+                    <button class="nav-arrow prev" onclick="navigateModalGallery(-1)">❮</button>
+                    <img id="modal-main-img" src="" class="w-full h-full object-cover transition-opacity duration-300 protected-img">
+                    <button class="nav-arrow next" onclick="navigateModalGallery(1)">❯</button>
                 </div>
-                <div id="modal-thumbnails" class="flex gap-2 mt-4 overflow-x-auto"></div>
+                <div id="modal-thumbnails" class="flex gap-3 mt-4 overflow-x-auto pb-2"></div>
             </div>
 
             <div class="w-full lg:w-1/2 p-8 lg:p-20 flex flex-col justify-center">
@@ -336,7 +383,6 @@
                     <p class="text-zinc-500 text-lg font-light leading-relaxed">Evolución constante del estilo urbano.</p>
                 </div>
             </div>
-            <button onclick="goTo('home')" class="mt-20 border border-white/20 px-10 py-4 text-[9px] uppercase tracking-[0.5em] lg:hidden">Regresar</button>
         </div>
     </main>
 
@@ -372,36 +418,16 @@
                 variants: [
                     { color_name: "Deep Black", hex: "#000000", img: "assets/images/productos/1000813670.webp" }
                 ]
-            },
-            { 
-                id: 6, name: "Essential White Tee", price: 38, category: "hombre",
-                variants: [
-                    { color_name: "Optic White", hex: "#FFFFFF", img: "assets/images/productos/1000813673.webp" }
-                ]
-            },
-            { 
-                id: 7, name: "Midnight Cargo Dama", price: 105, category: "mujer",
-                variants: [
-                    { color_name: "Midnight Blue", hex: "#191970", img: "assets/images/productos/1000813672.webp" }
-                ]
-            },
-            { 
-                id: 8, name: "Full Zen Outfit", price: 180, category: "outfits",
-                variants: [
-                    { color_name: "Zen Sand", hex: "#C2B280", img: "assets/images/productos/1000813647.webp" }
-                ]
-            },
-            { 
-                id: 11, name: "Galleta", price: 12.99, category: "promociones",
-                variants: [
-                    { color_name: "Original", hex: "#D2691E", img: "assets/images/productos/1000813673.webp" }
-                ]
             }
         ];
 
         let cart = JSON.parse(localStorage.getItem('lem_cart')) || [];
         let currentCategory = 'all';
         let selectedColor = "";
+        
+        // Memoria para el carrusel del modal
+        let modalGalleryUrls = [];
+        let currentModalImageIndex = 0;
 
         const SIZE_GUIDE = [
             { let: 'XS', num: '32-34' },
@@ -411,27 +437,14 @@
             { let: 'XL', num: '48-50' }
         ];
 
-        /* --- MOTOR DE SEGURIDAD ANTI-DESCARGA --- */
         function antiTheftShield() {
-            // 1. Bloqueo de combinaciones de teclas de inspección y clonación en escritorio (F12, Ctrl+Shift+I, Ctrl+S, etc.)
             window.addEventListener('keydown', function(e) {
-                if (
-                    e.keyCode === 123 || // F12
-                    (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I / J
-                    (e.ctrlKey && e.keyCode === 83) || // Ctrl+S (Guardar)
-                    (e.ctrlKey && e.keyCode === 85) || // Ctrl+U (Ver código fuente)
-                    (e.metaKey && e.altKey && e.keyCode === 73) // Cmd+Opt+I (Mac)
-                ) {
-                    e.preventDefault();
-                    return false;
+                if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 83) || (e.ctrlKey && e.keyCode === 85) || (e.metaKey && e.altKey && e.keyCode === 73)) {
+                    e.preventDefault(); return false;
                 }
             });
-
-            // 2. Interceptor de eventos de arrastre en cualquier elemento multimedia dinámico
             document.addEventListener('dragstart', function(e) {
-                if (e.target.nodeName === 'IMG' || e.target.nodeName === 'VIDEO') {
-                    e.preventDefault();
-                }
+                if (e.target.nodeName === 'IMG' || e.target.nodeName === 'VIDEO') e.preventDefault();
             }, true);
         }
 
@@ -439,12 +452,9 @@
             document.querySelectorAll('.view-layer').forEach(v => v.classList.remove('active'));
             const target = document.getElementById(id);
             if(target) target.classList.add('active');
-            
             window.scrollTo({ top: 0, behavior: 'smooth' });
             if(id === 'shop') mountShop();
-
             if (pushState) history.pushState({ viewId: id }, "", `#${id}`);
-
             const mobNav = document.getElementById('mobile-nav');
             if(id === 'home') mobNav.style.transform = 'translateY(100%)';
             else mobNav.style.transform = 'translateY(0)';
@@ -470,15 +480,18 @@
             const filtered = currentCategory === 'all' ? MOCK_DB : MOCK_DB.filter(p => p.category === currentCategory);
             container.innerHTML = filtered.map((p, index) => `
                 <div class="product-card" style="animation-delay: ${index * 0.05}s">
-                    <div class="img-container bg-zinc-100 cursor-pointer" onclick="openProductModal(${p.id})">
-                        <img id="main-img-${p.id}" src="${p.variants[0].img}" alt="${p.name}" onload="this.classList.add('loaded')" loading="lazy">
+                    <div class="img-container cursor-pointer" onclick="openProductModal(${p.id})">
+                        <img id="main-img-${p.id}" src="${p.variants[0].img}" alt="${p.name}" class="protected-img" onload="this.classList.add('loaded')" loading="lazy">
+                        <div class="details-overlay">
+                            <button class="btn-view-details">Ver Detalles</button>
+                        </div>
                     </div>
                     <div class="py-6">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-[10px] font-black uppercase italic leading-tight w-2/3">${p.name}</h3>
                             <span class="text-[11px] font-black text-[#6DAE5A]">$${p.price.toFixed(2)}</span>
                         </div>
-                        <div class="flex gap-1 md:gap-2 mb-4" id="sizes-${p.id}">
+                        <div class="flex gap-1 mb-4" id="sizes-${p.id}">
                             ${SIZE_GUIDE.map(s => `
                                 <div class="size-btn" onclick="setUISize(this)">
                                     <span class="size-num">${s.num}</span>
@@ -490,7 +503,6 @@
                             ${p.variants.map((v, vIdx) => `
                                 <div class="color-dot ${vIdx === 0 ? 'active' : ''}" 
                                      style="background-color: ${v.hex}; width: 22px; height: 22px;" 
-                                     title="${v.color_name}" 
                                      onclick="setUIColorDirect(this, '${v.color_name}', 'colors-${p.id}', 'main-img-${p.id}', '${v.img}')">
                                 </div>
                             `).join('')}
@@ -502,6 +514,7 @@
         }
 
         function setUIColorDirect(el, colorName, containerId, imgId, newImg) {
+            event.stopPropagation(); // Evita abrir el modal al clickear el color en el catálogo
             const container = document.getElementById(containerId);
             container.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
             el.classList.add('active');
@@ -510,10 +523,7 @@
             const mainImg = document.getElementById(imgId);
             if(mainImg) {
                 mainImg.style.opacity = '0';
-                setTimeout(() => {
-                    mainImg.src = newImg;
-                    mainImg.style.opacity = '1';
-                }, 300);
+                setTimeout(() => { mainImg.src = newImg; mainImg.style.opacity = '1'; }, 300);
             }
         }
 
@@ -523,11 +533,14 @@
             selectedColor = p.variants[0].color_name; 
             document.getElementById('selected-color-name').innerText = selectedColor;
             
+            // Construimos la lista de imágenes únicas disponibles para el carrusel
+            modalGalleryUrls = p.variants.map(v => v.img);
+            currentModalImageIndex = 0;
+
             const colorContainer = document.getElementById('modal-colors');
             colorContainer.innerHTML = p.variants.map((v, vIdx) => `
                 <div class="color-dot ${vIdx === 0 ? 'active' : ''}" 
                      style="background-color: ${v.hex};" 
-                     title="${v.color_name}" 
                      onclick="setUIColor(this, '${v.color_name}', '${v.img}')"></div>
             `).join('');
 
@@ -539,14 +552,18 @@
                 </div>
             `).join('');
 
-            document.getElementById('modal-main-img').src = p.variants[0].img;
+            updateModalImageDisplay();
             document.getElementById('modal-name').innerText = p.name;
             document.getElementById('modal-price').innerText = `$${p.price.toFixed(2)}`;
             document.getElementById('modal-category').innerText = p.category;
             
+            // Render de miniaturas usando wrappers con escudos transparentes para que no se puedan arrastrar ni descargar
             const thumbContainer = document.getElementById('modal-thumbnails');
-            thumbContainer.innerHTML = p.variants.map(v => `
-                <img src="${v.img}" class="thumb-img" onclick="changeModalImg(this)">
+            thumbContainer.innerHTML = p.variants.map((v, idx) => `
+                <div class="thumb-wrapper ${idx === 0 ? 'active' : ''}" onclick="jumpToModalImage(${idx})">
+                    <div class="thumb-shield"></div>
+                    <img src="${v.img}" class="thumb-img-element">
+                </div>
             `).join('');
 
             document.getElementById('modal-add-btn').onclick = () => handleAddToCart(p.id, 'modal-sizes', 'modal-colors');
@@ -555,6 +572,58 @@
             setTimeout(() => modal.classList.add('open'), 10);
             document.body.style.overflow = 'hidden';
             history.pushState({ viewId: 'modal' }, "", "#details");
+
+            setupSwipeEvents(); // Inicializa gestos táctiles
+        }
+
+        /* --- MOTOR DE NAVEGACIÓN GALERÍA MODAL --- */
+        function updateModalImageDisplay() {
+            const modalImg = document.getElementById('modal-main-img');
+            modalImg.style.opacity = '0.3';
+            setTimeout(() => {
+                modalImg.src = modalGalleryUrls[currentModalImageIndex];
+                modalImg.style.opacity = '1';
+            }, 150);
+
+            // Sincronizar estado activo de las miniaturas visuales
+            const thumbs = document.querySelectorAll('#modal-thumbnails .thumb-wrapper');
+            thumbs.forEach((t, idx) => {
+                if(idx === currentModalImageIndex) t.classList.add('active');
+                else t.classList.remove('active');
+            });
+        }
+
+        function navigateModalGallery(direction) {
+            currentModalImageIndex += direction;
+            if(currentModalImageIndex >= modalGalleryUrls.length) currentModalImageIndex = 0;
+            if(currentModalImageIndex < 0) currentModalImageIndex = modalGalleryUrls.length - 1;
+            updateModalImageDisplay();
+        }
+
+        function jumpToModalImage(index) {
+            currentModalImageIndex = index;
+            updateModalImageDisplay();
+        }
+
+        // Soporte de Swipe (Deslizar) para móviles
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        function setupSwipeEvents() {
+            const carousel = document.getElementById('modal-carousel');
+            carousel.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+
+            carousel.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipeGesture();
+            }, {passive: true});
+        }
+
+        function handleSwipeGesture() {
+            if (touchStartX - touchEndX > 50) navigateModalGallery(1);  // Deslizar izquierda -> Siguiente
+            if (touchEndX - touchStartX > 50) navigateModalGallery(-1); // Deslizar derecha -> Anterior
         }
 
         function closeProductModal(triggerBack = true) {
@@ -563,12 +632,6 @@
             setTimeout(() => modal.style.display = 'none', 500);
             document.body.style.overflow = 'auto';
             if(triggerBack && window.location.hash === "#details") history.back();
-        }
-
-        function changeModalImg(el) {
-            document.querySelectorAll('.thumb-img').forEach(img => img.classList.remove('active'));
-            el.classList.add('active');
-            document.getElementById('modal-main-img').src = el.src;
         }
 
         function setUISize(el) {
@@ -582,31 +645,26 @@
             selectedColor = colorName;
             document.getElementById('selected-color-name').innerText = colorName;
             
-            const modalImg = document.getElementById('modal-main-img');
-            modalImg.style.opacity = '0.5';
-            setTimeout(() => {
-                modalImg.src = newImg;
-                modalImg.style.opacity = '1';
-            }, 200);
+            // Al seleccionar un color específico, movemos el carrusel a esa imagen
+            const targetIndex = modalGalleryUrls.indexOf(newImg);
+            if(targetIndex !== -1) {
+                currentModalImageIndex = targetIndex;
+                updateModalImageDisplay();
+            }
         }
 
-        function toggleCartDrawer() {
-            document.getElementById('cart-sidebar').classList.toggle('open');
-        }
+        function toggleCartDrawer() { document.getElementById('cart-sidebar').classList.toggle('open'); }
 
         function handleAddToCart(id, sizeContainerId, colorContainerId) {
             const activeBtn = document.querySelector(`#${sizeContainerId} .active`);
             const size = activeBtn ? activeBtn.querySelector('.size-let').innerText : null;
-            
-            let color;
-            if(colorContainerId === 'modal-colors') color = selectedColor;
-            else color = document.getElementById(colorContainerId).dataset.selectedColor;
+            let color = (colorContainerId === 'modal-colors') ? selectedColor : document.getElementById(colorContainerId).dataset.selectedColor;
 
             if(!size) return alert("Por favor, selecciona una talla.");
             if(!color) return alert("Por favor, selecciona un tono sugerido.");
             
             const product = MOCK_DB.find(p => p.id === id);
-            const currentImg = colorContainerId === 'modal-colors' ? document.getElementById('modal-main-img').src : document.getElementById(`main-img-${id}`).src;
+            const currentImg = document.getElementById('modal-main-img').src;
 
             cart.push({ ...product, size, color: color, img: currentImg, uid: Date.now() });
             syncStorage();
@@ -627,7 +685,8 @@
             document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
             container.innerHTML = cart.map((item, index) => `
                 <div class="flex gap-4 items-center">
-                    <div class="w-16 aspect-[3/4] bg-zinc-100 overflow-hidden rounded">
+                    <div class="w-16 aspect-[3/4] bg-zinc-100 overflow-hidden rounded relative">
+                        <div class="absolute inset-0 z-10"></div>
                         <img src="${item.img}" class="w-full h-full object-cover">
                     </div>
                     <div class="flex-grow">
@@ -640,28 +699,16 @@
             `).join('');
         }
 
-        function removeItem(index) {
-            cart.splice(index, 1);
-            syncStorage();
-        }
+        function removeItem(index) { cart.splice(index, 1); syncStorage(); }
 
         function sendOrder() {
             if(cart.length === 0) return;
-            let text = "⚜️ LEM MODA | ORDEN DE ADQUISICIÓN ⚜️\n";
-            text += "____________\n\n";
-            text += "He seleccionado las siguientes piezas de la mística urbana:\n\n";
+            let text = "⚜️ LEM MODA | ORDEN DE ADQUISICIÓN ⚜️\n____________\n\nHe seleccionado las siguientes piezas de la mística urbana:\n\n";
             cart.forEach((p, i) => {
-                const index = (i + 1).toString().padStart(2, '0');
-                text += `${index}. ${p.name}\n`;
-                text += `   ↳ Talla: ${p.size}\n`;
-                text += `   ↳ Color: ${p.color}\n`;
-                text += `   ↳ Valor: $${p.price.toFixed(2)}\n\n`;
+                text += `${(i + 1).toString().padStart(2, '0')}. ${p.name}\n   ↳ Talla: ${p.size}\n   ↳ Color: ${p.color}\n   ↳ Valor: $${p.price.toFixed(2)}\n\n`;
             });
-            text += "____________\n";
-            text += `TOTAL ESTIMADO: ${document.getElementById('cart-total').innerText}\n\n`;
-            text += "Quedo a la espera de la confirmación de disponibilidad para proceder con el estatus de mi pedido.";
-            const whatsappUrl = `https://wa.me/593984909967?text=${encodeURIComponent(text)}`;
-            window.open(whatsappUrl, '_blank');
+            text += `____________\nTOTAL ESTIMADO: ${document.getElementById('cart-total').innerText}\n\nQuedo a la espera de la confirmación de disponibilidad.`;
+            window.open(`https://wa.me/593984909967?text=${encodeURIComponent(text)}`, '_blank');
         }
 
         window.addEventListener('scroll', () => {
@@ -672,14 +719,11 @@
         window.onload = () => {
             history.replaceState({ viewId: 'home' }, "", "#home");
             document.getElementById('mobile-nav').style.transform = 'translateY(100%)';
-
             setTimeout(() => {
                 const pre = document.getElementById('preloader');
                 if(pre) { pre.style.opacity = '0'; setTimeout(() => pre.style.display = 'none', 1000); }
             }, 2000);
-            renderCartItems();
-            mountShop(); 
-            antiTheftShield(); // Activa el escudo anti-descarga al cargar la app
+            renderCartItems(); mountShop(); antiTheftShield();
         };
     </script>
 </body>
