@@ -18,7 +18,29 @@
             --ease-luxury: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        /* --- PROTECCIÓN POR CSS PARA MÓVILES y ESCRITORIO --- */
+        img, video {
+            /* Desactiva el menú contextual flotante en iOS y Android (guardar imagen) */
+            -webkit-touch-callout: none;
+            /* Evita que el usuario seleccione la imagen como texto */
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /* Bloquea el arrastre nativo en navegadores de escritorio */
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none; /* Hace invisible la imagen a interacciones directas, delegándolas al contenedor */
+        }
 
         body {
             font-family: 'Urbanist', sans-serif;
@@ -64,14 +86,13 @@
             backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Lógica de cambio de logo basada en el estado del navbar */
         .nav-master .logo-night { display: none; }
         .nav-master .logo-day { display: block; }
 
         .nav-master.scrolled .logo-day { display: none; }
         .nav-master.scrolled .logo-night { display: block; }
 
-        .logo-box img { height: 32px; width: auto; object-fit: contain; }
+        .logo-box img { height: 32px; width: auto; object-fit: contain; pointer-events: none; }
         @media (min-width: 1024px) { .logo-box img { height: 40px; } }
 
         /* --- FILTROS TIENDA --- */
@@ -189,9 +210,7 @@
         @media (min-width: 1024px) { .mobile-footer { display: none; } }
     </style>
 </head>
-<body>
-
-    <div id="preloader">
+<body oncontextmenu="return false;"> <div id="preloader">
         <h2 class="text-white text-3xl font-black italic tracking-tighter uppercase">LEM MODA</h2>
         <div class="loader-line"><div class="loader-fill"></div></div>
     </div>
@@ -273,7 +292,7 @@
     <main id="home" class="view-layer active">
         <div class="relative h-[100vh] w-full bg-black flex items-center justify-center overflow-hidden">
             <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
-                <source src="assets/images/videos/pasarela.mp4" type="video/mp4">
+                <source src="assets/videos/1000813695.mp4" type="video/mp4">
             </video>
             <div class="relative z-10 text-center text-white px-6">
                 <h1 class="text-6xl md:text-[12rem] font-black italic uppercase leading-[0.8] tracking-tighter mb-12">
@@ -322,7 +341,6 @@
     </main>
 
     <script>
-        // BASE DE DATOS OPTIMIZADA CON LAS PIEZAS DE LA URBAN ESSENCE COLLECTION
         const MOCK_DB = [
             { 
                 id: 1, name: "Urban Hoodie Top (Essence Coll.)", price: 85, category: "hombre",
@@ -392,6 +410,30 @@
             { let: 'L', num: '44-46' },
             { let: 'XL', num: '48-50' }
         ];
+
+        /* --- MOTOR DE SEGURIDAD ANTI-DESCARGA --- */
+        function antiTheftShield() {
+            // 1. Bloqueo de combinaciones de teclas de inspección y clonación en escritorio (F12, Ctrl+Shift+I, Ctrl+S, etc.)
+            window.addEventListener('keydown', function(e) {
+                if (
+                    e.keyCode === 123 || // F12
+                    (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I / J
+                    (e.ctrlKey && e.keyCode === 83) || // Ctrl+S (Guardar)
+                    (e.ctrlKey && e.keyCode === 85) || // Ctrl+U (Ver código fuente)
+                    (e.metaKey && e.altKey && e.keyCode === 73) // Cmd+Opt+I (Mac)
+                ) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // 2. Interceptor de eventos de arrastre en cualquier elemento multimedia dinámico
+            document.addEventListener('dragstart', function(e) {
+                if (e.target.nodeName === 'IMG' || e.target.nodeName === 'VIDEO') {
+                    e.preventDefault();
+                }
+            }, true);
+        }
 
         function goTo(id, pushState = true) {
             document.querySelectorAll('.view-layer').forEach(v => v.classList.remove('active'));
@@ -637,6 +679,7 @@
             }, 2000);
             renderCartItems();
             mountShop(); 
+            antiTheftShield(); // Activa el escudo anti-descarga al cargar la app
         };
     </script>
 </body>
