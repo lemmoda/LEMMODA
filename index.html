@@ -191,7 +191,7 @@
 
     <nav class="nav-master" id="header-nav">
         <div class="logo-box cursor-pointer" onclick="goTo('home')">
-            <img src="logo_lem.webp" alt="LEM MODA" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+            <img src="assets/images/logos/logo_lem.webp" alt="LEM MODA" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
             <span style="display:none" class="text-2xl font-black italic tracking-tighter uppercase">LEM <span class="text-[#6DAE5A]">MODA</span></span>
         </div>
         
@@ -266,7 +266,7 @@
     <main id="home" class="view-layer active">
         <div class="relative h-[100vh] w-full bg-black flex items-center justify-center overflow-hidden">
             <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
-                <source src="1000813695.mp4" type="video/mp4">
+                <source src="assets/videos/1000813695.mp4" type="video/mp4">
             </video>
             <div class="relative z-10 text-center text-white px-6">
                 <h1 class="text-6xl md:text-[12rem] font-black italic uppercase leading-[0.8] tracking-tighter mb-12">
@@ -316,60 +316,61 @@
 
     <script>
         // BASE DE DATOS OPTIMIZADA CON LAS PIEZAS DE LA URBAN ESSENCE COLLECTION
+        // Todas las imágenes han sido mapeadas hacia la nueva estructura: assets/images/productos/
         const MOCK_DB = [
             { 
                 id: 1, name: "Urban Hoodie Top (Essence Coll.)", price: 85, category: "hombre",
                 variants: [
-                    { color_name: "Sage Waffle", hex: "#E2E7E1", img: "1000813684.webp" },
-                    { color_name: "Obsidian Waffle", hex: "#1A1A1A", img: "1000813670.webp" },
-                    { color_name: "Sand Waffle", hex: "#D2C4B4", img: "1000813683.webp" },
-                    { color_name: "Terra Waffle", hex: "#B07255", img: "lv_0_20260502144922.jpg" }
+                    { color_name: "Sage Waffle", hex: "#E2E7E1", img: "assets/images/productos/1000813684.webp" },
+                    { color_name: "Obsidian Waffle", hex: "#1A1A1A", img: "assets/images/productos/1000813670.webp" },
+                    { color_name: "Sand Waffle", hex: "#D2C4B4", img: "assets/images/productos/1000813683.webp" },
+                    { color_name: "Terra Waffle", hex: "#B07255", img: "assets/images/productos/lv_0_20260502144922.jpg" }
                 ]
             },
             { 
                 id: 2, name: "Urban Tech Cargo (Essence Coll.)", price: 115, category: "hombre",
                 variants: [
-                    { color_name: "Sage Waffle", hex: "#E2E7E1", img: "1000813684.webp" },
-                    { color_name: "Obsidian Waffle", hex: "#1A1A1A", img: "1000813670.webp" },
-                    { color_name: "Sand Waffle", hex: "#D2C4B4", img: "1000813683.webp" },
-                    { color_name: "Terra Waffle", hex: "#B07255", img: "lv_0_20260502144922.jpg" }
+                    { color_name: "Sage Waffle", hex: "#E2E7E1", img: "assets/images/productos/1000813684.webp" },
+                    { color_name: "Obsidian Waffle", hex: "#1A1A1A", img: "assets/images/productos/1000813670.webp" },
+                    { color_name: "Sand Waffle", hex: "#D2C4B4", img: "assets/images/productos/1000813683.webp" },
+                    { color_name: "Terra Waffle", hex: "#B07255", img: "assets/images/productos/lv_0_20260502144922.jpg" }
                 ]
             },
             { 
                 id: 3, name: "Leaf Pink Zip Hoodie", price: 95, category: "mujer",
                 variants: [
-                    { color_name: "Pink Leaf", hex: "#FFC0CB", img: "1000813651.webp" },
-                    { color_name: "Pure White", hex: "#FFFFFF", img: "1000813670.webp" }
+                    { color_name: "Pink Leaf", hex: "#FFC0CB", img: "assets/images/productos/1000813651.webp" },
+                    { color_name: "Pure White", hex: "#FFFFFF", img: "assets/images/productos/1000813670.webp" }
                 ]
             },
             { 
                 id: 4, name: "Oversized Black Leaf", price: 45, category: "mujer",
                 variants: [
-                    { color_name: "Deep Black", hex: "#000000", img: "1000813670.webp" }
+                    { color_name: "Deep Black", hex: "#000000", img: "assets/images/productos/1000813670.webp" }
                 ]
             },
             { 
                 id: 6, name: "Essential White Tee", price: 38, category: "hombre",
                 variants: [
-                    { color_name: "Optic White", hex: "#FFFFFF", img: "1000813673.webp" }
+                    { color_name: "Optic White", hex: "#FFFFFF", img: "assets/images/productos/1000813673.webp" }
                 ]
             },
             { 
                 id: 7, name: "Midnight Cargo Dama", price: 105, category: "mujer",
                 variants: [
-                    { color_name: "Midnight Blue", hex: "#191970", img: "1000813672.webp" }
+                    { color_name: "Midnight Blue", hex: "#191970", img: "assets/images/productos/1000813672.webp" }
                 ]
             },
             { 
                 id: 8, name: "Full Zen Outfit", price: 180, category: "outfits",
                 variants: [
-                    { color_name: "Zen Sand", hex: "#C2B280", img: "1000813647.webp" }
+                    { color_name: "Zen Sand", hex: "#C2B280", img: "assets/images/productos/1000813647.webp" }
                 ]
             },
             { 
                 id: 11, name: "Galleta", price: 12.99, category: "promociones",
                 variants: [
-                    { color_name: "Original", hex: "#D2691E", img: "1000813673.webp" }
+                    { color_name: "Original", hex: "#D2691E", img: "assets/images/productos/1000813673.webp" }
                 ]
             }
         ];
