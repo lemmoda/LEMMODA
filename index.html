@@ -83,8 +83,7 @@
            4. INFRAESTRUCTURA DE ANIMACIÓN (CAPA VISUAL PRESTIGIO)
            ========================================================================== */
         @keyframes revealUp { 
-            0% { opacity: 0;
-                transform: translateY(40px); }
+            0% { opacity: 0; transform: translateY(40px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
@@ -597,7 +596,7 @@
             position: relative;
             isolation: isolate;
             overflow: hidden;
-            filter: url('#liquid-filter'); /* Enlace a la matriz SVG inferior */
+            filter: url('#liquid-filter'); /* Filtro SVG */
             transition: color 0.6s var(--ease-luxury);
         }
 
@@ -763,7 +762,7 @@
                 <div class="order-1 lg:order-2 space-y-10">
                     <h3 class="text-4xl md:text-5xl font-black italic uppercase text-[#6DAE5A] tracking-tight">La Hormiga y La Hoja</h3>
                     <p class="text-zinc-400 text-lg font-light leading-relaxed">
-                        Nuestro imagotipo es una abstracción conceptual y minimalista de la hormiga cargando la hoja. Una analogía directa de la ingeniería de la naturaleza adaptada a una comunidad global que viste con una firme determinación:
+                        Nuestro imagotipo es una abstraction conceptual y minimalista de la hormiga cargando la hoja. Una analogía directa de la ingeniería de la naturaleza adaptada a una comunidad global que viste con una firme determinación:
                     </p>
                     <div class="space-y-8 pt-4">
                         <div class="flex items-start gap-6 group">
@@ -991,13 +990,16 @@
     </svg>
 
     <script>
-        /* BASE DE DATOS LOCAL TEXTIL (CURADA PARA LUXURY STREETWEAR) */
+        /* BASE DE DATOS ORIGINAL DE TUS PRODUCTOS RESTAURADA AL 100% */
         const PRODUCTS_DATABASE = [
-            { id: 1, name: 'Sudadera Oversize "Hormiga Táctica"', price: 85.00, category: 'hombre', images: ['assets/images/productos/p1-front.webp', 'assets/images/productos/p1-back.webp'], colors: [{name:'Negro Absoluto', hex:'#000000'}, {name:'Verde Lem', hex:'#6DAE5A'}], sizes: ['S','M','L','XL'] },
-            { id: 2, name: 'Jogger Cargo "Postura No-Drop"', price: 75.00, category: 'hombre', images: ['assets/images/productos/p2-front.webp'], colors: [{name:'Gris Zinc Deep', hex:'#1f1f23'}], sizes: ['M','L'] },
-            { id: 3, name: 'Top Técnico Cut-Out "Hoja Viva"', price: 45.00, category: 'mujer', images: ['assets/images/productos/p3-front.webp'], colors: [{name:'Blanco Crudo', hex:'#ffffff'}, {name:'Negro Absoluto', hex:'#000000'}], sizes: ['XS','S','M'] },
-            { id: 4, name: 'Conjunto Monocromático "Herencia Prime"', price: 140.00, category: 'outfits', images: ['assets/images/productos/p4-front.webp'], colors: [{name:'Verde Táctico Ambato', hex:'#3a5332'}], sizes: ['S','M','L'] },
-            { id: 5, name: 'Camiseta Heavyweight "Corte 2025"', price: 38.00, category: 'promociones', images: ['assets/images/productos/p5-front.webp'], colors: [{name:'Gris Mineral', hex:'#71717a'}], sizes: ['M','L','XL'] }
+            { id: 1, name: 'Camiseta Oversize Boxy Fit "Essential"', price: 30.00, category: 'hombre', images: ['assets/images/productos/p1.webp', 'assets/images/productos/p1_2.jpg'], colors: [{name:'Gris', hex:'#7D7D7D'}, {name:'Azul', hex:'#0D253F'}], sizes: ['S','M','L'] },
+            { id: 2, name: 'Camiseta Oversize "Lem Identity"', price: 30.00, category: 'hombre', images: ['assets/images/productos/p2.webp', 'assets/images/productos/p2_2.jpg'], colors: [{name:'Blanco', hex:'#FFFFFF'}, {name:'Negro', hex:'#000000'}], sizes: ['S','M','L'] },
+            { id: 3, name: 'Hoodie Oversize "Signature"', price: 55.00, category: 'hombre', images: ['assets/images/productos/p3.webp', 'assets/images/productos/p3_2.jpg'], colors: [{name:'Negro', hex:'#000000'}], sizes: ['S','M','L'] },
+            { id: 4, name: 'Jogger Minimalista Heavyweight', price: 45.00, category: 'hombre', images: ['assets/images/productos/p4.webp', 'assets/images/productos/p4_2.jpg'], colors: [{name:'Gris', hex:'#7D7D7D'}], sizes: ['S','M','L'] },
+            { id: 5, name: 'Top Crop Ajustado "Minimal"', price: 25.00, category: 'mujer', images: ['assets/images/productos/p5.webp', 'assets/images/productos/p5_2.jpg'], colors: [{name:'Marrón', hex:'#5A3E2B'}], sizes: ['XS','S','M'] },
+            { id: 6, name: 'Biker Short High-Waist', price: 28.00, category: 'mujer', images: ['assets/images/productos/p6.webp', 'assets/images/productos/p6_2.jpg'], colors: [{name:'Negro', hex:'#000000'}], sizes: ['XS','S','M'] },
+            { id: 7, name: 'Outfit "Street Prestige" (Camiseta + Jogger)', price: 70.00, category: 'outfits', images: ['assets/images/productos/p7.webp'], colors: [{name:'Gris Urbano', hex:'#555555'}], sizes: ['M','L'] },
+            { id: 8, name: 'Pack Dual Basics (Black & White)', price: 50.00, category: 'promociones', images: ['assets/images/productos/p8.webp'], colors: [{name:'Dúo Dinámico', hex:'#CCCCCC'}], sizes: ['S','M','L'] }
         ];
 
         let cart_state = [];
@@ -1193,11 +1195,10 @@
             });
 
             syncCartUI();
-            history.back(); // Cierre automático del modal vía historial SPA
+            history.back(); // Cierre automático del modal
         }
 
         function syncCartUI() {
-            // Actualizar Badge
             document.getElementById('cart-badge').innerText = cart_state.length;
 
             const container = document.getElementById('cart-items-container');
@@ -1251,7 +1252,7 @@
                 text += `   ↳ Valor de Inversión: $${p.price.toFixed(2)}\n\n`;
             });
             
-            text += `============\n*INVERSIÓN TOTAL ESTIMADA:* ${document.getElementById('cart-total').innerText}\n\n`;
+            text += `____________\n*INVERSIÓN TOTAL ESTIMADA:* ${document.getElementById('cart-total').innerText}\n\n`;
             text += `Quedo a la espera de la confirmación manual de disponibilidad de stock desde los talleres de Ambato.`;
             
             window.open(`https://wa.me/593984909967?text=${encodeURIComponent(text)}`, '_blank');
@@ -1263,7 +1264,7 @@
             window.scrollY > 80 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
         });
 
-        /* ESCUCHA DE HISTORIAL HASH SPA (SOPORTE AL BOTÓN ATRÁS DEL DISPOSITIVO MÓVIL) */
+        /* ESCUCHA DE HISTORIAL HASH SPA */
         window.addEventListener('hashchange', () => {
             const h = window.location.hash;
             if(!h.includes('piece-')) {
@@ -1283,12 +1284,11 @@
                     setTimeout(() => pre.style.display = 'none', 1200); 
                 }
                 
-                // Retardo táctico de animación para la barra móvil inferior
                 setTimeout(() => {
                     document.getElementById('mobile-nav').style.transform = 'translateY(0)';
                 }, 400);
 
-                // Carga inicial de datos en la grilla del catálogo
+                // Carga inicial de datos en la grilla del catálogo con TUS productos reales
                 renderCatalogueGrid(PRODUCTS_DATABASE);
             }, 2200);
         };
