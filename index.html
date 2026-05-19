@@ -30,7 +30,7 @@
            2. RESETEO GLOBAL & COMPORTAMIENTOS DEL NAVEGADOR
            ========================================================================== */
         * { 
-            margin: 0; 
+            margin: 0;
             padding: 0; 
             box-sizing: border-box; 
             -webkit-tap-highlight-color: transparent; 
@@ -168,7 +168,7 @@
         .nav-master.scrolled .logo-night { display: block; }
 
         .logo-box img { 
-            height: 36px; 
+            height: 36px;
             width: auto; 
             object-fit: contain; 
             transition: transform 0.5s var(--ease-luxury);
@@ -603,10 +603,11 @@
             <img src="assets/images/logos/logo_lem-04.webp" alt="LEM MODA" class="logo-night">
         </div>
   
-        <div class="hidden lg:flex gap-20">
+        <div class="hidden lg:flex gap-10 lg:gap-16">
             <span onclick="goTo('home')" class="nav-link-custom active" id="nav-lnk-home">Inicio</span>
             <span onclick="goTo('shop')" class="nav-link-custom" id="nav-lnk-shop">Colección</span>
             <span onclick="goTo('essence')" class="nav-link-custom" id="nav-lnk-essence">Identidad</span>
+            <span onclick="goTo('showroom')" class="nav-link-custom" id="nav-lnk-showroom">Showroom</span>
         </div>
 
         <button onclick="toggleCartDrawer()" class="relative group p-2">
@@ -619,6 +620,7 @@
         <span onclick="goTo('home')" class="mobile-link-text active" id="mob-lnk-home">Inicio</span>
         <span onclick="goTo('shop')" class="mobile-link-text" id="mob-lnk-shop">Tienda</span>
         <span onclick="goTo('essence')" class="mobile-link-text" id="mob-lnk-essence">Identidad</span>
+        <span onclick="goTo('showroom')" class="mobile-link-text" id="mob-lnk-showroom">Showroom</span>
     </div>
 
    <main id="home" class="view-layer active">
@@ -627,7 +629,8 @@
             <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-35">
                 <source src="assets/images/videos/pasarela.mp4" type="video/mp4">
             </video>
-            <div class="relative z-20 text-center text-white px-6 max-w-7xl mx-auto">
+       
+             <div class="relative z-20 text-center text-white px-6 max-w-7xl mx-auto">
                 <h1 class="text-5xl md:text-8xl lg:text-[8rem] xl:text-[9.5rem] font-black italic uppercase leading-[0.9] tracking-tighter mb-12">
                     Estás en tu<br><span class="text-[#6DAE5A]">Prime</span>
                 </h1>
@@ -640,15 +643,18 @@
 
     <main id="shop" class="view-layer pt-36 lg:pt-52 pb-36">
         <div class="max-w-[1920px] mx-auto">
+          
             <header class="px-8 mb-16 lg:mb-32 text-center">
                 <h2 class="text-6xl md:text-[6rem] lg:text-[11rem] font-black italic uppercase leading-none tracking-tighter">Tienda<span class="text-[#6DAE5A]">.</span></h2>
                 <div class="flex flex-wrap justify-center gap-3 md:gap-6 mt-12 max-w-3xl mx-auto overflow-x-auto pb-4 no-scrollbar">
                     <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
+                  
                     <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
                     <button onclick="filterShop('mujer')" class="filter-btn" id="btn-mujer">Mujer</button>
                     <button onclick="filterShop('outfits')" class="filter-btn" id="btn-outfits">Outfits</button>
                     <button onclick="filterShop('promociones')" class="filter-btn" id="btn-promociones">Promos</button>
                 </div>
+          
             </header>
             <div id="grid-mount" class="catalogue-grid"></div>
         </div>
@@ -663,7 +669,7 @@
                 </div>
                 <span class="text-[10px] font-black text-[#6DAE5A] uppercase tracking-[1.2em] mb-8">Establecido en 2025</span>
                 <h2 class="text-5xl md:text-7xl lg:text-9xl font-black italic uppercase leading-none tracking-tighter mb-10">
-                    Herencia <span class="text-[#6DAE5A]">Ambateña</span>
+                     Herencia <span class="text-[#6DAE5A]">Ambateña</span>
                 </h2>
                 <p class="text-zinc-400 text-lg md:text-2xl font-light max-w-4xl leading-relaxed">
                     Nacimos en el epicentro y corazón de la industria textil de manufactura del Ecuador, Ambato, en el año 2025. Somos el resultado refinado de la evolución de nuestra tierra, unificando la excelencia técnica de producción local con la mística y los cortes contemporáneos del Streetwear de alta gama internacional.
@@ -673,7 +679,7 @@
             <div class="grid lg:grid-cols-2 gap-24 items-center mb-56">
                 <div class="order-2 lg:order-1 flex justify-center">
                     <div class="relative max-w-md w-full aspect-square bg-zinc-900/40 rounded-full flex items-center justify-center p-12 border border-zinc-800/50">
-                        <img src="assets/images/logos/icono-color.webp" alt="Simbología Hormiga LEM" class="w-full h-auto object-contain opacity-75 transition-all duration-1000 hover:scale-105 hover:opacity-100">
+                         <img src="assets/images/logos/icono-color.webp" alt="Simbología Hormiga LEM" class="w-full h-auto object-contain opacity-75 transition-all duration-1000 hover:scale-105 hover:opacity-100">
                     </div>
                 </div>
                 <div class="order-1 lg:order-2 space-y-10">
@@ -683,34 +689,34 @@
                     </p>
                     <div class="space-y-8 pt-4">
                         <div class="flex items-start gap-6 group">
-                            <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1">01</span>
+                             <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1">01</span>
                             <div>
                                 <h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Unidad y Fuerza Colectiva</h5>
-                                <p class="text-zinc-500 font-light leading-relaxed">La persistencia inquebrantable, la organización perfecta y el soporte mutuo que consolida las bases de nuestra comunidad urbana.</p>
+                                 <p class="text-zinc-500 font-light leading-relaxed">La persistencia inquebrantable, la organización perfecta y el soporte mutuo que consolida las bases de nuestra comunidad urbana.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-6 group">
+                         <div class="flex items-start gap-6 group">
                             <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1">02</span>
                             <div>
-                                <h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Crecimiento Orgánico</h5>
+                                 <h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Crecimiento Orgánico</h5>
                                 <p class="text-zinc-500 font-light leading-relaxed">La hoja simboliza la regeneración, la evolución constante del estilo urbano y la capacidad adaptativa de destacar con sofisticación en el entorno.</p>
-                            </div>
+                             </div>
                         </div>
                         <div class="flex items-start gap-6 group">
                             <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1">03</span>
-                            <div>
+                             <div>
                                 <h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Esfuerzo Sobrenatural</h5>
                                 <p class="text-zinc-500 font-light leading-relaxed">La cualidad innata de soportar y cargar pesos muy superiores a los propios sin perder jamás la postura, la elegancia, ni el enfoque táctico.</p>
                             </div>
                         </div>
                     </div>
-                </div>
+                 </div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-px bg-zinc-800/40 border border-zinc-800/40">
                 <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
                     <div class="h-1 w-16 bg-[#6DAE5A] mb-10 group-hover:w-full transition-all duration-1000"></div>
-                    <h4 class="text-3xl font-black italic uppercase mb-6 tracking-tight">Misión</h4>
+                     <h4 class="text-3xl font-black italic uppercase mb-6 tracking-tight">Misión</h4>
                     <p class="text-zinc-400 text-lg font-light leading-relaxed">
                         En Lem Moda creamos prendas que compaginan la modernidad, la autenticidad y la elegancia, produciendo piezas versátiles que reflejan el estilo único de quienes las llevan. Buscamos brindar una experiencia de moda a la vanguardia que fomente la confianza y la identidad, bajo un firme compromiso con el medio ambiente, la creatividad, la innovación y el cuidado meticuloso de cada detalle a través del trabajo en equipo.
                     </p>
@@ -718,125 +724,9 @@
                 <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
                     <div class="h-1 w-16 bg-white mb-10 group-hover:w-full transition-all duration-1000"></div>
                     <h4 class="text-3xl font-black italic uppercase mb-6 tracking-tight">Visión</h4>
-                    <p class="text-zinc-400 text-lg font-light leading-relaxed">
+                     <p class="text-zinc-400 text-lg font-light leading-relaxed">
                         Ser una marca de moda reconocida para convertir la autenticidad en estilo, sobresaliendo por nuestro diseño vanguardista, calidad y esencia atemporal. En Lem Moda aspiramos a consolidarnos como un símbolo de moda contemporánea y consciente, inspirando a una comunidad global que celebre la expresión personal, la unión y la creatividad a través de prendas con identidad propia.
                     </p>
-                </div>
-            </div>
-            
-<div id="connect" class="relative bg-[#6DAE5A] text-zinc-950 py-32 my-20 overflow-hidden rounded-sm">
-                <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:20px_20px]"></div>
-                
-                <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-10 text-center">
-                    <span class="text-[9px] font-black text-zinc-900 uppercase tracking-[0.8em] block mb-4">Comunidad Global</span>
-                    <h4 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-zinc-950">
-                        Únete al Movimiento
-                    </h4>
-                    <p class="text-zinc-900/80 text-base font-normal max-w-2xl mx-auto leading-relaxed mt-4">
-                        Nuestra narrativa visual se expande a diario. Sé el primero en presenciar los lanzamientos exclusivos, el detrás de escena de nuestros procesos de diseño y la evolución de la mística urbana.
-                    </p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 max-w-4xl mx-auto">
-                        
-                        <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" 
-                           class="w-full bg-zinc-950/95 border border-zinc-900/30 p-6 flex items-center justify-between group hover:bg-zinc-900 transition-all duration-500 rounded-sm shadow-lg">
-                            <div class="flex items-center gap-4">
-                                <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                    <img src="assets/images/logos/instagram.png" alt="Instagram LEM MODA" 
-                                         class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 filter invert">
-                                </div>
-                                <div class="text-left">
-                                    <h5 class="text-white text-xs font-black uppercase tracking-wider">Instagram</h5>
-                                    <p class="text-zinc-500 text-[10px] font-medium tracking-tight">@lemmoda.ec</p>
-                                </div>
-                            </div>
-                            <span class="text-zinc-700 group-hover:text-[#6DAE5A] group-hover:translate-x-1 transition-all duration-500 text-xs">➔</span>
-                        </a>
-
-                        <a href="https://www.tiktok.com/@lem.moda?_r=1&_t=ZS-96Ta4XscpgC" target="_blank" rel="noopener noreferrer" 
-                           class="w-full bg-zinc-950/95 border border-zinc-900/30 p-6 flex items-center justify-between group hover:bg-zinc-900 transition-all duration-500 rounded-sm shadow-lg">
-                            <div class="flex items-center gap-4">
-                                <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                    <img src="assets/images/logos/tiktok.png" alt="TikTok LEM MODA" 
-                                         class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 filter invert">
-                                </div>
-                                <div class="text-left">
-                                    <h5 class="text-white text-xs font-black uppercase tracking-wider">TikTok</h5>
-                                    <p class="text-zinc-500 text-[10px] font-medium tracking-tight">@lem.moda</p>
-                                </div>
-                            </div>
-                            <span class="text-zinc-700 group-hover:text-[#6DAE5A] group-hover:translate-x-1 transition-all duration-500 text-xs">➔</span>
-                        </a>
-
-                        <a href="https://www.facebook.com/822444230949437?ref=PROFILE_EDIT_xav_ig_profile_page_web" target="_blank" rel="noopener noreferrer" 
-                           class="w-full bg-zinc-950/95 border border-zinc-900/30 p-6 flex items-center justify-between group hover:bg-zinc-900 transition-all duration-500 rounded-sm shadow-lg">
-                            <div class="flex items-center gap-4">
-                                <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                    <img src="assets/images/logos/facebook.png" alt="Facebook LEM MODA" 
-                                         class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 filter invert">
-                                </div>
-                                <div class="text-left">
-                                    <h5 class="text-white text-xs font-black uppercase tracking-wider">Facebook</h5>
-                                    <p class="text-zinc-500 text-[10px] font-medium tracking-tight">LEM MODA</p>
-                                </div>
-                            </div>
-                            <span class="text-zinc-700 group-hover:text-[#6DAE5A] group-hover:translate-x-1 transition-all duration-500 text-xs">➔</span>
-                        </a>
-
-                    </div>
-
-                    <div class="mt-20 border-t border-zinc-950/20 pt-16 max-w-4xl mx-auto">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
-                            
-                            <div class="space-y-6">
-                                <div class="inline-block bg-zinc-950 text-white px-3 py-1 text-[8px] font-black uppercase tracking-[0.4em] rounded-sm">
-                                    Atelier & Showroom
-                                </div>
-                                <h4 class="text-3xl font-black italic uppercase tracking-tighter text-zinc-950 leading-none">
-                                    Tienda Física LEM MODA
-                                </h4>
-                                <p class="text-zinc-900/80 text-sm font-light leading-relaxed">
-                                    Visita nuestro espacio de diseño urbano. Un entorno minimalista concebido exclusivamente para experimentar la textura, el gramaje pesado y la arquitectura de las prendas de LEM MODA antes de su adquisición.
-                                </p>
-                                
-                                <div class="space-y-4 text-zinc-900 pt-2">
-                                    <div>
-                                        <p class="text-xs font-bold uppercase tracking-wider mb-0.5">📍 Ubicación</p>
-                                        <p class="text-sm font-light leading-relaxed">
-                                            Av. Cristóbal Colón y Juan León Mera E4-434 <br>
-                                            <span class="text-zinc-800/70 text-xs font-medium">Quito, Ecuador • Código Postal: 170524</span>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs font-bold uppercase tracking-wider mb-0.5">⏱️ Horario Continuo</p>
-                                        <p class="text-sm font-light">Lunes a Sábado: 9:00 a.m. – 7:00 p.m.</p>
-                                        <p class="text-sm font-semibold text-zinc-950">Domingo: 9:30 a.m. – 5:00 p.m.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="bg-zinc-950 text-white p-8 md:p-10 text-center space-y-6 rounded-sm shadow-xl border border-zinc-900 relative overflow-hidden group">
-                                <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:12px_12px]"></div>
-                                
-                                <div class="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-full flex items-center justify-center mx-auto group-hover:border-[#6DAE5A] transition-all duration-500">
-                                    <svg class="w-5 h-5 text-zinc-400 group-hover:text-[#6DAE5A] transition-all duration-500 fill-current" viewBox="0 0 24 24">
-                                        <path d="M12 0C7.582 0 4 3.582 4 8c0 5.25 8 16 8 16s8-10.75 8-16c0-4.418-3.582-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
-                                    </svg>
-                                </div>
-                                
-                                <div class="space-y-1">
-                                    <h5 class="text-white text-xs font-black uppercase tracking-[0.3em]">Trazar Ruta de Acceso</h5>
-                                    <p class="text-zinc-500 text-[11px] font-light max-w-xs mx-auto">Conecta directamente con tu aplicación de GPS para guiarte hasta la tienda física de LEM MODA.</p>
-                                </div>
-                                
-                                <a href="https://maps.app.goo.gl/gXNaVhJqNaAbdHJ39" target="_blank" rel="noopener noreferrer"
-                                   class="inline-block w-full bg-[#6DAE5A] text-zinc-950 py-4 rounded-full font-black uppercase text-[9px] tracking-[0.4em] hover:bg-white hover:text-black transition-all duration-500 shadow-md">
-                                    Iniciar Navegación
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -845,6 +735,124 @@
                 <p class="text-zinc-500 font-light italic text-sm">"Viste a la Moda."</p>
             </div>
 
+        </div>
+    </main>
+
+    <main id="showroom" class="view-layer bg-[#6DAE5A] text-zinc-950 pt-32 pb-48 overflow-hidden min-h-screen">
+        <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-16">
+            <div class="max-w-5xl mx-auto text-center">
+                <span class="text-[9px] font-black text-zinc-900 uppercase tracking-[0.8em] block mb-4">Comunidad Global</span>
+                <h4 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-zinc-950">
+                    Únete al Movimiento
+                </h4>
+                <p class="text-zinc-900/80 text-base font-normal max-w-2xl mx-auto leading-relaxed mt-4">
+                    Nuestra narrativa visual se expande a diario. Sé el primero en presenciar los lanzamientos exclusivos, el detrás de escena de nuestros procesos de diseño y la evolución de la mística urbana.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 max-w-4xl mx-auto">
+                    <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" 
+                       class="w-full bg-zinc-950/95 border border-zinc-900/30 p-6 flex items-center justify-between group hover:bg-zinc-900 transition-all duration-500 rounded-sm shadow-lg">
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                                <img src="assets/images/logos/instagram.png" alt="Instagram LEM MODA" 
+                                     class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 filter invert">
+                            </div>
+                            <div class="text-left">
+                                <h5 class="text-white text-xs font-black uppercase tracking-wider">Instagram</h5>
+                                <p class="text-zinc-500 text-[10px] font-medium tracking-tight">@lemmoda.ec</p>
+                            </div>
+                        </div>
+                        <span class="text-zinc-700 group-hover:text-[#6DAE5A] group-hover:translate-x-1 transition-all duration-500 text-xs">➔</span>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@lem.moda?_r=1&_t=ZS-96Ta4XscpgC" target="_blank" rel="noopener noreferrer" 
+                       class="w-full bg-zinc-950/95 border border-zinc-900/30 p-6 flex items-center justify-between group hover:bg-zinc-900 transition-all duration-500 rounded-sm shadow-lg">
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                                <img src="assets/images/logos/tiktok.png" alt="TikTok LEM MODA" 
+                                     class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 filter invert">
+                            </div>
+                            <div class="text-left">
+                                <h5 class="text-white text-xs font-black uppercase tracking-wider">TikTok</h5>
+                                <p class="text-zinc-500 text-[10px] font-medium tracking-tight">@lem.moda</p>
+                            </div>
+                        </div>
+                        <span class="text-zinc-700 group-hover:text-[#6DAE5A] group-hover:translate-x-1 transition-all duration-500 text-xs">➔</span>
+                    </a>
+
+                    <a href="https://www.facebook.com/822444230949437?ref=PROFILE_EDIT_xav_ig_profile_page_web" target="_blank" rel="noopener noreferrer" 
+                       class="w-full bg-zinc-950/95 border border-zinc-900/30 p-6 flex items-center justify-between group hover:bg-zinc-900 transition-all duration-500 rounded-sm shadow-lg">
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                                <img src="assets/images/logos/facebook.png" alt="Facebook LEM MODA" 
+                                     class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 filter invert">
+                            </div>
+                            <div class="text-left">
+                                <h5 class="text-white text-xs font-black uppercase tracking-wider">Facebook</h5>
+                                <p class="text-zinc-500 text-[10px] font-medium tracking-tight">LEM MODA</p>
+                            </div>
+                        </div>
+                        <span class="text-zinc-700 group-hover:text-[#6DAE5A] group-hover:translate-x-1 transition-all duration-500 text-xs">➔</span>
+                    </a>
+                </div>
+
+                <div class="mt-20 border-t border-zinc-950/20 pt-16 max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
+                        <div class="space-y-6">
+                            <div class="inline-block bg-zinc-950 text-white px-3 py-1 text-[8px] font-black uppercase tracking-[0.4em] rounded-sm">
+                                Atelier & Showroom
+                            </div>
+                            <h4 class="text-3xl font-black italic uppercase tracking-tighter text-zinc-950 leading-none">
+                                Tienda Física LEM MODA
+                            </h4>
+                            <p class="text-zinc-900/80 text-sm font-light leading-relaxed">
+                                Visita nuestro espacio de diseño urbano. Un entorno minimalista concebido exclusivamente para experimentar la textura, el gramaje pesado y la arquitectura de las prendas de LEM MODA antes de su adquisición.
+                            </p>
+                            
+                            <div class="space-y-4 text-zinc-900 pt-2">
+                                <div>
+                                    <p class="text-xs font-bold uppercase tracking-wider mb-0.5">📍 Ubicación</p>
+                                    <p class="text-sm font-light leading-relaxed">
+                                        Av. Cristóbal Colón y Juan León Mera E4-434 <br>
+                                        <span class="text-zinc-800/70 text-xs font-medium">Quito, Ecuador • Código Postal: 170524</span>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold uppercase tracking-wider mb-0.5">⏱️ Horario Continuo</p>
+                                    <p class="text-sm font-light">Lunes a Sábado: 9:00 a.m. – 7:00 p.m.</p>
+                                    <p class="text-sm font-semibold text-zinc-950">Domingo: 9:30 a.m. – 5:00 p.m.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-950 text-white p-8 md:p-10 text-center space-y-6 rounded-sm shadow-xl border border-zinc-900 relative overflow-hidden group">
+                            <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:12px_12px]"></div>
+                            
+                            <div class="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-full flex items-center justify-center mx-auto group-hover:border-[#6DAE5A] transition-all duration-500">
+                                <svg class="w-5 h-5 text-zinc-400 group-hover:text-[#6DAE5A] transition-all duration-500 fill-current" viewBox="0 0 24 24">
+                                    <path d="M12 0C7.582 0 4 3.582 4 8c0 5.25 8 16 8 16s8-10.75 8-16c0-4.418-3.582-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="space-y-1">
+                                <h5 class="text-white text-xs font-black uppercase tracking-[0.3em]">Trazar Ruta de Acceso</h5>
+                                <p class="text-zinc-500 text-[11px] font-light max-w-xs mx-auto">Conecta directamente con tu aplicación de GPS para guiarte hasta la tienda física de LEM MODA.</p>
+                            </div>
+                            
+                            <a href="https://maps.app.goo.gl/gXNaVhJqNaAbdHJ39" target="_blank" rel="noopener noreferrer"
+                               class="inline-block w-full bg-[#6DAE5A] text-zinc-950 py-4 rounded-full font-black uppercase text-[9px] tracking-[0.4em] hover:bg-white hover:text-black transition-all duration-500 shadow-md">
+                                Iniciar Navegación
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-48 text-center border-t border-zinc-950/20 pt-24">
+                <h6 class="text-xs font-black uppercase tracking-[0.6em] text-zinc-800 mb-4">LEM MODA — Diseñado en Ambato, Ecuador</h6>
+                <p class="text-zinc-700 font-light italic text-sm">"Viste a la Moda."</p>
+            </div>
         </div>
     </main>
 
@@ -1266,7 +1274,7 @@
         }
 
         /* ARQUITECTURA DE GESTOS TÁCTILES (SWIPE COMPATIBILITY) */
-        let touchStartX = 0; 
+        let touchStartX = 0;
         let touchEndX = 0;
         
         function setupSwipeEvents() {
@@ -1281,8 +1289,10 @@
         }
 
         function handleSwipeGesture() {
-            if (touchStartX - touchEndX > 45) navigateModalGallery(1);  // Swipe Izquierda
-            if (touchEndX - touchStartX > 45) navigateModalGallery(-1); // Swipe Derecha
+            if (touchStartX - touchEndX > 45) navigateModalGallery(1);
+            // Swipe Izquierda
+            if (touchEndX - touchStartX > 45) navigateModalGallery(-1);
+            // Swipe Derecha
         }
 
         /* CIERRE DE MODAL CON CONTROL RESTAURADOR DE HISTORIAL */
@@ -1316,7 +1326,7 @@
 
         /* DISPARADOR DE APERTURA DE BOLSA LATERAL */
         function toggleCartDrawer() { 
-            document.getElementById('cart-sidebar').classList.toggle('open'); 
+            document.getElementById('cart-sidebar').classList.toggle('open');
         }
 
         /* CONTROLADOR TÁCTICO DE ADICIÓN AL CARRITO DE INVERSIÓN (CON BLINDAJE FALLBACK DE ARQUITECTURA) */
@@ -1384,7 +1394,7 @@
 
         /* DESTRUCCIÓN DE ARTÍCULO EN BOLSA */
         function removeItem(index) { 
-            cart.splice(index, 1); 
+            cart.splice(index, 1);
             syncStorage(); 
         }
 
@@ -1408,7 +1418,7 @@
             const nav = document.getElementById('header-nav');
             window.scrollY > 80 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
         });
-
+        
         /* DISPARADOR DE CONTROL AL CARGAR LA VENTANA COMPLETA */
         window.onload = () => {
             history.replaceState({ viewId: 'home' }, "", "#home");
