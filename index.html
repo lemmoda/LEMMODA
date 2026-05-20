@@ -25,6 +25,17 @@
             --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-luxury-slow: cubic-bezier(0.25, 1, 0.5, 1);
         }
+            /* --- NAVEGACIÓN LUXURY --- */
+        .nav-luxury-link {
+        display: inline-block;
+        color: #71717a; /* Zinc 500 */
+        }
+        .nav-luxury-link:hover { color: #ffffff; }
+
+        /* --- ICONOS SOCIALES LUXURY --- */
+        .social-icon-wrapper:hover svg {
+        stroke: #ffffff;
+        }
 
         /* ==========================================================================
            2. RESETEO GLOBAL & COMPORTAMIENTOS DEL NAVEGADOR
@@ -597,24 +608,34 @@
         <div class="loader-line"><div class="loader-fill"></div></div>
     </div>
 
-    <nav class="nav-master" id="header-nav">
-        <div class="logo-box cursor-pointer" onclick="goTo('home')">
-            <img src="assets/images/logos/logo_lem-05.webp" alt="LEM MODA" class="logo-day">
-            <img src="assets/images/logos/logo_lem-04.webp" alt="LEM MODA" class="logo-night">
-        </div>
-  
-        <div class="hidden lg:flex gap-10 lg:gap-16">
-            <span onclick="goTo('home')" class="nav-link-custom active" id="nav-lnk-home">Inicio</span>
-            <span onclick="goTo('shop')" class="nav-link-custom" id="nav-lnk-shop">Colección</span>
-            <span onclick="goTo('essence')" class="nav-link-custom" id="nav-lnk-essence">Identidad</span>
-            <span onclick="goTo('showroom')" class="nav-link-custom" id="nav-lnk-showroom">Showroom</span>
-        </div>
+  <nav class="nav-master" id="header-nav">
+    <div class="logo-box cursor-pointer" onclick="goTo('home')">
+        <img src="assets/images/logos/logo_lem-05.webp" alt="LEM MODA" class="logo-day">
+        <img src="assets/images/logos/logo_lem-04.webp" alt="LEM MODA" class="logo-night">
+    </div>
 
+    <div class="hidden lg:flex gap-12">
+        <span onclick="goTo('home')" class="nav-luxury-link" id="nav-lnk-home">
+            Inicio <span class="underline-line"></span>
+        </span>
+        <span onclick="goTo('shop')" class="nav-luxury-link" id="nav-lnk-shop">
+            Colección <span class="underline-line"></span>
+        </span>
+        <span onclick="goTo('essence')" class="nav-luxury-link" id="nav-lnk-essence">
+            Identidad <span class="underline-line"></span>
+        </span>
+        <span onclick="goTo('showroom')" class="nav-luxury-link" id="nav-lnk-showroom">
+            Showroom <span class="underline-line"></span>
+        </span>
+    </div>
+
+    <div class="flex items-center gap-8">
         <button onclick="toggleCartDrawer()" class="relative group p-2">
-            <span class="text-2xl group-hover:scale-105 transition-transform inline-block">🛒</span>
+            <span class="text-xl group-hover:scale-105 transition-transform inline-block">🛒</span>
             <span id="cart-badge" class="absolute top-0 right-0 bg-[#6DAE5A] text-white text-[9px] w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
         </button>
-    </nav>
+    </div>
+</nav>
 
     <div class="mobile-footer" id="mobile-nav">
         <span onclick="goTo('home')" class="mobile-link-text active" id="mob-lnk-home">Inicio</span>
