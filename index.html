@@ -26,15 +26,6 @@
             --ease-luxury-slow: cubic-bezier(0.25, 1, 0.5, 1);
         }
         
-   .sticky-search {
-    position: sticky;
-    top: 80px; 
-    z-index: 999; /* Lo subimos a 999 para que nada lo tape */
-    background: var(--brand-white); /* Aseguramos fondo sólido */
-    padding: 20px 0;
-    width: 100%;
-    border-bottom: 1px solid var(--brand-border); /* Un borde sutil para que se note */
-}
             /* --- NAVEGACIÓN LUXURY --- */
         .nav-luxury-link {
         display: inline-block;
@@ -671,33 +662,6 @@
             </div>
         </div>
     </main>
-
-<main id="shop" class="view-layer pt-36 lg:pt-52 pb-36">
-    <div class="max-w-[1920px] mx-auto">
-        
-        <header class="px-8 mb-16 lg:mb-32 text-center">
-            <h2 class="text-6xl md:text-[6rem] lg:text-[11rem] font-black italic uppercase leading-none tracking-tighter">Tienda<span class="text-[#6DAE5A]">.</span></h2>
-            <div class="flex flex-wrap justify-center gap-3 md:gap-6 mt-12 max-w-3xl mx-auto overflow-x-auto pb-4 no-scrollbar">
-                <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
-                <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
-                <button onclick="filterShop('mujer')" class="filter-btn" id="btn-mujer">Mujer</button>
-                <button onclick="filterShop('outfits')" class="filter-btn" id="btn-outfits">Outfits</button>
-                <button onclick="filterShop('promociones')" class="filter-btn" id="btn-promociones">Promos</button>
-            </div>
-        </header>
-
-        <div class="sticky-search px-8 mb-12">
-            <input type="text" 
-                   id="search-input" 
-                   placeholder="BUSCAR PRODUCTOS..." 
-                   onkeyup="filterShop(this.value)"
-                   class="w-full max-w-2xl mx-auto block p-4 border-b-2 border-black focus:border-[#6DAE5A] outline-none transition-all uppercase text-[12px] tracking-widest text-center bg-transparent">
-        </div>
-
-        <div id="grid-mount" class="catalogue-grid"></div>
-        
-    </div>
-</main>
 
     <main id="essence" class="view-layer bg-[#080808] text-white pt-48 pb-48 overflow-hidden">
         <div class="max-w-7xl mx-auto px-8 lg:px-16">
