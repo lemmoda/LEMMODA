@@ -1,92 +1,296 @@
 [
   {
     "id": 1,
-    "name": "Urban Essence Collection",
+    "name": "Urban Essence Waffle Collection",
     "category": "modular",
-    "description": "Set premium de silueta relajada con textura waffle y sutil bordado dorado LEM.",
-    "img_default": "1000813684.webp",
-    "pieces": {
-      "top": {
-        "name": "Urban Hoodie Top",
-        "price": 85,
-        "variants": [
-          { "color_name": "Sage", "hex": "#E2E7E1", "img": "1000813684.webp" },
-          { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "1000813670.webp" },
-          { "color_name": "Sand", "hex": "#D2C4B4", "img": "1000813683.webp" },
-          { "color_name": "Terra", "hex": "#B07255", "img": "lv_0_20260502144922.jpg" }
-        ]
-      },
-      "pants": {
-        "name": "Urban Tech Cargo",
-        "price": 115,
-        "variants": [
-          { "color_name": "Sage", "hex": "#E2E7E1", "img": "1000813684.webp" },
-          { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "1000813670.webp" },
-          { "color_name": "Sand", "hex": "#D2C4B4", "img": "1000813683.webp" },
-          { "color_name": "Terra", "hex": "#B07255", "img": "lv_0_20260502144922.jpg" }
-        ]
-      }
-    }
+    "description": "Set premium de silueta relajada con textura waffle y bordado de alta densidad. Diseñado para transicionar del taller a la ciudad con comodidad absoluta.",
+    "price": 200.00,
+    "img_default": "assets/images/productos/1000813684.webp",
+    "variants": [
+      { "color_name": "Sage", "hex": "#E2E7E1", "img": "assets/images/productos/1000813684.webp" },
+      { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" },
+      { "color_name": "Sand", "hex": "#D2C4B4", "img": "assets/images/productos/1000813683.webp" }
+    ],
+    "is_new": true
+  },
+  {
+    "id": 2,
+    "name": "Leaf Pink Zip Hoodie",
+    "category": "mujer",
+    "description": "Hoodie de corte alto con cierre metálico pulido y el icónico monograma de la hoja LEM estructurado. Confección en algodón pesado de tacto ultra suave.",
+    "price": 95.00,
+    "img_default": "assets/images/productos/1000813651.webp",
+    "variants": [
+      { "color_name": "Pink", "hex": "#FFC0CB", "img": "assets/images/productos/1000813651.webp" },
+      { "color_name": "Chalk White", "hex": "#F9F9F9", "img": "assets/images/productos/1000813673.webp" }
+    ]
   },
   {
     "id": 3,
-    "name": "Leaf Pink Zip Hoodie",
-    "price": 95,
+    "name": "Oversized Black Leaf Tee",
     "category": "mujer",
-    "img_default": "1000813651.webp",
+    "description": "Camiseta premium de corte estructurado y hombros caídos. Presenta una abstracción monocromática de nuestra insignia de naturaleza urbana en la espalda.",
+    "price": 45.00,
+    "img_default": "assets/images/productos/1000813670.webp",
     "variants": [
-      { "color_name": "Pink", "hex": "#FFC0CB", "img": "1000813651.webp" },
-      { "color_name": "White", "hex": "#FFFFFF", "img": "1000813670.webp" }
+      { "color_name": "Black", "hex": "#000000", "img": "assets/images/productos/1000813670.webp" }
     ]
   },
   {
     "id": 4,
-    "name": "Oversized Black Leaf",
-    "price": 45,
-    "category": "mujer",
-    "img_default": "1000813670.webp",
+    "name": "Essential Boxy White Tee",
+    "category": "hombre",
+    "description": "La silueta básica perfecta. Confeccionada con algodón de 280 gramos que mantiene su forma impecable durante todo el día. Esencia minimalista pura.",
+    "price": 38.00,
+    "img_default": "assets/images/productos/1000813673.webp",
     "variants": [
-      { "color_name": "Black", "hex": "#000000", "img": "1000813670.webp" }
+      { "color_name": "White", "hex": "#FFFFFF", "img": "assets/images/productos/1000813673.webp" },
+      { "color_name": "Heather Grey", "hex": "#D3D3D3", "img": "assets/images/productos/1000813647.webp" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Midnight Cargo Dama",
+    "category": "mujer",
+    "description": "Pantalón cargo técnico con bolsillos sutilmente integrados de perfil plano. Ajuste regulable en tobillos para una versatilidad de estilo inmediato.",
+    "price": 105.00,
+    "img_default": "assets/images/productos/1000813672.webp",
+    "variants": [
+      { "color_name": "Midnight Blue", "hex": "#191970", "img": "assets/images/productos/1000813672.webp" },
+      { "color_name": "Deep Onyx", "hex": "#0D0D0D", "img": "assets/images/productos/1000813670.webp" }
     ]
   },
   {
     "id": 6,
-    "name": "Essential White Tee",
-    "price": 38,
-    "category": "hombre",
-    "img_default": "1000813673.webp",
+    "name": "Full Zen Comfort Outfit",
+    "category": "outfits",
+    "description": "Unificación curada de hoodie oversized y jogger texturizado. Ingeniería textil diseñada para un estilo impecable sin esfuerzo.",
+    "price": 180.00,
+    "img_default": "assets/images/productos/1000813647.webp",
     "variants": [
-      { "color_name": "White", "hex": "#FFFFFF", "img": "1000813673.webp" }
-    ]
+      { "color_name": "Zen Sand", "hex": "#C2B280", "img": "assets/images/productos/1000813647.webp" }
+    ],
+    "is_promo": true
   },
   {
     "id": 7,
-    "name": "Midnight Cargo Dama",
-    "price": 105,
-    "category": "mujer",
-    "img_default": "1000813672.webp",
+    "name": "Industrial Boxy Tee Sage",
+    "category": "hombre",
+    "description": "Corte de influencia arquitectónica con cuello ajustado de rib grueso. Un básico elevado para complementar texturas urbanas pesadas.",
+    "price": 45.00,
+    "img_default": "assets/images/productos/1000813684.webp",
     "variants": [
-      { "color_name": "Midnight Blue", "hex": "#191970", "img": "1000813672.webp" }
-    ]
+      { "color_name": "Sage Waffle", "hex": "#E2E7E1", "img": "assets/images/productos/1000813684.webp" },
+      { "color_name": "Obsidian Black", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }
+    ],
+    "is_new": true
   },
   {
     "id": 8,
-    "name": "Full Zen Outfit",
-    "price": 180,
-    "category": "outfits",
-    "img_default": "1000813647.webp",
+    "name": "Minimalist Tech Windbreaker",
+    "category": "hombre",
+    "description": "Chaqueta rompevientos ultraligera con costuras termoselladas y acabado repelente al agua. Ideal para el clima cambiante de Quito.",
+    "price": 125.00,
+    "img_default": "assets/images/productos/1000813670.webp",
     "variants": [
-      { "color_name": "Zen Sand", "hex": "#C2B280", "img": "1000813647.webp" }
+      { "color_name": "Matte Charcoal", "hex": "#2F2F2F", "img": "assets/images/productos/1000813670.webp" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Everyday Comfort Jogger",
+    "category": "hombre",
+    "description": "Jogger de felpa francesa con caída recta y herrajes de acero negro. Bolsillos profundos con cierres invisibles para alta seguridad.",
+    "price": 75.00,
+    "img_default": "assets/images/productos/1000813647.webp",
+    "variants": [
+      { "color_name": "Charcoal Grey", "hex": "#4A4A4A", "img": "assets/images/productos/1000813647.webp" },
+      { "color_name": "Desert Sand", "hex": "#D2C4B4", "img": "assets/images/productos/1000813683.webp" }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Sculpt Ribbed Leggings",
+    "category": "mujer",
+    "description": "Leggings de compresión inteligente con tejido acanalado de alta densidad. Diseñados para brindar soporte impecable del gym a la calle.",
+    "price": 65.00,
+    "img_default": "assets/images/productos/1000813672.webp",
+    "variants": [
+      { "color_name": "Olive", "hex": "#556B2F", "img": "assets/images/productos/1000813672.webp" },
+      { "color_name": "Pitch Black", "hex": "#050505", "img": "assets/images/productos/1000813670.webp" }
     ]
   },
   {
     "id": 11,
-    "name": "Galleta",
-    "price": 12.99,
-    "category": "promociones",
-    "img_default": "1000813673.webp",
+    "name": "Aero Knit Sports Bra",
+    "category": "mujer",
+    "description": "Top deportivo de soporte medio con espalda escotada y bandas elásticas suaves que no marcan. Ajuste anatómico de élite.",
+    "price": 40.00,
+    "img_default": "assets/images/productos/1000813651.webp",
     "variants": [
-      { "color_name": "Original", "hex": "#D2691E", "img": "1000813673.webp" }
+      { "color_name": "Olive Accent", "hex": "#556B2F", "img": "assets/images/productos/1000813651.webp" }
     ]
+  },
+  {
+    "id": 12,
+    "name": "Street Stealth Cargo V2",
+    "category": "hombre",
+    "description": "La evolución de nuestro pantalón más aclamado. Gabardina pesada pre-lavada con rodillas articuladas para máxima fluidez de movimiento.",
+    "price": 115.00,
+    "img_default": "assets/images/productos/1000813670.webp",
+    "variants": [
+      { "color_name": "Asphalt", "hex": "#1C1C1C", "img": "assets/images/productos/1000813670.webp" },
+      { "color_name": "Khaki Atelier", "hex": "#A39480", "img": "assets/images/productos/1000813683.webp" }
+    ],
+    "is_new": true
+  },
+  {
+    "id": 13,
+    "name": "Phantom Heavy Hoodie",
+    "category": "hombre",
+    "description": "Hoodie sin cordones de silueta exagerada. Capucha de doble panel con un peso total de la prenda que transmite protección y estatus premium.",
+    "price": 98.00,
+    "img_default": "assets/images/productos/1000813670.webp",
+    "variants": [
+      { "color_name": "Onyx Black", "hex": "#111111", "img": "assets/images/productos/1000813670.webp" }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Ambato Atelier Corduroy Shirt",
+    "category": "hombre",
+    "description": "Sobrecamisa de pana fina confeccionada artesanalmente en nuestros talleres aliados. Textura rica y botones de resina mate grabados.",
+    "price": 85.00,
+    "img_default": "assets/images/productos/1000813683.webp",
+    "variants": [
+      { "color_name": "Camel Cord", "hex": "#C59B27", "img": "assets/images/productos/1000813683.webp" },
+      { "color_name": "Forest Green", "hex": "#1E3F20", "img": "assets/images/productos/1000813684.webp" }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Matrix Crop Zip Top",
+    "category": "mujer",
+    "description": "Top corto de mangas largas con medio cierre frontal reflectivo. Tejido elástico tecnológico transpirable de secado rápido.",
+    "price": 55.00,
+    "img_default": "assets/images/productos/1000813672.webp",
+    "variants": [
+      { "color_name": "Cyber Shadow", "hex": "#252525", "img": "assets/images/productos/1000813672.webp" }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Cloud Waffle Lounge Set",
+    "category": "modular",
+    "description": "Conjunto de descanso de lujo compuesto por sudadera ligera y short acanalado. Sofisticación relajada para tus días de enfoque creativo.",
+    "price": 145.00,
+    "img_default": "assets/images/productos/1000813683.webp",
+    "variants": [
+      { "color_name": "Bone", "hex": "#EADEC9", "img": "assets/images/productos/1000813683.webp" },
+      { "color_name": "Slate", "hex": "#708090", "img": "assets/images/productos/1000813647.webp" }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Core Athleisure Shorts",
+    "category": "hombre",
+    "description": "Shorts premium con forro interior de compresión elástica y bolsillo oculto para smartphones. Ideal para entrenamientos de alta intensidad.",
+    "price": 50.00,
+    "img_default": "assets/images/productos/1000813647.webp",
+    "variants": [
+      { "color_name": "Slate Tech", "hex": "#5A6B7C", "img": "assets/images/productos/1000813647.webp" }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Nomad Utility Vest Look",
+    "category": "outfits",
+    "description": "Combinación urbana táctica que incluye un chaleco utilitario multibolsillos superpuesto sobre nuestra camiseta boxy blanca esencial.",
+    "price": 130.00,
+    "img_default": "assets/images/productos/1000813673.webp",
+    "variants": [
+      { "color_name": "Tactical Olive", "hex": "#4B5320", "img": "assets/images/productos/1000813673.webp" }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Lunar Reflective Windrunner",
+    "category": "hombre",
+    "description": "Chaqueta de running con paneles geométricos reflectivos que brillan bajo condiciones de baja luz. El balance perfecto de diseño y visibilidad.",
+    "price": 85.00,
+    "img_default": "assets/images/productos/1000813670.webp",
+    "variants": [
+      { "color_name": "Reflective Silver", "hex": "#C0C0C0", "img": "assets/images/productos/1000813670.webp" }
+    ],
+    "is_promo": true
+  },
+  {
+    "id": 20,
+    "name": "Linear Logo Tee Creme",
+    "category": "mujer",
+    "description": "Camiseta básica de corte regular con tipografía minimalista en acabado texturizado gamuzado al frente. Sutileza elegante.",
+    "price": 35.00,
+    "img_default": "assets/images/productos/1000813683.webp",
+    "variants": [
+      { "color_name": "Creme", "hex": "#FFFDD0", "img": "assets/images/productos/1000813683.webp" }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "High-Rise Fleece Shorts",
+    "category": "mujer",
+    "description": "Shorts de tiro alto con cintura elástica ancha ultra cómoda y cordón plano premium. El balance idóneo entre estética deportiva y relax.",
+    "price": 42.00,
+    "img_default": "assets/images/productos/1000813651.webp",
+    "variants": [
+      { "color_name": "Pastel Pink", "hex": "#FFD1DC", "img": "assets/images/productos/1000813651.webp" },
+      { "color_name": "Chalk", "hex": "#EAEAEA", "img": "assets/images/productos/1000813673.webp" }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Thermal Grid Quarter-Zip",
+    "category": "hombre",
+    "description": "Prenda de capas intermedias con textura de cuadrícula térmica que retiene el calor corporal sin añadir peso extra ni bulto volumétrico.",
+    "price": 78.00,
+    "img_default": "assets/images/productos/1000813684.webp",
+    "variants": [
+      { "color_name": "Sage Grid", "hex": "#C3CBB7", "img": "assets/images/productos/1000813684.webp" }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Raw Edge Heavy Hoodie",
+    "category": "hombre",
+    "description": "Sudadera pesada de estética industrial con costuras de borde crudo expuestas y detalles sutiles de desgaste en las terminaciones.",
+    "price": 95.00,
+    "img_default": "assets/images/productos/1000813647.webp",
+    "variants": [
+      { "color_name": "Earth Muted", "hex": "#705335", "img": "assets/images/productos/1000813647.webp" }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Dynamic Aero Running Set",
+    "category": "modular",
+    "description": "Conjunto de alto rendimiento diseñado con microperforaciones láser invisibles para ventilación total. Liviano como el aire.",
+    "price": 120.00,
+    "img_default": "assets/images/productos/1000813672.webp",
+    "variants": [
+      { "color_name": "Aero Blue", "hex": "#4682B4", "img": "assets/images/productos/1000813672.webp" }
+    ],
+    "is_promo": true
+  },
+  {
+    "id": 25,
+    "name": "Signature Ant Low Cap",
+    "category": "promociones",
+    "description": "Gorra de béisbol de seis paneles desestructurada con el sutil bordado frontal de la hormiga LEM. El toque final para cualquier look athleisure.",
+    "price": 28.00,
+    "img_default": "assets/images/productos/1000813670.webp",
+    "variants": [
+      { "color_name": "Stealth Black", "hex": "#151515", "img": "assets/images/productos/1000813670.webp" }
+    ],
+    "is_promo": true
   }
 ]
