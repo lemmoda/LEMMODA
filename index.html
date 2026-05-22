@@ -3,24 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="LEM MODA - División de Streetwear de Alta Gama | Ambato, Ecuador">
+    <title>LEM MODA | Tienda Oficial</title>
     
-    <title>LEM MODA | Ropa Urbana Athleisure — Quito, Ecuador</title>
-    <meta name="description" content="LEM Moda — ropa athleisure y streetwear de alta gama para quienes viven en movimiento. Quito, Ecuador. Del gym a la calle, sin esfuerzo.">
-    <meta name="keywords" content="ropa urbana quito, athleisure ecuador, streetwear quito, lemmoda, lem moda, ropa deportiva urbana">
-    <meta name="author" content="LEM MODA">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://lemmoda.github.io/LEMMODA/">
-
-    <meta property="og:title" content="LEM MODA | Ropa Urbana Athleisure — Quito">
-    <meta property="og:description" content="Ropa para quienes no paran. Del gym a la calle, sin esfuerzo.">
-    <meta property="og:image" content="assets/images/logos/logo_lem-05.webp">
-    <meta property="og:url" content="https://lemmoda.github.io/LEMMODA/">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="es_EC">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,300;1,700;1,900&display=swap" rel="stylesheet">
     
     <style>
@@ -38,6 +24,40 @@
             --brand-border-dark: rgba(255, 255, 255, 0.06);
             --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-luxury-slow: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        /* --- NAVEGACIÓN LUXURY --- */
+        .nav-luxury-link {
+            display: inline-block;
+            color: #71717a; /* Zinc 500 */
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            position: relative;
+            transition: color 0.4s var(--ease-luxury);
+            cursor: pointer;
+        }
+        .nav-luxury-link:hover, .nav-luxury-link.active { 
+            color: var(--brand-black);
+        }
+        .nav-luxury-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--brand-green);
+            transition: width 0.4s var(--ease-luxury);
+        }
+        .nav-luxury-link:hover::after, .nav-luxury-link.active::after {
+            width: 100%;
+        }
+
+        /* --- ICONOS SOCIALES LUXURY --- */
+        .social-icon-wrapper:hover svg {
+            stroke: #ffffff;
         }
 
         /* ==========================================================================
@@ -60,7 +80,7 @@
         }
 
         /* ==========================================================================
-           3. BLINDAJE PERIMETRAL ANTI-DESCARGA (PROTECCIÓN DE CONTENIDO)
+           3. BLINDAJE PERIMETRAL ANTI-DESCARGA (CERO ROBO DE CONTENIDO)
            ========================================================================== */
         img, video {
             -webkit-touch-callout: none;
@@ -70,34 +90,34 @@
             -ms-user-select: none;
             user-select: none;
             -webkit-user-drag: none;
-            pointer-events: none;
+            user-drag: none;
         }
         
-        .interactive-element {
-            pointer-events: auto !important;
+        .protected-img {
+            pointer-events: none;
         }
 
         /* Scrollbar Minimalista Premium */
         ::-webkit-scrollbar {
-            width: 4px;
-            height: 4px;
+            width: 6px;
+            height: 6px;
         }
         ::-webkit-scrollbar-track {
             background: var(--brand-white);
         }
         ::-webkit-scrollbar-thumb {
             background: #e4e4e7;
-            border-radius: 2px;
+            border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #a1a1aa;
         }
 
         /* ==========================================================================
-           4. INFRAESTRUCTURA DE ANIMACIÓN
+           4. INFRAESTRUCTURA DE ANIMACIÓN (CAPA VISUAL PRESTIGIO)
            ========================================================================== */
         @keyframes revealUp { 
-            0% { opacity: 0; transform: translateY(30px); }
+            0% { opacity: 0; transform: translateY(40px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
@@ -106,9 +126,9 @@
             100% { width: 100%; }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes fadeBlurIn {
+            0% { opacity: 0; filter: blur(10px); }
+            100% { opacity: 1; filter: blur(0); }
         }
 
         /* ==========================================================================
@@ -123,14 +143,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.8s var(--ease-luxury);
+            transition: opacity 1.2s var(--ease-luxury);
         }
 
         .loader-line {
-            width: 120px;
+            width: 160px;
             height: 1px;
             background: rgba(255, 255, 255, 0.08);
-            margin-top: 24px;
+            margin-top: 32px;
             position: relative;
             overflow: hidden;
         }
@@ -140,7 +160,7 @@
             width: 0%;
             height: 100%;
             background: var(--brand-green);
-            animation: fillProgress 1.4s var(--ease-luxury) forwards;
+            animation: fillProgress 2.2s var(--ease-luxury) forwards;
         }
 
         /* ==========================================================================
@@ -151,20 +171,20 @@
             top: 0;
             width: 100%;
             z-index: 5000;
-            padding: 20px 40px;
+            padding: 24px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.6s var(--ease-luxury);
+            transition: all 0.8s var(--ease-luxury);
         }
 
         @media (min-width: 1024px) { 
-            .nav-master { padding: 28px 80px; } 
+            .nav-master { padding: 36px 80px; } 
         }
 
         .nav-master.scrolled {
-            padding: 14px 40px;
-            background: rgba(255, 255, 255, 0.92);
+            padding: 18px 40px;
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--brand-border);
@@ -177,44 +197,18 @@
         .nav-master.scrolled .logo-night { display: block; }
 
         .logo-box img { 
-            height: 32px;
+            height: 36px;
             width: auto; 
             object-fit: contain; 
             transition: transform 0.5s var(--ease-luxury);
         }
+        
+        .logo-box:hover img {
+            transform: scale(1.02);
+        }
 
         @media (min-width: 1024px) { 
-            .logo-box img { height: 40px; } 
-        }
-
-        .nav-link {
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.4em;
-            color: #71717a;
-            position: relative;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--brand-black);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--brand-green);
-            transition: width 0.3s var(--ease-luxury);
-        }
-
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
+            .logo-box img { height: 44px; } 
         }
 
         /* ==========================================================================
@@ -223,8 +217,8 @@
         .view-layer {
             display: none;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
+            transform: translateY(30px);
+            transition: opacity 1s var(--ease-luxury), transform 1s var(--ease-luxury);
         }
 
         .view-layer.active {
@@ -241,9 +235,9 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 3px;
-            padding: 9px 20px;
+            padding: 10px 24px;
             border-radius: 30px;
-            transition: all 0.4s var(--ease-luxury);
+            transition: all 0.5s var(--ease-luxury);
             color: #8e8e93;
             background: transparent;
             border: 1px solid transparent;
@@ -257,32 +251,34 @@
         .filter-btn.active {
             color: var(--brand-black);
             background: var(--brand-zinc-light);
-            border-color: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.02);
         }
 
+        /* Grilla del Catálogo Avanzado */
         .catalogue-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            padding: 16px;
+            gap: 20px;
+            padding: 20px;
         }
 
         @media (min-width: 768px) {
-            .catalogue-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 24px; }
+            .catalogue-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (min-width: 1200px) {
             .catalogue-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 40px;
-                padding: 60px;
+                gap: 48px;
+                padding: 80px;
             }
         }
 
+        /* Tarjeta de Producto Exclusivo */
         .product-card {
             opacity: 0;
-            transform: translateY(30px);
-            animation: revealUp 0.8s var(--ease-luxury) forwards;
+            transform: translateY(40px);
+            animation: revealUp 1s var(--ease-luxury) forwards;
         }
 
         .img-container {
@@ -298,7 +294,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 1.8s var(--ease-luxury-slow), opacity 0.6s;
+            transition: transform 2s var(--ease-luxury-slow), opacity 0.8s var(--ease-luxury);
             opacity: 0;
         }
 
@@ -307,18 +303,19 @@
         }
 
         .product-card:hover .img-container img.loaded {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
+        /* Overlay Interactiva del Botón Detalles */
         .details-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.12);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.4s var(--ease-luxury);
+            transition: opacity 0.5s var(--ease-luxury);
             z-index: 20;
         }
 
@@ -331,147 +328,140 @@
                 opacity: 1;
                 background: transparent;
                 align-items: flex-end;
-                padding-bottom: 12px;
+                padding-bottom: 16px;
                 pointer-events: none;
             }
         }
 
-        .btn-details {
+        .btn-view-details {
             background: var(--brand-white);
             color: var(--brand-black);
-            font-size: 8px;
+            font-size: 8.5px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2.5px;
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 30px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            transform: translateY(12px);
-            transition: all 0.4s var(--ease-luxury);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            transform: translateY(15px);
+            transition: all 0.5s var(--ease-luxury);
             pointer-events: auto;
         }
 
-        .product-card:hover .btn-details {
+        .product-card:hover .btn-view-details {
             transform: translateY(0);
         }
 
         @media (max-width: 1023px) {
-            .btn-details {
+            .btn-view-details {
                 transform: translateY(0);
-                background: rgba(255, 255, 255, 0.95);
-                padding: 9px 18px;
+                background: rgba(255, 255, 255, 0.96);
+                padding: 10px 20px;
+                box-shadow: 0 6px 16px rgba(0,0,0,0.08);
             }
         }
 
-        .badge-new {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 30;
-            background: var(--brand-green);
-            color: #fff;
-            font-size: 8px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 2px;
-        }
-
-        .badge-promo {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 30;
-            background: #000;
-            color: #fff;
-            font-size: 8px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 2px;
-        }
-
-        .modular-badge {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            z-index: 30;
-            background: rgba(8, 8, 8, 0.75);
-            backdrop-filter: blur(8px);
-            color: #fff;
-            font-size: 7.5px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 4px 8px;
-            border-radius: 2px;
-        }
-
-        /* Sistema Inclusivo de Tallas */
+        /* Tallas e Ingeniería Grid */
         .size-btn {
             flex: 1;
             min-width: 0;
             max-width: 44px;
-            height: 50px;
+            height: 52px;
             border: 1px solid #eaeaea;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s var(--ease-luxury);
+            gap: 2px;
             background: transparent;
         }
-        .size-num { font-size: 7px; font-weight: 700; color: #71717a; letter-spacing: 0.5px; }
-        .size-let { font-size: 11px; font-weight: 800; }
-        .size-btn:hover { border-color: #000; }
-        .size-btn.active { background: #000; border-color: #000; }
-        .size-btn.active .size-num, .size-btn.active .size-let { color: #fff; }
 
+        .size-num {
+            font-size: 7px;
+            font-weight: 700;
+            color: #71717a;
+            letter-spacing: 0.5px;
+        }
+
+        .size-let {
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .size-btn:hover {
+            border-color: #000000;
+        }
+
+        .size-btn.active {
+            background: #000000;
+            border-color: #000000;
+        }
+
+        .size-btn.active .size-num {
+            color: #ffffff;
+            opacity: 0.6;
+        }
+
+        .size-btn.active .size-let {
+            color: #ffffff;
+        }
+
+        /* Puntos de Tono de Color */
         .color-dot {
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             cursor: pointer;
             border: 2px solid transparent;
-            transition: all 0.3s;
-            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+            transition: all 0.4s var(--ease-luxury);
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
         }
-        .color-dot.active { border-color: #000; transform: scale(1.15); }
 
-        .add-btn {
+        .color-dot.active {
+            border-color: #000000;
+            transform: scale(1.15);
+        }
+
+        /* Botón Añadir Directo */
+        .add-to-cart-trigger {
             width: 100%;
-            padding: 16px;
-            background: #000;
-            color: #fff;
+            padding: 18px;
+            background: #000000;
+            color: #ffffff;
             font-size: 9px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 3px;
-            transition: all 0.4s var(--ease-luxury);
-            margin-top: 10px;
+            transition: all 0.5s var(--ease-luxury);
+            margin-top: 12px;
             border-radius: 2px;
         }
-        .add-btn:hover { background: var(--brand-green); }
+
+        .add-to-cart-trigger:hover {
+            background: var(--brand-green);
+        }
 
         /* ==========================================================================
-           9. MODAL DE PRODUCTO (DETALLES AVANZADOS)
+           9. COMPONENTES INTERFACES FLOTANTES (MODAL MULTIMEDIA & SIDEBAR)
            ========================================================================== */
         #product-modal {
             position: fixed;
             inset: 0;
-            background: #fff;
+            background: #ffffff;
             z-index: 7000;
             display: none;
             opacity: 0;
-            transition: opacity 0.5s var(--ease-luxury);
-            overflow-y: auto;
+            transition: all 0.6s var(--ease-luxury);
         }
-        #product-modal.open { display: block; opacity: 1; }
 
-        .modal-img-wrapper {
+        #product-modal.open {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-carousel-container {
             position: relative;
             width: 100%;
             aspect-ratio: 3/4;
@@ -480,6 +470,7 @@
             border-radius: 4px;
         }
 
+        /* Flechas Minimalistas del Carrusel */
         .nav-arrow {
             position: absolute;
             top: 50%;
@@ -487,706 +478,775 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             z-index: 40;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
             transition: all 0.4s var(--ease-luxury);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
         }
-        .nav-arrow:hover { background: #000; color: #fff; }
-        .nav-arrow.prev { left: 16px; }
-        .nav-arrow.next { right: 16px; }
 
+        .nav-arrow:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .nav-arrow.prev { left: 20px; }
+        .nav-arrow.next { right: 20px; }
+
+        /* Miniaturas de Galería Modal */
         .thumb-wrapper {
             position: relative;
-            width: 60px;
-            aspect-ratio: 3/4;
-            border-radius: 2px;
-            overflow: hidden;
             cursor: pointer;
             flex-shrink: 0;
-            border: 1px solid transparent;
-            transition: all 0.3s;
+            width: 74px;
+            height: 96px;
+            border-radius: 2px;
+            overflow: hidden;
+            background: var(--brand-zinc-light);
         }
-        .thumb-wrapper.active { border-color: #000; }
-        .thumb-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        
-        /* ==========================================================================
-           10. INTERFAZ ASÍNCRONA DEL BOLSO DE COMPRAS (SIDE Drawer)
-           ========================================================================== */
+
+        .thumb-img-element {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+            transition: opacity 0.4s var(--ease-luxury);
+        }
+
+        .thumb-wrapper.active .thumb-img-element {
+            opacity: 1;
+        }
+
+        .thumb-shield {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+        }
+
+        /* Arquitectura de Barra Lateral de Compra (Bolsa) */
         #cart-sidebar {
             position: fixed;
             top: 0;
-            right: 0;
-            bottom: 0;
+            right: -100%;
             width: 100%;
-            max-width: 440px;
-            background: #fff;
-            z-index: 8000;
-            box-shadow: -20px 0 60px rgba(0,0,0,0.05);
-            transform: translateX(100%);
-            transition: transform 0.6s var(--ease-luxury);
+            max-width: 500px;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 6000;
+            box-shadow: -40px 0 80px rgba(0, 0, 0, 0.04);
+            transition: right 0.8s var(--ease-luxury);
             display: flex;
             flex-direction: column;
-        }
-        #cart-sidebar.open { transform: translateX(0); }
-        
-        #cart-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(4px);
-            z-index: 7999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            padding: 40px;
         }
 
-        /* Buscador */
-        .search-bar {
+        #cart-sidebar.open {
+            right: 0;
+        }
+
+        /* ==========================================================================
+           10. AJUSTES NAV INFERIOR MÓVIL SUTIL
+           ========================================================================== */
+        .mobile-footer {
+            display: flex;
+            position: fixed;
+            bottom: 0;
             width: 100%;
-            max-width: 400px;
-            padding: 14px 24px;
-            border-radius: 30px;
-            background: var(--brand-zinc-light);
-            border: 1px solid transparent;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            outline: none;
-            transition: all 0.4s var(--ease-luxury);
-        }
-        .search-bar:focus {
-            background: #fff;
-            border-color: rgba(0,0,0,0.15);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 4000;
+            padding: 18px;
+            justify-content: space-around;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            transition: transform 0.6s var(--ease-luxury);
         }
 
-        /* Toast premium */
-        #toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translate(-50%, 40px);
-            background: var(--brand-black);
-            color: #fff;
+        @media (min-width: 1024px) { 
+            .mobile-footer { display: none; } 
+        }
+
+        .mobile-link-text {
             font-size: 9px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 3px;
-            padding: 16px 32px;
-            border-radius: 2px;
-            z-index: 9999;
-            opacity: 0;
-            pointer-events: none;
-            transition: transform 0.4s var(--ease-luxury), opacity 0.4s;
+            color: #8e8e93;
+            transition: color 0.3s;
         }
-        #toast.show { opacity: 1; transform: translate(-50%, 0); }
+        
+        .mobile-link-text.active {
+            color: var(--brand-black);
+        }
+
+        /* Quitar scrollbar de barra horizontal de filtros */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
-    <div id="toast" role="alert">Pieza añadida a tu bolsa</div>
-
-    <div id="preloader" role="status" aria-label="Cargando LEM Moda">
-        <div style="overflow:hidden">
-            <h1 class="text-white text-4xl font-black italic tracking-[0.15em] uppercase animate-[revealUp_1s_var(--ease-luxury)_forwards]">LEM MODA</h1>
+    <div id="preloader">
+        <div class="overflow-hidden text-center">
+            <h2 class="text-white text-4xl font-black italic tracking-[0.15em] uppercase opacity-0" style="animation: fadeBlurIn 1.5s var(--ease-luxury) forwards;">LEM MODA</h2>
+            <p class="text-zinc-500 text-[9px] uppercase tracking-[0.5em] mt-3 opacity-0" style="animation: fadeBlurIn 1.8s var(--ease-luxury) forwards;">Para los que no paran</p>
         </div>
         <div class="loader-line"><div class="loader-fill"></div></div>
-        <p class="text-zinc-600 text-[9px] font-bold uppercase tracking-[0.4em] mt-6 opacity-0 animate-[fadeIn_1s_0.5s_forwards]">Para los que no paran</p>
     </div>
 
-    <nav class="nav-master" id="header-nav" role="navigation" aria-label="Navegación principal">
-        <div class="logo-box cursor-pointer interactive-element" onclick="goTo('home')">
+    <nav class="nav-master" id="header-nav">
+        <div class="logo-box cursor-pointer" onclick="goTo('home')">
             <img src="assets/images/logos/logo_lem-05.webp" alt="LEM MODA" class="logo-day">
             <img src="assets/images/logos/logo_lem-04.webp" alt="LEM MODA" class="logo-night">
         </div>
-        <div class="hidden lg:flex gap-10 items-center">
-            <span onclick="goTo('home')" class="nav-link interactive-element" id="nav-home">Inicio</span>
-            <span onclick="goTo('shop')" class="nav-link interactive-element" id="nav-shop">Colecciones</span>
-            <span onclick="goTo('showroom')" class="nav-link interactive-element" id="nav-showroom">Showroom</span>
+
+        <div class="hidden lg:flex gap-12">
+            <span onclick="goTo('home')" class="nav-luxury-link active" id="nav-lnk-home">Inicio</span>
+            <span onclick="goTo('shop')" class="nav-luxury-link" id="nav-lnk-shop">Colección</span>
+            <span onclick="goTo('essence')" class="nav-luxury-link" id="nav-lnk-essence">Identidad</span>
+            <span onclick="goTo('showroom')" class="nav-luxury-link" id="nav-lnk-showroom">Showroom</span>
         </div>
-        <div class="flex items-center gap-6">
-            <button onclick="toggleCart()" class="relative group p-2 interactive-element" aria-label="Abrir Bolsa de compras">
+
+        <div class="flex items-center gap-8">
+            <button onclick="toggleCartDrawer()" class="relative group p-2">
                 <span class="text-xl group-hover:scale-105 transition-transform inline-block">🛒</span>
-                <span id="cart-badge" class="absolute top-0 right-0 bg-[#6DAE5A] text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-black">0</span>
+                <span id="cart-badge" class="absolute top-0 right-0 bg-[#6DAE5A] text-white text-[9px] w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
             </button>
         </div>
     </nav>
 
-    <div id="cart-overlay" class="interactive-element" onclick="toggleCart()"></div>
-    <aside id="cart-sidebar" role="dialog" aria-label="Bolsa de compras">
-        <div class="p-8 border-b border-zinc-100 flex justify-between items-center">
-            <h3 class="text-xs font-black uppercase tracking-[0.3em]">Tu Bolsa</h3>
-            <button onclick="toggleCart()" class="text-xl font-light hover:opacity-50 interactive-element">✕</button>
-        </div>
-        <div id="cart-items" class="flex-1 overflow-y-auto p-8 space-y-6">
-            </div>
-        <div class="p-8 border-t border-zinc-100 bg-zinc-50">
-            <div class="flex justify-between items-center mb-6">
-                <span class="text-[10px] font-black uppercase tracking-widest text-zinc-400">Inversión Estimada</span>
-                <span id="cart-total" class="text-xl font-light text-zinc-900">$0.00</span>
-            </div>
-            <button onclick="sendOrder()" class="w-full py-5 bg-black text-white text-[9px] font-black uppercase tracking-[0.3em] hover:bg-[#6DAE5A] transition-colors rounded-sm interactive-element">
-                Confirmar Disponibilidad
-            </button>
-        </div>
-    </aside>
+    <div class="mobile-footer" id="mobile-nav">
+        <span onclick="goTo('home')" class="mobile-link-text active" id="mob-lnk-home">Inicio</span>
+        <span onclick="goTo('shop')" class="mobile-link-text" id="mob-lnk-shop">Tienda</span>
+        <span onclick="goTo('essence')" class="mobile-link-text" id="mob-lnk-essence">Identidad</span>
+        <span onclick="goTo('showroom')" class="mobile-link-text" id="mob-lnk-showroom">Showroom</span>
+    </div>
 
-    <main id="home" class="view-layer view active">
-        <section class="relative h-[90vh] lg:h-screen flex items-center px-6 lg:px-32 overflow-hidden">
-            <div class="hero-bg">
-                <video src="assets/videos/hero-bg.mp4" autoplay loop muted playsinline></video>
+    <main id="home" class="view-layer active">
+        <div class="relative h-[100vh] w-full bg-black flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 z-10"></div>
+            
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-35">
+                <source src="assets/images/videos/pasarela.mp4" type="video/mp4">
+            </video>
+       
+            <div class="relative z-20 text-center text-white px-6 max-w-7xl mx-auto">
+                <span class="text-[10px] font-black uppercase tracking-[0.6em] text-[#6DAE5A] block mb-5" style="animation: revealUp 1s var(--ease-luxury) forwards;">NUEVA COLECCIÓN 2026</span>
+                <h1 class="text-5xl md:text-8xl lg:text-[8rem] xl:text-[9.5rem] font-black italic uppercase leading-[0.9] tracking-tighter mb-8">
+                    Estás en tu<br><span class="text-[#6DAE5A]">Prime</span>
+                </h1>
+                <p class="text-zinc-300 text-[10px] md:text-xs uppercase tracking-[0.3em] font-medium max-w-2xl mx-auto mb-12 leading-relaxed" style="animation: revealUp 1.2s var(--ease-luxury) forwards;">
+                    Ropa para los que no paran.<br>De la alta ingeniería textil al asfalto de alta gama, sin esfuerzo.
+                </p>
+                <button onclick="goTo('shop')" class="bg-white text-black px-14 lg:px-20 py-5 lg:py-6 rounded-full font-black uppercase text-[9px] tracking-[0.5em] hover:bg-[#6DAE5A] hover:text-white transition-all duration-500 shadow-xl">
+                    Explorar Catálogo
+                </button>
             </div>
-            <div class="relative z-10 max-w-4xl space-y-6 mt-16">
-                <span class="inline-block text-white text-[10px] font-black uppercase tracking-[0.5em] bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full">Quito, Ecuador — Streetwear de Alta Gama</span>
-                <h2 class="text-5xl md:text-8xl font-black italic uppercase leading-[0.9] tracking-tighter text-white">Del gym a la calle,<br><span class="text-[#6DAE5A]">sin esfuerzo.</span></h2>
-                <p class="text-zinc-400 max-w-lg font-light text-sm md:text-base leading-relaxed">Ropa athleisure concebida para quienes viven en movimiento constante. La sofisticación reside en la simplicidad y la elegancia técnica.</p>
-                <div class="pt-4 flex flex-wrap gap-4">
-                    <button onclick="goTo('shop')" class="px-8 py-4 bg-white text-black text-[9px] font-black uppercase tracking-[0.3em] hover:bg-[#6DAE5A] hover:text-white transition-all rounded-sm interactive-element">Explorar Colecciones</button>
-                    <button onclick="goTo('showroom')" class="px-8 py-4 border border-white/20 text-white text-[9px] font-black uppercase tracking-[0.3em] hover:bg-white/10 transition-all rounded-sm interactive-element">Atelier Físico</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-black text-white py-32 px-6 lg:px-32">
-            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8">
-                    <h6 class="text-[#6DAE5A] text-[9px] font-black uppercase tracking-[0.5em]">Filosofía de Estilo</h6>
-                    <h3 class="text-4xl md:text-6xl font-black italic uppercase tracking-tight leading-none">Quiet Luxury:<br>La tecnología invisible</h3>
-                    <p class="text-zinc-400 font-light leading-relaxed text-sm md:text-base">Nuestra misión es unificar la ingeniería del software textil con la percepción de una marca de élite. Cada pieza cuenta con materiales premium desarrollados bajo rigurosos estándares de calidad.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-800/30 border border-zinc-800/30">
-                    <div class="bg-[#0b0b0d] p-8 space-y-4">
-                        <span class="text-[#6DAE5A] font-black text-xs">01</span>
-                        <h5 class="font-bold uppercase text-xs tracking-widest">Sofisticación Absoluta</h5>
-                        <p class="text-zinc-500 font-light text-xs">Siluetas limpias, ausencia de logotipos ruidosos y enfoque puro en la calidad textil.</p>
-                    </div>
-                    <div class="bg-[#0b0b0d] p-8 space-y-4">
-                        <span class="text-[#6DAE5A] font-black text-xs">02</span>
-                        <h5 class="font-bold uppercase text-xs tracking-widest">Movilidad Atlética</h5>
-                        <p class="text-zinc-500 font-light text-xs">Patrones ergonómicos estructurados para soportar el ritmo de la vida urbana moderna.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
-    <main id="shop" class="view-layer view pt-32 pb-48">
-        <header class="px-6 mb-12 lg:mb-20 text-center space-y-6">
-            <h2 class="text-5xl md:text-8xl lg:text-[8rem] font-black italic uppercase leading-none tracking-tighter">Tienda<span class="text-[#6DAE5A]">.</span></h2>
-            
-            <div class="flex justify-center pt-2">
-                <input type="search" id="search-input" class="search-bar interactive-element" placeholder="Buscar pieza exclusiva..." oninput="handleSearch()" aria-label="Buscar productos">
-            </div>
+    <main id="shop" class="view-layer pt-36 lg:pt-52 pb-36">
+        <div class="max-w-[1920px] mx-auto">
+            <header class="px-8 mb-12 lg:mb-20 text-center">
+                <h2 class="text-6xl md:text-[6rem] lg:text-[11rem] font-black italic uppercase leading-none tracking-tighter">Tienda<span class="text-[#6DAE5A]">.</span></h2>
+                
+                <div class="max-w-md mx-auto mt-8 mb-4 relative px-4">
+                    <input type="text" id="product-search" oninput="handleSearchInput()" placeholder="BUSCAR PIEZA..." class="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 placeholder-zinc-400 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full py-4 pl-6 pr-12 focus:outline-none focus:border-black focus:bg-white transition-all duration-300">
+                    <span class="absolute right-8 top-1/2 -translate-y-1/2 text-sm text-zinc-400 pointer-events-none">🔍</span>
+                </div>
 
-            <div class="flex flex-wrap justify-center gap-2 md:gap-4 max-w-3xl mx-auto overflow-x-auto pb-2 no-scrollbar">
-                <button onclick="filterShop('all')" class="filter-btn active interactive-element" id="btn-all">Todo</button>
-                <button onclick="filterShop('modular')" class="filter-btn interactive-element" id="btn-modular">Conjuntos</button>
-                <button onclick="filterShop('hombre')" class="filter-btn interactive-element" id="btn-hombre">Hombre</button>
-                <button onclick="filterShop('mujer')" class="filter-btn interactive-element" id="btn-mujer">Mujer</button>
-                <button onclick="filterShop('promociones')" class="filter-btn interactive-element" id="btn-promociones">Promociones</button>
-            </div>
-        </header>
-
-        <div id="grid-mount" class="catalogue-grid" role="list">
-            </div>
+                <div class="flex flex-wrap justify-center gap-3 md:gap-6 mt-8 max-w-3xl mx-auto overflow-x-auto pb-4 no-scrollbar">
+                    <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
+                    <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
+                    <button onclick="filterShop('mujer')" class="filter-btn" id="btn-mujer">Mujer</button>
+                    <button onclick="filterShop('outfits')" class="filter-btn" id="btn-outfits">Outfits</button>
+                    <button onclick="filterShop('promociones')" class="filter-btn" id="btn-promociones">Promos</button>
+                </div>
+            </header>
+            <div id="grid-mount" class="catalogue-grid"></div>
+        </div>
     </main>
 
-    <main id="showroom" class="view-layer view bg-[#6DAE5A] text-zinc-950 pt-32 pb-48 overflow-hidden min-h-screen">
-        <div class="max-w-7xl mx-auto px-6 lg:px-32 text-center space-y-12">
-            <h2 class="text-5xl md:text-8xl lg:text-[8rem] font-black italic uppercase leading-none tracking-tighter text-zinc-950">Atelier<span class="text-white">.</span></h2>
-            <p class="text-zinc-900/80 max-w-2xl mx-auto font-light text-base md:text-lg">Un espacio minimalista premium concebido exclusivamente para experimentar la textura, el gramaje y la ingeniería de nuestras siluetas.</p>
-            
-            <div class="border-t border-zinc-950/20 pt-16 max-w-4xl mx-auto">
+    <main id="essence" class="view-layer bg-[#080808] text-white pt-48 pb-48">
+        <div class="max-w-7xl mx-auto px-8 lg:px-16">
+            <div class="max-w-3xl mb-32">
+                <span class="text-[9px] font-black text-[#6DAE5A] uppercase tracking-[0.6em] block mb-4">Filosofía de Diseño</span>
+                <h3 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none mb-8">
+                    La Hormiga y La Hoja
+                </h3>
+                <p class="text-zinc-400 text-lg font-light leading-relaxed">
+                    Nuestro imagotipo es una abstracción conceptual y minimalista de la hormiga cargando la hoja[cite: 757]. Una analogía directa de la ingeniería de la naturaleza adaptada a una comunidad global que viste con una firme determinación: [cite: 758]
+                </p>
+                <div class="space-y-8 pt-8">
+                    <div class="flex items-start gap-6 group">
+                        <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1">01</span>
+                        <div>
+                            <h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Unidad y Fuerza Colectiva</h5>
+                            <p class="text-zinc-500 font-light leading-relaxed">La persistence inquebrantable, la organización perfecta y el soporte mutuo que consolida las bases de nuestra comunidad urbana.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-6 group">
+                        <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1">02</span>
+                        <div>
+                            <h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Crecimiento Orgánico</h5>
+                            <p class="text-zinc-500 font-light leading-relaxed">La hoja simboliza la regeneración, la evolución constante del estilo urbano y la capacidad adaptativa de destacar con sofisticación en el entorno. [cite: 767]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-48 text-center border-t border-zinc-900 pt-24">
+                <h6 class="text-xs font-black uppercase tracking-[0.6em] text-zinc-600 mb-4">LEM MODA — Diseñado en Ambato, Ecuador</h6>
+                <p class="text-zinc-500 font-light italic text-sm">"Viste a la Moda."</p>
+            </div>
+        </div>
+    </main>
+
+    <main id="showroom" class="view-layer bg-[#6DAE5A] text-zinc-950 pt-32 pb-48 overflow-hidden min-h-screen">
+        <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-16">
+            <div class="max-w-5xl mx-auto text-center">
+                <span class="text-[9px] font-black text-zinc-900 uppercase tracking-[0.8em] block mb-4">Comunidad Global</span>
+                <h4 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-zinc-950">Únete al Movimiento</h4>
+                <p class="text-zinc-900/80 text-base font-normal max-w-2xl mx-auto leading-relaxed mt-4">
+                    Nuestra narrativa visual se expande a diario. Sé el primero en presenciar los lanzamientos exclusivos, el detrás de escena de nuestros procesos de diseño y la evolución de la mística urbana. [cite: 784, 785]
+                </p>
+            </div>
+
+            <div class="mt-20 border-t border-zinc-950/20 pt-16 max-w-4xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
                     <div class="space-y-6">
-                        <span class="inline-block bg-zinc-950 text-white px-3 py-1 text-[8px] font-black uppercase tracking-[0.4em] rounded-sm">Punto de Experiencia Élite</span>
-                        <h4 class="text-3xl font-black italic uppercase tracking-tight text-zinc-950">Quito, Ecuador</h4>
-                        <p class="text-zinc-900/80 text-sm font-light leading-relaxed">Visítanos bajo cita previa o ven a explorar el stock físico directamente. Diseñado con una curaduría visual limpia alineada al lujo silencioso.</p>
-                    </div>
-                    <div class="bg-zinc-950 text-white p-8 space-y-4 rounded-sm shadow-xl">
-                        <h5 class="font-black uppercase text-xs tracking-widest text-[#6DAE5A]">Ubicación Talleres</h5>
-                        <p class="text-zinc-400 font-light text-xs">Producción técnica centralizada desde los talleres de Ambato, Ecuador, garantizando una manufactura impecable.</p>
+                        <div class="inline-block bg-zinc-950 text-white px-3 py-1 text-[8px] font-black uppercase tracking-[0.4em] rounded-sm">Atelier & Showroom</div>
+                        <h4 class="text-3xl font-black italic uppercase tracking-tighter text-zinc-950 leading-none">Tienda Física LEM MODA</h4>
+                        <p class="text-zinc-900/80 text-sm font-light leading-relaxed">
+                            Visita nuestro espacio de diseño urbano. Un entorno minimalista concebido exclusivamente para experimentar la textura, el gramaje pesado y la arquitectura de las prendas de LEM MODA antes de su adquisición. [cite: 803]
+                        </p>
+                        <div class="space-y-4 text-zinc-900 pt-2">
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider mb-0.5">📍 Ubicación</p>
+                                <p class="text-sm font-light leading-relaxed">Av. Cristóbal Colón y Juan León Mera E4-434<br><span class="text-zinc-800/70 text-xs font-medium">Quito, Ecuador • Código Postal: 170524</span> [cite: 805]</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider mb-0.5">⏱️ Horario Continuo</p>
+                                <p class="text-sm font-light leading-relaxed">Lunes a Sábado: 10:00 AM - 19:30 PM</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <div id="product-modal" role="dialog" aria-modal="true">
-        <div class="min-h-screen flex flex-col lg:flex-row">
-            <div class="w-full lg:w-1/2 bg-zinc-50 p-6 lg:p-16 flex flex-col justify-center relative">
-                <button onclick="closeProductModal()" class="absolute top-8 left-8 text-sm font-black uppercase tracking-[0.2em] text-zinc-400 hover:text-black z-50 interactive-element">✕ Cerrar</button>
-                <div class="modal-img-wrapper">
-                    <button class="nav-arrow prev interactive-element" onclick="navModal(-1)">❮</button>
-                    <img id="modal-main-img" src="" class="w-full h-full object-cover transition-opacity duration-300" alt="Pieza LEM Moda">
-                    <button class="nav-arrow next interactive-element" onclick="navModal(1)">❯</button>
+    <div id="product-modal">
+        <div class="h-full w-full flex flex-col lg:flex-row overflow-y-auto">
+            <button onclick="closeProductModal()" class="absolute top-6 right-6 lg:fixed lg:top-10 lg:right-10 bg-black text-white w-12 h-12 flex items-center justify-center rounded-full text-lg font-bold z-[8500] hover:bg-[#6DAE5A] transition-colors shadow-lg">✕</button>
+            
+            <div class="w-full lg:w-1/2 p-4 lg:p-12 flex flex-col justify-center bg-zinc-50 lg:h-screen lg:sticky lg:top-0">
+                <div class="modal-carousel-container" id="modal-swipe-zone">
+                    <button onclick="navigateModalGallery(-1)" class="nav-arrow prev">←</button>
+                    <button onclick="navigateModalGallery(1)" class="nav-arrow next">→</button>
+                    <img id="modal-main-img" src="" alt="Vista Central" class="w-full h-full object-cover protected-img transition-opacity duration-300">
                 </div>
-                <div id="modal-thumbs" class="flex gap-3 mt-4 overflow-x-auto pb-2 no-scrollbar"></div>
+                <div id="modal-thumbnails" class="flex gap-4 mt-6 overflow-x-auto pb-2 no-scrollbar"></div>
             </div>
 
-            <div class="w-full lg:w-1/2 p-8 lg:p-24 flex flex-col justify-center bg-white space-y-8">
-                <div>
-                    <span id="modal-cat" class="text-[10px] font-black text-[#6DAE5A] uppercase tracking-[0.4em] block mb-2">Categoría</span>
-                    <h2 id="modal-name" class="text-4xl lg:text-6xl font-black italic uppercase leading-[0.95] tracking-tighter mb-4">Pieza de Diseño</h2>
-                    <p id="modal-price" class="text-2xl font-light text-zinc-400">$0.00</p>
-                    <p id="modal-desc" class="text-sm text-zinc-500 font-light leading-relaxed mt-4">Silueta ergonómica premium con acabados de alta costura urbana.</p>
+            <div class="w-full lg:w-1/2 p-8 lg:p-24 flex flex-col justify-center">
+                <span id="modal-category" class="text-[10px] font-black text-[#6DAE5A] uppercase tracking-[0.4em] mb-4">Categoría</span> [cite: 816]
+                <h2 id="modal-name" class="text-5xl lg:text-7xl font-black italic uppercase leading-[0.95] tracking-tighter mb-6">Nombre de Pieza</h2> [cite: 816]
+                <p id="modal-price" class="text-2xl font-light mb-12 text-zinc-400">$0.00</p> [cite: 816]
+                
+                <div class="mb-10">
+                    <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Tono Sugerido</p> [cite: 817]
+                    <div class="flex flex-wrap gap-4" id="modal-colors"></div> [cite: 817]
+                    <p id="selected-color-name" class="text-[9px] uppercase mt-3 font-bold text-zinc-400 tracking-wider">Sin seleccionar</p> [cite: 817]
                 </div>
 
-                <div id="modular-selector-block" class="hidden border-y border-zinc-100 py-6 space-y-4">
-                    <p class="text-[10px] font-black uppercase tracking-widest text-zinc-400">Configuración del Conjunto</p>
-                    <div class="flex gap-4">
-                        <label class="flex items-center gap-2 text-xs font-bold uppercase cursor-pointer"><input type="checkbox" id="check-hoodie" checked class="accent-black interactive-element" onchange="recalcModularPrice()"> Hoodie Top</label>
-                        <label class="flex items-center gap-2 text-xs font-bold uppercase cursor-pointer"><input type="checkbox" id="check-pants" checked class="accent-black interactive-element" onchange="recalcModularPrice()"> Jogger Pants</label>
-                    </div>
+                <div class="mb-12">
+                    <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Seleccionar Talla Escalonada</p> [cite: 817]
+                    <div class="flex flex-wrap gap-3" id="modal-sizes"></div> [cite: 817]
                 </div>
 
-                <div class="space-y-3">
-                    <p class="text-[10px] font-black uppercase tracking-widest">Seleccionar Talla</p>
-                    <div class="flex gap-2" id="modal-sizes">
-                        <button class="size-btn interactive-element" onclick="selectSize(this)"><span class="size-num">EU 38</span><span class="size-let">S</span></button>
-                        <button class="size-btn interactive-element" onclick="selectSize(this)"><span class="size-num">EU 40</span><span class="size-let">M</span></button>
-                        <button class="size-btn interactive-element" onclick="selectSize(this)"><span class="size-num">EU 42</span><span class="size-let">L</span></button>
-                        <button class="size-btn interactive-element" onclick="selectSize(this)"><span class="size-num">EU 44</span><span class="size-let">XL</span></button>
-                    </div>
-                </div>
-
-                <div class="space-y-3">
-                    <div class="flex justify-between text-[10px] font-black uppercase tracking-widest">
-                        <span>Tono Sugerido</span>
-                        <span id="modal-color-name" class="text-zinc-400">Original</span>
-                    </div>
-                    <div class="flex gap-3" id="modal-colors">
-                        </div>
-                </div>
-
-                <button id="modal-add-btn" class="add-btn interactive-element">Añadir al Bolso de Inversión</button>
+                <button id="modal-add-btn" class="add-to-cart-trigger">Añadir a la Bolsa de Inversión</button>
             </div>
         </div>
     </div>
 
-    <footer class="bg-black text-white py-16 px-6 text-center border-t border-zinc-900">
-        <h6 class="text-xs font-black uppercase tracking-[0.6em] text-zinc-600 mb-2">LEM MODA — Diseñado en Ecuador</h6>
-        <p class="text-zinc-500 font-light italic text-xs">"Viste a la Moda."</p>
-    </footer>
+    <div id="cart-sidebar">
+        <div class="flex justify-between items-center border-b border-zinc-100 pb-6 mb-8">
+            <h4 class="text-[11px] font-black uppercase tracking-[0.4em]">Bolsa de Compra</h4>
+            <button onclick="toggleCartDrawer()" class="text-xs uppercase tracking-widest font-bold text-zinc-400 hover:text-black">Cerrar</button>
+        </div>
+        <div id="cart-items-mount" class="flex-1 overflow-y-auto space-y-6 pr-2 no-scrollbar"></div>
+        <div class="border-t border-zinc-100 pt-8 mt-6">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-[10px] font-black uppercase tracking-widest text-zinc-400">Total Estimado</span>
+                <span id="cart-total" class="text-xl font-bold text-black">$0.00</span>
+            </div>
+            <button onclick="checkoutWhatsApp()" class="w-full bg-black text-white py-5 text-[9px] font-black uppercase tracking-[0.3em] hover:bg-[#6DAE5A] transition-colors rounded-sm">
+                Confirmar Orden vía WhatsApp
+            </button>
+        </div>
+    </div>
 
     <script>
-        /* MOCK DATABASE — BASE DE DATOS LOCAL INTEGRADA */
-        let PRODUCTS = [
-            {
-                id: 1,
-                name: "Urban Essence Collection",
-                category: "modular",
-                description: "Set premium de silueta relajada con textura waffle y bordado dorado LEM de alta densidad.",
-                price: 200,
-                is_new: true,
-                pieces: {
-                    hoodie: { name: "Urban Essence Hoodie", price: 110 },
-                    pants: { name: "Urban Essence Pants", price: 90 }
-                },
-                variants: [
-                    { color_name: "Sage Waffle", hex: "#E2E7E1", img: "assets/images/productos/1000813684.webp" },
-                    { color_name: "Obsidian Core", hex: "#1A1A1A", img: "assets/images/productos/1000813670.webp" },
-                    { color_name: "Sand Desert", hex: "#D2C4B4", img: "assets/images/productos/1000813683.webp" }
-                ]
-            },
-            {
-                id: 2,
-                name: "Leaf Pink Zip Hoodie",
-                category: "mujer",
-                description: "Hoodie con cierre frontal y bordado premium de la hoja LEM. Felpa de algodón pesado de tacto ultra suave.",
-                price: 95,
-                variants: [
-                    { color_name: "Pink Leaf", hex: "#FFC0CB", img: "assets/images/productos/1000813651.webp" }
-                ]
-            },
-            {
-                id: 3,
-                name: "Industrial Boxy Tee Black",
-                category: "hombre",
-                description: "Camiseta de corte boxy y gramaje pesado. Desarrollada para mantener su estructura y caída impecable en cualquier entorno.",
-                price: 40,
-                variants: [
-                    { color_name: "Deep Obsidian", hex: "#1A1A1A", img: "assets/images/productos/1000813670.webp" }
-                ]
-            },
+        /* BASE DE DATOS ESTRUCTURADA DE PIEZAS DE ALTA GAMA */
+        const MOCK_DB = [
             {
                 id: 4,
-                name: "Essential Sand Oversized Tee",
-                category: "promociones",
-                description: "Edición promocional de nuestra silueta oversized esencial. Textura suave y transpirable de alta durabilidad.",
-                price: 35,
-                is_promo: true,
+                name: "Oversized Green Leaf Tee",
+                price: 45,
+                category: "hombre",
                 variants: [
-                    { color_name: "Sand Waffle", hex: "#D2C4B4", img: "assets/images/productos/1000813683.webp" }
+                    { color_name: "Sage Waffle", hex: "#E2E7E1", img: "assets/images/productos/1000813684.webp" },
+                    { color_name: "Terra Waffle", hex: "#B07255", img: "assets/images/productos/lv_0_20260502144922.jpg" } [cite: 824]
                 ]
             },
             {
                 id: 5,
-                name: "Seasonal Pink Minimalist Hoodie",
-                category: "promociones",
-                description: "Abrigo minimalista de temporada con ajuste relajado. Ingeniería textil optimizada para aislamiento térmico y ligereza.",
-                price: 70,
-                is_promo: true,
+                name: "Industrial Boxy Tee Black",
+                price: 40,
+                category: "hombre",
                 variants: [
-                    { color_name: "Pink Leaf", hex: "#FFC0CB", img: "assets/images/productos/1000813651.webp" }
+                    { color_name: "Deep Obsidian", hex: "#1A1A1A", img: "assets/images/productos/1000813670.webp" } [cite: 824]
                 ]
             },
             {
                 id: 6,
-                name: "Urban Terra Master-Piece",
-                category: "hombre",
-                description: "Camiseta urbana premium en tono tierra exclusivo. Diseño ergonómico con costuras invisibles.",
-                price: 110,
+                name: "Leaf Pink Zip Hoodie",
+                price: 95,
+                category: "mujer",
                 variants: [
-                    { color_name: "Terra Waffle", hex: "#B07255", img: "assets/images/productos/lv_0_20260502144922.jpg" }
+                    { color_name: "Pink Leaf", hex: "#FFC0CB", img: "assets/images/productos/1000813651.webp" }, [cite: 829]
+                    { color_name: "Pure White", hex: "#FFFFFF", img: "assets/images/productos/1000813670.webp" } [cite: 829]
+                ]
+            },
+            {
+                id: 7,
+                name: "Oversized Black Leaf Tee",
+                price: 45,
+                category: "mujer",
+                variants: [
+                    { color_name: "Deep Black", hex: "#000000", img: "assets/images/productos/1000813670.webp" } [cite: 829]
+                ]
+            },
+            {
+                id: 16,
+                name: "Essential Sage Oversized Tee (Promo)",
+                price: 35,
+                category: "promociones",
+                variants: [
+                    { color_name: "Sage Waffle", hex: "#E2E7E1", img: "assets/images/productos/1000813684.webp" } [cite: 844]
+                ]
+            },
+            {
+                id: 17,
+                name: "Essential Sand Oversized Tee (Promo)",
+                price: 35,
+                category: "promociones",
+                variants: [
+                    { color_name: "Sand Waffle", hex: "#D2C4B4", img: "assets/images/productos/1000813683.webp" } [cite: 857]
+                ]
+            },
+            {
+                id: 18,
+                name: "Seasonal Pink Minimalist Hoodie (Promo)",
+                price: 70,
+                category: "promociones",
+                variants: [
+                    { color_name: "Pink Leaf", hex: "#FFC0CB", img: "assets/images/productos/1000813651.webp" } [cite: 857]
+                ]
+            },
+            {
+                id: 19,
+                name: "Urban Terra Master-Piece Crew (Promo)",
+                price: 60,
+                category: "promociones",
+                variants: [
+                    { color_name: "Terra Waffle", hex: "#B07255", img: "assets/images/productos/lv_0_20260502144922.jpg" } [cite: 857]
+                ]
+            },
+            {
+                id: 20,
+                name: "Obsidian Heavyweight Layer Tee (Promo)",
+                price: 30,
+                category: "promociones",
+                variants: [
+                    { color_name: "Obsidian Waffle", hex: "#1A1A1A", img: "assets/images/productos/1000813670.webp" } [cite: 858]
                 ]
             }
         ];
 
-        let cart = [];
-        let currentCategory = 'all';
-        let searchQuery = '';
-        let activeProduct = null;
-        let selectedColor = '';
-        let modalGallery = [];
-        let modalIdx = 0;
+        /* INICIALIZADORES DE ESTADO VOLÁTIL */
+        let cart = JSON.parse(localStorage.getItem('lem_cart_v1')) || []; [cite: 859]
+        let currentCategory = 'all'; [cite: 859]
+        let searchQuery = "";
+        let selectedSize = null;
+        let selectedColor = null;
+        let modalGalleryUrls = [];
+        let currentModalImageIndex = 0;
 
-        /* MANEJO DE HISTORIAL Y SPA */
+        /* MANIPULADOR DE ENTRADA EN BUSCADOR */
+        function handleSearchInput() {
+            searchQuery = document.getElementById('product-search').value.toLowerCase().trim();
+            mountShop();
+        }
+
+        /* NAVEGACIÓN SPA NATIVA */
         function goTo(viewId, pushState = true) {
             document.querySelectorAll('.view-layer').forEach(layer => layer.classList.remove('active'));
-            const targetView = document.getElementById(viewId);
-            if(targetView) targetView.classList.add('active');
+            const activeView = document.getElementById(viewId);
+            if(activeView) activeView.classList.add('active');
 
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            const activeLink = document.getElementById(`nav-${viewId}`);
-            if(activeLink) activeLink.classList.add('active');
+            // Actualizar Nav Desktop
+            document.querySelectorAll('.nav-luxury-link').forEach(lnk => lnk.classList.remove('active'));
+            const targetDk = document.getElementById(`nav-lnk-${viewId}`);
+            if(targetDk) targetDk.classList.add('active');
+
+            // Actualizar Nav Móvil
+            document.querySelectorAll('.mobile-link-text').forEach(lnk => lnk.classList.remove('active'));
+            const targetMb = document.getElementById(`mob-lnk-${viewId}`);
+            if(targetMb) targetMb.classList.add('active');
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            if(pushState) history.pushState({ viewId: viewId }, "", `#${viewId}`);
+            if(pushState) history.pushState({ viewId }, "", `#${viewId}`);
         }
 
-        window.addEventListener('popstate', (e) => {
-            if(e.state && e.state.viewId) goTo(e.state.viewId, false);
-            else goTo('home', false);
+        window.addEventListener('popstate', (event) => {
+            const modal = document.getElementById('product-modal');
+            if (modal.classList.contains('open')) {
+                closeProductModal(false);
+                return;
+            }
+            if (event.state && event.state.viewId) goTo(event.state.viewId, false); [cite: 882]
+            else goTo('home', false); [cite: 882]
         });
 
-        /* BUSCADOR Y FILTRADO COMERCIAL */
-        function handleSearch() {
-            searchQuery = document.getElementById('search-input').value.toLowerCase();
+        /* CONTROL DE FILTRADO COMERCIAL */
+        function filterShop(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            const btn = document.getElementById(`btn-${cat}`); [cite: 883]
+            if(btn) btn.classList.add('active'); [cite: 884]
             mountShop();
         }
 
-        function filterShop(category) {
-            currentCategory = category;
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = document.getElementById(`btn-${category}`);
-            if(activeBtn) activeBtn.classList.add('active');
-            mountShop();
-        }
-
+        /* INYECCIÓN ARQUITECTÓNICA DE PRODUCTOS */
         function mountShop() {
             const container = document.getElementById('grid-mount');
-            if(!container) return;
             
-            const filtered = PRODUCTS.filter(p => {
-                const matchesCat = (currentCategory === 'all' || p.category === currentCategory);
-                const matchesSearch = p.name.toLowerCase().includes(searchQuery) || p.description.toLowerCase().includes(searchQuery);
-                return matchesCat && matchesSearch;
-            });
-
-            container.innerHTML = filtered.map((p, i) => {
-                const firstVariant = p.variants[0] || { img: '' };
-                const isModular = p.category === 'modular';
-                return `
-                    <article class="product-card" style="animation-delay: ${i * 0.04}s" role="listitem">
-                        <div class="img-container cursor-pointer" onclick="openProductModal(${p.id})">
-                            <img src="${firstVariant.img}" alt="${p.name}" loading="lazy" onload="this.classList.add('loaded')">
-                            ${p.is_new ? '<span class="badge-new">New</span>' : ''}
-                            ${p.is_promo ? '<span class="badge-promo">Promo</span>' : ''}
-                            ${isModular ? '<span class="modular-badge">Conjunto</span>' : ''}
-                            <div class="details-overlay"><button class="btn-details">Ver detalles</button></div>
-                        </div>
-                        <div class="py-4 space-y-1">
-                            <h3 class="text-xs font-black uppercase tracking-wider text-zinc-900 truncate">${p.name}</h3>
-                            <p class="text-sm font-light text-zinc-400">$${p.price.toFixed(2)}</p>
-                        </div>
-                    </article>
-                `;
-            }).join('');
-        }
-
-        /* MODAL INTERACTIVO DE DETALLES */
-        function openProductModal(productId) {
-            const p = PRODUCTS.find(prod => prod.id === productId);
-            if(!p) return;
-            activeProduct = p;
-
-            document.getElementById('modal-cat').textContent = p.category;
-            document.getElementById('modal-name').textContent = p.name;
-            document.getElementById('modal-price').textContent = `$${p.price.toFixed(2)}`;
-            document.getElementById('modal-desc').textContent = p.description;
-
-            // Configuración Conjunto Modular
-            const modularBlock = document.getElementById('modular-selector-block');
-            if(p.category === 'modular') {
-                modularBlock.classList.remove('hidden');
-                document.getElementById('check-hoodie').checked = true;
-                document.getElementById('check-pants').checked = true;
-            } else {
-                modularBlock.classList.add('hidden');
+            // Filtro combinado de categoría y buscador
+            let filtered = currentCategory === 'all' ? MOCK_DB : MOCK_DB.filter(p => p.category === currentCategory); [cite: 885]
+            if (searchQuery !== "") {
+                filtered = filtered.filter(p => p.name.toLowerCase().includes(searchQuery));
             }
 
-            // Render de Colores
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-24">
+                        <p class="text-zinc-400 text-[10px] uppercase tracking-[0.3em] font-black">No se encontraron piezas exclusivas</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map((p, index) => `
+                <div class="product-card" style="animation-delay: ${index * 0.04}s"> [cite: 900]
+                    <div class="img-container cursor-pointer" onclick="openProductModal(${p.id})"> [cite: 900]
+                        <img id="main-img-${p.id}" src="${p.variants[0].img}" alt="${p.name}" class="protected-img" onload="this.classList.add('loaded')" loading="lazy"> [cite: 900]
+                        <div class="details-overlay"> [cite: 900]
+                            <button class="btn-view-details">Ver Detalles</button> [cite: 900]
+                        </div> [cite: 900]
+                    </div> [cite: 900]
+                    <div class="py-6"> [cite: 900]
+                        <div class="flex justify-between items-start mb-4"> [cite: 900]
+                            <h3 class="text-[10px] font-black uppercase italic leading-tight w-2/3">${p.name}</h3>
+                            <p class="text-xs font-light text-zinc-500">$${p.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /* LOGICA DEL MODAL INTERACTIVO */
+        function openProductModal(id) {
+            const p = MOCK_DB.find(item => item.id === id);
+            if(!p) return;
+
+            selectedSize = null;
+            selectedColor = p.variants[0].color_name;
+            modalGalleryUrls = p.variants.map(v => v.img);
+            currentModalImageIndex = 0;
+
+            document.getElementById('modal-name').innerText = p.name;
+            document.getElementById('modal-price').innerText = `$${p.price.toFixed(2)}`;
+            document.getElementById('modal-category').innerText = p.category;
+            
+            const mainImg = document.getElementById('modal-main-img');
+            mainImg.src = modalGalleryUrls[0];
+            mainImg.classList.add('loaded');
+
+            // Renderizar tonos
             const colorContainer = document.getElementById('modal-colors');
             colorContainer.innerHTML = p.variants.map((v, idx) => `
-                <div class="color-dot interactive-element ${idx === 0 ? 'active' : ''}" 
-                     style="background: ${v.hex}" 
-                     onclick="selectColor(this, '${v.color_name}', '${v.img}')"
-                     title="${v.color_name}">
-                </div>
+                <button onclick="selectModalColor('${v.color_name}', ${idx})" class="color-dot ${idx === 0 ? 'active' : ''}" style="background-color: ${v.hex};" title="${v.color_name}"></button>
+            `).join('');
+            document.getElementById('selected-color-name').innerText = selectedColor;
+
+            // Renderizar tallas escalonadas
+            const sizeContainer = document.getElementById('modal-sizes');
+            const tallas = [
+                {l:'S', n:'36-38'}, {l:'M', n:'38-40'}, {l:'L', n:'42-44'}, {l:'XL', n:'46-48'}
+            ];
+            sizeContainer.innerHTML = tallas.map(t => `
+                <button onclick="selectModalSize(this)" class="size-btn">
+                    <span class="size-num">${t.n}</span>
+                    <span class="size-let">${t.l}</span>
+                </button>
             `).join('');
 
-            selectedColor = p.variants[0] ? p.variants[0].color_name : 'Original';
-            document.getElementById('modal-color-name').textContent = selectedColor;
+            // Miniaturas
+            const thumbContainer = document.getElementById('modal-thumbnails'); [cite: 931]
+            thumbContainer.innerHTML = p.variants.map((v, idx) => ` [cite: 931]
+                <div class="thumb-wrapper ${idx === 0 ? 'active' : ''}" onclick="jumpToModalImage(${idx})"> [cite: 931]
+                    <div class="thumb-shield"></div> [cite: 931]
+                    <img src="${v.img}" class="thumb-img-element" alt="Miniatura"> [cite: 931]
+                </div> [cite: 931]
+            `).join(''); [cite: 931]
 
-            // Galería fotográfica
-            modalGallery = p.variants.map(v => v.img);
-            modalIdx = 0;
-            updateModalImage();
-
-            // Render de miniaturas táctiles
-            const thumbContainer = document.getElementById('modal-thumbs');
-            thumbContainer.innerHTML = p.variants.map((v, idx) => `
-                <div class="thumb-wrapper interactive-element ${idx === 0 ? 'active' : ''}" onclick="jumpToModalImage(${idx})">
-                    <img src="${v.img}" alt="Miniatura">
-                </div>
-            `).join('');
-
-            // Resetear botones de tallas
-            document.querySelectorAll('#modal-sizes .size-btn').forEach(btn => btn.classList.remove('active'));
-
-            // Manejo de CTA
-            document.getElementById('modal-add-btn').onclick = () => handleAddToCart();
+            document.getElementById('modal-add-btn').onclick = () => handleAddToCart(p.id); [cite: 932]
 
             const modal = document.getElementById('product-modal');
-            modal.style.display = 'block';
-            setTimeout(() => modal.classList.add('open'), 15);
-            document.body.style.overflow = 'hidden';
+            modal.style.display = 'block'; [cite: 932]
+            setTimeout(() => modal.classList.add('open'), 15); [cite: 933]
+            document.body.style.overflow = 'hidden'; [cite: 933]
+            history.pushState({ viewId: 'modal' }, "", "#details"); [cite: 933]
+            setupSwipeEvents(); [cite: 956]
         }
 
-        function closeProductModal() {
+        function closeProductModal(triggerPop = true) {
             const modal = document.getElementById('product-modal');
             modal.classList.remove('open');
-            setTimeout(() => modal.style.display = 'none', 500);
-            document.body.style.overflow = 'auto';
-        }
-
-        function selectColor(el, name, img) {
-            document.querySelectorAll('#modal-colors .color-dot').forEach(d => d.classList.remove('active'));
-            el.classList.add('active');
-            selectedColor = name;
-            document.getElementById('modal-color-name').textContent = name;
-            
-            const idx = modalGallery.indexOf(img);
-            if(idx !== -1) {
-                modalIdx = idx;
-                updateModalImage();
+            setTimeout(() => modal.style.display = 'none', 600);
+            document.body.style.overflow = '';
+            if(triggerPop && history.state && history.state.viewId === 'modal') {
+                history.back();
             }
         }
 
-        function selectSize(btn) {
+        function selectModalColor(colorName, index) {
+            selectedColor = colorName;
+            document.getElementById('selected-color-name').innerText = colorName;
+            document.querySelectorAll('#modal-colors .color-dot').forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === index);
+            });
+            jumpToModalImage(index);
+        }
+
+        function selectModalSize(btn) {
             document.querySelectorAll('#modal-sizes .size-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-        }
-
-        function recalcModularPrice() {
-            if(!activeProduct || activeProduct.category !== 'modular') return;
-            let total = 0;
-            if(document.getElementById('check-hoodie').checked) total += activeProduct.pieces.hoodie.price;
-            if(document.getElementById('check-pants').checked) total += activeProduct.pieces.pants.price;
-            document.getElementById('modal-price').textContent = `$${total.toFixed(2)}`;
-        }
-
-        function updateModalImage() {
-            const imgEl = document.getElementById('modal-main-img');
-            imgEl.style.opacity = '0';
-            setTimeout(() => {
-                imgEl.src = modalGallery[modalIdx];
-                imgEl.style.opacity = '1';
-            }, 150);
-
-            // Sincronizar miniaturas
-            document.querySelectorAll('#modal-thumbs .thumb-wrapper').forEach((t, idx) => {
-                idx === modalIdx ? t.classList.add('active') : t.classList.remove('active');
-            });
-        }
-
-        function navModal(dir) {
-            modalIdx += dir;
-            if(modalIdx < 0) modalIdx = modalGallery.length - 1;
-            if(modalIdx >= modalGallery.length) modalIdx = 0;
-            updateModalImage();
+            selectedSize = btn.querySelector('.size-let').innerText;
         }
 
         function jumpToModalImage(idx) {
-            modalIdx = idx;
-            updateModalImage();
+            currentModalImageIndex = idx;
+            updateModalImageDisplay();
         }
 
-        /* SISTEMA LOGÍSTICO DE CARRITO */
-        function handleAddToCart() {
-            const sizeBtn = document.querySelector('#modal-sizes .size-btn.active');
-            if(!sizeBtn) {
-                showToast("Por favor, selecciona una talla");
-                return;
-            }
-            const size = sizeBtn.querySelector('.size-let').textContent;
-
-            let finalPrice = activeProduct.price;
-            let descriptionAddon = "";
-
-            if(activeProduct.category === 'modular') {
-                const h = document.getElementById('check-hoodie').checked;
-                const p = document.getElementById('check-pants').checked;
-                if(!h && !p) {
-                    showToast("Selecciona al menos una pieza del conjunto");
-                    return;
-                }
-                finalPrice = (h ? activeProduct.pieces.hoodie.price : 0) + (p ? activeProduct.pieces.pants.price : 0);
-                descriptionAddon = ` (${h ? 'Top' : ''}${h && p ? ' + ' : ''}${p ? 'Jogger' : ''})`;
-            }
-
-            cart.push({
-                id: activeProduct.id,
-                name: activeProduct.name + descriptionAddon,
-                price: finalPrice,
-                size: size,
-                color: selectedColor,
-                img: modalGallery[modalIdx]
-            });
-
-            updateCartUI();
-            closeProductModal();
-            showToast("Pieza añadida al bolso");
+        function navigateModalGallery(dir) {
+            currentModalImageIndex += dir;
+            if(currentModalImageIndex < 0) currentModalImageIndex = modalGalleryUrls.length - 1;
+            if(currentModalImageIndex >= modalGalleryUrls.length) currentModalImageIndex = 0;
+            updateModalImageDisplay();
         }
 
-        function removeCartItem(idx) {
-            cart.splice(idx, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            document.getElementById('cart-badge').textContent = cart.length;
-            const container = document.getElementById('cart-items');
+        function updateModalImageDisplay() {
+            const modalImg = document.getElementById('modal-main-img'); [cite: 957]
+            modalImg.style.opacity = '0.2'; [cite: 958]
+            setTimeout(() => { [cite: 958]
+                modalImg.src = modalGalleryUrls[currentModalImageIndex]; [cite: 812, 958]
+                modalImg.style.opacity = '1'; [cite: 958]
+            }, 180); [cite: 958]
             
+            document.querySelectorAll('#modal-thumbnails .thumb-wrapper').forEach((t, idx) => { [cite: 958]
+                t.classList.toggle('active', idx === currentModalImageIndex); [cite: 959]
+            });
+        }
+
+        /* GESTIÓN DE BOLSA DE COMPRA (INVENTARIO LOCAL) */
+        function handleAddToCart(id) {
+            if(!selectedSize) return alert("Por favor, selecciona una talla antes de continuar."); [cite: 993]
+            if(!selectedColor) return alert("Por favor, selecciona un tono sugerido."); [cite: 993]
+
+            const product = MOCK_DB.find(p => p.id === id); [cite: 994]
+            const variant = product.variants.find(v => v.color_name === selectedColor) || product.variants[0];
+            
+            const cartId = `${id}-${selectedSize}-${selectedColor}`;
+            const existing = cart.find(item => item.cartId === cartId);
+
+            if(existing) {
+                existing.qty++;
+            } else {
+                cart.push({
+                    cartId,
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    size: selectedSize,
+                    color: selectedColor,
+                    img: variant.img,
+                    qty: 1
+                });
+            }
+
+            saveAndUpdateCart();
+            closeProductModal();
+            toggleCartDrawer(true);
+        }
+
+        function saveAndUpdateCart() {
+            localStorage.setItem('lem_cart_v1', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-mount');
+            const countBadge = document.getElementById('cart-badge');
+            
+            let total = 0;
+            let totalQty = 0;
+
             if(cart.length === 0) {
-                container.innerHTML = `<p class="text-xs text-zinc-400 uppercase tracking-widest text-center py-12">Bolsa Vacía</p>`;
-                document.getElementById('cart-total').textContent = "$0.00";
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center py-20">
+                        <span class="text-3xl mb-4 inline-block">🛍️</span>
+                        <p class="text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">Tu bolsa está vacía</p>
+                    </div>
+                `;
+                countBadge.innerText = '0';
+                document.getElementById('cart-total').innerText = '$0.00';
                 return;
             }
 
-            let total = 0;
-            container.innerHTML = cart.map((item, idx) => {
-                total += item.price;
+            container.innerHTML = cart.map(item => {
+                total += item.price * item.qty;
+                totalQty += item.qty;
                 return `
-                    <div class="flex gap-4 border-b border-zinc-100 pb-4">
-                        <div class="w-16 aspect-3/4 bg-zinc-100 rounded-sm overflow-hidden">
-                            <img src="${item.img}" class="w-full h-full object-cover">
+                    <div class="flex gap-6 items-center border-b border-zinc-50 pb-4">
+                        <img src="${item.img}" class="w-16 h-20 object-cover rounded-sm bg-zinc-100 protected-img">
+                        <div class="flex-1">
+                            <h5 class="text-[10px] font-black uppercase tracking-wider mb-1">${item.name}</h5>
+                            <p class="text-[9px] text-zinc-400 uppercase tracking-widest mb-2">Talla: ${item.size} | Color: ${item.color}</p>
+                            <div class="flex items-center gap-3">
+                                <button onclick="updateQty('${item.cartId}', -1)" class="w-6 h-6 bg-zinc-100 rounded-full text-xs font-bold">-</button>
+                                <span class="text-xs font-bold">${item.qty}</span>
+                                <button onclick="updateQty('${item.cartId}', 1)" class="w-6 h-6 bg-zinc-100 rounded-full text-xs font-bold">+</button>
+                            </div>
                         </div>
-                        <div class="flex-1 space-y-1">
-                            <h4 class="text-xs font-black uppercase tracking-wider text-zinc-900">${item.name}</h4>
-                            <p class="text-[11px] text-zinc-400 font-medium">Talla: ${item.size} | Tono: ${item.color}</p>
-                            <p class="text-xs font-bold text-zinc-900">$${item.price.toFixed(2)}</p>
-                        </div>
-                        <button onclick="removeCartItem(${idx})" class="text-zinc-300 hover:text-black text-xs p-2 interactive-element">✕</button>
+                        <p class="text-xs font-bold">$${(item.price * item.qty).toFixed(2)}</p>
                     </div>
                 `;
             }).join('');
 
-            document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+            countBadge.innerText = totalQty;
+            document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
         }
 
-        function toggleCart() {
-            const sidebar = document.getElementById('cart-sidebar');
-            const overlay = document.getElementById('cart-overlay');
-            if(sidebar.classList.contains('open')) {
-                sidebar.classList.remove('open');
-                overlay.style.opacity = '0';
-                setTimeout(() => overlay.style.display = 'none', 400);
-            } else {
-                overlay.style.display = 'block';
-                setTimeout(() => overlay.style.opacity = '1', 15);
-                sidebar.classList.add('open');
+        function updateQty(cartId, delta) {
+            const item = cart.find(i => i.cartId === cartId);
+            if(!item) return;
+            item.qty += delta;
+            if(item.qty <= 0) {
+                cart = cart.filter(i => i.cartId !== cartId);
             }
+            saveAndUpdateCart();
         }
 
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg;
-            t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 2200);
+        function toggleCartDrawer(forceOpen = false) {
+            const side = document.getElementById('cart-sidebar');
+            if(forceOpen) side.classList.add('open');
+            else side.classList.toggle('open');
         }
 
-        /* INTEGRACIÓN DIRECTA CON TALLERES WHATSAPP */
-        function sendOrder() {
-            if(cart.length === 0) {
-                showToast("Tu bolsa está vacía");
-                return;
-            }
-
-            let text = `⚡ *ORDEN DE DISPONIBILIDAD - LEM MODA*\n`;
-            text += `Cliente: Consultor Premium\n`;
-            text += `Ecosistema: Venta Digital Directa\n`;
-            text += `------------\n\n`;
-
-            cart.forEach((p, index) => {
-                text += `*Piece [0${index + 1}]:* ${p.name}\n`;
-                text += `   ↳ Talla Seleccionada: ${p.size}\n`;
+        /* INTEGRACIÓN DIRECTA CON TALLERES (WHATSAPP DE CONFIRMACIÓN) */
+        function checkoutWhatsApp() {
+            if(cart.length === 0) return alert("Tu bolsa está vacía.");
+            
+            let text = `⚡ *NUEVA ORDEN EXCLUSIVA - LEM MODA (2026)* ⚡\n\n`;
+            text += `Saludos, solicito la verificación de disponibilidad manual para la siguiente orden:\n`;
+            text += `____________\n\n`;
+            
+            cart.forEach(p => {
+                text += `📦 *${p.name}* (x${p.qty})\n`;
+                text += `   ↳ Talla Escalonada: ${p.size}\n`;
                 text += `   ↳ Tono Seleccionado: ${p.color}\n`;
-                text += `   ↳ Valor de Inversión: $${p.price.toFixed(2)}\n\n`;
+                text += `   ↳ Valor de Inversión: $${(p.price * p.qty).toFixed(2)}\n\n`;
             });
-
+            
             text += `____________\n`;
             text += `*INVERSIÓN TOTAL ESTIMADA:* ${document.getElementById('cart-total').innerText}\n\n`;
             text += `Quedo a la espera de la confirmación manual de disponibilidad de stock desde los talleres de Ambato.`;
-
-            const whatsappUrl = `https://wa.me/593984909967?text=${encodeURIComponent(text)}`;
-            window.open(whatsappUrl, '_blank');
+            
+            window.open(`https://wa.me/593984909967?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        /* EVENTOS COMPORTAMIENTO SCROLL NAVEGACIÓN */
+        /* GESTIÓN DE SWIPES PARA DISPOSITIVOS MÓVILES EN MODAL */
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function setupSwipeEvents() {
+            const zone = document.getElementById('modal-swipe-zone');
+            if(!zone) return;
+
+            zone.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+
+            zone.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipeGesture();
+            }, {passive: true});
+        }
+
+        function handleSwipeGesture() {
+            if (touchStartX - touchEndX > 50) navigateModalGallery(1);  // Swipe Izquierda
+            if (touchEndX - touchStartX > 50) navigateModalGallery(-1); // Swipe Derecha
+        }
+
+        /* COMPORTAMIENTO AUTOMÁTICO DINÁMICO BAJO SCROLL */
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('header-nav');
-            if (window.scrollY > 60) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if(window.scrollY > 80) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         }, { passive: true });
-
-        /* DISPARADOR CONTROL INICIAL */
-        window.addEventListener('DOMContentLoaded', () => {
+        
+        /* INICIALIZACIÓN GLOBAL DE LA PLATAFORMA */
+        window.onload = () => {
             history.replaceState({ viewId: 'home' }, "", "#home");
+            document.getElementById('mobile-nav').style.transform = 'translateY(0)';
+            
             mountShop();
-            updateCartUI();
+            renderCart();
 
             // Ocultar preloader cinematográfico en 1.5s
             setTimeout(() => {
                 const pre = document.getElementById('preloader');
-                if(pre) {
-                    pre.style.opacity = '0';
-                    setTimeout(() => pre.style.display = 'none', 800);
+                if(pre) { 
+                    pre.style.opacity = '0'; 
+                    setTimeout(() => pre.style.display = 'none', 1200); 
                 }
             }, 1500);
-        });
+        };
     </script>
 </body>
 </html>
