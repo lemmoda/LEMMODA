@@ -3,1459 +3,880 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>LEM MODA | Ropa Urbana Athleisure — Quito, Ecuador</title>
-<meta name="description" content="LEM Moda — ropa athleisure y streetwear de alta gama. Para los que no paran. Quito, Ecuador.">
-<meta property="og:title" content="LEM MODA | Para los que no paran">
-<meta property="og:description" content="Athleisure de alta gama. Del gym a la calle, sin esfuerzo.">
-<meta property="og:image" content="assets/images/logos/logo_lem-05.webp">
+<title>LEM MODA | Tienda Oficial — Quito, Ecuador</title>
+<meta name="description" content="LEM MODA — División de Streetwear y Athleisure de Alta Gama. Quito, Ecuador. Estás en tu Prime.">
+<meta property="og:title" content="LEM MODA | Estás en tu Prime">
+<meta property="og:description" content="Athleisure de alta gama. Del gym a la calle, sin esfuerzo. Quito, Ecuador.">
 <meta property="og:url" content="https://lemmoda.github.io/LEMMODA/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Urbanist:wght@200;300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,300;1,700;1,900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-
 :root{
-  --g:#6DAE5A;
-  --g-dim:#4a8a3a;
-  --black:#060606;
-  --black2:#0d0d0d;
-  --black3:#141414;
-  --white:#f5f5f0;
-  --zinc:#71717a;
-  --ease:cubic-bezier(.16,1,.3,1);
-  --ease2:cubic-bezier(.25,1,.5,1);
+  --brand-green:#6DAE5A;
+  --brand-black:#080808;
+  --brand-white:#ffffff;
+  --brand-zinc-light:#f4f4f5;
+  --brand-zinc-dark:#0f0f11;
+  --brand-zinc-deep:#050505;
+  --brand-border:rgba(0,0,0,0.06);
+  --brand-border-dark:rgba(255,255,255,0.06);
+  --ease-luxury:cubic-bezier(0.16,1,0.3,1);
+  --ease-luxury-slow:cubic-bezier(0.25,1,0.5,1);
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Urbanist',sans-serif;background:var(--brand-white);color:var(--brand-black);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none;user-drag:none}
+.protected-img{pointer-events:none}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:var(--brand-white)}
+::-webkit-scrollbar-thumb{background:#d4d4d8;border-radius:2px}
+::-webkit-scrollbar-thumb:hover{background:#a1a1aa}
 
-html{scroll-behavior:smooth;cursor:none}
-body{
-  font-family:'Urbanist',sans-serif;
-  background:var(--black);
-  color:var(--white);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-
-/* ── CUSTOM CURSOR ── */
-#cursor{
-  position:fixed;width:10px;height:10px;background:var(--g);border-radius:50%;
-  pointer-events:none;z-index:99999;transform:translate(-50%,-50%);
-  transition:width .3s var(--ease),height .3s var(--ease),background .3s;
-  mix-blend-mode:difference;
-}
-#cursor-ring{
-  position:fixed;width:36px;height:36px;border:1px solid rgba(109,174,90,.4);border-radius:50%;
-  pointer-events:none;z-index:99998;transform:translate(-50%,-50%);
-  transition:transform .12s var(--ease2),width .4s var(--ease),height .4s var(--ease),opacity .3s;
-}
-body:hover #cursor-ring{opacity:1}
-.cursor-grow #cursor{width:64px;height:64px;background:rgba(109,174,90,.15)}
-.cursor-grow #cursor-ring{width:0;height:0;opacity:0}
-
-/* ── NOISE OVERLAY ── */
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:9999;opacity:.6;
-}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--black)}
-::-webkit-scrollbar-thumb{background:var(--g);border-radius:2px}
+/* ── ANIMACIONES ── */
+@keyframes revealUp{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes fillProgress{0%{width:0%}100%{width:100%}}
+@keyframes fadeBlurIn{0%{opacity:0;filter:blur(8px)}100%{opacity:1;filter:blur(0)}}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:.15}50%{opacity:.3}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
 /* ── PRELOADER ── */
-#preloader{
-  position:fixed;inset:0;background:var(--black);z-index:90000;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  transition:opacity 1s var(--ease);
-}
-.pre-letters{
-  display:flex;gap:.04em;overflow:hidden;
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,10vw,9rem);
-  font-weight:900;font-style:italic;
-  color:var(--white);letter-spacing:-.02em;
-}
-.pre-letter{
-  display:block;transform:translateY(110%);opacity:0;
-  animation:letterUp .7s var(--ease) forwards;
-}
-@keyframes letterUp{to{transform:translateY(0);opacity:1}}
-.pre-bar{
-  width:0;height:1px;background:var(--g);margin-top:32px;
-  animation:barFill 1.8s var(--ease) .5s forwards;
-}
-@keyframes barFill{to{width:160px}}
-.pre-count{
-  font-size:10px;font-weight:700;letter-spacing:.5em;text-transform:uppercase;
-  color:var(--zinc);margin-top:20px;
-  animation:fadeIn .5s .3s forwards;opacity:0;
-}
-@keyframes fadeIn{to{opacity:1}}
+#preloader{position:fixed;inset:0;background:var(--brand-black);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1.2s var(--ease-luxury)}
+.loader-line{width:160px;height:1px;background:rgba(255,255,255,0.08);margin-top:32px;position:relative;overflow:hidden}
+.loader-fill{position:absolute;width:0%;height:100%;background:var(--brand-green);animation:fillProgress 2s var(--ease-luxury) forwards}
+.pre-dots{display:flex;gap:6px;margin-top:20px}
+.pre-dot{width:4px;height:4px;border-radius:50%;background:var(--brand-green);animation:pulse 1.4s ease infinite}
+.pre-dot:nth-child(2){animation-delay:.2s}
+.pre-dot:nth-child(3){animation-delay:.4s}
 
 /* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:8000;
-  padding:28px 48px;display:flex;justify-content:space-between;align-items:center;
-  transition:all .6s var(--ease);
-}
-@media(max-width:768px){nav{padding:20px 24px}}
-nav.scrolled{
-  padding:16px 48px;background:rgba(6,6,6,.85);
-  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid rgba(255,255,255,.04);
-}
-@media(max-width:768px){nav.scrolled{padding:14px 24px}}
+.nav-master{position:fixed;top:0;width:100%;z-index:5000;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;transition:all .8s var(--ease-luxury)}
+@media(min-width:1024px){.nav-master{padding:36px 80px}}
+.nav-master.scrolled{padding:16px 40px;background:rgba(255,255,255,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--brand-border)}
+@media(min-width:1024px){.nav-master.scrolled{padding:18px 80px}}
+.nav-master .logo-night{display:none}
+.nav-master .logo-day{display:block}
+.nav-master.scrolled .logo-day{display:none}
+.nav-master.scrolled .logo-night{display:block}
+.logo-box img{height:36px;width:auto;object-fit:contain;transition:transform .5s var(--ease-luxury)}
+.logo-box:hover img{transform:scale(1.03)}
+@media(min-width:1024px){.logo-box img{height:44px}}
+.nav-link-custom{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.4em;color:#71717a;position:relative;transition:color .4s var(--ease-luxury);cursor:pointer}
+.nav-link-custom:hover,.nav-link-custom.active{color:var(--brand-black)}
+.nav-link-custom::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--brand-green);transition:width .4s var(--ease-luxury)}
+.nav-link-custom:hover::after,.nav-link-custom.active::after{width:100%}
 
-.nav-logo{
-  font-family:'Playfair Display',serif;font-size:22px;font-weight:900;font-style:italic;
-  color:var(--white);cursor:pointer;letter-spacing:-.02em;
-  transition:color .3s;
-}
-.nav-logo:hover{color:var(--g)}
+/* ── VISTAS ── */
+.view-layer{display:none;opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease-luxury),transform .9s var(--ease-luxury)}
+.view-layer.active{display:block;opacity:1;transform:translateY(0)}
 
-.nav-links{display:flex;gap:40px;align-items:center}
-@media(max-width:900px){.nav-links{display:none}}
-.nav-link{
-  font-size:9px;font-weight:700;letter-spacing:.45em;text-transform:uppercase;
-  color:rgba(245,245,240,.45);cursor:pointer;
-  transition:color .3s;position:relative;
-}
-.nav-link::after{
-  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
-  background:var(--g);transition:width .4s var(--ease);
-}
-.nav-link:hover,.nav-link.active{color:var(--white)}
-.nav-link:hover::after,.nav-link.active::after{width:100%}
+/* ── MARQUEE ── */
+.marquee-wrap{overflow:hidden;background:var(--brand-green);padding:13px 0;border-top:1px solid rgba(0,0,0,.08)}
+.marquee-track{display:flex;animation:marqueeScroll 22s linear infinite;white-space:nowrap;width:max-content}
+.marquee-item{font-size:9px;font-weight:900;letter-spacing:.55em;text-transform:uppercase;color:var(--brand-black);padding:0 48px}
+.marquee-sep{font-size:9px;font-weight:900;letter-spacing:.55em;color:rgba(0,0,0,.3);padding:0 8px}
 
-.nav-actions{display:flex;align-items:center;gap:20px}
-.nav-cart-btn{
-  position:relative;cursor:pointer;padding:8px;
-  display:flex;align-items:center;gap:10px;
-}
-.nav-cart-btn svg{width:20px;height:20px;stroke:var(--white);fill:none;stroke-width:1.5;transition:stroke .3s}
-.nav-cart-btn:hover svg{stroke:var(--g)}
-.cart-count{
-  font-size:9px;font-weight:900;letter-spacing:.1em;color:var(--white);
-  background:var(--g);min-width:18px;height:18px;border-radius:9px;
-  display:flex;align-items:center;justify-content:center;
-  position:absolute;top:-4px;right:-4px;
-}
+/* ── SHOP HEADER ── */
+.filter-btn{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:3px;padding:10px 24px;border-radius:30px;transition:all .5s var(--ease-luxury);color:#8e8e93;background:transparent;border:1px solid transparent;white-space:nowrap;cursor:pointer}
+.filter-btn:hover{color:var(--brand-black)}
+.filter-btn.active{color:var(--brand-black);background:var(--brand-zinc-light);border-color:rgba(0,0,0,.03)}
 
-/* ── VIEWS ── */
-.view{display:none;min-height:100vh}
-.view.active{display:block}
+/* ── SEARCH ── */
+.search-wrap{position:relative;display:inline-block}
+.search-input{background:var(--brand-zinc-light);border:1px solid transparent;color:var(--brand-black);padding:11px 18px 11px 42px;font-family:'Urbanist',sans-serif;font-size:12px;font-weight:500;letter-spacing:.03em;width:240px;outline:none;border-radius:30px;transition:all .4s var(--ease-luxury)}
+.search-input:focus{border-color:var(--brand-green);background:#fff;box-shadow:0 0 0 3px rgba(109,174,90,.08)}
+.search-input::placeholder{color:#a1a1aa}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.4;pointer-events:none}
+.search-icon svg{width:15px;height:15px;stroke:var(--brand-black);fill:none;stroke-width:2}
 
-/* ── HOME HERO ── */
-#home{position:relative;height:100svh;overflow:hidden}
-.hero-video-bg{
-  position:absolute;inset:0;
-}
-.hero-video-bg video{width:100%;height:100%;object-fit:cover;opacity:.28;filter:grayscale(20%)}
-.hero-video-bg::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(6,6,6,.2) 0%,transparent 40%,rgba(6,6,6,.8) 100%);
-}
+/* ── GRID ── */
+.catalogue-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;padding:2px}
+@media(min-width:768px){.catalogue-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.catalogue-grid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1400px){.catalogue-grid{grid-template-columns:repeat(5,1fr)}}
 
-.hero-content{
-  position:absolute;inset:0;z-index:10;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:0 48px 80px;
-  max-width:1400px;
-}
-@media(max-width:768px){.hero-content{padding:0 24px 100px}}
-
-.hero-eyebrow{
-  font-size:9px;font-weight:700;letter-spacing:.55em;text-transform:uppercase;
-  color:var(--g);margin-bottom:24px;
-  opacity:0;animation:fadeUp .8s var(--ease) 2.5s forwards;
-  display:flex;align-items:center;gap:16px;
-}
-.hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--g)}
-.hero-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3.5rem,10vw,11rem);
-  font-weight:900;font-style:italic;
-  line-height:.92;letter-spacing:-.03em;
-  color:var(--white);
-  opacity:0;animation:fadeUp .9s var(--ease) 2.6s forwards;
-}
-.hero-title em{color:var(--g);font-style:italic}
-.hero-subtitle{
-  font-size:13px;font-weight:300;letter-spacing:.08em;
-  color:rgba(245,245,240,.5);margin-top:28px;max-width:420px;line-height:1.8;
-  opacity:0;animation:fadeUp .8s var(--ease) 2.8s forwards;
-}
-.hero-actions{
-  display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;
-  opacity:0;animation:fadeUp .8s var(--ease) 3s forwards;
-}
-.btn-primary{
-  font-size:9px;font-weight:900;letter-spacing:.45em;text-transform:uppercase;
-  background:var(--white);color:var(--black);
-  padding:18px 36px;border-radius:0;cursor:pointer;border:none;
-  transition:all .4s var(--ease);
-}
-.btn-primary:hover{background:var(--g);color:var(--white)}
-.btn-ghost{
-  font-size:9px;font-weight:900;letter-spacing:.45em;text-transform:uppercase;
-  background:transparent;color:var(--white);
-  padding:18px 36px;border:1px solid rgba(245,245,240,.2);cursor:pointer;
-  transition:all .4s var(--ease);
-}
-.btn-ghost:hover{border-color:var(--white)}
-
-.hero-scroll{
-  position:absolute;right:48px;bottom:80px;z-index:10;
-  display:flex;flex-direction:column;align-items:center;gap:12px;
-  opacity:0;animation:fadeIn .8s var(--ease) 3.2s forwards;
-}
-@media(max-width:768px){.hero-scroll{display:none}}
-.hero-scroll span{
-  font-size:8px;font-weight:700;letter-spacing:.5em;text-transform:uppercase;
-  color:rgba(245,245,240,.3);writing-mode:vertical-rl;
-}
-.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--g),transparent);animation:lineDown 1.5s var(--ease) 3.2s infinite}
-@keyframes lineDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-
-/* ── SHOP ── */
-#shop{
-  padding:160px 48px 120px;
-  max-width:1600px;margin:0 auto;
-  min-height:100vh;
-}
-@media(max-width:768px){#shop{padding:120px 20px 100px}}
-
-.shop-header{margin-bottom:80px}
-.shop-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,9vw,10rem);
-  font-weight:900;font-style:italic;
-  line-height:.9;letter-spacing:-.03em;
-  color:var(--white);
-}
-.shop-title span{color:var(--g)}
-.shop-meta{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  margin-top:40px;gap:24px;flex-wrap:wrap;
-}
-.shop-count{
-  font-size:11px;font-weight:300;letter-spacing:.2em;
-  color:var(--zinc);text-transform:uppercase;
-}
-.search-wrap{position:relative}
-.search-input{
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-  color:var(--white);padding:12px 20px 12px 44px;
-  font-family:'Urbanist',sans-serif;font-size:12px;font-weight:400;letter-spacing:.05em;
-  width:260px;outline:none;transition:all .3s;border-radius:0;
-}
-.search-input::placeholder{color:var(--zinc)}
-.search-input:focus{border-color:var(--g);background:rgba(109,174,90,.04)}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.4}
-.search-icon svg{width:16px;height:16px;stroke:var(--white);fill:none;stroke-width:1.5}
-
-.filters{
-  display:flex;gap:4px;margin-top:32px;
-  overflow-x:auto;padding-bottom:4px;
-}
-.filters::-webkit-scrollbar{height:0}
-.filter-btn{
-  font-size:9px;font-weight:700;letter-spacing:.4em;text-transform:uppercase;
-  padding:10px 22px;border:1px solid rgba(255,255,255,.1);
-  background:transparent;color:var(--zinc);cursor:pointer;
-  transition:all .3s var(--ease);white-space:nowrap;
-}
-.filter-btn:hover{color:var(--white);border-color:rgba(255,255,255,.3)}
-.filter-btn.active{background:var(--g);color:var(--white);border-color:var(--g)}
-
-/* ── PRODUCT GRID ── */
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:2px;margin-top:40px;
-}
-@media(min-width:768px){.product-grid{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:1200px){.product-grid{grid-template-columns:repeat(4,1fr)}}
-
-.product-card{
-  position:relative;cursor:pointer;overflow:hidden;
-  background:var(--black2);
-  opacity:0;transform:translateY(30px);
-  transition:opacity .6s var(--ease),transform .6s var(--ease);
-}
+/* ── PRODUCT CARD ── */
+.product-card{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease-luxury),transform .7s var(--ease-luxury);background:var(--brand-zinc-light);position:relative}
 .product-card.visible{opacity:1;transform:translateY(0)}
+.img-container{width:100%;aspect-ratio:3/4;overflow:hidden;background:#ececec;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover;transition:transform 2.2s var(--ease-luxury-slow),opacity .8s var(--ease-luxury),filter .6s;opacity:0;filter:grayscale(8%)}
+.img-container img.loaded{opacity:1}
+.product-card:hover .img-container img.loaded{transform:scale(1.06);filter:grayscale(0%)}
 
-.product-img-wrap{
-  position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--black3);
-}
-.product-img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform 2.2s var(--ease2),filter .6s;
-  filter:grayscale(15%);opacity:0;
-}
-.product-img.loaded{opacity:1}
-.product-card:hover .product-img{transform:scale(1.06);filter:grayscale(0%)}
+/* Overlay */
+.details-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:16px;gap:8px;opacity:0;transition:opacity .5s var(--ease-luxury);z-index:20}
+@media(min-width:1024px){.product-card:hover .details-overlay{opacity:1}}
+@media(max-width:1023px){.details-overlay{opacity:1;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%)}}
+.overlay-colors-row{display:flex;gap:6px;justify-content:center;transform:translateY(8px);transition:transform .4s var(--ease-luxury)}
+.product-card:hover .overlay-colors-row{transform:translateY(0)}
+@media(max-width:1023px){.overlay-colors-row{transform:translateY(0)}}
+.btn-view-details{background:#fff;color:var(--brand-black);font-size:8px;font-weight:900;text-transform:uppercase;letter-spacing:2.5px;padding:12px 24px;border-radius:30px;transform:translateY(8px);transition:all .5s var(--ease-luxury);pointer-events:auto;border:none;cursor:pointer;white-space:nowrap}
+.product-card:hover .btn-view-details{transform:translateY(0)}
+.btn-view-details:hover{background:var(--brand-green);color:#fff}
+@media(max-width:1023px){.btn-view-details{transform:translateY(0);padding:9px 18px;font-size:7.5px}}
 
-.product-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(6,6,6,.9) 0%,transparent 60%);
-  opacity:0;transition:opacity .5s var(--ease);
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:20px;gap:10px;
-}
-.product-card:hover .product-overlay{opacity:1}
+/* Badges */
+.badge-tag{position:absolute;top:12px;left:12px;z-index:30;font-size:7.5px;font-weight:900;letter-spacing:.35em;text-transform:uppercase;padding:4px 10px}
+.badge-new{background:var(--brand-green);color:#fff}
+.badge-promo{background:#fff;color:var(--brand-black)}
+.badge-hot{background:#000;color:#fff}
 
-.overlay-btn{
-  font-size:8px;font-weight:900;letter-spacing:.4em;text-transform:uppercase;
-  background:var(--white);color:var(--black);
-  padding:12px;text-align:center;cursor:pointer;border:none;
-  transform:translateY(10px);transition:all .4s var(--ease);
-}
-.product-card:hover .overlay-btn{transform:translateY(0)}
-.overlay-btn:hover{background:var(--g);color:var(--white)}
+/* Product Info */
+.product-info{padding:14px 12px 12px;background:#fff}
+.prod-cat{font-size:8px;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:#a1a1aa;margin-bottom:4px}
+.prod-name{font-size:12px;font-weight:800;font-style:italic;text-transform:uppercase;color:var(--brand-black);line-height:1.2;letter-spacing:-.01em}
+.prod-price{font-size:14px;font-weight:900;color:var(--brand-green);margin-top:6px;letter-spacing:-.01em}
 
-.overlay-colors{
-  display:flex;gap:6px;
-  transform:translateY(10px);transition:all .4s .05s var(--ease);
-}
-.product-card:hover .overlay-colors{transform:translateY(0)}
+/* Size btns */
+.size-btn{flex:1;min-width:0;max-width:44px;height:52px;border:1px solid #eaeaea;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .4s var(--ease-luxury);gap:2px;background:transparent}
+.size-num{font-size:7px;font-weight:700;color:#71717a;letter-spacing:.5px}
+.size-let{font-size:11px;font-weight:800}
+.size-btn:hover{border-color:#000}
+.size-btn.active{background:#000;border-color:#000}
+.size-btn.active .size-num{color:#fff;opacity:.6}
+.size-btn.active .size-let{color:#fff}
 
-.prod-color-dot{
-  width:16px;height:16px;border-radius:50%;
-  border:2px solid transparent;cursor:pointer;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);
-  transition:all .3s;
-}
-.prod-color-dot.active{border-color:var(--white);transform:scale(1.2)}
+/* Color dots */
+.color-dot{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .4s var(--ease-luxury);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.color-dot:hover{transform:scale(1.2)}
+.color-dot.active{border-color:#000;transform:scale(1.2)}
 
-.badge-tag{
-  position:absolute;top:14px;left:14px;z-index:20;
-  font-size:8px;font-weight:900;letter-spacing:.35em;text-transform:uppercase;
-  padding:5px 12px;
-}
-.badge-new{background:var(--g);color:var(--white)}
-.badge-promo{background:var(--white);color:var(--black)}
-
-.product-info{
-  padding:16px 14px 14px;
-  background:var(--black2);
-}
-.product-name{
-  font-family:'Playfair Display',serif;
-  font-size:13px;font-weight:900;font-style:italic;
-  color:var(--white);line-height:1.2;
-  letter-spacing:-.01em;
-}
-.product-cat{
-  font-size:8px;font-weight:700;letter-spacing:.4em;text-transform:uppercase;
-  color:var(--zinc);margin-top:4px;
-}
-.product-price{
-  font-size:14px;font-weight:900;color:var(--g);
-  margin-top:8px;letter-spacing:-.01em;
-}
-
-.size-row{
-  display:flex;gap:3px;margin-top:10px;
-}
-.sz{
-  flex:1;min-width:0;height:32px;border:1px solid rgba(255,255,255,.08);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  font-size:8px;font-weight:700;letter-spacing:.1em;
-  color:var(--zinc);transition:all .25s;
-}
-.sz:hover{border-color:rgba(255,255,255,.3);color:var(--white)}
-.sz.active{background:var(--white);color:var(--black);border-color:var(--white)}
-
-.add-row{
-  display:flex;gap:3px;margin-top:6px;
-}
-.add-btn{
-  flex:1;padding:11px;background:transparent;border:1px solid rgba(255,255,255,.1);
-  font-size:8px;font-weight:900;letter-spacing:.4em;text-transform:uppercase;
-  color:var(--white);cursor:pointer;transition:all .3s var(--ease);
-}
-.add-btn:hover{background:var(--white);color:var(--black)}
-
-.detail-btn{
-  width:42px;padding:11px;background:transparent;border:1px solid rgba(255,255,255,.1);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:all .3s var(--ease);
-}
-.detail-btn:hover{background:var(--g);border-color:var(--g)}
-.detail-btn svg{width:14px;height:14px;stroke:var(--white);fill:none;stroke-width:1.5}
+/* Add btn */
+.add-to-cart-trigger{width:100%;padding:14px;background:#000;color:#fff;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:3px;transition:all .5s var(--ease-luxury);margin-top:8px;border:none;cursor:pointer}
+.add-to-cart-trigger:hover{background:var(--brand-green)}
 
 /* ── MODAL ── */
-#modal{
-  position:fixed;inset:0;z-index:9000;
-  background:var(--black);
-  display:none;opacity:0;transition:opacity .5s var(--ease);
-  overflow-y:auto;
-}
-#modal.open{display:flex;opacity:1}
-.modal-inner{
-  width:100%;min-height:100vh;
-  display:flex;flex-direction:column;
-}
-@media(min-width:900px){.modal-inner{flex-direction:row}}
+#product-modal{position:fixed;inset:0;background:#fff;z-index:7000;display:none;opacity:0;transition:all .6s var(--ease-luxury);overflow-y:auto}
+#product-modal.open{display:block;opacity:1}
+.modal-carousel-container{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--brand-zinc-light);border-radius:2px}
+.nav-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;z-index:40;font-size:13px;font-weight:bold;transition:all .4s var(--ease-luxury);box-shadow:0 6px 20px rgba(0,0,0,.06);border:none;cursor:pointer}
+.nav-arrow:hover{background:#000;color:#fff}
+.nav-arrow.prev{left:16px}
+.nav-arrow.next{right:16px}
+.thumb-wrapper{position:relative;cursor:pointer;flex-shrink:0;width:72px;height:94px;border-radius:2px;overflow:hidden;background:var(--brand-zinc-light);border:2px solid transparent;transition:border-color .3s}
+.thumb-wrapper.active{border-color:var(--brand-black)}
+.thumb-img-element{width:100%;height:100%;object-fit:cover;opacity:.35;transition:opacity .4s var(--ease-luxury)}
+.thumb-wrapper.active .thumb-img-element{opacity:1}
+.thumb-shield{position:absolute;inset:0;z-index:10}
 
-.modal-gallery{
-  width:100%;position:relative;
-  aspect-ratio:1;overflow:hidden;background:var(--black2);
-}
-@media(min-width:900px){.modal-gallery{width:55%;aspect-ratio:auto;min-height:100vh;position:sticky;top:0;height:100vh}}
-
-.modal-img{
-  width:100%;height:100%;object-fit:cover;
-  opacity:0;transition:opacity .4s var(--ease);
-}
-.modal-img.visible{opacity:1}
-
-.modal-thumbs{
-  position:absolute;left:20px;top:50%;transform:translateY(-50%);
-  display:flex;flex-direction:column;gap:8px;z-index:10;
-}
-@media(max-width:899px){
-  .modal-thumbs{left:50%;top:auto;bottom:16px;transform:translateX(-50%);
-  flex-direction:row;
-  }
-}
-.m-thumb{
-  width:52px;height:68px;overflow:hidden;cursor:pointer;
-  border:2px solid transparent;transition:all .3s;
-  background:var(--black3);
-}
-@media(max-width:899px){.m-thumb{width:40px;height:52px}}
-.m-thumb.active{border-color:var(--g)}
-.m-thumb img{width:100%;height:100%;object-fit:cover;opacity:.5;transition:opacity .3s;pointer-events:none}
-.m-thumb.active img,.m-thumb:hover img{opacity:1}
-
-.modal-nav-btn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(6,6,6,.7);backdrop-filter:blur(8px);
-  width:44px;height:44px;border:1px solid rgba(255,255,255,.08);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:20;transition:all .3s;border-radius:0;
-}
-.modal-nav-btn:hover{background:var(--g);border-color:var(--g)}
-.modal-nav-btn svg{width:16px;height:16px;stroke:var(--white);fill:none;stroke-width:2}
-.modal-nav-btn.prev{left:80px}
-.modal-nav-btn.next{right:16px}
-@media(max-width:899px){.modal-nav-btn.prev{left:16px}}
-
-.modal-details{
-  flex:1;padding:60px 48px;display:flex;flex-direction:column;justify-content:center;
-  max-width:520px;
-}
-@media(max-width:768px){.modal-details{padding:32px 24px 100px}}
-
-.modal-cat{
-  font-size:9px;font-weight:700;letter-spacing:.5em;text-transform:uppercase;
-  color:var(--g);margin-bottom:16px;display:flex;align-items:center;gap:12px;
-}
-.modal-cat::before{content:'';display:block;width:24px;height:1px;background:var(--g)}
-.modal-name{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,5vw,4.5rem);
-  font-weight:900;font-style:italic;
-  line-height:.95;letter-spacing:-.03em;
-  color:var(--white);
-}
-.modal-price{
-  font-size:28px;font-weight:300;letter-spacing:-.02em;
-  color:rgba(245,245,240,.5);margin-top:20px;
-}
-.modal-desc{
-  font-size:13px;font-weight:300;letter-spacing:.05em;
-  color:var(--zinc);line-height:1.8;
-  margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);
-}
-.modal-section-label{
-  font-size:8px;font-weight:700;letter-spacing:.5em;text-transform:uppercase;
-  color:rgba(245,245,240,.35);margin-top:32px;margin-bottom:12px;
-}
-.modal-colors-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.m-color-dot{
-  width:28px;height:28px;border-radius:50%;cursor:pointer;
-  border:2px solid transparent;transition:all .3s;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);
-}
-.m-color-dot.active{border-color:var(--white);transform:scale(1.15)}
-.m-color-name{
-  font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--zinc);margin-top:8px;
-}
-.modal-sizes-row{display:flex;gap:4px;flex-wrap:wrap}
-.m-sz{
-  min-width:56px;height:48px;border:1px solid rgba(255,255,255,.1);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .3s;gap:1px;
-}
-.m-sz-num{font-size:7px;font-weight:700;color:rgba(245,245,240,.3);letter-spacing:.3px}
-.m-sz-let{font-size:12px;font-weight:900;color:var(--white)}
-.m-sz:hover{border-color:rgba(255,255,255,.4)}
-.m-sz.active{background:var(--white);border-color:var(--white)}
-.m-sz.active .m-sz-num,.m-sz.active .m-sz-let{color:var(--black)}
-
-.modal-add-btn{
-  margin-top:24px;width:100%;padding:20px;
-  background:var(--white);color:var(--black);
-  font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;
-  cursor:pointer;border:none;
-  transition:all .4s var(--ease);
-}
-.modal-add-btn:hover{background:var(--g);color:var(--white)}
-.modal-size-guide{
-  font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--zinc);text-decoration:underline;cursor:pointer;
-  margin-top:12px;display:inline-block;transition:color .3s;
-}
-.modal-size-guide:hover{color:var(--g)}
-
-.modal-close{
-  position:fixed;top:24px;right:24px;z-index:9100;
-  width:44px;height:44px;background:rgba(6,6,6,.8);backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.08);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  transition:all .3s;
-}
-.modal-close:hover{background:var(--g);border-color:var(--g)}
-.modal-close svg{width:16px;height:16px;stroke:var(--white);fill:none;stroke-width:2}
-
-/* ── CART DRAWER ── */
-#cart-drawer{
-  position:fixed;top:0;right:-100%;width:min(420px,100vw);height:100vh;
-  background:var(--black2);z-index:8500;
-  border-left:1px solid rgba(255,255,255,.06);
-  transition:right .7s var(--ease);
-  display:flex;flex-direction:column;
-}
-#cart-drawer.open{right:0}
-.cart-overlay{
-  position:fixed;inset:0;background:rgba(6,6,6,.6);z-index:8400;
-  opacity:0;pointer-events:none;transition:opacity .5s;
-}
+/* ── CART SIDEBAR ── */
+#cart-sidebar{position:fixed;top:0;right:-100%;width:100%;max-width:480px;height:100vh;background:#fff;z-index:6000;box-shadow:-40px 0 80px rgba(0,0,0,.04);transition:right .8s var(--ease-luxury);display:flex;flex-direction:column;padding:40px}
+#cart-sidebar.open{right:0}
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:5900;opacity:0;pointer-events:none;transition:opacity .5s;backdrop-filter:blur(2px)}
 .cart-overlay.open{opacity:1;pointer-events:auto}
 
-.cart-head{
-  padding:32px 32px 24px;border-bottom:1px solid rgba(255,255,255,.06);
-  display:flex;justify-content:space-between;align-items:center;
-}
-.cart-title{
-  font-family:'Playfair Display',serif;
-  font-size:28px;font-weight:900;font-style:italic;
-  color:var(--white);letter-spacing:-.02em;
-}
-.cart-close-btn{
-  width:36px;height:36px;background:transparent;border:1px solid rgba(255,255,255,.1);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;
-}
-.cart-close-btn:hover{background:var(--g);border-color:var(--g)}
-.cart-close-btn svg{width:14px;height:14px;stroke:var(--white);fill:none;stroke-width:2}
-
-.cart-list{flex:1;overflow-y:auto;padding:24px 32px;display:flex;flex-direction:column;gap:20px}
-.cart-list::-webkit-scrollbar{width:2px}
-.cart-list::-webkit-scrollbar-thumb{background:var(--g)}
-
-.cart-item{display:flex;gap:16px;align-items:flex-start}
-.cart-item-img{
-  width:60px;flex-shrink:0;aspect-ratio:3/4;overflow:hidden;background:var(--black3);
-}
-.cart-item-img img{width:100%;height:100%;object-fit:cover;pointer-events:none}
-.cart-item-info{flex:1;min-width:0}
-.cart-item-name{
-  font-family:'Playfair Display',serif;
-  font-size:12px;font-weight:900;font-style:italic;
-  color:var(--white);line-height:1.2;
-}
-.cart-item-meta{
-  font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--zinc);margin-top:6px;
-}
-.cart-item-price{
-  font-size:13px;font-weight:700;color:var(--g);margin-top:6px;
-}
-.cart-remove-btn{
-  background:transparent;border:none;cursor:pointer;
-  padding:4px;color:rgba(245,245,240,.2);
-  transition:color .3s;flex-shrink:0;font-size:18px;
-}
-.cart-remove-btn:hover{color:var(--white)}
-
-.cart-footer{
-  padding:24px 32px 32px;border-top:1px solid rgba(255,255,255,.06);
-}
-.cart-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px}
-.cart-total-label{font-size:9px;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--zinc)}
-.cart-total-val{font-size:28px;font-weight:900;color:var(--white);letter-spacing:-.02em}
-
-.cart-order-btn{
-  width:100%;padding:18px;background:var(--white);color:var(--black);
-  font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;
-  cursor:pointer;border:none;transition:all .4s var(--ease);
-}
-.cart-order-btn:hover{background:var(--g);color:var(--white)}
-.cart-empty{
-  text-align:center;color:var(--zinc);
-  font-size:12px;font-weight:300;letter-spacing:.1em;
-  padding:48px 0;
-}
-
-/* ── ESSENCE ── */
-#essence{
-  padding:0;overflow:hidden;
-  background:var(--black);
-}
-.essence-hero{
-  height:70vh;position:relative;
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden;
-}
-.essence-grid-bg{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:80px 80px;
-}
-.essence-hero-content{position:relative;z-index:2;padding:0 48px}
-.essence-label{
-  font-size:9px;font-weight:700;letter-spacing:.6em;text-transform:uppercase;
-  color:var(--g);margin-bottom:20px;display:block;
-}
-.essence-big-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,10vw,11rem);
-  font-weight:900;font-style:italic;
-  line-height:.9;letter-spacing:-.03em;color:var(--white);
-}
-.essence-big-title em{color:var(--g)}
-
-.essence-body{max-width:1200px;margin:0 auto;padding:100px 48px}
-@media(max-width:768px){.essence-body{padding:60px 24px}}
-
-.essence-2col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:100px}
-@media(max-width:768px){.essence-2col{grid-template-columns:1fr;gap:40px}}
-
-.essence-icon-wrap{
-  aspect-ratio:1;background:var(--black2);border:1px solid rgba(255,255,255,.06);
-  display:flex;align-items:center;justify-content:center;padding:60px;
-}
-.essence-icon-wrap img{width:100%;height:auto;opacity:.7;transition:opacity .5s;pointer-events:none}
-.essence-icon-wrap:hover img{opacity:1}
-
-.essence-text h3{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,4vw,3.5rem);
-  font-weight:900;font-style:italic;
-  color:var(--g);letter-spacing:-.02em;line-height:1;margin-bottom:24px;
-}
-.essence-pillars{display:flex;flex-direction:column;gap:24px;margin-top:32px}
-.pillar{
-  display:flex;gap:20px;align-items:flex-start;padding:20px;
-  border:1px solid rgba(255,255,255,.04);
-  background:var(--black2);
-  transition:border-color .3s,background .3s;
-}
-.pillar:hover{border-color:rgba(109,174,90,.3);background:rgba(109,174,90,.03)}
-.pillar-num{
-  font-size:10px;font-weight:900;letter-spacing:.3em;color:var(--g);
-  flex-shrink:0;margin-top:2px;
-}
-.pillar h5{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--white);margin-bottom:6px}
-.pillar p{font-size:12px;font-weight:300;color:var(--zinc);line-height:1.7}
-
-.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-@media(max-width:600px){.mv-grid{grid-template-columns:1fr}}
-.mv-card{
-  padding:56px 48px;border:1px solid rgba(255,255,255,.04);
-  background:var(--black2);
-  position:relative;overflow:hidden;
-}
-@media(max-width:768px){.mv-card{padding:40px 28px}}
-.mv-card::before{
-  content:'';position:absolute;top:0;left:0;width:0;height:2px;
-  background:var(--g);transition:width .8s var(--ease);
-}
-.mv-card:hover::before{width:100%}
-.mv-card h4{
-  font-family:'Playfair Display',serif;
-  font-size:28px;font-weight:900;font-style:italic;
-  color:var(--white);margin-bottom:16px;letter-spacing:-.02em;
-}
-.mv-card p{font-size:13px;font-weight:300;color:var(--zinc);line-height:1.8}
-
-/* ── SHOWROOM ── */
-#showroom{background:var(--black);padding:140px 48px 120px;min-height:100vh}
-@media(max-width:768px){#showroom{padding:100px 24px 100px}}
-.sr-header{text-align:center;margin-bottom:80px}
-.sr-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,9vw,9rem);
-  font-weight:900;font-style:italic;
-  line-height:.9;letter-spacing:-.03em;color:var(--white);
-}
-.sr-title span{color:var(--g)}
-.sr-subtitle{
-  font-size:13px;font-weight:300;letter-spacing:.08em;
-  color:var(--zinc);margin-top:20px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.8;
-}
-
-.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:800px;margin:0 auto 80px}
-@media(max-width:600px){.social-grid{grid-template-columns:1fr}}
-.social-card{
-  padding:32px 28px;background:var(--black2);border:1px solid rgba(255,255,255,.04);
-  display:flex;flex-direction:column;gap:16px;
-  transition:border-color .4s,background .4s;
-  text-decoration:none;
-}
-.social-card:hover{border-color:rgba(109,174,90,.3);background:rgba(109,174,90,.04)}
-.social-card-top{display:flex;align-items:center;gap:14px}
-.social-icon{
-  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(255,255,255,.1);
-}
-.social-icon img{width:18px;height:18px;object-fit:contain;filter:invert(1);opacity:.6;pointer-events:none;transition:opacity .3s}
-.social-card:hover .social-icon img{opacity:1}
-.social-name{font-size:10px;font-weight:900;letter-spacing:.35em;text-transform:uppercase;color:var(--white)}
-.social-handle{font-size:9px;font-weight:400;letter-spacing:.1em;color:var(--zinc)}
-.social-arrow{
-  font-size:18px;color:rgba(245,245,240,.15);align-self:flex-end;
-  transition:color .3s,transform .3s;
-}
-.social-card:hover .social-arrow{color:var(--g);transform:translate(4px,-4px)}
-
-.location-section{
-  max-width:800px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;gap:2px;
-}
-@media(max-width:600px){.location-section{grid-template-columns:1fr}}
-.loc-info{
-  padding:40px 36px;background:var(--black2);border:1px solid rgba(255,255,255,.04);
-}
-.loc-label{font-size:8px;font-weight:700;letter-spacing:.5em;text-transform:uppercase;color:var(--g);margin-bottom:16px;display:block}
-.loc-title{
-  font-family:'Playfair Display',serif;
-  font-size:28px;font-weight:900;font-style:italic;
-  color:var(--white);letter-spacing:-.02em;margin-bottom:24px;
-}
-.loc-detail{margin-bottom:16px}
-.loc-detail-label{font-size:8px;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--zinc);margin-bottom:4px}
-.loc-detail-val{font-size:13px;font-weight:300;color:rgba(245,245,240,.7);line-height:1.6}
-.loc-map{
-  padding:40px 36px;background:var(--g);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:24px;text-align:center;
-}
-.loc-map svg{width:40px;height:40px;stroke:var(--black);fill:none;stroke-width:1.5}
-.loc-map h5{font-size:11px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--black)}
-.loc-map p{font-size:12px;font-weight:300;color:rgba(0,0,0,.6);line-height:1.6;max-width:200px}
-.loc-map-btn{
-  background:var(--black);color:var(--white);
-  padding:16px 32px;font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;
-  text-decoration:none;transition:all .3s;
-  display:inline-block;
-}
-.loc-map-btn:hover{background:rgba(0,0,0,.85)}
-
-/* ── NEWSLETTER ── */
-.newsletter-section{
-  border-top:1px solid rgba(255,255,255,.04);
-  margin-top:80px;padding-top:60px;max-width:800px;margin-left:auto;margin-right:auto;
-  text-align:center;
-}
-.nl-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,5vw,4rem);
-  font-weight:900;font-style:italic;
-  color:var(--white);letter-spacing:-.02em;margin-bottom:8px;
-}
-.nl-sub{font-size:12px;font-weight:300;color:var(--zinc);letter-spacing:.08em;margin-bottom:32px}
-.nl-form{display:flex;gap:0;max-width:440px;margin:0 auto}
-.nl-input{
-  flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
-  border-right:none;color:var(--white);padding:16px 20px;
-  font-family:'Urbanist',sans-serif;font-size:12px;font-weight:400;letter-spacing:.05em;
-  outline:none;transition:border-color .3s;
-}
-.nl-input:focus{border-color:var(--g)}
-.nl-input::placeholder{color:var(--zinc)}
-.nl-btn{
-  background:var(--g);color:var(--white);padding:16px 24px;
-  font-size:9px;font-weight:900;letter-spacing:.4em;text-transform:uppercase;
-  cursor:pointer;border:none;transition:background .3s;white-space:nowrap;
-}
-.nl-btn:hover{background:var(--g-dim)}
-
 /* ── MOBILE NAV ── */
-.mob-nav{
-  display:none;position:fixed;bottom:0;left:0;right:0;z-index:7000;
-  background:rgba(13,13,13,.92);backdrop-filter:blur(20px);
-  border-top:1px solid rgba(255,255,255,.05);
-  padding:12px 0 20px;
-  justify-content:space-around;
-}
-@media(max-width:900px){.mob-nav{display:flex}}
-.mob-link{
-  display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;
-  padding:6px 16px;
-}
-.mob-link svg{width:20px;height:20px;stroke:rgba(245,245,240,.35);fill:none;stroke-width:1.5;transition:stroke .3s}
-.mob-link span{font-size:7px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:rgba(245,245,240,.3);transition:color .3s}
-.mob-link.active svg{stroke:var(--g)}
-.mob-link.active span{color:var(--g)}
+.mobile-footer{display:flex;position:fixed;bottom:0;width:100%;background:rgba(255,255,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);z-index:4000;padding:16px;justify-content:space-around;border-top:1px solid rgba(0,0,0,.05);transition:transform .6s var(--ease-luxury)}
+@media(min-width:1024px){.mobile-footer{display:none}}
+.mobile-link-text{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:#8e8e93;transition:color .3s;cursor:pointer}
+.mobile-link-text.active{color:var(--brand-black)}
 
 /* ── TOAST ── */
-#toast{
-  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(16px);
-  background:var(--white);color:var(--black);
-  padding:12px 28px;font-size:9px;font-weight:900;letter-spacing:.4em;text-transform:uppercase;
-  z-index:99990;opacity:0;pointer-events:none;
-  transition:all .4s var(--ease);white-space:nowrap;
-}
-#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast-notif{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--brand-black);color:#fff;padding:12px 28px;border-radius:30px;font-size:9px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;z-index:99990;opacity:0;pointer-events:none;transition:all .4s var(--ease-luxury);white-space:nowrap}
+#toast-notif.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ── SCROLL REVEAL ── */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease-luxury),transform .9s var(--ease-luxury)}
 .reveal.in{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
-.reveal-delay-3{transition-delay:.3s}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+.no-scrollbar{scrollbar-width:none}
+.no-scrollbar::-webkit-scrollbar{display:none}
 </style>
 </head>
-<body>
-
-<!-- CURSOR -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<body oncontextmenu="return false;">
 
 <!-- TOAST -->
-<div id="toast">Agregado</div>
+<div id="toast-notif">Añadido a tu carrito</div>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCartDrawer()"></div>
 
 <!-- PRELOADER -->
-<div id="preloader" aria-label="Cargando">
-  <div class="pre-letters" aria-hidden="true">
-    <span class="pre-letter" style="animation-delay:.05s">L</span>
-    <span class="pre-letter" style="animation-delay:.1s">E</span>
-    <span class="pre-letter" style="animation-delay:.15s">M</span>
-    <span class="pre-letter" style="animation-delay:.3s;margin-left:.4em">M</span>
-    <span class="pre-letter" style="animation-delay:.35s">O</span>
-    <span class="pre-letter" style="animation-delay:.4s">D</span>
-    <span class="pre-letter" style="animation-delay:.45s">A</span>
+<div id="preloader">
+  <div class="overflow-hidden">
+    <h2 class="text-white font-black italic tracking-[0.15em] uppercase" style="font-family:'Urbanist',sans-serif;font-size:clamp(2rem,8vw,5rem);animation:fadeBlurIn 1.5s var(--ease-luxury) forwards;opacity:0">LEM MODA</h2>
   </div>
-  <div class="pre-bar"></div>
-  <p class="pre-count" id="pre-pct">0%</p>
+  <div class="loader-line"><div class="loader-fill"></div></div>
+  <div class="pre-dots">
+    <div class="pre-dot"></div>
+    <div class="pre-dot"></div>
+    <div class="pre-dot"></div>
+  </div>
 </div>
 
 <!-- NAV -->
-<nav id="main-nav" aria-label="Navegacion principal">
-  <div class="nav-logo" onclick="goTo('home')" role="button" tabindex="0">LEM</div>
-  <div class="nav-links">
-    <span class="nav-link active" id="nl-home" onclick="goTo('home')">Inicio</span>
-    <span class="nav-link" id="nl-shop" onclick="goTo('shop')">Coleccion</span>
-    <span class="nav-link" id="nl-essence" onclick="goTo('essence')">Identidad</span>
-    <span class="nav-link" id="nl-showroom" onclick="goTo('showroom')">Showroom</span>
+<nav class="nav-master" id="header-nav">
+  <div class="logo-box cursor-pointer" onclick="goTo('home')">
+    <img src="assets/images/logos/logo_lem-05.webp" alt="LEM MODA" class="logo-day">
+    <img src="assets/images/logos/logo_lem-04.webp" alt="LEM MODA" class="logo-night">
   </div>
-  <div class="nav-actions">
-    <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Carrito">
-      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      <span class="cart-count" id="cart-badge">0</span>
+  <div class="hidden lg:flex gap-12">
+    <span onclick="goTo('home')" class="nav-link-custom" id="nav-lnk-home">Inicio</span>
+    <span onclick="goTo('shop')" class="nav-link-custom" id="nav-lnk-shop">Colección</span>
+    <span onclick="goTo('essence')" class="nav-link-custom" id="nav-lnk-essence">Identidad</span>
+    <span onclick="goTo('showroom')" class="nav-link-custom" id="nav-lnk-showroom">Showroom</span>
+  </div>
+  <div class="flex items-center gap-8">
+    <button onclick="toggleCartDrawer()" class="relative group p-2" aria-label="Carrito">
+      <svg class="w-5 h-5 group-hover:stroke-[#6DAE5A] transition-colors" style="stroke:currentColor;fill:none;stroke-width:1.5" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span id="cart-badge" class="absolute -top-1 -right-1 bg-[#6DAE5A] text-white text-[9px] w-5 h-5 rounded-full flex items-center justify-center font-black leading-none">0</span>
     </button>
   </div>
 </nav>
 
 <!-- MOBILE NAV -->
-<nav class="mob-nav" aria-label="Navegacion movil">
-  <div class="mob-link active" id="ml-home" onclick="goTo('home')">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span>Inicio</span>
-  </div>
-  <div class="mob-link" id="ml-shop" onclick="goTo('shop')">
-    <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-    <span>Tienda</span>
-  </div>
-  <div class="mob-link" id="ml-essence" onclick="goTo('essence')">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <span>Identidad</span>
-  </div>
-  <div class="mob-link" id="ml-showroom" onclick="goTo('showroom')">
-    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-    <span>Showroom</span>
-  </div>
-</nav>
-
-<!-- ═══════════════ HOME ═══════════════ -->
-<main id="home" class="view active">
-  <div style="position:relative;height:100svh;overflow:hidden">
-    <div class="hero-video-bg">
-      <video autoplay muted loop playsinline aria-hidden="true">
-        <source src="assets/images/videos/pasarela.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Nueva Coleccion 2025</p>
-      <h1 class="hero-title">Estas<br>en tu<br><em>Prime</em></h1>
-      <p class="hero-subtitle">Ropa para los que no paran.<br>Del gym a la calle, sin esfuerzo.</p>
-      <div class="hero-actions">
-        <button class="btn-primary" onclick="goTo('shop')">Explorar Coleccion</button>
-        <button class="btn-ghost" onclick="goTo('essence')">Nuestra Historia</button>
-      </div>
-    </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </div>
-
-  <!-- MARQUEE -->
-  <div style="overflow:hidden;background:var(--g);padding:14px 0;border-top:1px solid rgba(0,0,0,.1)">
-    <div style="display:flex;gap:0;animation:marquee 18s linear infinite;white-space:nowrap">
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:var(--black);padding:0 40px">NUEVA COLECCION 2025</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:rgba(0,0,0,.4);padding:0 40px">•</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:var(--black);padding:0 40px">ATHLEISURE DE ALTA GAMA</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:rgba(0,0,0,.4);padding:0 40px">•</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:var(--black);padding:0 40px">QUITO — ECUADOR</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:rgba(0,0,0,.4);padding:0 40px">•</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:var(--black);padding:0 40px">NUEVA COLECCION 2025</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:rgba(0,0,0,.4);padding:0 40px">•</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:var(--black);padding:0 40px">ATHLEISURE DE ALTA GAMA</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:rgba(0,0,0,.4);padding:0 40px">•</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:var(--black);padding:0 40px">QUITO — ECUADOR</span>
-      <span style="font-size:9px;font-weight:900;letter-spacing:.5em;text-transform:uppercase;color:rgba(0,0,0,.4);padding:0 40px">•</span>
-    </div>
-  </div>
-  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-</main>
-
-<!-- ═══════════════ SHOP ═══════════════ -->
-<main id="shop" class="view">
-  <div id="shop-inner">
-    <div class="shop-header reveal">
-      <h2 class="shop-title">Tienda<span>.</span></h2>
-      <div class="shop-meta">
-        <span class="shop-count" id="shop-count">Cargando...</span>
-        <div class="search-wrap">
-          <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-          <input class="search-input" type="search" id="search-in" placeholder="Buscar..." oninput="doSearch()" aria-label="Buscar">
-        </div>
-      </div>
-      <div class="filters" role="toolbar" aria-label="Filtros de categoria">
-        <button class="filter-btn active" id="f-all" onclick="filterBy('all')">Todo</button>
-        <button class="filter-btn" id="f-modular" onclick="filterBy('modular')">Conjuntos</button>
-        <button class="filter-btn" id="f-hombre" onclick="filterBy('hombre')">Hombre</button>
-        <button class="filter-btn" id="f-mujer" onclick="filterBy('mujer')">Mujer</button>
-        <button class="filter-btn" id="f-outfits" onclick="filterBy('outfits')">Outfits</button>
-        <button class="filter-btn" id="f-promociones" onclick="filterBy('promociones')">Promos</button>
-      </div>
-    </div>
-    <div class="product-grid" id="grid" role="list"></div>
-    <p id="no-results" style="display:none;text-align:center;color:var(--zinc);padding:80px 0;font-size:12px;font-weight:300;letter-spacing:.1em">Sin resultados</p>
-  </div>
-</main>
-
-<!-- ═══════════════ ESSENCE ═══════════════ -->
-<main id="essence" class="view">
-  <div class="essence-hero">
-    <div class="essence-grid-bg"></div>
-    <div class="essence-hero-content">
-      <span class="essence-label">Quito, Ecuador — 2025</span>
-      <h2 class="essence-big-title">Para los<br>que <em>no paran</em></h2>
-    </div>
-  </div>
-  <div class="essence-body">
-    <div class="essence-2col reveal">
-      <div class="essence-icon-wrap">
-        <img src="assets/images/logos/icono-color.webp" alt="Logo hormiga LEM">
-      </div>
-      <div class="essence-text">
-        <h3>La Hormiga<br>y La Hoja</h3>
-        <p style="font-size:13px;font-weight:300;color:var(--zinc);line-height:1.8">Nuestra marca es una abstraccion de la hormiga cargando la hoja — ingenieria de la naturaleza aplicada a quienes visten con determinacion y actitud.</p>
-        <div class="essence-pillars reveal-delay-1">
-          <div class="pillar">
-            <span class="pillar-num">01</span>
-            <div><h5>Fuerza colectiva</h5><p>La persistencia y el soporte mutuo que consolida nuestra comunidad urbana en movimiento.</p></div>
-          </div>
-          <div class="pillar">
-            <span class="pillar-num">02</span>
-            <div><h5>Crecimiento organico</h5><p>La hoja simboliza la evolucion constante del estilo urbano y la capacidad de destacar.</p></div>
-          </div>
-          <div class="pillar">
-            <span class="pillar-num">03</span>
-            <div><h5>Esfuerzo sobrenatural</h5><p>Soportar pesos superiores sin perder jamás la postura, la elegancia ni el enfoque.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="mv-grid reveal">
-      <div class="mv-card">
-        <h4>Mision</h4>
-        <p>Crear prendas que unifiquen modernidad y autenticidad, produciendo piezas versatiles que reflejan el estilo unico de quienes las llevan, bajo un compromiso con la creatividad y la calidad sin concesiones.</p>
-      </div>
-      <div class="mv-card">
-        <h4>Vision</h4>
-        <p>Ser la marca de moda urbana referente del Ecuador, inspirando a una comunidad que celebra la expresion personal, la confianza y la creatividad a traves de prendas con identidad propia e irrepetible.</p>
-      </div>
-    </div>
-  </div>
-</main>
-
-<!-- ═══════════════ SHOWROOM ═══════════════ -->
-<main id="showroom" class="view">
-  <div class="sr-header reveal">
-    <h2 class="sr-title">Unite al<br><span>Movimiento</span></h2>
-    <p class="sr-subtitle">Lanzamientos exclusivos, detras de escena y la evolucion del estilo urbano quiteño.</p>
-  </div>
-
-  <div class="social-grid reveal reveal-delay-1">
-    <a class="social-card" href="https://www.instagram.com/lemmoda.ec" target="_blank" rel="noopener" aria-label="Instagram LEM Moda">
-      <div class="social-card-top">
-        <div class="social-icon"><img src="assets/images/logos/instagram.png" alt=""></div>
-        <div><div class="social-name">Instagram</div><div class="social-handle">@lemmoda.ec</div></div>
-      </div>
-      <div class="social-arrow">↗</div>
-    </a>
-    <a class="social-card" href="https://www.tiktok.com/@lem.moda" target="_blank" rel="noopener" aria-label="TikTok LEM Moda">
-      <div class="social-card-top">
-        <div class="social-icon"><img src="assets/images/logos/tiktok.png" alt=""></div>
-        <div><div class="social-name">TikTok</div><div class="social-handle">@lem.moda</div></div>
-      </div>
-      <div class="social-arrow">↗</div>
-    </a>
-    <a class="social-card" href="https://www.facebook.com/822444230949437" target="_blank" rel="noopener" aria-label="Facebook LEM Moda">
-      <div class="social-card-top">
-        <div class="social-icon"><img src="assets/images/logos/facebook.png" alt=""></div>
-        <div><div class="social-name">Facebook</div><div class="social-handle">LEM MODA</div></div>
-      </div>
-      <div class="social-arrow">↗</div>
-    </a>
-  </div>
-
-  <div class="location-section reveal reveal-delay-2">
-    <div class="loc-info">
-      <span class="loc-label">Showroom fisico</span>
-      <div class="loc-title">Visitanos en Quito</div>
-      <div class="loc-detail">
-        <div class="loc-detail-label">Ubicacion</div>
-        <div class="loc-detail-val">Av. Cristobal Colon y Juan Leon Mera E4-434<br>Quito, Ecuador</div>
-      </div>
-      <div class="loc-detail" style="margin-top:16px">
-        <div class="loc-detail-label">Horario</div>
-        <div class="loc-detail-val">Lunes – Sabado: 09:00 – 19:00<br><strong style="color:var(--white)">Domingo: 09:30 – 17:00</strong></div>
-      </div>
-    </div>
-    <div class="loc-map">
-      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <h5>Trazar ruta</h5>
-      <p>Conecta con tu GPS y llega directo a la tienda.</p>
-      <a class="loc-map-btn" href="https://maps.app.goo.gl/gXNaVhJqNaAbdHJ39" target="_blank" rel="noopener">Iniciar navegacion</a>
-    </div>
-  </div>
-
-  <div class="newsletter-section reveal reveal-delay-3">
-    <h3 class="nl-title">Enterate primero</h3>
-    <p class="nl-sub">Lanzamientos, drops y promos exclusivas directo a tu correo.</p>
-    <form class="nl-form" onsubmit="submitNL(event)">
-      <input class="nl-input" type="email" id="nl-email" placeholder="tu@email.com" required aria-label="Email">
-      <button class="nl-btn" type="submit">Suscribir</button>
-    </form>
-  </div>
-</main>
-
-<!-- MODAL PRODUCTO -->
-<div id="modal" role="dialog" aria-modal="true" aria-label="Detalle de producto">
-  <div class="modal-inner">
-    <div class="modal-gallery" id="modal-gallery">
-      <img id="modal-img" class="modal-img" src="" alt="Producto LEM Moda">
-      <button class="modal-nav-btn prev" onclick="navImg(-1)" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-      <button class="modal-nav-btn next" onclick="navImg(1)" aria-label="Siguiente"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
-      <div class="modal-thumbs" id="modal-thumbs"></div>
-    </div>
-    <div class="modal-details">
-      <div class="modal-cat" id="modal-cat">Categoria</div>
-      <h2 class="modal-name" id="modal-name">Producto</h2>
-      <p class="modal-price" id="modal-price">$0.00</p>
-      <p class="modal-desc" id="modal-desc"></p>
-      <p class="modal-section-label">Color</p>
-      <div class="modal-colors-row" id="modal-colors"></div>
-      <p class="m-color-name" id="modal-color-name">—</p>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:28px">
-        <p class="modal-section-label" style="margin:0">Talla</p>
-        <span class="modal-size-guide" onclick="showSizeGuide()">Guia de tallas</span>
-      </div>
-      <div class="modal-sizes-row" id="modal-sizes"></div>
-      <button class="modal-add-btn" id="modal-add-btn">Agregar a mi bolsa</button>
-    </div>
-  </div>
-  <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">
-    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
+<div class="mobile-footer" id="mobile-nav">
+  <span onclick="goTo('home')" class="mobile-link-text active" id="mob-lnk-home">Inicio</span>
+  <span onclick="goTo('shop')" class="mobile-link-text" id="mob-lnk-shop">Tienda</span>
+  <span onclick="goTo('essence')" class="mobile-link-text" id="mob-lnk-essence">Identidad</span>
+  <span onclick="goTo('showroom')" class="mobile-link-text" id="mob-lnk-showroom">Showroom</span>
 </div>
 
-<!-- CART OVERLAY -->
-<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
-
-<!-- CART DRAWER -->
-<aside id="cart-drawer" aria-label="Carrito">
-  <div class="cart-head">
-    <div class="cart-title">Mi Bolsa</div>
-    <button class="cart-close-btn" onclick="toggleCart()" aria-label="Cerrar carrito">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="cart-list" id="cart-list"></div>
-  <div class="cart-footer">
-    <div class="cart-total-row">
-      <span class="cart-total-label">Total</span>
-      <span class="cart-total-val" id="cart-total">$0.00</span>
+<!-- ══════════════ HOME ══════════════ -->
+<main id="home" class="view-layer active">
+  <div class="relative h-[100svh] w-full bg-black flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 z-10"></div>
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-35 protected-img">
+      <source src="assets/images/videos/pasarela.mp4" type="video/mp4">
+    </video>
+    <div class="relative z-20 text-center text-white px-6 max-w-7xl mx-auto">
+      <p class="text-[9px] font-black uppercase tracking-[.65em] text-[#6DAE5A] mb-6" style="animation:revealUp .8s var(--ease-luxury) 2.4s both;display:flex;align-items:center;justify-content:center;gap:16px">
+        <span style="display:block;width:36px;height:1px;background:#6DAE5A"></span>
+        Nueva Colección 2026
+        <span style="display:block;width:36px;height:1px;background:#6DAE5A"></span>
+      </p>
+      <h1 class="font-black italic uppercase leading-[.9] tracking-tighter mb-10" style="font-size:clamp(3.5rem,11vw,10rem);animation:revealUp .9s var(--ease-luxury) 2.5s both">
+        Estás en tu<br><span style="color:#6DAE5A">Prime</span>
+      </h1>
+      <p class="font-light text-white/50 max-w-md mx-auto leading-relaxed mb-10 text-sm" style="animation:revealUp .8s var(--ease-luxury) 2.7s both;letter-spacing:.06em">
+        Ropa para los que no paran. Del gym a la calle, sin esfuerzo.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center" style="animation:revealUp .8s var(--ease-luxury) 2.9s both">
+        <button onclick="goTo('shop')" class="bg-white text-black px-14 py-5 rounded-full font-black uppercase text-[9px] tracking-[.5em] hover:bg-[#6DAE5A] hover:text-white transition-all duration-500 shadow-xl">
+          Explorar Catálogo
+        </button>
+        <button onclick="goTo('essence')" class="border border-white/25 text-white px-10 py-5 rounded-full font-black uppercase text-[9px] tracking-[.4em] hover:border-white transition-all duration-500">
+          Nuestra Historia
+        </button>
+      </div>
     </div>
-    <button class="cart-order-btn" onclick="sendOrder()">Pedir por WhatsApp</button>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2" style="animation:revealUp .6s var(--ease-luxury) 3.2s both;opacity:0">
+      <span class="text-white/30 text-[8px] font-bold uppercase tracking-[.5em]">Scroll</span>
+      <div style="width:1px;height:50px;background:linear-gradient(to bottom,rgba(109,174,90,.8),transparent)"></div>
+    </div>
+  </div>
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Nueva Colección 2026</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Athleisure de Alta Gama</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Quito — Ecuador</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Del Gym a la Calle</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">LEM MODA</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Nueva Colección 2026</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Athleisure de Alta Gama</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Quito — Ecuador</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Del Gym a la Calle</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">LEM MODA</span><span class="marquee-sep">◆</span>
+    </div>
+  </div>
+</main>
+
+<!-- ══════════════ SHOP ══════════════ -->
+<main id="shop" class="view-layer pt-36 lg:pt-52 pb-36">
+  <div class="max-w-[1920px] mx-auto">
+    <header class="px-6 lg:px-16 mb-12 lg:mb-20 text-center">
+      <h2 class="text-6xl md:text-[6rem] lg:text-[10rem] font-black italic uppercase leading-none tracking-tighter reveal">
+        Tienda<span class="text-[#6DAE5A]">.</span>
+      </h2>
+      <!-- SEARCH -->
+      <div class="flex justify-center mt-8 mb-6 reveal reveal-d1">
+        <div class="search-wrap">
+          <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+          <input type="search" class="search-input" id="search-input" placeholder="Buscar producto..." oninput="doSearch()" aria-label="Buscar">
+        </div>
+      </div>
+      <!-- FILTERS -->
+      <div class="flex flex-wrap justify-center gap-2 md:gap-4 max-w-3xl mx-auto overflow-x-auto pb-2 no-scrollbar reveal reveal-d2">
+        <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
+        <button onclick="filterShop('modular')" class="filter-btn" id="btn-modular">Conjuntos</button>
+        <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
+        <button onclick="filterShop('mujer')" class="filter-btn" id="btn-mujer">Mujer</button>
+        <button onclick="filterShop('outfits')" class="filter-btn" id="btn-outfits">Outfits</button>
+        <button onclick="filterShop('promociones')" class="filter-btn" id="btn-promociones">Promos</button>
+      </div>
+      <p class="text-[10px] font-700 text-zinc-400 tracking-widest uppercase mt-4 reveal reveal-d3" id="product-count">Cargando...</p>
+    </header>
+    <div id="grid-mount" class="catalogue-grid"></div>
+    <p id="no-results" class="hidden text-center py-24 text-zinc-400 font-light tracking-widest text-sm">Sin resultados para tu búsqueda.</p>
+  </div>
+</main>
+
+<!-- ══════════════ ESSENCE ══════════════ -->
+<main id="essence" class="view-layer bg-[#080808] text-white pt-48 pb-48 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-8 lg:px-16">
+    <div class="flex flex-col items-center text-center mb-48">
+      <div class="mb-16 opacity-90 hover:opacity-100 transition-opacity duration-700 reveal">
+        <img src="assets/images/logos/logo_lem-04.webp" alt="LEM Logo" class="h-44 md:h-60 lg:h-72 w-auto object-contain brightness-200">
+      </div>
+      <span class="text-[10px] font-black text-[#6DAE5A] uppercase tracking-[1.2em] mb-8 reveal reveal-d1">Establecido en 2025</span>
+      <h2 class="text-5xl md:text-7xl lg:text-9xl font-black italic uppercase leading-none tracking-tighter mb-10 reveal reveal-d2">
+        Herencia <span class="text-[#6DAE5A]">Ambateña</span>
+      </h2>
+      <p class="text-zinc-400 text-lg md:text-2xl font-light max-w-4xl leading-relaxed reveal reveal-d3">
+        Nacimos en el epicentro y corazón de la industria textil de manufactura del Ecuador, Ambato, en el año 2025. Somos el resultado refinado de la evolución de nuestra tierra, unificando la excelencia técnica de producción local con la mística y los cortes contemporáneos del Streetwear de alta gama internacional.
+      </p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-24 items-center mb-56 reveal">
+      <div class="order-2 lg:order-1 flex justify-center">
+        <div class="relative max-w-md w-full aspect-square bg-zinc-900/40 rounded-full flex items-center justify-center p-12 border border-zinc-800/50" style="animation:float 6s ease-in-out infinite">
+          <img src="assets/images/logos/icono-color.webp" alt="Simbología Hormiga LEM" class="w-full h-auto object-contain opacity-75 transition-all duration-1000 hover:scale-105 hover:opacity-100">
+        </div>
+      </div>
+      <div class="order-1 lg:order-2 space-y-10">
+        <h3 class="text-4xl md:text-5xl font-black italic uppercase text-[#6DAE5A] tracking-tight">La Hormiga y La Hoja</h3>
+        <p class="text-zinc-400 text-lg font-light leading-relaxed">Nuestro imagotipo es una abstracción conceptual y minimalista de la hormiga cargando la hoja. Una analogía directa de la ingeniería de la naturaleza adaptada a una comunidad global que viste con una firme determinación:</p>
+        <div class="space-y-8 pt-4">
+          <div class="flex items-start gap-6 group">
+            <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1 flex-shrink-0">01</span>
+            <div><h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Unidad y Fuerza Colectiva</h5><p class="text-zinc-500 font-light leading-relaxed">La persistencia inquebrantable, la organización perfecta y el soporte mutuo que consolida las bases de nuestra comunidad urbana.</p></div>
+          </div>
+          <div class="flex items-start gap-6 group">
+            <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1 flex-shrink-0">02</span>
+            <div><h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Crecimiento Orgánico</h5><p class="text-zinc-500 font-light leading-relaxed">La hoja simboliza la regeneración, la evolución constante del estilo urbano y la capacidad adaptativa de destacar con sofisticación en el entorno.</p></div>
+          </div>
+          <div class="flex items-start gap-6 group">
+            <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1 flex-shrink-0">03</span>
+            <div><h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Esfuerzo Sobrenatural</h5><p class="text-zinc-500 font-light leading-relaxed">La cualidad innata de soportar y cargar pesos muy superiores a los propios sin perder jamás la postura, la elegancia, ni el enfoque táctico.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-px bg-zinc-800/40 border border-zinc-800/40 reveal">
+      <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
+        <div class="h-1 w-16 bg-[#6DAE5A] mb-10 group-hover:w-full transition-all duration-1000"></div>
+        <h4 class="text-3xl font-black italic uppercase mb-6 tracking-tight">Misión</h4>
+        <p class="text-zinc-400 text-lg font-light leading-relaxed">En Lem Moda creamos prendas que compaginan la modernidad, la autenticidad y la elegancia, produciendo piezas versátiles que reflejan el estilo único de quienes las llevan. Buscamos brindar una experiencia de moda a la vanguardia que fomente la confianza y la identidad, bajo un firme compromiso con el medio ambiente, la creatividad, la innovación y el cuidado meticuloso de cada detalle a través del trabajo en equipo.</p>
+      </div>
+      <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
+        <div class="h-1 w-16 bg-white mb-10 group-hover:w-full transition-all duration-1000"></div>
+        <h4 class="text-3xl font-black italic uppercase mb-6 tracking-tight">Visión</h4>
+        <p class="text-zinc-400 text-lg font-light leading-relaxed">Ser una marca de moda reconocida para convertir la autenticidad en estilo, sobresaliendo por nuestro diseño vanguardista, calidad y esencia atemporal. En Lem Moda aspiramos a consolidarnos como un símbolo de moda contemporánea y consciente, inspirando a una comunidad global que celebre la expresión personal, la unión y la creatividad a través de prendas con identidad propia.</p>
+      </div>
+    </div>
+    <div class="mt-48 text-center border-t border-zinc-900 pt-24">
+      <h6 class="text-xs font-black uppercase tracking-[.6em] text-zinc-600 mb-4">LEM MODA — Diseñado en Ambato, Ecuador</h6>
+      <p class="text-zinc-500 font-light italic text-sm">"Viste a la Moda."</p>
+    </div>
+  </div>
+</main>
+
+<!-- ══════════════ SHOWROOM ══════════════ -->
+<main id="showroom" class="view-layer bg-[#6DAE5A] text-zinc-950 pt-32 pb-48 overflow-hidden min-h-screen">
+  <div class="absolute inset-0 opacity-[.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-16">
+    <div class="max-w-5xl mx-auto text-center">
+      <span class="text-[9px] font-black text-zinc-900 uppercase tracking-[.8em] block mb-4 reveal">Comunidad Global</span>
+      <h4 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-zinc-950 reveal reveal-d1">Únete al Movimiento</h4>
+      <p class="text-zinc-900/80 text-base font-normal max-w-2xl mx-auto leading-relaxed mt-4 reveal reveal-d2">Nuestra narrativa visual se expande a diario. Sé el primero en presenciar los lanzamientos exclusivos, el detrás de escena de nuestros procesos de diseño y la evolución de la mística urbana.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-12 max-w-4xl mx-auto reveal reveal-d3">
+        <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="w-full bg-zinc-950/95 border border-zinc-900/30 p-6 flex items-center justify-between group hover:bg-zinc-900 transition-all duration-500 rounded-sm shadow-lg">
+          <div class="flex items-center gap-4">
+            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0"><img src="assets/images/logos/instagram.png" alt="Instagram" class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 filter invert"></div>
+            <div class="text-left"><h5 class="text-white text-xs font-black uppercase tracking-wider">Instagram</h5><p class="text-zinc-500 text-[10px]">@lemmoda.ec</p></div>
+          </div>
+          <span class="text-zinc-700 group-hover:text-[#6DAE5A] group-hover:translate-x-1 transition-all duration-500 text-xs">➔</span>
+        </a>
+        <a href="https://www.tiktok.com/@lem.moda?_r=1&_t=ZS-96Ta4XscpgC" target="_blank" rel="noopener noreferrer" class="w-full bg-zinc-950/95 border border-zinc-900/30 p-6 flex items-center justify-between group hover:bg-zinc-900 transition-all duration-500 rounded-sm shadow-lg">
+          <div class="flex items-center gap-4">
+            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0"><img src="assets/images/logos/tiktok.png" alt="TikTok" class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 filter invert"></div>
+            <div class="text-left"><h5 class="text-white text-xs font-black uppercase tracking-wider">TikTok</h5><p class="text-zinc-500 text-[10px]">@lem.moda</p></div>
+          </div>
+          <span class="text-zinc-700 group-hover:text-[#6DAE5A] group-hover:translate-x-1 transition-all duration-500 text-xs">➔</span>
+        </a>
+        <a href="https://www.facebook.com/822444230949437" target="_blank" rel="noopener noreferrer" class="w-full bg-zinc-950/95 border border-zinc-900/30 p-6 flex items-center justify-between group hover:bg-zinc-900 transition-all duration-500 rounded-sm shadow-lg">
+          <div class="flex items-center gap-4">
+            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0"><img src="assets/images/logos/facebook.png" alt="Facebook" class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 filter invert"></div>
+            <div class="text-left"><h5 class="text-white text-xs font-black uppercase tracking-wider">Facebook</h5><p class="text-zinc-500 text-[10px]">LEM MODA</p></div>
+          </div>
+          <span class="text-zinc-700 group-hover:text-[#6DAE5A] group-hover:translate-x-1 transition-all duration-500 text-xs">➔</span>
+        </a>
+      </div>
+      <div class="mt-20 border-t border-zinc-950/20 pt-16 max-w-4xl mx-auto reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
+          <div class="space-y-6">
+            <div class="inline-block bg-zinc-950 text-white px-3 py-1 text-[8px] font-black uppercase tracking-[.4em] rounded-sm">Atelier & Showroom</div>
+            <h4 class="text-3xl font-black italic uppercase tracking-tighter text-zinc-950 leading-none">Tienda Física LEM MODA</h4>
+            <p class="text-zinc-900/80 text-sm font-light leading-relaxed">Visita nuestro espacio de diseño urbano. Un entorno minimalista concebido exclusivamente para experimentar la textura, el gramaje pesado y la arquitectura de las prendas de LEM MODA antes de su adquisición.</p>
+            <div class="space-y-4 text-zinc-900 pt-2">
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-0.5">📍 Ubicación</p><p class="text-sm font-light leading-relaxed">Av. Cristóbal Colón y Juan León Mera E4-434<br><span class="text-zinc-800/70 text-xs font-medium">Quito, Ecuador • Código Postal: 170524</span></p></div>
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-0.5">⏱️ Horario Continuo</p><p class="text-sm font-light">Lunes a Sábado: 9:00 a.m. – 7:00 p.m.</p><p class="text-sm font-semibold text-zinc-950">Domingo: 9:30 a.m. – 5:00 p.m.</p></div>
+            </div>
+          </div>
+          <div class="bg-zinc-950 text-white p-8 md:p-10 text-center space-y-6 rounded-sm shadow-xl border border-zinc-900 relative overflow-hidden group">
+            <div class="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-full flex items-center justify-center mx-auto group-hover:border-[#6DAE5A] transition-all duration-500">
+              <svg class="w-5 h-5 text-zinc-400 group-hover:text-[#6DAE5A] transition-all duration-500 fill-current" viewBox="0 0 24 24"><path d="M12 0C7.582 0 4 3.582 4 8c0 5.25 8 16 8 16s8-10.75 8-16c0-4.418-3.582-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+            </div>
+            <div class="space-y-1"><h5 class="text-white text-xs font-black uppercase tracking-[.3em]">Trazar Ruta de Acceso</h5><p class="text-zinc-500 text-[11px] font-light max-w-xs mx-auto">Conecta directamente con tu aplicación de GPS para guiarte hasta la tienda física de LEM MODA.</p></div>
+            <a href="https://maps.app.goo.gl/gXNaVhJqNaAbdHJ39" target="_blank" rel="noopener noreferrer" class="inline-block w-full bg-[#6DAE5A] text-zinc-950 py-4 rounded-full font-black uppercase text-[9px] tracking-[.4em] hover:bg-white hover:text-black transition-all duration-500 shadow-md">Iniciar Navegación</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-48 text-center border-t border-zinc-950/20 pt-24">
+        <h6 class="text-xs font-black uppercase tracking-[.6em] text-zinc-800 mb-4">LEM MODA — Diseñado en Ambato, Ecuador</h6>
+        <p class="text-zinc-700 font-light italic text-sm">"Viste a la Moda."</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- MODAL -->
+<div id="product-modal" class="overflow-y-auto">
+  <div class="max-w-[1500px] mx-auto min-h-screen flex flex-col lg:flex-row relative">
+    <button onclick="history.back()" class="absolute top-8 right-8 z-[7005] w-10 h-10 flex items-center justify-center hover:bg-zinc-100 rounded-full transition-colors text-xl" aria-label="Cerrar">✕</button>
+    <div class="w-full lg:w-1/2 p-4 lg:p-14 flex flex-col justify-center">
+      <div class="modal-carousel-container" id="modal-carousel">
+        <button class="nav-arrow prev" onclick="navigateModalGallery(-1)" aria-label="Anterior">❮</button>
+        <img id="modal-main-img" src="" class="w-full h-full object-cover transition-opacity duration-300 protected-img" alt="Vista Detallada">
+        <button class="nav-arrow next" onclick="navigateModalGallery(1)" aria-label="Siguiente">❯</button>
+      </div>
+      <div id="modal-thumbnails" class="flex gap-3 mt-5 overflow-x-auto pb-2 no-scrollbar"></div>
+    </div>
+    <div class="w-full lg:w-1/2 p-8 lg:p-24 flex flex-col justify-center">
+      <span id="modal-category" class="text-[10px] font-black text-[#6DAE5A] uppercase tracking-[.4em] mb-4">Categoría</span>
+      <h2 id="modal-name" class="text-5xl lg:text-7xl font-black italic uppercase leading-[.95] tracking-tighter mb-4">Nombre</h2>
+      <p id="modal-price" class="text-2xl font-light mb-8 text-zinc-400">$0.00</p>
+      <div class="mb-8">
+        <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Tono Sugerido</p>
+        <div class="flex flex-wrap gap-3" id="modal-colors"></div>
+        <p id="selected-color-name" class="text-[9px] uppercase mt-3 font-bold text-zinc-400 tracking-wider">Sin seleccionar</p>
+      </div>
+      <div class="mb-10">
+        <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Seleccionar Talla</p>
+        <div class="flex flex-wrap gap-2" id="modal-sizes"></div>
+      </div>
+      <button id="modal-add-btn" class="w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[11px] hover:bg-[#6DAE5A] transition-all duration-500">Añadir al Carrito</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART -->
+<aside id="cart-sidebar">
+  <div class="flex justify-between items-center mb-10 border-b border-zinc-100 pb-6">
+    <h3 class="text-3xl font-black italic uppercase tracking-tighter">Mi Carrito</h3>
+    <button onclick="toggleCartDrawer()" class="text-xl p-2 hover:scale-110 transition-transform w-10 h-10 flex items-center justify-center hover:bg-zinc-100 rounded-full">✕</button>
+  </div>
+  <div id="cart-list" class="flex-grow overflow-y-auto space-y-8 pr-2 no-scrollbar"></div>
+  <div class="pt-8 border-t border-zinc-100">
+    <div class="flex justify-between mb-8">
+      <span class="text-[10px] font-black uppercase text-zinc-400 tracking-widest">Inversión Total</span>
+      <span id="cart-total" class="text-3xl font-black tracking-tighter">$0.00</span>
+    </div>
+    <button onclick="sendOrder()" class="w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[10px] hover:bg-[#6DAE5A] transition-colors duration-500">Finalizar Pedido</button>
   </div>
 </aside>
 
 <script>
-/* ═══════════ CURSOR ═══════════ */
-const cur = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cur.style.left=mx+'px';cur.style.top=my+'px';
-});
-(function animRing(){
-  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-})();
-document.querySelectorAll('button,a,[role=button],[onclick]').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-grow'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-grow'));
-});
+/* ══════════ BASE DE DATOS — 60 PRODUCTOS ══════════ */
+const MOCK_DB = [
+  // HOMBRE (20 productos)
+  {id:1,name:"Urban Hoodie Top",price:85,category:"hombre",badge:"new",variants:[{color_name:"Sage Waffle",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"}]},
+  {id:2,name:"Urban Tech Cargo",price:115,category:"hombre",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:3,name:"Minimalist Core Crewneck",price:75,category:"hombre",variants:[{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"}]},
+  {id:4,name:"Vanguard Oversized Knit",price:90,category:"hombre",badge:"hot",variants:[{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:5,name:"Industrial Boxy Tee",price:40,category:"hombre",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"}]},
+  {id:6,name:"Structured Zip Hoodie",price:95,category:"hombre",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"}]},
+  {id:7,name:"LEM Heavyweight Tee",price:55,category:"hombre",variants:[{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"}]},
+  {id:8,name:"Tactical Jogger",price:80,category:"hombre",badge:"new",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"}]},
+  {id:9,name:"Core Sweatpants",price:65,category:"hombre",variants:[{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"}]},
+  {id:10,name:"LEM Bomber Jacket",price:145,category:"hombre",badge:"hot",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"}]},
+  {id:11,name:"Waffle Crew Sweater",price:70,category:"hombre",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"}]},
+  {id:12,name:"Essential White Tee",price:38,category:"hombre",variants:[{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"}]},
+  {id:13,name:"LEM Track Top",price:88,category:"hombre",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"}]},
+  {id:14,name:"Urban Coach Jacket",price:120,category:"hombre",badge:"new",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:15,name:"Phantom Shorts",price:58,category:"hombre",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"}]},
+  {id:16,name:"LEM Varsity Hoodie",price:105,category:"hombre",variants:[{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"}]},
+  {id:17,name:"Boxy Long Sleeve",price:62,category:"hombre",variants:[{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"}]},
+  {id:18,name:"Stealth Cargo Pants",price:110,category:"hombre",badge:"hot",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"}]},
+  {id:19,name:"Graphic LEM Tee",price:42,category:"hombre",variants:[{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"}]},
+  {id:20,name:"LEM Quarter Zip",price:92,category:"hombre",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
 
-/* ═══════════ PRELOADER ═══════════ */
-let pct=0;
-const pctEl=document.getElementById('pre-pct');
-const pInter=setInterval(()=>{
-  pct=Math.min(pct+(Math.random()*8+2)|0,100);
-  pctEl.textContent=pct+'%';
-  if(pct>=100){clearInterval(pInter);}
-},60);
-setTimeout(()=>{
-  const pre=document.getElementById('preloader');
-  pre.style.opacity='0';
-  setTimeout(()=>{pre.style.display='none';initReveal();},900);
-},2000);
+  // MUJER (20 productos)
+  {id:21,name:"Leaf Pink Zip Hoodie",price:95,category:"mujer",badge:"hot",variants:[{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:22,name:"Oversized Leaf Tee",price:45,category:"mujer",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"}]},
+  {id:23,name:"Luxury Crop Hoodie",price:70,category:"mujer",badge:"new",variants:[{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"}]},
+  {id:24,name:"Ribbed Jogger Mujer",price:85,category:"mujer",variants:[{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:25,name:"Sage Asymmetric Top",price:55,category:"mujer",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:26,name:"Midnight Cargo Dama",price:105,category:"mujer",badge:"hot",variants:[{color_name:"Midnight Blue",hex:"#2C3E6B",img:"assets/images/productos/1000813672.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"}]},
+  {id:27,name:"Flare Athleisure Pants",price:88,category:"mujer",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:28,name:"Waffle Bralette Top",price:48,category:"mujer",badge:"new",variants:[{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:29,name:"LEM Sporty Windbreaker",price:130,category:"mujer",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:30,name:"Sculpt Legging",price:72,category:"mujer",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Midnight Blue",hex:"#2C3E6B",img:"assets/images/productos/1000813672.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"}]},
+  {id:31,name:"Ruched Tank Mujer",price:42,category:"mujer",variants:[{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"}]},
+  {id:32,name:"Cropped Sweat Set",price:115,category:"mujer",badge:"new",variants:[{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"}]},
+  {id:33,name:"Wide Leg Comfort Pant",price:95,category:"mujer",variants:[{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:34,name:"LEM Bomber Mujer",price:140,category:"mujer",badge:"hot",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:35,name:"Open Back Sweatshirt",price:78,category:"mujer",variants:[{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"}]},
+  {id:36,name:"Sports Bra LEM",price:52,category:"mujer",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:37,name:"Athleisure Mini Skirt",price:68,category:"mujer",badge:"new",variants:[{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:38,name:"Longline Cardigan",price:88,category:"mujer",variants:[{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:39,name:"Zip Up Trackpants",price:79,category:"mujer",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Midnight Blue",hex:"#2C3E6B",img:"assets/images/productos/1000813672.webp"}]},
+  {id:40,name:"Core Shorts Mujer",price:55,category:"mujer",variants:[{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"}]},
 
-/* ═══════════ NAVIGATION ═══════════ */
-const VIEWS=['home','shop','essence','showroom'];
-function goTo(id,push=true){
-  VIEWS.forEach(v=>{
-    document.getElementById(v).classList.remove('active');
-    document.getElementById('nl-'+v)?.classList.remove('active');
-    document.getElementById('ml-'+v)?.classList.remove('active');
+  // CONJUNTOS MODULARES (10)
+  {id:41,name:"Urban Essence Set",price:200,category:"modular",badge:"new",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:42,name:"Mística Tracksuit Set",price:180,category:"modular",badge:"hot",variants:[{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"}]},
+  {id:43,name:"Full Zen Outfit",price:180,category:"modular",variants:[{color_name:"Zen Sand",hex:"#C8B89A",img:"assets/images/productos/1000813647.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:44,name:"Sage Vanguard Capsule",price:190,category:"modular",variants:[{color_name:"Full Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:45,name:"Pink Core Ensemble",price:135,category:"modular",badge:"new",variants:[{color_name:"Pink/Black",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Pink/White",hex:"#F9C7D2",img:"assets/images/productos/1000813651.webp"},{color_name:"Pink/Sage",hex:"#D4A8B4",img:"assets/images/productos/1000813651.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"}]},
+  {id:46,name:"Street Luxury Obsidian",price:210,category:"modular",badge:"hot",variants:[{color_name:"Double Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Obsidian/Sand",hex:"#2A2A2A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian/Terra",hex:"#1E1E1E",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Obsidian/Sage",hex:"#141414",img:"assets/images/productos/1000813684.webp"},{color_name:"Obsidian/Ivory",hex:"#0E0E0E",img:"assets/images/productos/1000813673.webp"}]},
+  {id:47,name:"Sand Uniform Pack",price:150,category:"modular",variants:[{color_name:"Full Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sand/Obsidian",hex:"#D2C4B4",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand/Terra",hex:"#C4B49C",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Sand/Sage",hex:"#CBBD9F",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand/Ivory",hex:"#D8CEBC",img:"assets/images/productos/1000813673.webp"}]},
+  {id:48,name:"Terra Master Set",price:195,category:"modular",variants:[{color_name:"Full Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Terra/Obsidian",hex:"#8A5240",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra/Sand",hex:"#A86655",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra/Sage",hex:"#9C5E47",img:"assets/images/productos/1000813684.webp"},{color_name:"Terra/Ivory",hex:"#B06A52",img:"assets/images/productos/1000813673.webp"}]},
+  {id:49,name:"Dual Tone Set",price:165,category:"modular",badge:"new",variants:[{color_name:"Sage/Sand",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Terra/Sand",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Pink/Sage",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Obsidian/Sand",hex:"#1A1A1A",img:"assets/images/productos/1000813683.webp"},{color_name:"Ivory/Sage",hex:"#F5F0E8",img:"assets/images/productos/1000813684.webp"}]},
+  {id:50,name:"Monochrome Elite Set",price:220,category:"modular",badge:"hot",variants:[{color_name:"All Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"All Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"All Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"All Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"All Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+
+  // OUTFITS (5)
+  {id:51,name:"Full Pink Power Outfit",price:160,category:"outfits",variants:[{color_name:"Pink/Black",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Pink/White",hex:"#F9C7D2",img:"assets/images/productos/1000813651.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"},{color_name:"Pink/Sage",hex:"#D4A8B4",img:"assets/images/productos/1000813651.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"}]},
+  {id:52,name:"Street Couture Outfit",price:195,category:"outfits",badge:"hot",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"}]},
+  {id:53,name:"Capsule Luxury Outfit",price:215,category:"outfits",badge:"new",variants:[{color_name:"Sand/Ivory",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:54,name:"Gym to Street Outfit",price:145,category:"outfits",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Slate",hex:"#6B7280",img:"assets/images/productos/1000813684.webp"}]},
+  {id:55,name:"LEM Signature Outfit",price:250,category:"outfits",badge:"hot",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+
+  // PROMOCIONES (5)
+  {id:56,name:"Archival Sage Top",price:55,category:"promociones",badge:"promo",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"}]},
+  {id:57,name:"Essential Sand Tee",price:28,category:"promociones",badge:"promo",variants:[{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"}]},
+  {id:58,name:"Seasonal Pink Hoodie",price:60,category:"promociones",badge:"promo",variants:[{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"}]},
+  {id:59,name:"Terra Crew Promo",price:50,category:"promociones",badge:"promo",variants:[{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
+  {id:60,name:"Obsidian Layer Tee",price:24,category:"promociones",badge:"promo",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"}]},
+];
+
+/* ══════════ ESTADO GLOBAL ══════════ */
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem('lem_cart') || '[]'); } catch(e) { cart = []; }
+let currentCategory = 'all';
+let searchTerm = '';
+let selectedColor = '';
+let modalGalleryUrls = [];
+let currentModalImageIndex = 0;
+
+const SIZE_GUIDE = [
+  {let:'XS',num:'32-34'},{let:'S',num:'36-38'},
+  {let:'M',num:'40-42'},{let:'L',num:'44-46'},{let:'XL',num:'48-50'}
+];
+
+/* ══════════ NAVIGATION ══════════ */
+const VIEWS = ['home','shop','essence','showroom'];
+function goTo(id, push=true) {
+  VIEWS.forEach(v => {
+    document.getElementById(v)?.classList.remove('active');
+    document.getElementById('nav-lnk-'+v)?.classList.remove('active');
+    document.getElementById('mob-lnk-'+v)?.classList.remove('active');
   });
-  document.getElementById(id).classList.add('active');
-  document.getElementById('nl-'+id)?.classList.add('active');
-  document.getElementById('ml-'+id)?.classList.add('active');
+  const el = document.getElementById(id);
+  if(el) { el.classList.add('active'); }
+  document.getElementById('nav-lnk-'+id)?.classList.add('active');
+  document.getElementById('mob-lnk-'+id)?.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
-  const mob=document.getElementById('main-nav');
-  if(push)history.pushState({v:id},'','#'+id);
-  if(id==='shop')setTimeout(mountShop,50);
+  const mob = document.getElementById('mobile-nav');
+  if(mob) mob.style.transform = id==='home' ? 'translateY(100%)' : 'translateY(0)';
+  if(push) history.pushState({v:id},'','#'+id);
+  if(id==='shop') { setTimeout(mountShop,60); }
   initReveal();
 }
-window.addEventListener('popstate',e=>{
-  const modal=document.getElementById('modal');
-  if(modal.classList.contains('open')){closeModal(false);return;}
-  goTo(e.state?.v||'home',false);
+
+window.addEventListener('popstate', e => {
+  const modal = document.getElementById('product-modal');
+  if(modal?.classList.contains('open')) { closeProductModal(false); return; }
+  goTo(e.state?.v || 'home', false);
 });
 
-/* ═══════════ PRODUCTS ═══════════ */
-let PRODUCTS=[];
-const SIZES=[{l:'XS',n:'32-34'},{l:'S',n:'36-38'},{l:'M',n:'40-42'},{l:'L',n:'44-46'},{l:'XL',n:'48-50'}];
-let curCat='all',searchQ='',selColor='',mGallery=[],mIdx=0;
-
-async function loadProducts(){
-  try{
-    const r=await fetch('assets/data/productos.json');
-    if(!r.ok)throw new Error();
-    PRODUCTS=await r.json();
-  }catch{
-    PRODUCTS=[
-      {id:1,name:"Urban Essence Collection",category:"modular",description:"Set premium de silueta relajada con textura waffle y sutil bordado dorado LEM. Tela de alta densidad.",price:200,img_default:"assets/images/productos/1000813684.webp",is_new:true,
-       variants:[{color_name:"Sage",hex:"#E2E7E1",img:"assets/images/productos/1000813684.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#D2C4B4",img:"assets/images/productos/1000813683.webp"},{color_name:"Terra",hex:"#B07255",img:"assets/images/productos/lv_0_20260502144922.jpg"}]},
-      {id:2,name:"Leaf Pink Zip Hoodie",price:95,category:"mujer",description:"Hoodie con cierre completo y bordado hoja LEM. Tejido premium french terry.",img_default:"assets/images/productos/1000813651.webp",
-       variants:[{color_name:"Pink",hex:"#FFC0CB",img:"assets/images/productos/1000813651.webp"},{color_name:"White",hex:"#F5F5F0",img:"assets/images/productos/1000813670.webp"}]},
-      {id:3,name:"Oversized Black Leaf",price:45,category:"mujer",description:"Tee oversize con print hoja LEM. Corte boxy y tela de peso medio.",img_default:"assets/images/productos/1000813670.webp",
-       variants:[{color_name:"Black",hex:"#0a0a0a",img:"assets/images/productos/1000813670.webp"}]},
-      {id:4,name:"Essential White Tee",price:38,category:"hombre",description:"La tee perfecta. Peso medio, corte limpio, el blanco que siempre buscabas.",img_default:"assets/images/productos/1000813673.webp",
-       variants:[{color_name:"White",hex:"#F5F5F0",img:"assets/images/productos/1000813673.webp"}]},
-      {id:5,name:"Midnight Cargo Dama",price:105,category:"mujer",description:"Cargo con bolsillos funcionales y tela tecnica. Ajuste perfecto.",img_default:"assets/images/productos/1000813672.webp",
-       variants:[{color_name:"Midnight Blue",hex:"#191970",img:"assets/images/productos/1000813672.webp"}]},
-      {id:6,name:"Full Zen Outfit",price:180,category:"outfits",description:"Outfit completo: hoodie + cargo en armonía total. La comodidad elevada.",img_default:"assets/images/productos/1000813647.webp",is_promo:true,
-       variants:[{color_name:"Zen Sand",hex:"#C2B280",img:"assets/images/productos/1000813647.webp"}]},
-    ];
-  }
+/* ══════════ SHOP FUNCTIONS ══════════ */
+function filterShop(cat) {
+  currentCategory = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-'+cat)?.classList.add('active');
   mountShop();
-  renderCart();
 }
 
-function getFiltered(){
-  let list=curCat==='all'?[...PRODUCTS]:PRODUCTS.filter(p=>p.category===curCat);
-  if(searchQ)list=list.filter(p=>p.name.toLowerCase().includes(searchQ)||(p.description||'').toLowerCase().includes(searchQ));
+function doSearch() {
+  searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+  mountShop();
+}
+
+function getFiltered() {
+  let list = currentCategory === 'all' ? [...MOCK_DB] : MOCK_DB.filter(p => p.category === currentCategory);
+  if(searchTerm) list = list.filter(p => p.name.toLowerCase().includes(searchTerm));
   return list;
 }
 
-function filterBy(cat){
-  curCat=cat;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('f-'+cat)?.classList.add('active');
-  mountShop();
-}
-
-function doSearch(){
-  searchQ=document.getElementById('search-in').value.toLowerCase().trim();
-  mountShop();
-}
-
-function mountShop(){
-  const grid=document.getElementById('grid');
-  const noRes=document.getElementById('no-results');
-  const list=getFiltered();
-  document.getElementById('shop-count').textContent=list.length+' pieza'+(list.length!==1?'s':'');
-  if(!list.length){grid.innerHTML='';noRes.style.display='block';return;}
-  noRes.style.display='none';
-  grid.innerHTML=list.map((p,i)=>{
-    const v0=p.variants[0];
-    const price=p.price||(p.pieces?(p.pieces.top.price+p.pieces.pants.price):0);
-    return`<article class="product-card" style="animation-delay:${i*.05}s" role="listitem" data-id="${p.id}">
-      <div class="product-img-wrap">
-        ${p.is_new?'<span class="badge-tag badge-new">New</span>':''}
-        ${p.is_promo?'<span class="badge-tag badge-promo">Promo</span>':''}
-        <img class="product-img" id="pi-${p.id}" src="${v0.img}" alt="${p.name}" loading="lazy" onload="this.classList.add('loaded')">
-        <div class="product-overlay" aria-hidden="true">
-          <div class="overlay-colors" id="oc-${p.id}">
-            ${p.variants.map((v,vi)=>`<div class="prod-color-dot ${vi===0?'active':''}" style="background:${v.hex}" title="${v.color_name}" onclick="event.stopPropagation();swapColor(this,'${p.id}','${v.color_name}','${v.img}','oc-${p.id}')"></div>`).join('')}
-          </div>
-          <button class="overlay-btn" onclick="openModal(${p.id})">Ver Detalles</button>
+function mountShop() {
+  const grid = document.getElementById('grid-mount');
+  const noRes = document.getElementById('no-results');
+  const countEl = document.getElementById('product-count');
+  const filtered = getFiltered();
+  if(countEl) countEl.textContent = filtered.length + ' pieza' + (filtered.length !== 1 ? 's' : '');
+  if(!filtered.length) {
+    grid.innerHTML = '';
+    noRes?.classList.remove('hidden');
+    return;
+  }
+  noRes?.classList.add('hidden');
+  grid.innerHTML = filtered.map((p, i) => {
+    const v0 = p.variants[0];
+    const badgeHTML = p.badge
+      ? `<span class="badge-tag badge-${p.badge === 'promo' ? 'promo' : p.badge === 'hot' ? 'hot' : 'new'}">${p.badge === 'new' ? 'Nuevo' : p.badge === 'hot' ? 'Hot' : 'Promo'}</span>`
+      : '';
+    const colorsHTML = p.variants.map((v,vi) =>
+      `<div class="color-dot ${vi===0?'active':''}" style="background:${v.hex};width:14px;height:14px" title="${v.color_name}"
+        onclick="event.stopPropagation();swapCardColor(this,${p.id},'${v.color_name}','${v.img}')"></div>`
+    ).join('');
+    return `<article class="product-card" style="animation-delay:${Math.min(i*.04,.5)}s" data-id="${p.id}">
+      <div class="img-container">
+        ${badgeHTML}
+        <img id="pimg-${p.id}" src="${v0.img}" alt="${p.name}" loading="lazy" onload="this.classList.add('loaded')" class="protected-img">
+        <div class="details-overlay">
+          <div class="overlay-colors-row" id="ocr-${p.id}">${colorsHTML}</div>
+          <button class="btn-view-details" onclick="openProductModal(${p.id})">Ver Detalles</button>
         </div>
       </div>
       <div class="product-info">
-        <div class="product-cat">${p.category}</div>
-        <div class="product-name">${p.name}</div>
-        <div class="product-price">$${parseFloat(price).toFixed(2)}</div>
-        <div class="size-row" id="sr-${p.id}">
-          ${SIZES.map(s=>`<div class="sz" onclick="pickSz(this)" data-sz="${s.l}" title="Talla ${s.l}: ${s.n}">${s.l}</div>`).join('')}
+        <div class="prod-cat">${p.category}</div>
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-price">$${parseFloat(p.price).toFixed(2)}</div>
+        <div class="flex gap-1 mt-3" id="szr-${p.id}">
+          ${SIZE_GUIDE.map(s => `<button class="size-btn" onclick="selectSize(this)" title="${s.num}"><span class="size-num">${s.num}</span><span class="size-let">${s.let}</span></button>`).join('')}
         </div>
-        <div class="add-row">
-          <button class="add-btn" onclick="addToCart(${p.id},'sr-${p.id}','oc-${p.id}')">Agregar</button>
-          <button class="detail-btn" onclick="openModal(${p.id})" aria-label="Ver detalles">
-            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
+        <button class="add-to-cart-trigger" onclick="addToCart(${p.id},'szr-${p.id}','ocr-${p.id}',false)">Añadir</button>
       </div>
     </article>`;
   }).join('');
-  setTimeout(()=>{
-    document.querySelectorAll('.product-card').forEach((c,i)=>{
-      setTimeout(()=>c.classList.add('visible'),i*50);
+
+  setTimeout(() => {
+    document.querySelectorAll('.product-card').forEach((c,i) => {
+      setTimeout(() => c.classList.add('visible'), i * 40);
     });
-  },30);
+    initReveal();
+  }, 30);
 }
 
-/* ═══════════ COLOR SWAP ═══════════ */
-function swapColor(el,pid,name,img,ocid){
-  document.getElementById(ocid).querySelectorAll('.prod-color-dot').forEach(d=>d.classList.remove('active'));
+function swapCardColor(el, pid, name, img) {
+  const ocr = document.getElementById('ocr-'+pid);
+  ocr?.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
   el.classList.add('active');
-  const imgEl=document.getElementById('pi-'+pid);
-  if(imgEl){imgEl.style.opacity='0';setTimeout(()=>{imgEl.src=img;imgEl.style.opacity='1';},220);}
+  const imgEl = document.getElementById('pimg-'+pid);
+  if(imgEl) { imgEl.style.opacity='0'; setTimeout(()=>{ imgEl.src=img; imgEl.style.opacity='1'; },220); }
 }
 
-/* ═══════════ SIZE PICK ═══════════ */
-function pickSz(el){
-  el.parentElement.querySelectorAll('.sz').forEach(s=>s.classList.remove('active'));
+function selectSize(el) {
+  el.closest('.flex').querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 }
 
-/* ═══════════ MODAL ═══════════ */
-function openModal(id){
-  const p=PRODUCTS.find(x=>x.id===id);if(!p)return;
-  selColor=p.variants[0].color_name;
-  mGallery=p.variants.map(v=>v.img);
-  mIdx=0;
-  const price=p.price||(p.pieces?(p.pieces.top.price+p.pieces.pants.price):0);
-  document.getElementById('modal-cat').textContent=p.category;
-  document.getElementById('modal-name').textContent=p.name;
-  document.getElementById('modal-price').textContent='$'+parseFloat(price).toFixed(2);
-  document.getElementById('modal-desc').textContent=p.description||'';
-  document.getElementById('modal-color-name').textContent=selColor;
-  document.getElementById('modal-colors').innerHTML=p.variants.map((v,i)=>
-    `<div class="m-color-dot ${i===0?'active':''}" style="background:${v.hex}" title="${v.color_name}" onclick="pickModalColor(this,'${v.color_name}','${v.img}')"></div>`
+/* ══════════ MODAL ══════════ */
+function openProductModal(id) {
+  const p = MOCK_DB.find(x => x.id === id);
+  if(!p) return;
+  selectedColor = p.variants[0].color_name;
+  modalGalleryUrls = p.variants.map(v => v.img);
+  currentModalImageIndex = 0;
+
+  document.getElementById('modal-category').textContent = p.category;
+  document.getElementById('modal-name').textContent = p.name;
+  document.getElementById('modal-price').textContent = '$' + parseFloat(p.price).toFixed(2);
+  document.getElementById('selected-color-name').textContent = selectedColor;
+
+  document.getElementById('modal-colors').innerHTML = p.variants.map((v,i) =>
+    `<div class="color-dot ${i===0?'active':''}" style="background:${v.hex};width:28px;height:28px" title="${v.color_name}"
+      onclick="selectModalColor(this,'${v.color_name}','${v.img}')"></div>`
   ).join('');
-  document.getElementById('modal-sizes').innerHTML=SIZES.map(s=>
-    `<div class="m-sz" onclick="pickMSz(this)"><span class="m-sz-num">${s.n}</span><span class="m-sz-let">${s.l}</span></div>`
+
+  document.getElementById('modal-sizes').innerHTML = SIZE_GUIDE.map(s =>
+    `<button class="size-btn" onclick="selectSize(this)"><span class="size-num">${s.num}</span><span class="size-let">${s.let}</span></button>`
   ).join('');
-  document.getElementById('modal-thumbs').innerHTML=p.variants.map((v,i)=>
-    `<div class="m-thumb ${i===0?'active':''}" onclick="jumpImg(${i})"><img src="${v.img}" alt="${v.color_name}"></div>`
+
+  document.getElementById('modal-thumbnails').innerHTML = p.variants.map((v,i) =>
+    `<div class="thumb-wrapper ${i===0?'active':''}" onclick="jumpModalGallery(${i})">
+      <div class="thumb-shield"></div>
+      <img class="thumb-img-element" src="${v.img}" alt="${v.color_name}">
+    </div>`
   ).join('');
-  document.getElementById('modal-add-btn').onclick=()=>addToCart(id,'modal-sizes-fake','modal-colors',true);
-  updateModalImg();
-  const m=document.getElementById('modal');
-  m.style.display='flex';setTimeout(()=>m.classList.add('open'),15);
-  document.body.style.overflow='hidden';
+
+  document.getElementById('modal-add-btn').onclick = () => addToCartFromModal(id);
+  renderModalGallery();
+
+  const modal = document.getElementById('product-modal');
+  modal.style.display = 'block';
+  setTimeout(() => modal.classList.add('open'), 15);
+  document.body.style.overflow = 'hidden';
   history.pushState({v:'modal'},'','#detalle');
-  setupSwipe();
+  setupModalSwipe();
 }
 
-function updateModalImg(){
-  const img=document.getElementById('modal-img');
-  img.classList.remove('visible');
-  setTimeout(()=>{img.src=mGallery[mIdx];img.classList.add('visible');},200);
-  document.querySelectorAll('.m-thumb').forEach((t,i)=>t.classList.toggle('active',i===mIdx));
-}
-
-function navImg(d){mIdx=(mIdx+d+mGallery.length)%mGallery.length;updateModalImg();}
-function jumpImg(i){mIdx=i;updateModalImg();}
-function pickModalColor(el,name,img){
-  document.querySelectorAll('.m-color-dot').forEach(d=>d.classList.remove('active'));
-  el.classList.add('active');selColor=name;
-  document.getElementById('modal-color-name').textContent=name;
-  const i=mGallery.indexOf(img);
-  if(i!==-1){mIdx=i;updateModalImg();}
-}
-function pickMSz(el){el.parentElement.querySelectorAll('.m-sz').forEach(s=>s.classList.remove('active'));el.classList.add('active');}
-
-function closeModal(back=true){
-  const m=document.getElementById('modal');
-  m.classList.remove('open');
-  setTimeout(()=>{m.style.display='none';},500);
-  document.body.style.overflow='auto';
-  if(back&&window.location.hash==='#detalle')history.back();
-}
-
-function showSizeGuide(){alert('XS: 32-34 cm\nS: 36-38 cm\nM: 40-42 cm\nL: 44-46 cm\nXL: 48-50 cm');}
-
-let tx=0,ty=0;
-function setupSwipe(){
-  const g=document.getElementById('modal-gallery');
-  g.ontouchstart=e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;};
-  g.ontouchend=e=>{
-    const dx=tx-e.changedTouches[0].screenX,dy=Math.abs(ty-e.changedTouches[0].screenY);
-    if(Math.abs(dx)>40&&dy<60)navImg(dx>0?1:-1);
-  };
-}
-
-/* ═══════════ CART ═══════════ */
-let cart=[];
-try{cart=JSON.parse(localStorage.getItem('lem_cart')||'[]');}catch{cart=[];}
-
-function addToCart(id,sId,cId,fromModal=false){
-  let sz,color;
-  if(fromModal){
-    const active=document.querySelector('#modal-sizes .active');
-    if(!active){toast('Selecciona una talla');return;}
-    sz=active.querySelector('.m-sz-let').textContent;
-    color=selColor;
-  } else {
-    const active=document.querySelector(`#${sId} .active`);
-    if(!active){toast('Selecciona una talla');return;}
-    sz=active.dataset.sz||active.querySelector('.sz-l')?.textContent||active.textContent.trim();
-    const colorEl=document.getElementById(cId);
-    const activeDot=colorEl?.querySelector('.prod-color-dot.active');
-    color=activeDot?.title||'—';
-  }
-  const p=PRODUCTS.find(x=>x.id===id);if(!p)return;
-  const price=p.price||(p.pieces?(p.pieces.top.price+p.pieces.pants.price):0);
-  const variant=p.variants.find(v=>v.color_name===color)||p.variants[0];
-  cart.push({uid:Date.now(),id,name:p.name,price:parseFloat(price),size:sz,color,img:variant.img});
-  saveCart();
-  toast('Agregado a tu bolsa');
-  if(fromModal)closeModal();
-  if(!document.getElementById('cart-drawer').classList.contains('open'))toggleCart();
-}
-
-function removeFromCart(uid){cart=cart.filter(i=>i.uid!==uid);saveCart();}
-
-function saveCart(){
-  try{localStorage.setItem('lem_cart',JSON.stringify(cart));}catch{}
-  renderCart();
-}
-
-function renderCart(){
-  const list=document.getElementById('cart-list');
-  const badge=document.getElementById('cart-badge');
-  const total=cart.reduce((a,i)=>a+i.price,0);
-  if(badge)badge.textContent=cart.length;
-  document.getElementById('cart-total').textContent='$'+total.toFixed(2);
-  if(!cart.length){list.innerHTML='<p class="cart-empty">Tu bolsa esta vacia</p>';return;}
-  list.innerHTML=cart.map(item=>`
-    <div class="cart-item">
-      <div class="cart-item-img"><img src="${item.img}" alt="${item.name}"></div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-meta">Talla ${item.size} &bull; ${item.color}</div>
-        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-      </div>
-      <button class="cart-remove-btn" onclick="removeFromCart(${item.uid})" aria-label="Eliminar">×</button>
-    </div>`).join('');
-}
-
-function toggleCart(){
-  const d=document.getElementById('cart-drawer');
-  const o=document.getElementById('cart-overlay');
-  d.classList.toggle('open');
-  o.classList.toggle('open');
-}
-
-function sendOrder(){
-  if(!cart.length){toast('Tu bolsa esta vacia');return;}
-  const total=cart.reduce((a,i)=>a+i.price,0);
-  let msg='*LEM MODA — Pedido*\n\n';
-  cart.forEach((p,i)=>{msg+=`${i+1}. ${p.name}\n   Talla: ${p.size} | Color: ${p.color}\n   Precio: $${p.price.toFixed(2)}\n\n`;});
-  msg+=`*Total: $${total.toFixed(2)}*\n\nHola, quiero confirmar disponibilidad.`;
-  window.open(`https://wa.me/593984909967?text=${encodeURIComponent(msg)}`,'_blank');
-}
-
-/* ═══════════ NEWSLETTER ═══════════ */
-function submitNL(e){
-  e.preventDefault();
-  toast('Gracias, te avisaremos primero');
-  document.getElementById('nl-email').value='';
-}
-
-/* ═══════════ TOAST ═══════════ */
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2400);
-}
-
-/* ═══════════ SCROLL REVEAL ═══════════ */
-function initReveal(){
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>{
-    el.classList.remove('in');obs.observe(el);
+function renderModalGallery() {
+  const img = document.getElementById('modal-main-img');
+  img.style.opacity='0';
+  setTimeout(()=>{ img.src = modalGalleryUrls[currentModalImageIndex]; img.style.opacity='1'; }, 200);
+  document.querySelectorAll('.thumb-wrapper').forEach((t,i) => {
+    t.classList.toggle('active', i === currentModalImageIndex);
   });
 }
 
-/* ═══════════ NAV SCROLL ═══════════ */
-window.addEventListener('scroll',()=>{
-  document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>60);
-},{passive:true});
+function navigateModalGallery(dir) {
+  currentModalImageIndex = (currentModalImageIndex + dir + modalGalleryUrls.length) % modalGalleryUrls.length;
+  renderModalGallery();
+}
 
-/* ═══════════ MARQUEE STYLE INJECT ═══════════ */
-const ms=document.createElement('style');
-ms.textContent='@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}';
-document.head.appendChild(ms);
+function jumpModalGallery(i) {
+  currentModalImageIndex = i;
+  renderModalGallery();
+}
 
-/* ═══════════ INIT ═══════════ */
-window.addEventListener('DOMContentLoaded',()=>{
+function selectModalColor(el, name, img) {
+  document.querySelectorAll('#modal-colors .color-dot').forEach(d => d.classList.remove('active'));
+  el.classList.add('active');
+  selectedColor = name;
+  document.getElementById('selected-color-name').textContent = name;
+  const idx = modalGalleryUrls.indexOf(img);
+  if(idx !== -1) { currentModalImageIndex = idx; renderModalGallery(); }
+}
+
+function closeProductModal(back=true) {
+  const modal = document.getElementById('product-modal');
+  modal.classList.remove('open');
+  setTimeout(()=>{ modal.style.display='none'; },600);
+  document.body.style.overflow = 'auto';
+  if(back && window.location.hash==='#detalle') history.back();
+}
+
+let _tx=0,_ty=0;
+function setupModalSwipe() {
+  const c = document.getElementById('modal-carousel');
+  c.ontouchstart = e => { _tx=e.changedTouches[0].screenX; _ty=e.changedTouches[0].screenY; };
+  c.ontouchend = e => {
+    const dx=_tx-e.changedTouches[0].screenX, dy=Math.abs(_ty-e.changedTouches[0].screenY);
+    if(Math.abs(dx)>40 && dy<60) navigateModalGallery(dx>0?1:-1);
+  };
+}
+
+/* ══════════ CART ══════════ */
+function addToCart(id, szId, colorId, fromModal) {
+  const activeSize = document.querySelector('#'+szId+' .size-btn.active');
+  if(!activeSize) { showToast('Selecciona una talla'); return; }
+  const size = activeSize.querySelector('.size-let').textContent;
+  const activeDot = fromModal
+    ? document.querySelector('#modal-colors .color-dot.active')
+    : document.querySelector('#'+colorId+' .color-dot.active');
+  const color = activeDot ? activeDot.title : (selectedColor || '—');
+  const p = MOCK_DB.find(x => x.id === id);
+  if(!p) return;
+  const variant = p.variants.find(v => v.color_name === color) || p.variants[0];
+  cart.push({ id, name:p.name, price:parseFloat(p.price), size, color, img:variant.img, uid:Date.now() });
+  saveCart();
+  showToast('Añadido a tu carrito');
+  if(fromModal) closeProductModal();
+  if(!document.getElementById('cart-sidebar').classList.contains('open')) toggleCartDrawer();
+}
+
+function addToCartFromModal(id) {
+  const activeSize = document.querySelector('#modal-sizes .size-btn.active');
+  if(!activeSize) { showToast('Selecciona una talla'); return; }
+  const size = activeSize.querySelector('.size-let').textContent;
+  const p = MOCK_DB.find(x => x.id === id);
+  if(!p) return;
+  const variant = p.variants.find(v => v.color_name === selectedColor) || p.variants[0];
+  cart.push({ id, name:p.name, price:parseFloat(p.price), size, color:selectedColor, img:variant.img, uid:Date.now() });
+  saveCart();
+  showToast('Añadido a tu carrito');
+  closeProductModal();
+  setTimeout(() => toggleCartDrawer(), 600);
+}
+
+function removeCartItem(uid) {
+  cart = cart.filter(i => i.uid !== uid);
+  saveCart();
+}
+
+function saveCart() {
+  try { localStorage.setItem('lem_cart', JSON.stringify(cart)); } catch(e) {}
+  renderCartUI();
+}
+
+function renderCartUI() {
+  const list = document.getElementById('cart-list');
+  const badge = document.getElementById('cart-badge');
+  const total = cart.reduce((a,i) => a + i.price, 0);
+  if(badge) badge.textContent = cart.length;
+  document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+  if(!cart.length) {
+    list.innerHTML = '<p class="text-zinc-400 font-light text-sm text-center py-12 tracking-widest">Tu carrito está vacío.</p>';
+    return;
+  }
+  list.innerHTML = cart.map(item => `
+    <div class="flex gap-4 items-start">
+      <div class="w-16 flex-shrink-0 aspect-[3/4] overflow-hidden bg-zinc-100 rounded-sm">
+        <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover protected-img">
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-[10px] font-black uppercase italic tracking-wide leading-tight">${item.name}</p>
+        <p class="text-[9px] text-zinc-400 font-bold uppercase mt-1 tracking-wider">Talla: ${item.size} · ${item.color}</p>
+        <p class="text-sm font-black mt-1 text-[#6DAE5A]">$${item.price.toFixed(2)}</p>
+      </div>
+      <button onclick="removeCartItem(${item.uid})" class="text-zinc-300 hover:text-red-400 transition-colors p-1 text-lg flex-shrink-0">×</button>
+    </div>
+  `).join('');
+}
+
+function toggleCartDrawer() {
+  const sidebar = document.getElementById('cart-sidebar');
+  const overlay = document.getElementById('cart-overlay');
+  sidebar.classList.toggle('open');
+  overlay?.classList.toggle('open');
+}
+
+function sendOrder() {
+  if(!cart.length) { showToast('Tu carrito está vacío'); return; }
+  const total = cart.reduce((a,i) => a + i.price, 0);
+  let msg = '*LEM MODA — Pedido Online*\n\n';
+  cart.forEach((p,i) => { msg += `${i+1}. ${p.name}\n   Talla: ${p.size} | Color: ${p.color}\n   Precio: $${p.price.toFixed(2)}\n\n`; });
+  msg += `*Inversión Total: $${total.toFixed(2)}*\n\nHola, quisiera confirmar disponibilidad y completar mi pedido.`;
+  window.open(`https://wa.me/593984909967?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+/* ══════════ TOAST ══════════ */
+function showToast(msg) {
+  const t = document.getElementById('toast-notif');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ══════════ SCROLL REVEAL ══════════ */
+function initReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }});
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => obs.observe(el));
+}
+
+/* ══════════ NAV SCROLL ══════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('header-nav')?.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive:true });
+
+/* ══════════ PRELOADER ══════════ */
+window.addEventListener('DOMContentLoaded', () => {
   history.replaceState({v:'home'},'','#home');
-  loadProducts();
+  document.getElementById('mobile-nav').style.transform = 'translateY(100%)';
+  renderCartUI();
+  setTimeout(() => {
+    const pre = document.getElementById('preloader');
+    if(pre) { pre.style.opacity='0'; setTimeout(()=>{ pre.style.display='none'; initReveal(); },1000); }
+  }, 2200);
 });
 </script>
 </body>
