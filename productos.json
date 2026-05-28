@@ -1,315 +1,74 @@
 [
   {
     "id": 1,
-    "name": "Urban Essence Waffle Collection",
-    "category": "modular",
-    "description": "Set premium de silueta relajada con textura waffle y bordado de alta densidad. Diseñado para transicionar del taller a la ciudad con comodidad absoluta.",
-    "price": 200.00,
-    "img_default": "assets/images/productos/1000813684.webp",
+    "name": "Urban Hoodie Top", "price": 85, "category": "hombre", "badge": "new", "sizes": ["S", "M", "L", "XL"], 
+    "composition": "80% Algodón Premium, 20% Poliéster reciclado.", 
+    "history": "Inspirada en el minimalismo urbano de Quito. Diseñada para ofrecer confort absoluto en transiciones del día a la noche.",
     "variants": [
-      { "color_name": "Sage", "hex": "#E2E7E1", "img": "assets/images/productos/1000813684.webp" },
+      { "color_name": "Sage Waffle", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" },
       { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" },
-      { "color_name": "Sand", "hex": "#D2C4B4", "img": "assets/images/productos/1000813683.webp" }
-    ],
-    "is_new": true
-  },
-  {
-    "id": 2,
-    "name": "Leaf Pink Zip Hoodie",
-    "category": "mujer",
-    "description": "Hoodie de corte alto con cierre metálico pulido y el icónico monograma de la hoja LEM estructurado. Confección en algodón pesado de tacto ultra suave.",
-    "price": 95.00,
-    "img_default": "assets/images/productos/1000813651.webp",
-    "variants": [
-      { "color_name": "Pink", "hex": "#FFC0CB", "img": "assets/images/productos/1000813651.webp" },
-      { "color_name": "Chalk White", "hex": "#F9F9F9", "img": "assets/images/productos/1000813673.webp" }
+      { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" },
+      { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" },
+      { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" }
     ]
   },
-  {
-    "id": 3,
-    "name": "Oversized Black Leaf Tee",
-    "category": "mujer",
-    "description": "Camiseta premium de corte estructurado y hombros caídos. Presenta una abstracción monocromática de nuestra insignia de naturaleza urbana en la espalda.",
-    "price": 45.00,
-    "img_default": "assets/images/productos/1000813670.webp",
-    "variants": [
-      { "color_name": "Black", "hex": "#000000", "img": "assets/images/productos/1000813670.webp" }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Essential Boxy White Tee",
-    "category": "hombre",
-    "description": "La silueta básica perfecta. Confeccionada con algodón de 280 gramos que mantiene su forma impecable durante todo el día. Esencia minimalista pura.",
-    "price": 38.00,
-    "img_default": "assets/images/productos/1000813673.webp",
-    "variants": [
-      { "color_name": "White", "hex": "#FFFFFF", "img": "assets/images/productos/1000813673.webp" },
-      { "color_name": "Heather Grey", "hex": "#D3D3D3", "img": "assets/images/productos/1000813647.webp" }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Midnight Cargo Dama",
-    "category": "mujer",
-    "description": "Pantalón cargo técnico con bolsillos sutilmente integrados de perfil plano. Ajuste regulable en tobillos para una versatilidad de estilo inmediato.",
-    "price": 105.00,
-    "img_default": "assets/images/productos/1000813672.webp",
-    "variants": [
-      { "color_name": "Midnight Blue", "hex": "#191970", "img": "assets/images/productos/1000813672.webp" },
-      { "color_name": "Deep Onyx", "hex": "#0D0D0D", "img": "assets/images/productos/1000813670.webp" }
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Full Zen Comfort Outfit",
-    "category": "outfits",
-    "description": "Unificación curada de hoodie oversized y jogger texturizado. Ingeniería textil diseñada para un estilo impecable sin esfuerzo.",
-    "price": 180.00,
-    "img_default": "assets/images/productos/1000813647.webp",
-    "variants": [
-      { "color_name": "Zen Sand", "hex": "#C2B280", "img": "assets/images/productos/1000813647.webp" }
-    ],
-    "is_promo": true
-  },
-  {
-    "id": 7,
-    "name": "Industrial Boxy Tee Sage",
-    "category": "hombre",
-    "description": "Corte de influencia arquitectónica con cuello ajustado de rib grueso. Un básico elevado para complementar texturas urbanas pesadas.",
-    "price": 45.00,
-    "img_default": "assets/images/productos/1000813684.webp",
-    "variants": [
-      { "color_name": "Sage Waffle", "hex": "#E2E7E1", "img": "assets/images/productos/1000813684.webp" },
-      { "color_name": "Obsidian Black", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }
-    ],
-    "is_new": true
-  },
-  {
-    "id": 8,
-    "name": "Minimalist Tech Windbreaker",
-    "category": "hombre",
-    "description": "Chaqueta rompevientos ultraligera con costuras termoselladas y acabado repelente al agua. Ideal para el clima cambiante de Quito.",
-    "price": 125.00,
-    "img_default": "assets/images/productos/1000813670.webp",
-    "variants": [
-      { "color_name": "Matte Charcoal", "hex": "#2F2F2F", "img": "assets/images/productos/1000813670.webp" }
-    ]
-  },
-  {
-    "id": 9,
-    "name": "Everyday Comfort Jogger",
-    "category": "hombre",
-    "description": "Jogger de felpa francesa con caída recta y herrajes de acero negro. Bolsillos profundos con cierres invisibles para alta seguridad.",
-    "price": 75.00,
-    "img_default": "assets/images/productos/1000813647.webp",
-    "variants": [
-      { "color_name": "Charcoal Grey", "hex": "#4A4A4A", "img": "assets/images/productos/1000813647.webp" },
-      { "color_name": "Desert Sand", "hex": "#D2C4B4", "img": "assets/images/productos/1000813683.webp" }
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Sculpt Ribbed Leggings",
-    "category": "mujer",
-    "description": "Leggings de compresión inteligente con tejido acanalado de alta densidad. Diseñados para brindar soporte impecable del gym a la calle.",
-    "price": 65.00,
-    "img_default": "assets/images/productos/1000813672.webp",
-    "variants": [
-      { "color_name": "Olive", "hex": "#556B2F", "img": "assets/images/productos/1000813672.webp" },
-      { "color_name": "Pitch Black", "hex": "#050505", "img": "assets/images/productos/1000813670.webp" }
-    ]
-  },
-  {
-    "id": 11,
-    "name": "Aero Knit Sports Bra",
-    "category": "mujer",
-    "description": "Top deportivo de soporte medio con espalda escotada y bandas elásticas suaves que no marcan. Ajuste anatómico de élite.",
-    "price": 40.00,
-    "img_default": "assets/images/productos/1000813651.webp",
-    "variants": [
-      { "color_name": "Olive Accent", "hex": "#556B2F", "img": "assets/images/productos/1000813651.webp" }
-    ]
-  },
-  {
-    "id": 12,
-    "name": "Street Stealth Cargo V2",
-    "category": "hombre",
-    "description": "La evolución de nuestro pantalón más aclamado. Gabardina pesada pre-lavada con rodillas articuladas para máxima fluidez de movimiento.",
-    "price": 115.00,
-    "img_default": "assets/images/productos/1000813670.webp",
-    "variants": [
-      { "color_name": "Asphalt", "hex": "#1C1C1C", "img": "assets/images/productos/1000813670.webp" },
-      { "color_name": "Khaki Atelier", "hex": "#A39480", "img": "assets/images/productos/1000813683.webp" }
-    ],
-    "is_new": true
-  },
-  {
-    "id": 13,
-    "name": "Phantom Heavy Hoodie",
-    "category": "hombre",
-    "description": "Hoodie sin cordones de silueta exagerada. Capucha de doble panel con un peso total de la prenda que transmite protección y estatus premium.",
-    "price": 98.00,
-    "img_default": "assets/images/productos/1000813670.webp",
-    "variants": [
-      { "color_name": "Onyx Black", "hex": "#111111", "img": "assets/images/productos/1000813670.webp" }
-    ]
-  },
-  {
-    "id": 14,
-    "name": "Ambato Atelier Corduroy Shirt",
-    "category": "hombre",
-    "description": "Sobrecamisa de pana fina confeccionada artesanalmente en nuestros talleres aliados. Textura rica y botones de resina mate grabados.",
-    "price": 85.00,
-    "img_default": "assets/images/productos/1000813683.webp",
-    "variants": [
-      { "color_name": "Camel Cord", "hex": "#C59B27", "img": "assets/images/productos/1000813683.webp" },
-      { "color_name": "Forest Green", "hex": "#1E3F20", "img": "assets/images/productos/1000813684.webp" }
-    ]
-  },
-  {
-    "id": 15,
-    "name": "Matrix Crop Zip Top",
-    "category": "mujer",
-    "description": "Top corto de mangas largas con medio cierre frontal reflectivo. Tejido elástico tecnológico transpirable de secado rápido.",
-    "price": 55.00,
-    "img_default": "assets/images/productos/1000813672.webp",
-    "variants": [
-      { "color_name": "Cyber Shadow", "hex": "#252525", "img": "assets/images/productos/1000813672.webp" }
-    ]
-  },
-  {
-    "id": 16,
-    "name": "Cloud Waffle Lounge Set",
-    "category": "modular",
-    "description": "Conjunto de descanso de lujo compuesto por sudadera ligera y short acanalado. Sofisticación relajada para tus días de enfoque creativo.",
-    "price": 145.00,
-    "img_default": "assets/images/productos/1000813683.webp",
-    "variants": [
-      { "color_name": "Bone", "hex": "#EADEC9", "img": "assets/images/productos/1000813683.webp" },
-      { "color_name": "Slate", "hex": "#708090", "img": "assets/images/productos/1000813647.webp" }
-    ]
-  },
-  {
-    "id": 17,
-    "name": "Core Athleisure Shorts",
-    "category": "hombre",
-    "description": "Shorts premium con forro interior de compresión elástica y bolsillo oculto para smartphones. Ideal para entrenamientos de alta intensidad.",
-    "price": 50.00,
-    "img_default": "assets/images/productos/1000813647.webp",
-    "variants": [
-      { "color_name": "Slate Tech", "hex": "#5A6B7C", "img": "assets/images/productos/1000813647.webp" }
-    ]
-  },
-  {
-    "id": 18,
-    "name": "Nomad Utility Vest Look",
-    "category": "outfits",
-    "description": "Combinación urbana táctica que incluye un chaleco utilitario multibolsillos superpuesto sobre nuestra camiseta boxy blanca esencial.",
-    "price": 130.00,
-    "img_default": "assets/images/productos/1000813673.webp",
-    "variants": [
-      { "color_name": "Tactical Olive", "hex": "#4B5320", "img": "assets/images/productos/1000813673.webp" }
-    ]
-  },
-  {
-    "id": 19,
-    "name": "Lunar Reflective Windrunner",
-    "category": "hombre",
-    "description": "Chaqueta de running con paneles geométricos reflectivos que brillan bajo condiciones de baja luz. El balance perfecto de diseño y visibilidad.",
-    "price": 85.00,
-    "img_default": "assets/images/productos/1000813670.webp",
-    "variants": [
-      { "color_name": "Reflective Silver", "hex": "#C0C0C0", "img": "assets/images/productos/1000813670.webp" }
-    ],
-    "is_promo": true
-  },
-  {
-    "id": 20,
-    "name": "Linear Logo Tee Creme",
-    "category": "mujer",
-    "description": "Camiseta básica de corte regular con tipografía minimalista en acabado texturizado gamuzado al frente. Sutileza elegante.",
-    "price": 35.00,
-    "img_default": "assets/images/productos/1000813683.webp",
-    "variants": [
-      { "color_name": "Creme", "hex": "#FFFDD0", "img": "assets/images/productos/1000813683.webp" }
-    ]
-  },
-  {
-    "id": 21,
-    "name": "Chaqueta Mila Essencial",
-    "category": "mujer",
-    "description": "La Chaqueta 'Mila Esencial' redefine el concepto de urban luxury. Diseñada para quienes se mueven a la velocidad de la gran ciudad pero no negocian la comodidad por el estilo, esta pieza inyecta una dosis de sofisticación limpia en el streetwear contemporáneo. Es la prenda definitiva para dominar el asfalto: una base arquitectónica perfecta para superponer en capas, diseñada para transicionar sin esfuerzo de una reunión creativa a un plan nocturno informal."
-
-    Detalles de Diseño"
-Silueta Cropped & Sculpt: Un corte entallado de longitud moderna que aporta esa estructura limpia y vanguardista que exige la calle. Actúa como una segunda piel, estilizando la figura de forma natural y cómoda.
-
-Textura Microcanalé Premium: Confeccionada en un punto acanalado de alta densidad y tacto ultra suave. Esta textura aporta relieve visual, rompiendo la monotonía de los básicos planos y resistiendo de manera impecable el uso constante de la vida urbana.
-
-Acabados Minimalistas: Cuenta con un cuello alto de perfil limpio y una cremallera frontal completa a tono. Un diseño pulcro que te permite jugar con el estilismo: llévala completamente cerrada para un look imponente y geométrico, o abierta a la mitad para una vibra más relajada.
-
-La Paleta Urbana
-Tres tonos estratégicos que funcionan como los nuevos neutros del armario cápsula de ciudad:
-
-Azul Marino: Una alternativa profunda, nocturna y sumamente elegante al negro de siempre.
-
-Vino: Un toque de color maduro, rico y con carácter para romper el paisaje monocromático urbano.
-
-Arena: La definición de la luz orgánica y el minimalismo puro; el tono ideal para contrastar con texturas pesadas.
-
-Sugerencia de Estilo: El juego de volúmenes lo es todo en la calle. Combina su silueta ajustada con pantalones cargo de corte sastre, wide-leg jeans o un abrigo oversized desabrochado por encima. Corona el look con tus tenis retro favoritos o botas estructuradas.",
-    "price": 21.99,
-    "img_default": "assets/images/productos/chaqueta-mila-essencial-marino.webp",
-    "variants": [
-       { "color_name": "Marino", "hex": "#FFD1DC", "img": "assets/images/productos/chaqueta-mila-essencial-marino.webp" },
-      { "color_name": "Vino", "hex": "#FFD1DC", "img": "assets/images/productos/chaqueta-mila-essencial-vino.webp" },
-      { "color_name": "Arena", "hex": "#EAEAEA", "img": "assets/images/productos/chaqueta-mila-essencial-arena.webp" }
-    ]
-  },
-  {
-    "id": 22,
-    "name": "Thermal Grid Quarter-Zip",
-    "category": "hombre",
-    "description": "Prenda de capas intermedias con textura de cuadrícula térmica que retiene el calor corporal sin añadir peso extra ni bulto volumétrico.",
-    "price": 78.00,
-    "img_default": "assets/images/productos/1000813684.webp",
-    "variants": [
-      { "color_name": "Sage Grid", "hex": "#C3CBB7", "img": "assets/images/productos/1000813684.webp" }
-    ]
-  },
-  {
-    "id": 23,
-    "name": "Raw Edge Heavy Hoodie",
-    "category": "hombre",
-    "description": "Sudadera pesada de estética industrial con costuras de borde crudo expuestas y detalles sutiles de desgaste en las terminaciones.",
-    "price": 95.00,
-    "img_default": "assets/images/productos/1000813647.webp",
-    "variants": [
-      { "color_name": "Earth Muted", "hex": "#705335", "img": "assets/images/productos/1000813647.webp" }
-    ]
-  },
-  {
-    "id": 24,
-    "name": "Dynamic Aero Running Set",
-    "category": "modular",
-    "description": "Conjunto de alto rendimiento diseñado con microperforaciones láser invisibles para ventilación total. Liviano como el aire.",
-    "price": 120.00,
-    "img_default": "assets/images/productos/1000813672.webp",
-    "variants": [
-      { "color_name": "Aero Blue", "hex": "#4682B4", "img": "assets/images/productos/1000813672.webp" }
-    ],
-    "is_promo": true
-  },
-  {
-    "id": 25,
-    "name": "Signature Ant Low Cap",
-    "category": "promociones",
-    "description": "Gorra de béisbol de seis paneles desestructurada con el sutil bordado frontal de la hormiga LEM. El toque final para cualquier look athleisure.",
-    "price": 28.00,
-    "img_default": "assets/images/productos/1000813670.webp",
-    "variants": [
-      { "color_name": "Stealth Black", "hex": "#151515", "img": "assets/images/productos/1000813670.webp" }
-    ],
-    "is_promo": true
-  }
+  { "id": 2, "name": "Urban Tech Cargo", "price": 115, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 3, "name": "Minimalist Core Crewneck", "price": 75, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" } ] },
+  { "id": 4, "name": "Vanguard Oversized Knit", "price": 90, "category": "hombre", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 5, "name": "Industrial Boxy Tee", "price": 40, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 6, "name": "Structured Zip Hoodie", "price": 95, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 7, "name": "LEM Heavyweight Tee", "price": 55, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 8, "name": "Tactical Jogger", "price": 80, "category": "hombre", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 9, "name": "Core Sweatpants", "price": 65, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" } ] },
+  { "id": 10, "name": "LEM Bomber Jacket", "price": 145, "category": "hombre", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 11, "name": "Waffle Crew Sweater", "price": 70, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 12, "name": "Essential White Tee", "price": 38, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" } ] },
+  { "id": 13, "name": "LEM Track Top", "price": 88, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 14, "name": "Urban Coach Jacket", "price": 120, "category": "hombre", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 15, "name": "Phantom Shorts", "price": 58, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 16, "name": "LEM Varsity Hoodie", "price": 105, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 17, "name": "Boxy Long Sleeve", "price": 62, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" } ] },
+  { "id": 18, "name": "Stealth Cargo Pants", "price": 110, "category": "hombre", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 19, "name": "Graphic LEM Tee", "price": 42, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" } ] },
+  { "id": 20, "name": "LEM Quarter Zip", "price": 92, "category": "hombre", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 21, "name": "Leaf Pink Zip Hoodie", "price": 95, "category": "mujer", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 22, "name": "Oversized Leaf Tee", "price": 45, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 23, "name": "Luxury Crop Hoodie", "price": 70, "category": "mujer", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" } ] },
+  { "id": 24, "name": "Ribbed Jogger Mujer", "price": 85, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 25, "name": "Sage Asymmetric Top", "price": 55, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 26, "name": "Midnight Cargo Dama", "price": 105, "category": "mujer", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Midnight Blue", "hex": "#2C3E6B", "img": "assets/images/productos/1000813672.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 27, "name": "Flare Athleisure Pants", "price": 88, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 28, "name": "Waffle Bralette Top", "price": 48, "category": "mujer", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 29, "name": "LEM Sporty Windbreaker", "price": 130, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 30, "name": "Sculpt Legging", "price": 72, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Midnight Blue", "hex": "#2C3E6B", "img": "assets/images/productos/1000813672.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" } ] },
+  { "id": 31, "name": "Ruched Tank Mujer", "price": 42, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 32, "name": "Cropped Sweat Set", "price": 115, "category": "mujer", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 33, "name": "Wide Leg Comfort Pant", "price": 95, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 34, "name": "LEM Bomber Mujer", "price": 140, "category": "mujer", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 35, "name": "Open Back Sweatshirt", "price": 78, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 36, "name": "Sports Bra LEM", "price": 52, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 37, "name": "Athleisure Mini Skirt", "price": 68, "category": "mujer", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" } ] },
+  { "id": 38, "name": "Longline Cardigan", "price": 88, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 39, "name": "Zip Up Trackpants", "price": 79, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Midnight Blue", "hex": "#2C3E6B", "img": "assets/images/productos/1000813672.webp" } ] },
+  { "id": 40, "name": "Core Shorts Mujer", "price": 55, "category": "mujer", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 41, "name": "Urban Essence Set", "price": 200, "category": "modular", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 42, "name": "Mística Tracksuit Set", "price": 180, "category": "modular", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 43, "name": "Full Zen Outfit", "price": 180, "category": "modular", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Zen Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813647.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 44, "name": "Sage Vanguard Capsule", "price": 190, "category": "modular", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Full Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 45, "name": "Pink Core Ensemble", "price": 135, "category": "modular", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Pink/Black", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Pink/White", "hex": "#F9C7D2", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Pink/Sage", "hex": "#D4A8B4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 46, "name": "Street Luxury Obsidian", "price": 210, "category": "modular", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Double Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Obsidian/Sand", "hex": "#2A2A2A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian/Terra", "hex": "#1E1E1E", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Obsidian/Sage", "hex": "#141414", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Obsidian/Ivory", "hex": "#0E0E0E", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 47, "name": "Sand Uniform Pack", "price": 150, "category": "modular", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Full Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sand/Obsidian", "hex": "#D2C4B4", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand/Terra", "hex": "#C4B49C", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Sand/Sage", "hex": "#CBBD9F", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand/Ivory", "hex": "#D8CEBC", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 48, "name": "Terra Master Set", "price": 195, "category": "modular", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Full Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Terra/Obsidian", "hex": "#8A5240", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Terra/Sand", "hex": "#A86655", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra/Sage", "hex": "#9C5E47", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Terra/Ivory", "hex": "#B06A52", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 49, "name": "Dual Tone Set", "price": 165, "category": "modular", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage/Sand", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Terra/Sand", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Pink/Sage", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Obsidian/Sand", "hex": "#1A1A1A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Ivory/Sage", "hex": "#F5F0E8", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 50, "name": "Monochrome Elite Set", "price": 220, "category": "modular", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "All Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "All Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "All Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "All Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "All Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 51, "name": "Full Pink Power Outfit", "price": 160, "category": "outfits", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Pink/Black", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Pink/White", "hex": "#F9C7D2", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Pink/Sage", "hex": "#D4A8B4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 52, "name": "Street Couture Outfit", "price": 195, "category": "outfits", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 53, "name": "Capsule Luxury Outfit", "price": 215, "category": "outfits", "badge": "new", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sand/Ivory", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 54, "name": "Gym to Street Outfit", "price": 145, "category": "outfits", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Slate", "hex": "#6B7280", "img": "assets/images/productos/1000813684.webp" } ] },
+  { "id": 55, "name": "LEM Signature Outfit", "price": 250, "category": "outfits", "badge": "hot", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 56, "name": "Archival Sage Top", "price": 55, "category": "promociones", "badge": "promo", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 57, "name": "Essential Sand Tee", "price": 28, "category": "promociones", "badge": "promo", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 58, "name": "Seasonal Pink Hoodie", "price": 60, "category": "promociones", "badge": "promo", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Pink Leaf", "hex": "#E8A0B0", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Lavender", "hex": "#C8B2D4", "img": "assets/images/productos/1000813651.webp" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" } ] },
+  { "id": 59, "name": "Terra Crew Promo", "price": 50, "category": "promociones", "badge": "promo", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Ivory", "hex": "#F5F0E8", "img": "assets/images/productos/1000813673.webp" } ] },
+  { "id": 60, "name": "Obsidian Layer Tee", "price": 24, "category": "promociones", "badge": "promo", "sizes": ["S", "M", "L", "XL"], "variants": [ { "color_name": "Obsidian", "hex": "#1A1A1A", "img": "assets/images/productos/1000813670.webp" }, { "color_name": "Sand", "hex": "#C8B89A", "img": "assets/images/productos/1000813683.webp" }, { "color_name": "Sage", "hex": "#B5C4AD", "img": "assets/images/productos/1000813684.webp" }, { "color_name": "Terra", "hex": "#A0614A", "img": "assets/images/productos/lv_0_20260502144922.jpg" }, { "color_name": "Blanco", "hex": "#F5F5F5", "img": "assets/images/productos/1000813673.webp" } ] }
 ]
