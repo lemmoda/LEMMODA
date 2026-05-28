@@ -1,50 +1,53 @@
-// 1. DECLARACIÓN GLOBAL (El contenedor vacío)
+// main.js
 let MOCK_DB = [];
 
-// 2. FUNCIÓN DE CARGA (El motor que llena el contenedor)
-async function loadData() {
+async function init() {
     try {
-        const response = await fetch('productos.json'); // Asegúrate que el archivo se llame así
-        if (!response.ok) throw new Error("Archivo no encontrado");
+        const response = await fetch('productos.json');
         MOCK_DB = await response.json();
-        
-        console.log("Base de datos cargada:", MOCK_DB);
-        
-        // Renderizado inicial
-        mountShop(); 
-    } catch (error) {
-        console.error("Fallo al cargar la base de datos:", error);
+        mountShop(); // Render inicial
+        setupEventListeners(); // Vinculamos los clicks aquí, no en el HTML
+    } catch (err) {
+        console.error("Error cargando DB:", err);
     }
 }
 
-// 3. LÓGICA DE NEGOCIO (Los filtros)
-function getFiltered(categoria) {
-    // Si MOCK_DB está vacío, no podemos filtrar nada
-    if (!MOCK_DB || MOCK_DB.length === 0) {
-        console.error("Error: Intentaste filtrar antes de que la DB cargara.");
-        return [];
+function setupEventListeners() {
+    // Filtros
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const cat = e.target.getAttribute('data-category');
+            mountShop(cat);
+        });
+    });
+
+    // Buscador
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = MOCK_DB.filter(p => p.name.toLowerCase().includes(term));
+            renderProducts(filtered);
+        });
     }
-    
-    // Si el usuario pide "todo", retornamos la lista completa
-    if (categoria === 'todo') return MOCK_DB;
-    
-    return MOCK_DB.filter(item => item.category === categoria);
 }
 
-// 4. LÓGICA DE RENDERIZADO
-function mountShop(categoria = 'todo') {
+function mountShop(category = 'todo') {
+    const products = category === 'todo' 
+        ? MOCK_DB 
+        : MOCK_DB.filter(p => p.category === category);
+    renderProducts(products);
+}
+
+function renderProducts(list) {
     const container = document.getElementById('shop-container');
     if (!container) return;
-
-    const productos = getFiltered(categoria);
     
-    container.innerHTML = productos.map(producto => `
+    container.innerHTML = list.map(p => `
         <div class="product-card visible">
-            <h3>${producto.name}</h3>
-            <p>$${producto.price}</p>
+            <h3>${p.name}</h3>
         </div>
     `).join('');
 }
 
-// 5. INICIALIZACIÓN
-document.addEventListener('DOMContentLoaded', loadData);
+document.addEventListener('DOMContentLoaded', init);
