@@ -34,7 +34,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 ::-webkit-scrollbar-track{background:var(--brand-white)}
 ::-webkit-scrollbar-thumb{background:#d4d4d8;border-radius:2px}
 ::-webkit-scrollbar-thumb:hover{background:#a1a1aa}
-
+ 
 /* ── ANIMACIONES ── */
 @keyframes revealUp{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:translateY(0)}}
 @keyframes fillProgress{0%{width:0%}100%{width:100%}}
@@ -42,7 +42,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 @keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes pulse{0%,100%{opacity:.15}50%{opacity:.3}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-
+ 
 /* ── PRELOADER ── */
 #preloader{position:fixed;inset:0;background:var(--brand-black);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1.2s var(--ease-luxury)}
 .loader-line{width:160px;height:1px;background:rgba(255,255,255,0.08);margin-top:32px;position:relative;overflow:hidden}
@@ -51,7 +51,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .pre-dot{width:4px;height:4px;border-radius:50%;background:var(--brand-green);animation:pulse 1.4s ease infinite}
 .pre-dot:nth-child(2){animation-delay:.2s}
 .pre-dot:nth-child(3){animation-delay:.4s}
-
+ 
 /* ── NAV ── */
 .nav-master{position:fixed;top:0;width:100%;z-index:5000;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;transition:all .8s var(--ease-luxury)}
 @media(min-width:1024px){.nav-master{padding:36px 80px}}
@@ -71,22 +71,22 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .nav-link-custom::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--brand-green);transition:width .4s var(--ease-luxury)}
 .nav-link-custom:hover::after,.nav-link-custom.active::after{width:100%}
 #cart-badge.empty{display:none!important}
-
+ 
 /* ── VISTAS ── */
 .view-layer{display:none;opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease-luxury),transform .9s var(--ease-luxury)}
 .view-layer.active{display:block;opacity:1;transform:translateY(0)}
-
+ 
 /* ── MARQUEE ── */
-.marquee-wrap{overflow:hidden;background:var(--brand-green);padding:13px 0;border-top:1px solid rgba(0,0,0,.08)}
+.marquee-wrap{overflow:hidden;background:var(--brand-green);padding:13px 0;border-top:1px solid rgba(0,0,0,.08);position:relative;z-index:1}
 .marquee-track{display:flex;animation:marqueeScroll 22s linear infinite;white-space:nowrap;width:max-content}
 .marquee-item{font-size:9px;font-weight:900;letter-spacing:.55em;text-transform:uppercase;color:var(--brand-black);padding:0 48px}
 .marquee-sep{font-size:9px;font-weight:900;letter-spacing:.55em;color:rgba(0,0,0,.3);padding:0 8px}
-
+ 
 /* ── SHOP HEADER ── */
 .filter-btn{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:3px;padding:10px 24px;border-radius:30px;transition:all .5s var(--ease-luxury);color:#8e8e93;background:transparent;border:1px solid transparent;white-space:nowrap;cursor:pointer}
 .filter-btn:hover{color:var(--brand-black)}
 .filter-btn.active{color:var(--brand-black);background:var(--brand-zinc-light);border-color:rgba(0,0,0,.03)}
-
+ 
 /* ── SEARCH ── */
 .search-wrap{position:relative;display:inline-block}
 .search-input{background:var(--brand-zinc-light);border:1px solid transparent;color:var(--brand-black);padding:11px 18px 11px 42px;font-family:'Urbanist',sans-serif;font-size:12px;font-weight:500;letter-spacing:.03em;width:240px;outline:none;border-radius:30px;transition:all .4s var(--ease-luxury)}
@@ -94,13 +94,13 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .search-input::placeholder{color:#a1a1aa}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.4;pointer-events:none}
 .search-icon svg{width:15px;height:15px;stroke:var(--brand-black);fill:none;stroke-width:2}
-
+ 
 /* ── GRID ── */
 .catalogue-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;padding:2px}
 @media(min-width:768px){.catalogue-grid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:1024px){.catalogue-grid{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:1400px){.catalogue-grid{grid-template-columns:repeat(5,1fr)}}
-
+ 
 /* ── PRODUCT CARD ── */
 .product-card{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease-luxury),transform .7s var(--ease-luxury);background:var(--brand-zinc-light);position:relative}
 .product-card.visible{opacity:1;transform:translateY(0)}
@@ -108,7 +108,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .img-container img{width:100%;height:100%;object-fit:cover;transition:transform 2.2s var(--ease-luxury-slow),opacity .8s var(--ease-luxury),filter .6s;opacity:0;filter:grayscale(8%)}
 .img-container img.loaded{opacity:1}
 .product-card:hover .img-container img.loaded{transform:scale(1.06);filter:grayscale(0%)}
-
+ 
 /* Overlay */
 .details-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:16px;gap:8px;opacity:0;transition:opacity .5s var(--ease-luxury);z-index:20}
 @media(min-width:1024px){.product-card:hover .details-overlay{opacity:1}}
@@ -120,19 +120,19 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .product-card:hover .btn-view-details{transform:translateY(0)}
 .btn-view-details:hover{background:var(--brand-green);color:#fff}
 @media(max-width:1023px){.btn-view-details{transform:translateY(0);padding:9px 18px;font-size:7.5px}}
-
+ 
 /* Badges */
 .badge-tag{position:absolute;top:12px;left:12px;z-index:30;font-size:7.5px;font-weight:900;letter-spacing:.35em;text-transform:uppercase;padding:4px 10px}
 .badge-new{background:var(--brand-green);color:#fff}
 .badge-promo{background:#fff;color:var(--brand-black)}
 .badge-hot{background:#000;color:#fff}
-
+ 
 /* Product Info */
 .product-info{padding:14px 12px 12px;background:#fff}
 .prod-cat{font-size:8px;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:#a1a1aa;margin-bottom:4px}
 .prod-name{font-size:12px;font-weight:800;font-style:italic;text-transform:uppercase;color:var(--brand-black);line-height:1.2;letter-spacing:-.01em}
 .prod-price{font-size:14px;font-weight:900;color:var(--brand-green);margin-top:6px;letter-spacing:-.01em}
-
+ 
 /* Size btns */
 .size-btn{flex:0 0 auto;width:52px;height:52px;border:1px solid #eaeaea;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .4s var(--ease-luxury);gap:2px;background:transparent}
 .size-num{font-size:7px;font-weight:700;color:#71717a;letter-spacing:.5px}
@@ -141,16 +141,16 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .size-btn.active{background:#000;border-color:#000}
 .size-btn.active .size-num{color:#fff;opacity:.6}
 .size-btn.active .size-let{color:#fff}
-
+ 
 /* Color dots */
 .color-dot{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .4s var(--ease-luxury);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
 .color-dot:hover{transform:scale(1.2)}
 .color-dot.active{border-color:#000;transform:scale(1.2)}
-
+ 
 /* Add btn */
 .add-to-cart-trigger{width:100%;padding:14px;background:#000;color:#fff;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:3px;transition:all .5s var(--ease-luxury);margin-top:8px;border:none;cursor:pointer}
 .add-to-cart-trigger:hover{background:var(--brand-green)}
-
+ 
 /* ── MODAL ── */
 #product-modal{position:fixed;inset:0;background:#fff;z-index:7000;display:none;opacity:0;transition:all .6s var(--ease-luxury);overflow-y:auto}
 #product-modal.open{display:block;opacity:1}
@@ -164,23 +164,23 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .thumb-img-element{width:100%;height:100%;object-fit:cover;opacity:.35;transition:opacity .4s var(--ease-luxury)}
 .thumb-wrapper.active .thumb-img-element{opacity:1}
 .thumb-shield{position:absolute;inset:0;z-index:10}
-
+ 
 /* ── CART SIDEBAR ── */
 #cart-sidebar{position:fixed;top:0;right:-100%;width:100%;max-width:480px;height:100vh;background:#fff;z-index:6000;box-shadow:-40px 0 80px rgba(0,0,0,.04);transition:right .8s var(--ease-luxury);display:flex;flex-direction:column;padding:40px}
 #cart-sidebar.open{right:0}
 .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:5900;opacity:0;pointer-events:none;transition:opacity .5s;backdrop-filter:blur(2px)}
 .cart-overlay.open{opacity:1;pointer-events:auto}
-
+ 
 /* ── MOBILE NAV ── */
 .mobile-footer{display:flex;position:fixed;bottom:0;width:100%;background:rgba(255,255,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);z-index:4000;padding:16px;justify-content:space-around;border-top:1px solid rgba(0,0,0,.05);transition:transform .6s var(--ease-luxury)}
 @media(min-width:1024px){.mobile-footer{display:none}}
 .mobile-link-text{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:#8e8e93;transition:color .3s;cursor:pointer}
 .mobile-link-text.active{color:var(--brand-black)}
-
+ 
 /* ── TOAST ── */
 #toast-notif{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--brand-black);color:#fff;padding:12px 28px;border-radius:30px;font-size:9px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;z-index:99990;opacity:0;pointer-events:none;transition:all .4s var(--ease-luxury);white-space:nowrap}
 #toast-notif.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
+ 
 /* ── SCROLL REVEAL ── */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease-luxury),transform .9s var(--ease-luxury)}
 .reveal.in{opacity:1;transform:translateY(0)}
@@ -192,13 +192,13 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 </style>
 </head>
 <body oncontextmenu="return false;">
-
+ 
 <!-- TOAST -->
 <div id="toast-notif">Añadido a tu carrito</div>
-
+ 
 <!-- CART OVERLAY -->
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCartDrawer()"></div>
-
+ 
 <!-- PRELOADER -->
 <div id="preloader">
   <div class="overflow-hidden">
@@ -211,7 +211,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
     <div class="pre-dot"></div>
   </div>
 </div>
-
+ 
 <!-- NAV -->
 <nav class="nav-master" id="header-nav">
   <div class="logo-box cursor-pointer" onclick="goTo('home')">
@@ -231,7 +231,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
     </button>
   </div>
 </nav>
-
+ 
 <!-- MOBILE NAV -->
 <div class="mobile-footer" id="mobile-nav">
   <span onclick="goTo('home')" class="mobile-link-text active" id="mob-lnk-home">Inicio</span>
@@ -239,21 +239,21 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
   <span onclick="goTo('essence')" class="mobile-link-text" id="mob-lnk-essence">Identidad</span>
   <span onclick="goTo('showroom')" class="mobile-link-text" id="mob-lnk-showroom">Showroom</span>
 </div>
-
+ 
 <!-- ══════════════ HOME ══════════════ -->
 <main id="home" class="view-layer active">
-  <div class="relative h-[100svh] w-full bg-black flex items-center justify-center overflow-hidden">
+  <div class="h-[100svh] w-full bg-black flex items-center justify-center" style="position:relative;overflow:hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 z-10"></div>
     <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-35 protected-img">
       <source src="assets/images/videos/pasarela.mp4" type="video/mp4">
     </video>
-    <div class="relative z-20 text-center text-white px-6 max-w-7xl mx-auto">
+    <div class="relative z-20 text-center text-white px-6 w-full max-w-5xl mx-auto flex flex-col items-center justify-center">
       <p class="text-[9px] font-black uppercase tracking-[.65em] text-[#6DAE5A] mb-6" style="animation:revealUp .8s var(--ease-luxury) 2.4s both;display:flex;align-items:center;justify-content:center;gap:16px">
         <span style="display:block;width:36px;height:1px;background:#6DAE5A"></span>
         Nueva Colección 2026
         <span style="display:block;width:36px;height:1px;background:#6DAE5A"></span>
       </p>
-      <h1 class="font-black italic uppercase leading-[.9] tracking-tighter mb-10" style="font-size:clamp(3.5rem,11vw,10rem);animation:revealUp .9s var(--ease-luxury) 2.5s both">
+      <h1 class="font-black italic uppercase leading-[.9] tracking-tighter mb-10 w-full text-center" style="font-size:clamp(3rem,10vw,9rem);animation:revealUp .9s var(--ease-luxury) 2.5s both">
         Estás en tu<br><span style="color:#6DAE5A">Prime</span>
       </h1>
       <p class="font-light text-white/50 max-w-md mx-auto leading-relaxed mb-10 text-sm" style="animation:revealUp .8s var(--ease-luxury) 2.7s both;letter-spacing:.06em">
@@ -268,7 +268,11 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
         </button>
       </div>
     </div>
-
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2" style="animation:revealUp .6s var(--ease-luxury) 3.2s both;opacity:0">
+      <span class="text-white/30 text-[8px] font-bold uppercase tracking-[.5em]">Scroll</span>
+      <div style="width:1px;height:50px;background:linear-gradient(to bottom,rgba(109,174,90,.8),transparent)"></div>
+    </div>
+  </div>
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
@@ -285,7 +289,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
     </div>
   </div>
 </main>
-
+ 
 <!-- ══════════════ SHOP ══════════════ -->
 <main id="shop" class="view-layer pt-36 lg:pt-52 pb-36">
   <div class="max-w-[1920px] mx-auto">
@@ -303,6 +307,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
       <!-- FILTERS -->
       <div class="flex flex-wrap justify-center gap-2 md:gap-4 max-w-3xl mx-auto overflow-x-auto pb-2 no-scrollbar reveal reveal-d2">
         <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
+        <button onclick="filterShop('modular')" class="filter-btn" id="btn-modular">Conjuntos</button>
         <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
         <button onclick="filterShop('mujer')" class="filter-btn" id="btn-mujer">Mujer</button>
         <button onclick="filterShop('outfits')" class="filter-btn" id="btn-outfits">Outfits</button>
@@ -314,7 +319,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
     <p id="no-results" class="hidden text-center py-24 text-zinc-400 font-light tracking-widest text-sm">Sin resultados para tu búsqueda.</p>
   </div>
 </main>
-
+ 
 <!-- ══════════════ ESSENCE ══════════════ -->
 <main id="essence" class="view-layer bg-[#080808] text-white pt-48 pb-48 overflow-hidden">
   <div class="max-w-7xl mx-auto px-8 lg:px-16">
@@ -373,7 +378,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
     </div>
   </div>
 </main>
-
+ 
 <!-- ══════════════ SHOWROOM ══════════════ -->
 <main id="showroom" class="view-layer bg-[#6DAE5A] text-zinc-950 pt-32 pb-48 overflow-hidden min-h-screen">
   <div class="absolute inset-0 opacity-[.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"></div>
@@ -477,7 +482,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
     </div>
   </div>
 </main>
-
+ 
 <!-- MODAL -->
 <div id="product-modal" class="overflow-y-auto">
   <div class="max-w-[1500px] mx-auto min-h-screen flex flex-col lg:flex-row relative">
@@ -518,7 +523,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
     </div>
   </div>
 </div>
-
+ 
 <!-- CART -->
 <aside id="cart-sidebar">
   <div class="flex justify-between items-center mb-10 border-b border-zinc-100 pb-6">
@@ -534,7 +539,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
     <button onclick="sendOrder()" class="w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[10px] hover:bg-[#6DAE5A] transition-colors duration-500">Finalizar Pedido</button>
   </div>
 </aside>
-
+ 
 <script>
 /* ══════════ BASE DE DATOS — 60 PRODUCTOS ══════════ */
 const MOCK_DB = [
