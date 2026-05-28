@@ -268,11 +268,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
         </button>
       </div>
     </div>
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2" style="animation:revealUp .6s var(--ease-luxury) 3.2s both;opacity:0">
-      <span class="text-white/30 text-[8px] font-bold uppercase tracking-[.5em]">Scroll</span>
-      <div style="width:1px;height:50px;background:linear-gradient(to bottom,rgba(109,174,90,.8),transparent)"></div>
-    </div>
-  </div>
+
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
@@ -307,7 +303,6 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
       <!-- FILTERS -->
       <div class="flex flex-wrap justify-center gap-2 md:gap-4 max-w-3xl mx-auto overflow-x-auto pb-2 no-scrollbar reveal reveal-d2">
         <button onclick="filterShop('all')" class="filter-btn active" id="btn-all">Todo</button>
-        <button onclick="filterShop('modular')" class="filter-btn" id="btn-modular">Conjuntos</button>
         <button onclick="filterShop('hombre')" class="filter-btn" id="btn-hombre">Hombre</button>
         <button onclick="filterShop('mujer')" class="filter-btn" id="btn-mujer">Mujer</button>
         <button onclick="filterShop('outfits')" class="filter-btn" id="btn-outfits">Outfits</button>
@@ -566,7 +561,15 @@ const MOCK_DB = [
   {id:20,name:"LEM Quarter Zip",price:92,category:"hombre",variants:[{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Terra",hex:"#A0614A",img:"assets/images/productos/lv_0_20260502144922.jpg"},{color_name:"Ivory",hex:"#F5F0E8",img:"assets/images/productos/1000813673.webp"}]},
 
   // MUJER (20 productos)
-  {id:21,name:"Leaf Pink Zip Hoodie",price:95,category:"mujer",badge:"hot",story:"La pieza favorita que vuelve temporada tras temporada. El hoodie con cierre que combina feminidad y actitud urbana en un solo look.",composition:"78% Algodon organico | 22% Poliester reciclado. French Terry premium de 320g/m2 con interior afelpado.",care:"Lavar en frio a mano o ciclo delicado. No exprimir con fuerza. Secar extendido sobre superficie plana. No usar secadora.",variants:[{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
+  {id:21,name:"Chaqueta Mila Essencial",price:19.99,category:"mujer",badge:"new",
+   story:"Un básico de lujo urbano. Esta chaqueta acanalada de silueta ceñida y cremallera frontal aporta sofisticación instantánea y versatilidad para el juego de capas.",
+   composition:"75% Algodon | 25% Poliester.",
+   care:"Temperatura máxima de lavado 30 °C proceso normal. No usar blanqueador. Secado en tendedero a la sombra. Planchar a temperatura máxima de la base de 150 °C. Limpieza en húmedo profesional proceso moderado.",
+   variants:[
+     {color_name:"Mila Marino",hex:"#242A3D",img:"assets/images/productos/mila-marino.webp"},
+     {color_name:"Mila Vino",hex:"#542D34",img:"assets/images/productos/mila-vino.webp"},
+     {color_name:"Mila Arena",hex:"#D5C8BB",img:"assets/images/productos/mila-arena.webp"}]},
+  
   {id:22,name:"Oversized Leaf Tee",price:45,category:"mujer",variants:[{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"}]},
   {id:23,name:"Luxury Crop Hoodie",price:70,category:"mujer",badge:"new",variants:[{color_name:"Blanco",hex:"#F5F5F5",img:"assets/images/productos/1000813673.webp"},{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"}]},
   {id:24,name:"Ribbed Jogger Mujer",price:85,category:"mujer",variants:[{color_name:"Pink Leaf",hex:"#E8A0B0",img:"assets/images/productos/1000813651.webp"},{color_name:"Obsidian",hex:"#1A1A1A",img:"assets/images/productos/1000813670.webp"},{color_name:"Sand",hex:"#C8B89A",img:"assets/images/productos/1000813683.webp"},{color_name:"Sage",hex:"#B5C4AD",img:"assets/images/productos/1000813684.webp"},{color_name:"Lavender",hex:"#C8B2D4",img:"assets/images/productos/1000813651.webp"}]},
