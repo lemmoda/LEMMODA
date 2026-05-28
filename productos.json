@@ -237,14 +237,33 @@
   },
   {
     "id": 21,
-    "name": "High-Rise Fleece Shorts",
+    "name": "Chaqueta Mila Essencial",
     "category": "mujer",
-    "description": "Shorts de tiro alto con cintura elástica ancha ultra cómoda y cordón plano premium. El balance idóneo entre estética deportiva y relax.",
-    "price": 42.00,
-    "img_default": "assets/images/productos/1000813651.webp",
+    "description": "La Chaqueta 'Mila Esencial' redefine el concepto de urban luxury. Diseñada para quienes se mueven a la velocidad de la gran ciudad pero no negocian la comodidad por el estilo, esta pieza inyecta una dosis de sofisticación limpia en el streetwear contemporáneo. Es la prenda definitiva para dominar el asfalto: una base arquitectónica perfecta para superponer en capas, diseñada para transicionar sin esfuerzo de una reunión creativa a un plan nocturno informal."
+
+    Detalles de Diseño"
+Silueta Cropped & Sculpt: Un corte entallado de longitud moderna que aporta esa estructura limpia y vanguardista que exige la calle. Actúa como una segunda piel, estilizando la figura de forma natural y cómoda.
+
+Textura Microcanalé Premium: Confeccionada en un punto acanalado de alta densidad y tacto ultra suave. Esta textura aporta relieve visual, rompiendo la monotonía de los básicos planos y resistiendo de manera impecable el uso constante de la vida urbana.
+
+Acabados Minimalistas: Cuenta con un cuello alto de perfil limpio y una cremallera frontal completa a tono. Un diseño pulcro que te permite jugar con el estilismo: llévala completamente cerrada para un look imponente y geométrico, o abierta a la mitad para una vibra más relajada.
+
+La Paleta Urbana
+Tres tonos estratégicos que funcionan como los nuevos neutros del armario cápsula de ciudad:
+
+Azul Marino: Una alternativa profunda, nocturna y sumamente elegante al negro de siempre.
+
+Vino: Un toque de color maduro, rico y con carácter para romper el paisaje monocromático urbano.
+
+Arena: La definición de la luz orgánica y el minimalismo puro; el tono ideal para contrastar con texturas pesadas.
+
+Sugerencia de Estilo: El juego de volúmenes lo es todo en la calle. Combina su silueta ajustada con pantalones cargo de corte sastre, wide-leg jeans o un abrigo oversized desabrochado por encima. Corona el look con tus tenis retro favoritos o botas estructuradas.",
+    "price": 21.99,
+    "img_default": "assets/images/productos/chaqueta-mila-essencial-marino.webp",
     "variants": [
-      { "color_name": "Pastel Pink", "hex": "#FFD1DC", "img": "assets/images/productos/1000813651.webp" },
-      { "color_name": "Chalk", "hex": "#EAEAEA", "img": "assets/images/productos/1000813673.webp" }
+       { "color_name": "Marino", "hex": "#FFD1DC", "img": "assets/images/productos/chaqueta-mila-essencial-marino.webp" },
+      { "color_name": "Vino", "hex": "#FFD1DC", "img": "assets/images/productos/chaqueta-mila-essencial-vino.webp" },
+      { "color_name": "Arena", "hex": "#EAEAEA", "img": "assets/images/productos/chaqueta-mila-essencial-arena.webp" }
     ]
   },
   {
