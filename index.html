@@ -622,12 +622,12 @@ let searchTerm = '';
 let selectedColor = '';
 let modalGalleryUrls = [];
 let currentModalImageIndex = 0;
-
+ 
 const SIZE_GUIDE = [
   {let:'XS',num:'32-34'},{let:'S',num:'36-38'},
   {let:'M',num:'40-42'},{let:'L',num:'44-46'},{let:'XL',num:'48-50'}
 ];
-
+ 
 /* ══════════ NAVIGATION ══════════ */
 const VIEWS = ['home','shop','essence','showroom'];
 function goTo(id, push=true) {
@@ -648,13 +648,13 @@ function goTo(id, push=true) {
   if(id==='shop') { setTimeout(mountShop,60); }
   initReveal();
 }
-
+ 
 window.addEventListener('popstate', e => {
   const modal = document.getElementById('product-modal');
   if(modal?.classList.contains('open')) { closeProductModal(false); return; }
   goTo(e.state?.v || 'home', false);
 });
-
+ 
 /* ══════════ SHOP FUNCTIONS ══════════ */
 function filterShop(cat) {
   currentCategory = cat;
@@ -662,18 +662,18 @@ function filterShop(cat) {
   document.getElementById('btn-'+cat)?.classList.add('active');
   mountShop();
 }
-
+ 
 function doSearch() {
   searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
   mountShop();
 }
-
+ 
 function getFiltered() {
   let list = currentCategory === 'all' ? [...MOCK_DB] : MOCK_DB.filter(p => p.category === currentCategory);
   if(searchTerm) list = list.filter(p => p.name.toLowerCase().includes(searchTerm));
   return list;
 }
-
+ 
 function mountShop() {
   const grid = document.getElementById('grid-mount');
   const noRes = document.getElementById('no-results');
@@ -715,7 +715,7 @@ function mountShop() {
       </div>
     </article>`;
   }).join('');
-
+ 
   setTimeout(() => {
     document.querySelectorAll('.product-card').forEach((c,i) => {
       setTimeout(() => c.classList.add('visible'), i * 40);
@@ -723,7 +723,7 @@ function mountShop() {
     initReveal();
   }, 30);
 }
-
+ 
 function swapCardColor(el, pid, name, img) {
   const ocr = document.getElementById('ocr-'+pid);
   ocr?.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
@@ -731,12 +731,12 @@ function swapCardColor(el, pid, name, img) {
   const imgEl = document.getElementById('pimg-'+pid);
   if(imgEl) { imgEl.style.opacity='0'; setTimeout(()=>{ imgEl.src=img; imgEl.style.opacity='1'; },220); }
 }
-
+ 
 function selectSize(el) {
   el.closest('.flex').querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 }
-
+ 
 /* ══════════ MODAL ══════════ */
 function openProductModal(id) {
   const p = MOCK_DB.find(x => x.id === id);
@@ -744,45 +744,45 @@ function openProductModal(id) {
   selectedColor = p.variants[0].color_name;
   modalGalleryUrls = p.variants.map(v => v.img);
   currentModalImageIndex = 0;
-
+ 
   document.getElementById('modal-category').textContent = p.category;
   document.getElementById('modal-name').textContent = p.name;
   document.getElementById('modal-price').textContent = '$' + parseFloat(p.price).toFixed(2);
   document.getElementById('selected-color-name').textContent = selectedColor;
-
+ 
   // Story
   const storyEl = document.getElementById('modal-story');
   if(p.story){ storyEl.textContent = p.story; storyEl.style.display='block'; } else { storyEl.style.display='none'; }
-
+ 
   // Composition
   const compEl = document.getElementById('modal-composition');
   const compWrap = document.getElementById('modal-comp-wrap');
   if(p.composition){ compEl.textContent = p.composition; compWrap.classList.remove('hidden'); } else { compWrap.classList.add('hidden'); }
-
+ 
   // Care
   const careEl = document.getElementById('modal-care');
   const careWrap = document.getElementById('modal-care-wrap');
   if(p.care){ careEl.textContent = p.care; careWrap.classList.remove('hidden'); } else { careWrap.classList.add('hidden'); }
-
+ 
   document.getElementById('modal-colors').innerHTML = p.variants.map((v,i) =>
     `<div class="color-dot ${i===0?'active':''}" style="background:${v.hex};width:28px;height:28px" title="${v.color_name}"
       onclick="selectModalColor(this,'${v.color_name}','${v.img}')"></div>`
   ).join('');
-
+ 
   document.getElementById('modal-sizes').innerHTML = SIZE_GUIDE.map(s =>
     `<button class="size-btn" onclick="selectSize(this)"><span class="size-num">${s.num}</span><span class="size-let">${s.let}</span></button>`
   ).join('');
-
+ 
   document.getElementById('modal-thumbnails').innerHTML = p.variants.map((v,i) =>
     `<div class="thumb-wrapper ${i===0?'active':''}" onclick="jumpModalGallery(${i})">
       <div class="thumb-shield"></div>
       <img class="thumb-img-element" src="${v.img}" alt="${v.color_name}">
     </div>`
   ).join('');
-
+ 
   document.getElementById('modal-add-btn').onclick = () => addToCartFromModal(id);
   renderModalGallery();
-
+ 
   const modal = document.getElementById('product-modal');
   modal.style.display = 'block';
   setTimeout(() => modal.classList.add('open'), 15);
@@ -790,7 +790,7 @@ function openProductModal(id) {
   history.pushState({v:'modal'},'','#detalle');
   setupModalSwipe();
 }
-
+ 
 function renderModalGallery() {
   const img = document.getElementById('modal-main-img');
   img.style.opacity='0';
@@ -799,17 +799,17 @@ function renderModalGallery() {
     t.classList.toggle('active', i === currentModalImageIndex);
   });
 }
-
+ 
 function navigateModalGallery(dir) {
   currentModalImageIndex = (currentModalImageIndex + dir + modalGalleryUrls.length) % modalGalleryUrls.length;
   renderModalGallery();
 }
-
+ 
 function jumpModalGallery(i) {
   currentModalImageIndex = i;
   renderModalGallery();
 }
-
+ 
 function selectModalColor(el, name, img) {
   document.querySelectorAll('#modal-colors .color-dot').forEach(d => d.classList.remove('active'));
   el.classList.add('active');
@@ -818,7 +818,7 @@ function selectModalColor(el, name, img) {
   const idx = modalGalleryUrls.indexOf(img);
   if(idx !== -1) { currentModalImageIndex = idx; renderModalGallery(); }
 }
-
+ 
 function closeProductModal(back=true) {
   const modal = document.getElementById('product-modal');
   modal.classList.remove('open');
@@ -826,7 +826,7 @@ function closeProductModal(back=true) {
   document.body.style.overflow = 'auto';
   if(back && window.location.hash==='#detalle') history.back();
 }
-
+ 
 let _tx=0,_ty=0;
 function setupModalSwipe() {
   const c = document.getElementById('modal-carousel');
@@ -836,7 +836,7 @@ function setupModalSwipe() {
     if(Math.abs(dx)>40 && dy<60) navigateModalGallery(dx>0?1:-1);
   };
 }
-
+ 
 /* ══════════ CART ══════════ */
 function addToCart(id, szId, colorId, fromModal) {
   const activeSize = document.querySelector('#'+szId+' .size-btn.active');
@@ -855,7 +855,7 @@ function addToCart(id, szId, colorId, fromModal) {
   if(fromModal) closeProductModal();
   if(!document.getElementById('cart-sidebar').classList.contains('open')) toggleCartDrawer();
 }
-
+ 
 function addToCartFromModal(id) {
   const activeSize = document.querySelector('#modal-sizes .size-btn.active');
   if(!activeSize) { showToast('Selecciona una talla'); return; }
@@ -869,17 +869,17 @@ function addToCartFromModal(id) {
   closeProductModal();
   setTimeout(() => toggleCartDrawer(), 600);
 }
-
+ 
 function removeCartItem(uid) {
   cart = cart.filter(i => i.uid !== uid);
   saveCart();
 }
-
+ 
 function saveCart() {
   try { localStorage.setItem('lem_cart', JSON.stringify(cart)); } catch(e) {}
   renderCartUI();
 }
-
+ 
 function renderCartUI() {
   const list = document.getElementById('cart-list');
   const badge = document.getElementById('cart-badge');
@@ -904,14 +904,14 @@ function renderCartUI() {
     </div>
   `).join('');
 }
-
+ 
 function toggleCartDrawer() {
   const sidebar = document.getElementById('cart-sidebar');
   const overlay = document.getElementById('cart-overlay');
   sidebar.classList.toggle('open');
   overlay?.classList.toggle('open');
 }
-
+ 
 function sendOrder() {
   if(!cart.length) { showToast('Tu carrito está vacío'); return; }
   const total = cart.reduce((a,i) => a + i.price, 0);
@@ -930,7 +930,7 @@ function sendOrder() {
   msg += `Quedo a la espera de la confirmación de disponibilidad para proceder con el estatus de mi pedido. ¿Me pueden colaborar con el número de cuenta para emitir el pago, por favor? 🙏`;
   window.open(`https://wa.me/593984909967?text=${encodeURIComponent(msg)}`, '_blank');
 }
-
+ 
 /* ══════════ TOAST ══════════ */
 function showToast(msg) {
   const t = document.getElementById('toast-notif');
@@ -938,7 +938,7 @@ function showToast(msg) {
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2400);
 }
-
+ 
 /* ══════════ SCROLL REVEAL ══════════ */
 function initReveal() {
   const obs = new IntersectionObserver(entries => {
@@ -946,12 +946,12 @@ function initReveal() {
   }, { threshold: .12 });
   document.querySelectorAll('.reveal:not(.in)').forEach(el => obs.observe(el));
 }
-
+ 
 /* ══════════ NAV SCROLL ══════════ */
 window.addEventListener('scroll', () => {
   document.getElementById('header-nav')?.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive:true });
-
+ 
 /* ══════════ PRELOADER ══════════ */
 window.addEventListener('DOMContentLoaded', () => {
   history.replaceState({v:'home'},'','#home');
