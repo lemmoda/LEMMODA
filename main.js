@@ -1,49 +1,50 @@
-// Variable global para nuestra "base de datos"
+// 1. DECLARACIÓN GLOBAL (El contenedor vacío)
 let MOCK_DB = [];
 
-// Función para cargar los datos
+// 2. FUNCIÓN DE CARGA (El motor que llena el contenedor)
 async function loadData() {
     try {
-        const response = await fetch('PRODUCTOS.JSON.txt'); 
-        if (!response.ok) throw new Error("No se pudo cargar el archivo");
-        
+        const response = await fetch('productos.json'); // Asegúrate que el archivo se llame así
+        if (!response.ok) throw new Error("Archivo no encontrado");
         MOCK_DB = await response.json();
         
-        // Iniciamos el renderizado una vez cargada la data
-        mountShop();
+        console.log("Base de datos cargada:", MOCK_DB);
         
-        // Ocultamos el preloader elegantemente
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(() => preloader.style.display = 'none', 1200);
-        }
+        // Renderizado inicial
+        mountShop(); 
     } catch (error) {
-        console.error("Error de arquitectura:", error);
+        console.error("Fallo al cargar la base de datos:", error);
     }
 }
 
-// Función para renderizar los productos (El puente)
-function mountShop() {
+// 3. LÓGICA DE NEGOCIO (Los filtros)
+function getFiltered(categoria) {
+    // Si MOCK_DB está vacío, no podemos filtrar nada
+    if (!MOCK_DB || MOCK_DB.length === 0) {
+        console.error("Error: Intentaste filtrar antes de que la DB cargara.");
+        return [];
+    }
+    
+    // Si el usuario pide "todo", retornamos la lista completa
+    if (categoria === 'todo') return MOCK_DB;
+    
+    return MOCK_DB.filter(item => item.category === categoria);
+}
+
+// 4. LÓGICA DE RENDERIZADO
+function mountShop(categoria = 'todo') {
     const container = document.getElementById('shop-container');
     if (!container) return;
 
-    container.innerHTML = MOCK_DB.map(producto => `
+    const productos = getFiltered(categoria);
+    
+    container.innerHTML = productos.map(producto => `
         <div class="product-card visible">
-            <div class="img-container">
-                <img src="${producto.img_default}" alt="${producto.name}" class="loaded">
-                <div class="details-overlay">
-                    <button class="btn-view-details">Detalles</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <p class="prod-cat">${producto.category}</p>
-                <h3 class="prod-name">${producto.name}</h3>
-                <p class="prod-price">$${producto.price.toFixed(2)}</p>
-            </div>
+            <h3>${producto.name}</h3>
+            <p>$${producto.price}</p>
         </div>
     `).join('');
 }
 
-// Inicialización cuando el DOM esté listo
+// 5. INICIALIZACIÓN
 document.addEventListener('DOMContentLoaded', loadData);
