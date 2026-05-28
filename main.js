@@ -1,41 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Script cargado y DOM listo.");
-
-    const btnExplore = document.getElementById('btn-explore');
-    const btnHistory = document.getElementById('btn-history');
-
-    // Función de navegación
-    const goTo = (id) => {
-        console.log("Intentando navegar a:", id);
-        const sections = document.querySelectorAll('.view-layer');
-        sections.forEach(s => s.classList.remove('active'));
-        
-        const target = document.getElementById(id);
-        if (target) {
-            target.classList.add('active');
-            console.log("Sección encontrada y activada.");
-        } else {
-            console.error("ERROR: No existe una sección con id='" + id + "'");
-        }
-    };
-
-    // Conectar botón explorar
-    if (btnExplore) {
-        btnExplore.addEventListener('click', () => {
-            console.log("Clic en Explorar");
-            goTo('shop'); 
-        });
+// main.js - Código Global y Definitivo
+function goTo(id) {
+    console.log("Navegando a: " + id);
+    
+    // 1. Ocultar todas las secciones
+    const sections = document.querySelectorAll('.view-layer');
+    sections.forEach(s => s.classList.remove('active'));
+    
+    // 2. Mostrar la sección destino
+    const target = document.getElementById(id);
+    if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-        console.error("ERROR: No encontré el botón btn-explore");
+        console.error("ERROR: No existe una sección con el ID: " + id);
     }
-
-    // Conectar botón historia
-    if (btnHistory) {
-        btnHistory.addEventListener('click', () => {
-            console.log("Clic en Historia");
-            goTo('essence');
-        });
-    } else {
-        console.error("ERROR: No encontré el botón btn-history");
-    }
-});
+}
