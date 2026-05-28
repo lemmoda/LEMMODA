@@ -1,53 +1,33 @@
-// main.js
-let MOCK_DB = [];
+// Este bloque asegura que los botones funcionen
+document.addEventListener('DOMContentLoaded', () => {
 
-async function init() {
-    try {
-        const response = await fetch('productos.json');
-        MOCK_DB = await response.json();
-        mountShop(); // Render inicial
-        setupEventListeners(); // Vinculamos los clicks aquí, no en el HTML
-    } catch (err) {
-        console.error("Error cargando DB:", err);
+    // Función para manejar la navegación
+    function goTo(sectionId) {
+        // Oculta todas las secciones
+        document.querySelectorAll('.view-layer').forEach(s => s.classList.remove('active'));
+        
+        // Muestra la sección destino
+        const target = document.getElementById(sectionId);
+        if (target) {
+            target.classList.add('active');
+        } else {
+            console.error("No se encontró la sección:", sectionId);
+        }
     }
-}
 
-function setupEventListeners() {
-    // Filtros
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const cat = e.target.getAttribute('data-category');
-            mountShop(cat);
-        });
-    });
+    // Vinculamos los botones que acabas de modificar
+    const btnExplore = document.getElementById('btn-explore');
+    const btnHistory = document.getElementById('btn-history');
 
-    // Buscador
-    const searchInput = document.querySelector('.search-input');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            const filtered = MOCK_DB.filter(p => p.name.toLowerCase().includes(term));
-            renderProducts(filtered);
+    if (btnExplore) {
+        btnExplore.addEventListener('click', () => {
+            goTo('shop'); // Asegúrate que tu sección de tienda tenga id="shop"
         });
     }
-}
 
-function mountShop(category = 'todo') {
-    const products = category === 'todo' 
-        ? MOCK_DB 
-        : MOCK_DB.filter(p => p.category === category);
-    renderProducts(products);
-}
-
-function renderProducts(list) {
-    const container = document.getElementById('shop-container');
-    if (!container) return;
-    
-    container.innerHTML = list.map(p => `
-        <div class="product-card visible">
-            <h3>${p.name}</h3>
-        </div>
-    `).join('');
-}
-
-document.addEventListener('DOMContentLoaded', init);
+    if (btnHistory) {
+        btnHistory.addEventListener('click', () => {
+            goTo('essence'); // Asegúrate que tu sección de historia tenga id="essence"
+        });
+    }
+});
