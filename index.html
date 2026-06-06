@@ -863,7 +863,10 @@ function addToCart(id, szId, colorId, fromModal) {
   saveCart();
   showToast('Añadido a tu carrito');
   if(fromModal) closeProductModal();
-  if(!document.getElementById('cart-sidebar').classList.contains('open')) toggleCartDrawer();
+  // Abre el drawer DESPUÉS de que renderCartUI termine
+  if(!document.getElementById('cart-sidebar').classList.contains('open')) {
+    requestAnimationFrame(() => setTimeout(toggleCartDrawer, 50));
+  }
 }
  
 function addToCartFromModal(id) {
@@ -881,38 +884,61 @@ function addToCartFromModal(id) {
 }
  
 function removeCartItem(uid) {
-  cart = cart.filter(i => i.uid !== uid);
-  saveCart();
+  // Elimina solo el elemento del DOM sin reconstruir todo
+  const el = document.querySelector(`[data-uid="${uid}"]`);
+  if(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(20px)';
+    el.style.transition = 'opacity 0.2s, transform 0.2s';
+    setTimeout(() => {
+      cart = cart.filter(i => i.uid !== uid);
+      saveCart();
+    }, 200);
+  } else {
+    cart = cart.filter(i => i.uid !== uid);
+    saveCart();
+  }
 }
- 
+
 function saveCart() {
   try { localStorage.setItem('lem_cart', JSON.stringify(cart)); } catch(e) {}
   renderCartUI();
 }
- 
+
+let _cartRenderPending = false;
 function renderCartUI() {
-  const list = document.getElementById('cart-list');
-  const badge = document.getElementById('cart-badge');
-  const total = cart.reduce((a,i) => a + i.price, 0);
-  if(badge){ badge.textContent = cart.length; if(cart.length===0) badge.classList.add("empty"); else badge.classList.remove("empty"); }
-  document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
-  if(!cart.length) {
-    list.innerHTML = '<p class="text-zinc-400 font-light text-sm text-center py-12 tracking-widest">Tu carrito está vacío.</p>';
-    return;
-  }
-  list.innerHTML = cart.map(item => `
-    <div class="flex gap-4 items-start">
-      <div class="w-16 flex-shrink-0 aspect-[3/4] overflow-hidden bg-zinc-100 rounded-sm">
-        <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover protected-img">
+  if(_cartRenderPending) return;
+  _cartRenderPending = true;
+  requestAnimationFrame(() => {
+    _cartRenderPending = false;
+    const list = document.getElementById('cart-list');
+    const badge = document.getElementById('cart-badge');
+    const total = cart.reduce((a,i) => a + i.price, 0);
+    if(badge){ badge.textContent = cart.length; if(cart.length===0) badge.classList.add("empty"); else badge.classList.remove("empty"); }
+    document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+    if(!cart.length) {
+      list.innerHTML = '<p class="text-zinc-400 font-light text-sm text-center py-12 tracking-widest">Tu carrito está vacío.</p>';
+      return;
+    }
+    // Solo reconstruye si el número de items cambió — evita reflow innecesario
+    const existingUids = new Set([...list.querySelectorAll('[data-uid]')].map(el => parseInt(el.dataset.uid)));
+    const cartUids = new Set(cart.map(i => i.uid));
+    const needsFullRender = cart.some(i => !existingUids.has(i.uid)) || [...existingUids].some(u => !cartUids.has(u));
+    if(!needsFullRender) return;
+    list.innerHTML = cart.map(item => `
+      <div class="flex gap-4 items-start" data-uid="${item.uid}" style="transition:opacity 0.2s,transform 0.2s">
+        <div class="w-16 flex-shrink-0 aspect-[3/4] overflow-hidden bg-zinc-100 rounded-sm" style="min-width:64px;min-height:85px">
+          <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover protected-img" loading="lazy" width="64" height="85" decoding="async">
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-[10px] font-black uppercase italic tracking-wide leading-tight">${item.name}</p>
+          <p class="text-[9px] text-zinc-400 font-bold uppercase mt-1 tracking-wider">Talla: ${item.size} · ${item.color}</p>
+          <p class="text-sm font-black mt-1 text-[#6DAE5A]">$${item.price.toFixed(2)}</p>
+        </div>
+        <button onclick="removeCartItem(${item.uid})" class="text-zinc-300 hover:text-red-400 transition-colors p-1 text-lg flex-shrink-0">×</button>
       </div>
-      <div class="flex-1 min-w-0">
-        <p class="text-[10px] font-black uppercase italic tracking-wide leading-tight">${item.name}</p>
-        <p class="text-[9px] text-zinc-400 font-bold uppercase mt-1 tracking-wider">Talla: ${item.size} · ${item.color}</p>
-        <p class="text-sm font-black mt-1 text-[#6DAE5A]">$${item.price.toFixed(2)}</p>
-      </div>
-      <button onclick="removeCartItem(${item.uid})" class="text-zinc-300 hover:text-red-400 transition-colors p-1 text-lg flex-shrink-0">×</button>
-    </div>
-  `).join('');
+    `).join('');
+  });
 }
  
 function toggleCartDrawer() {
