@@ -363,7 +363,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
       <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
         <div class="h-1 w-16 bg-[#6DAE5A] mb-10 group-hover:w-full transition-all duration-1000"></div>
         <h4 class="text-3xl font-black italic uppercase mb-6 tracking-tight">Misión</h4>
-        <p class="text-zinc-400 text-lg font-light leading-relaxed">En Lem Moda creamos prendas que compaginan la modernidad, la autenticidad and la elegancia, produciendo piezas versátiles que reflejan el estilo único de quienes las llevan. Buscamos brindar una experiencia de moda a la vanguardia que fomente la confianza y la identidad, bajo un firme compromiso con el medio ambiente, la creatividad, la innovación y el cuidado meticuloso de cada detalle a través del trabajo en equipo.</p>
+        <p class="text-zinc-400 text-lg font-light leading-relaxed">En Lem Moda creamos prendas que compaginan la modernidad, la autenticidad y la elegancia, produciendo piezas versátiles que reflejan el estilo único de quienes las llevan. Buscamos brindar una experiencia de moda a la vanguardia que fomente la confianza y la identidad, bajo un firme compromiso con el medio ambiente, la creatividad, la innovación y el cuidado meticuloso de cada detalle a través del trabajo en equipo.</p>
       </div>
       <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
         <div class="h-1 w-16 bg-white mb-10 group-hover:w-full transition-all duration-1000"></div>
@@ -529,168 +529,17 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 
       </div>
 
-     <!-- ══════════════ SHOWROOM ══════════════ -->
-<main id="showroom" class="view-layer bg-[#6DAE5A] text-zinc-950 pt-32 pb-48 overflow-hidden min-h-screen">
-
-  <div class="absolute inset-0 opacity-[.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"></div>
-
-  <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-16">
-
-    <div class="max-w-5xl mx-auto text-center">
-
-      <span class="text-[9px] font-black text-zinc-900 uppercase tracking-[.8em] block mb-4 reveal">Comunidad Global</span>
-
-      <h4 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-zinc-950 reveal reveal-d1">Únete al Movimiento</h4>
-
-      <p class="text-zinc-900/80 text-base font-normal max-w-2xl mx-auto leading-relaxed mt-4 reveal reveal-d2">Nuestra narrativa visual se expande a diario. Sé el primero en presenciar los lanzamientos exclusivos, el detrás de escena de nuestros procesos de diseño y la evolución de la mística urbana.</p>
-
-      <style>
-
-        .social-pill{display:inline-block;font-size:8px;font-weight:800;letter-spacing:.4em;text-transform:uppercase;padding:3px 10px;border-radius:30px;background:rgba(109,174,90,.15);color:#6DAE5A;margin-bottom:16px}
-
-        .soc-card{position:relative;overflow:hidden;border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;gap:20px;text-decoration:none;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1);cursor:pointer}
-
-        .soc-card::before{content:'';position:absolute;inset:0;border-radius:16px;border:1px solid rgba(255,255,255,.1);z-index:1;transition:border-color .5s}
-
-        .soc-card::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .5s;border-radius:16px}
-
-        .soc-card:hover{transform:translateY(-6px);box-shadow:0 32px 64px rgba(0,0,0,.3)}
-
-        .soc-card:hover::before{border-color:rgba(109,174,90,.5)}
-
-        .soc-card:hover::after{opacity:1}
-
-        .soc-ig{background:linear-gradient(135deg,#1a1a1a 0%,#0d0d0d 100%)}
-
-        .soc-ig::after{background:linear-gradient(135deg,rgba(131,58,180,.08),rgba(253,29,29,.06),rgba(252,176,69,.05))}
-
-        .soc-tt{background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 100%)}
-
-        .soc-tt::after{background:linear-gradient(135deg,rgba(0,0,0,.1),rgba(105,201,208,.06))}
-
-        .soc-fb{background:linear-gradient(135deg,#111827 0%,#0d0d0d 100%)}
-
-        .soc-fb::after{background:linear-gradient(135deg,rgba(24,119,242,.08),rgba(0,0,0,.05))}
-
-        .soc-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:2;transition:transform .4s cubic-bezier(.16,1,.3,1)}
-
-        .soc-card:hover .soc-icon-wrap{transform:scale(1.1) rotate(-3deg)}
-
-        .soc-ig .soc-icon-wrap{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
-
-        .soc-tt .soc-icon-wrap{background:#000;border:1px solid rgba(255,255,255,.1)}
-
-        .soc-fb .soc-icon-wrap{background:#1877f2}
-
-        .soc-icon-wrap img{width:26px;height:26px;object-fit:contain;filter:brightness(10);pointer-events:none}
-
-        .soc-info{position:relative;z-index:2;flex:1}
-
-        .soc-name{font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-family:'Urbanist',sans-serif}
-
-        .soc-handle{font-size:11px;font-weight:400;color:rgba(255,255,255,.4);margin-top:3px;letter-spacing:.02em}
-
-        .soc-desc{font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:10px;line-height:1.6;letter-spacing:.02em}
-
-        .soc-arrow{position:relative;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.3);transition:all .4s cubic-bezier(.16,1,.3,1);flex-shrink:0;align-self:flex-start}
-
-        .soc-card:hover .soc-arrow{background:#6DAE5A;border-color:#6DAE5A;color:#fff;transform:translate(3px,-3px)}
-
-        .soc-top{display:flex;align-items:center;gap:16px}
-
-        .soc-followers{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);position:relative;z-index:2}
-
-        .soc-followers span{color:#6DAE5A}
-
-      </style>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-12 max-w-4xl mx-auto reveal reveal-d3">
-
-        <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="soc-card soc-ig">
-
-          <div class="soc-top">
-
-            <div class="soc-icon-wrap"><img src="assets/images/logos/instagram.png" alt="Instagram"></div>
-
-            <div class="soc-info">
-
-              <div class="soc-name">Instagram</div>
-
-              <div class="soc-handle">@lemmoda.ec</div>
-
-            </div>
-
-            <div class="soc-arrow">↗</div>
-
-          </div>
-
-          <div class="soc-desc">Contenido diario, drops exclusivos y looks editoriales de la colección.</div>
-
-          <div class="soc-followers">Síguenos y sé el primero en ver los <span>nuevos lanzamientos</span></div>
-
-        </a>
-
-        <a href="https://www.tiktok.com/@lem.moda?_r=1&_t=ZS-96Ta4XscpgC" target="_blank" rel="noopener noreferrer" class="soc-card soc-tt">
-
-          <div class="soc-top">
-
-            <div class="soc-icon-wrap"><img src="assets/images/logos/tiktok.png" alt="TikTok"></div>
-
-            <div class="soc-info">
-
-              <div class="soc-name">TikTok</div>
-
-              <div class="soc-handle">@lem.moda</div>
-
-            </div>
-
-            <div class="soc-arrow">↗</div>
-
-          </div>
-
-          <div class="soc-desc">Outfits en movimiento, humor real y el detrás de escena de LEM Moda.</div>
-
-          <div class="soc-followers">Únete a la comunidad <span>urbana de Quito</span></div>
-
-        </a>
-
-        <a href="https://www.facebook.com/822444230949437" target="_blank" rel="noopener noreferrer" class="soc-card soc-fb">
-
-          <div class="soc-top">
-
-            <div class="soc-icon-wrap"><img src="assets/images/logos/facebook.png" alt="Facebook"></div>
-
-            <div class="soc-info">
-
-              <div class="soc-name">Facebook</div>
-
-              <div class="soc-handle">LEM MODA</div>
-
-            </div>
-
-            <div class="soc-arrow">↗</div>
-
-          </div>
-
-          <div class="soc-desc">Noticias, promociones especiales y eventos de la marca en Quito.</div>
-
-          <div class="soc-followers">Síguenos para las <span>promos exclusivas</span></div>
-
-        </a>
-
-      </div>
-
       <!-- SECCIÓN DE WIDGETS Y REPRODUCTORES EN VIVO DE REDES SOCIALES (REALES) -->
-      <div class="mt-20 max-w-5xl mx-auto text-left reveal reveal-d3">
+      <div class="mt-20 max-w-4xl mx-auto text-left reveal reveal-d3">
         <h5 class="text-center text-xs font-black uppercase tracking-[0.5em] text-zinc-950 mb-12">⚜️ LEM en Vivo desde las Redes ⚜️</h5>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center items-start">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center items-start max-w-3xl mx-auto">
           
           <!-- INSTAGRAM WIDGET -->
           <div class="w-full max-w-[340px] bg-white p-4 rounded-2xl shadow-xl border border-zinc-100 flex flex-col items-center">
             <span class="social-pill self-start">Instagram Profile</span>
             <div class="w-full relative py-1">
-              <!-- INSTAGRAM STYLISH PROFILE COMPONENT -->
+              <!-- INSTAGRAM STYLISH PROFILE COMPONENT (Real Stats & Bio) -->
               <div class="w-full flex flex-col font-sans" style="color: #000; text-align: left;">
                 <!-- Header -->
                 <div class="flex items-center gap-4 px-1 pb-4 border-b border-zinc-100">
@@ -700,49 +549,37 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
                     </div>
                   </div>
                   <div class="flex-1 min-w-0">
-                    <h6 class="font-bold text-sm leading-tight flex items-center gap-1">
-                      lemmoda.ec 
-                      <span class="text-blue-500 text-xs" title="Verificado">✓</span>
+                    <h6 class="font-bold text-sm leading-tight">
+                      lemmoda.ec
                     </h6>
-                    <p class="text-zinc-500 text-xs truncate">LEM MODA</p>
-                    <p class="text-[10px] text-zinc-400 mt-0.5">Estás en tu Prime.</p>
+                    <p class="text-zinc-500 text-xs">Marca de Ropa | Tienda de ropa Sport</p>
+                    <p class="text-[10px] text-zinc-400 mt-0.5">Tienda de ropa</p>
                   </div>
                   <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="bg-[#3897f0] text-white text-xs font-semibold px-4 py-1.5 rounded-md hover:bg-[#2680d9] transition-colors whitespace-nowrap">Seguir</a>
                 </div>
                 
+                <!-- Bio Details -->
+                <div class="py-2.5 text-xs text-zinc-800 border-b border-zinc-100 space-y-0.5">
+                  <p>Vestir con estatus y comodidad todos los días es posible ✨</p>
+                  <p>Directo de fábrica | Colección Dama y Caballero 🧥</p>
+                </div>
+                
                 <!-- Stats Row -->
                 <div class="flex justify-around py-3 text-center border-b border-zinc-100 text-xs">
-                  <div><span class="font-bold block text-sm">60</span><span class="text-zinc-400 text-[10px] uppercase tracking-wider">Posts</span></div>
-                  <div><span class="font-bold block text-sm">24.1K</span><span class="text-zinc-400 text-[10px] uppercase tracking-wider">Seguidores</span></div>
-                  <div><span class="font-bold block text-sm">923</span><span class="text-zinc-400 text-[10px] uppercase tracking-wider">Seguidos</span></div>
+                  <div><span class="font-bold block text-sm">58</span><span class="text-zinc-400 text-[10px] uppercase tracking-wider">Posts</span></div>
+                  <div><span class="font-bold block text-sm">306</span><span class="text-zinc-400 text-[10px] uppercase tracking-wider">Seguidores</span></div>
+                  <div><span class="font-bold block text-sm">86</span><span class="text-zinc-400 text-[10px] uppercase tracking-wider">Seguidos</span></div>
                 </div>
 
-                <!-- Grid of Recent Posts (Using real assets from DB) -->
-                <div class="grid grid-cols-3 gap-1 pt-4">
-                  <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="aspect-square bg-zinc-100 relative group overflow-hidden rounded-sm">
-                    <img src="assets/images/productos/1000813684.webp" alt="Sage Waffle" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs gap-2 font-bold"><span>❤️ 235</span></div>
-                  </a>
-                  <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="aspect-square bg-zinc-100 relative group overflow-hidden rounded-sm">
-                    <img src="assets/images/productos/1000813670.webp" alt="Obsidian" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs gap-2 font-bold"><span>❤️ 412</span></div>
-                  </a>
-                  <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="aspect-square bg-zinc-100 relative group overflow-hidden rounded-sm">
-                    <img src="assets/images/productos/1000813683.webp" alt="Sand" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs gap-2 font-bold"><span>❤️ 198</span></div>
-                  </a>
-                  <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="aspect-square bg-zinc-100 relative group overflow-hidden rounded-sm">
-                    <img src="assets/images/productos/mila-marino.webp" alt="Mila Marino" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs gap-2 font-bold"><span>❤️ 350</span></div>
-                  </a>
-                  <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="aspect-square bg-zinc-100 relative group overflow-hidden rounded-sm">
-                    <img src="assets/images/productos/mila-vino.webp" alt="Mila Vino" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs gap-2 font-bold"><span>❤️ 284</span></div>
-                  </a>
-                  <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="aspect-square bg-zinc-100 relative group overflow-hidden rounded-sm">
-                    <img src="assets/images/productos/gaia-skyblue.webp" alt="Sky Blue" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs gap-2 font-bold"><span>❤️ 510</span></div>
-                  </a>
+                <!-- Real Live Feed of Recent Posts loaded automatically via Behold.so -->
+                <div class="pt-4 rounded-xl overflow-hidden" style="min-height: 250px;">
+                  <behold-widget feed-id="9wDdne8IHA2IjhNJCQ46"></behold-widget>
+                  <script>
+                    (() => {
+                      const d=document,s=d.createElement("script");s.type="module";
+                      s.src="https://w.behold.so/widget.js";d.head.append(s);
+                    })();
+                  </script>
                 </div>
 
                 <!-- View on Instagram Link -->
@@ -763,18 +600,9 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
             <p class="text-[9px] text-zinc-500 font-bold uppercase mt-3 tracking-widest text-center">Perfil oficial de TikTok @lemmoda</p>
           </div>
 
-          <!-- FACEBOOK WIDGET -->
-          <div class="w-full max-w-[340px] bg-white p-4 rounded-2xl shadow-xl border border-zinc-100 flex flex-col items-center">
-            <span class="social-pill self-start">Facebook Feed</span>
-            <div class="w-full overflow-hidden rounded-xl bg-zinc-50 relative flex justify-center py-1">
-              <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fpeople%2FLEM-moda%2F61581406283301%2F&tabs=timeline&width=310&height=430&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="100%" height="430" style="border:none;overflow:hidden;border-radius:12px;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
-            </div>
-            <p class="text-[9px] text-zinc-500 font-bold uppercase mt-3 tracking-widest text-center">Feed oficial de tu página de Facebook</p>
-          </div>
-
         </div>
       </div>
-      
+
       <div class="mt-20 border-t border-zinc-950/20 pt-16 max-w-4xl mx-auto reveal">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
           <div class="space-y-6">
