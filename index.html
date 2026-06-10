@@ -11,10 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,300;1,700;1,900&display=swap" rel="stylesheet">
-<!-- CSS de Tailwind Compilado para Producción (Ultra rápido y optimizado) -->
-<link rel="stylesheet" href="dist/output.css">
-<!-- Para desarrollo local sin compilar puedes usar el CDN (Descomentar si es necesario): -->
-<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
 :root{
   --brand-green:#6DAE5A;
@@ -56,7 +53,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .pre-dot:nth-child(3){animation-delay:.4s}
  
 /* ── NAV ── */
-.nav-master{position:fixed;top:0;width:100%;z-index:5000;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;transition:padding .8s var(--ease-luxury), background-color .8s var(--ease-luxury), border-color .8s var(--ease-luxury)}
+.nav-master{position:fixed;top:0;width:100%;z-index:5000;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;transition:all .8s var(--ease-luxury)}
 @media(min-width:1024px){.nav-master{padding:36px 80px}}
 .nav-master.scrolled{padding:16px 40px;background:rgba(255,255,255,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--brand-border)}
 @media(min-width:1024px){.nav-master.scrolled{padding:18px 80px}}
@@ -86,13 +83,13 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .marquee-sep{font-size:9px;font-weight:900;letter-spacing:.55em;color:rgba(0,0,0,.3);padding:0 8px}
  
 /* ── SHOP HEADER ── */
-.filter-btn{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:3px;padding:10px 24px;border-radius:30px;transition:color .5s var(--ease-luxury), background-color .5s var(--ease-luxury), border-color .5s var(--ease-luxury);color:#8e8e93;background:transparent;border:1px solid transparent;white-space:nowrap;cursor:pointer}
+.filter-btn{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:3px;padding:10px 24px;border-radius:30px;transition:all .5s var(--ease-luxury);color:#8e8e93;background:transparent;border:1px solid transparent;white-space:nowrap;cursor:pointer}
 .filter-btn:hover{color:var(--brand-black)}
 .filter-btn.active{color:var(--brand-black);background:var(--brand-zinc-light);border-color:rgba(0,0,0,.03)}
  
 /* ── SEARCH ── */
 .search-wrap{position:relative;display:inline-block}
-.search-input{background:var(--brand-zinc-light);border:1px solid transparent;color:var(--brand-black);padding:11px 18px 11px 42px;font-family:'Urbanist',sans-serif;font-size:12px;font-weight:500;letter-spacing:.03em;width:240px;outline:none;border-radius:30px;transition:border-color .4s var(--ease-luxury), background-color .4s var(--ease-luxury), box-shadow .4s var(--ease-luxury)}
+.search-input{background:var(--brand-zinc-light);border:1px solid transparent;color:var(--brand-black);padding:11px 18px 11px 42px;font-family:'Urbanist',sans-serif;font-size:12px;font-weight:500;letter-spacing:.03em;width:240px;outline:none;border-radius:30px;transition:all .4s var(--ease-luxury)}
 .search-input:focus{border-color:var(--brand-green);background:#fff;box-shadow:0 0 0 3px rgba(109,174,90,.08)}
 .search-input::placeholder{color:#a1a1aa}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.4;pointer-events:none}
@@ -119,7 +116,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .overlay-colors-row{display:flex;gap:6px;justify-content:center;transform:translateY(8px);transition:transform .4s var(--ease-luxury)}
 .product-card:hover .overlay-colors-row{transform:translateY(0)}
 @media(max-width:1023px){.overlay-colors-row{transform:translateY(0)}}
-.btn-view-details{background:#fff;color:var(--brand-black);font-size:8px;font-weight:900;text-transform:uppercase;letter-spacing:2.5px;padding:12px 24px;border-radius:30px;transform:translateY(8px);transition:transform .5s var(--ease-luxury), background-color .5s var(--ease-luxury), color .5s var(--ease-luxury);pointer-events:auto;border:none;cursor:pointer;white-space:nowrap}
+.btn-view-details{background:#fff;color:var(--brand-black);font-size:8px;font-weight:900;text-transform:uppercase;letter-spacing:2.5px;padding:12px 24px;border-radius:30px;transform:translateY(8px);transition:all .5s var(--ease-luxury);pointer-events:auto;border:none;cursor:pointer;white-space:nowrap}
 .product-card:hover .btn-view-details{transform:translateY(0)}
 .btn-view-details:hover{background:var(--brand-green);color:#fff}
 @media(max-width:1023px){.btn-view-details{transform:translateY(0);padding:9px 18px;font-size:7.5px}}
@@ -137,7 +134,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .prod-price{font-size:14px;font-weight:900;color:var(--brand-green);margin-top:6px;letter-spacing:-.01em}
  
 /* Size btns */
-.size-btn{flex:0 0 auto;width:44px;height:44px;border:1px solid #eaeaea;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:background-color .4s var(--ease-luxury), border-color .4s var(--ease-luxury);gap:2px;background:transparent}
+.size-btn{flex:0 0 auto;width:44px;height:44px;border:1px solid #eaeaea;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .4s var(--ease-luxury);gap:2px;background:transparent}
 .size-num{font-size:6px;font-weight:700;color:#71717a;letter-spacing:.3px}
 .size-let{font-size:10px;font-weight:800}
 .size-btn:hover{border-color:#000}
@@ -146,16 +143,16 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .size-btn.active .size-let{color:#fff}
  
 /* Color dots */
-.color-dot{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .4s var(--ease-luxury), border-color .4s var(--ease-luxury);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.color-dot{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .4s var(--ease-luxury);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
 .color-dot:hover{transform:scale(1.2)}
 .color-dot.active{border-color:#000;transform:scale(1.2)}
  
 /* Add btn */
-.add-to-cart-trigger{width:100%;padding:14px;background:#000;color:#fff;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:3px;transition:background-color .5s var(--ease-luxury);margin-top:8px;border:none;cursor:pointer}
+.add-to-cart-trigger{width:100%;padding:14px;background:#000;color:#fff;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:3px;transition:all .5s var(--ease-luxury);margin-top:8px;border:none;cursor:pointer}
 .add-to-cart-trigger:hover{background:var(--brand-green)}
  
 /* ── MODAL ── */
-#product-modal{position:fixed;inset:0;background:#fff;z-index:7000;display:none;opacity:0;transition:opacity .6s var(--ease-luxury);overflow-y:auto}
+#product-modal{position:fixed;inset:0;background:#fff;z-index:7000;display:none;opacity:0;transition:all .6s var(--ease-luxury);overflow-y:auto}
 #product-modal.open{display:block;opacity:1}
 .modal-carousel-container{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--brand-zinc-light);border-radius:2px}
 .nav-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;z-index:40;font-size:13px;font-weight:bold;transition:all .4s var(--ease-luxury);box-shadow:0 6px 20px rgba(0,0,0,.06);border:none;cursor:pointer}
@@ -181,7 +178,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .mobile-link-text.active{color:var(--brand-black)}
  
 /* ── TOAST ── */
-#toast-notif{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--brand-black);color:#fff;padding:12px 28px;border-radius:30px;font-size:9px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;z-index:99990;opacity:0;pointer-events:none;transition:opacity .4s var(--ease-luxury), transform .4s var(--ease-luxury);white-space:nowrap}
+#toast-notif{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--brand-black);color:#fff;padding:12px 28px;border-radius:30px;font-size:9px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;z-index:99990;opacity:0;pointer-events:none;transition:all .4s var(--ease-luxury);white-space:nowrap}
 #toast-notif.show{opacity:1;transform:translateX(-50%) translateY(0)}
  
 /* ── SCROLL REVEAL ── */
@@ -247,7 +244,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 <main id="home" class="view-layer active">
   <div class="h-[100svh] w-full bg-black flex items-center justify-center" style="position:relative;overflow:hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 z-10"></div>
-    <video autoplay muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-35 protected-img">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-35 protected-img">
       <source src="assets/images/videos/pasarela.mp4" type="video/mp4">
     </video>
     <div class="relative z-20 text-center text-white px-6 w-full max-w-5xl mx-auto flex flex-col items-center justify-center">
@@ -366,7 +363,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
       <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
         <div class="h-1 w-16 bg-[#6DAE5A] mb-10 group-hover:w-full transition-all duration-1000"></div>
         <h4 class="text-3xl font-black italic uppercase mb-6 tracking-tight">Misión</h4>
-        <p class="text-zinc-400 text-lg font-light leading-relaxed">En Lem Moda creamos prendas que compaginan la modernidad, la autenticidad y la elegancia, produciendo piezas versátiles que reflejan el estilo único de quienes las llevan. Buscamos brindar una experiencia de moda a la vanguardia que fomente la confianza y la identidad, bajo un firme compromiso con el medio ambiente, la creatividad, la innovación y el cuidado meticuloso de cada detalle a través del trabajo en equipo.</p>
+        <p class="text-zinc-400 text-lg font-light leading-relaxed">En Lem Moda creamos prendas que compaginan la modernidad, la autenticidad and la elegancia, produciendo piezas versátiles que reflejan el estilo único de quienes las llevan. Buscamos brindar una experiencia de moda a la vanguardia que fomente la confianza y la identidad, bajo un firme compromiso con el medio ambiente, la creatividad, la innovación y el cuidado meticuloso de cada detalle a través del trabajo en equipo.</p>
       </div>
       <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
         <div class="h-1 w-16 bg-white mb-10 group-hover:w-full transition-all duration-1000"></div>
@@ -671,7 +668,7 @@ function doSearch() {
   searchTimeout = setTimeout(() => {
     searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
     mountShop();
-  }, 250); // Debounce of 250ms prevents laggy rendering on every keystroke
+  }, 250); // Debounce de 250ms evita recargar el DOM en cada tecla
 }
  
 function getFiltered() {
@@ -710,27 +707,27 @@ function mountShop() {
       const colorsHTML = p.variants.map((v,vi) =>
         `<div class="color-dot ${vi===0?'active':''}" style="background:${v.hex};width:14px;height:14px" title="${v.color_name}"
           onclick="event.stopPropagation();swapCardColor(this,${p.id},'${v.color_name}','${v.img}')"></div>`
-      ).join('');
-      return `<article class="product-card" style="animation-delay:${Math.min(i*.04,.5)}s" data-id="${p.id}">
-        <div class="img-container">
-          ${badgeHTML}
-          <img id="pimg-${p.id}" src="${v0.img}" alt="${p.name}" loading="lazy" onload="this.classList.add('loaded')" class="protected-img">
-          <div class="details-overlay">
-            <div class="overlay-colors-row" id="ocr-${p.id}">${colorsHTML}</div>
-            <button class="btn-view-details" onclick="openProductModal(${p.id})">Ver Detalles</button>
-          </div>
+    ).join('');
+    return `<article class="product-card" style="animation-delay:${Math.min(i*.04,.5)}s" data-id="${p.id}">
+      <div class="img-container">
+        ${badgeHTML}
+        <img id="pimg-${p.id}" src="${v0.img}" alt="${p.name}" loading="lazy" onload="this.classList.add('loaded')" class="protected-img">
+        <div class="details-overlay">
+          <div class="overlay-colors-row" id="ocr-${p.id}">${colorsHTML}</div>
+          <button class="btn-view-details" onclick="openProductModal(${p.id})">Ver Detalles</button>
         </div>
-        <div class="product-info">
-          <div class="prod-cat">${p.category}</div>
-          <div class="prod-name">${p.name}</div>
-          <div class="prod-price">$${parseFloat(p.price).toFixed(2)}</div>
-          <div class="flex gap-1 mt-3" id="szr-${p.id}" style="flex-wrap:wrap">
-           ${(p.sizes ? p.sizes.map(s => typeof s === 'string' ? {let:s,num:''} : s) : SIZE_GUIDE).map(s => `<button class="size-btn" onclick="selectSize(this)" title="${s.num}"><span class="size-num">${s.num}</span><span class="size-let">${s.let}</span></button>`).join('')}
-          </div>
-          <button class="add-to-cart-trigger" onclick="addToCart(${p.id},'szr-${p.id}','ocr-${p.id}',false)">Añadir</button>
+      </div>
+      <div class="product-info">
+        <div class="prod-cat">${p.category}</div>
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-price">$${parseFloat(p.price).toFixed(2)}</div>
+        <div class="flex gap-1 mt-3" id="szr-${p.id}" style="flex-wrap:wrap">
+         ${(p.sizes ? p.sizes.map(s => typeof s === 'string' ? {let:s,num:''} : s) : SIZE_GUIDE).map(s => `<button class="size-btn" onclick="selectSize(this)" title="${s.num}"><span class="size-num">${s.num}</span><span class="size-let">${s.let}</span></button>`).join('')}
         </div>
-      </article>`;
-    }).join('');
+        <button class="add-to-cart-trigger" onclick="addToCart(${p.id},'szr-${p.id}','ocr-${p.id}',false)">Añadir</button>
+      </div>
+    </article>`;
+  }).join('');
 
     if (renderedCount === 0) {
       grid.innerHTML = html;
@@ -750,7 +747,6 @@ function mountShop() {
     renderedCount += BATCH_SIZE;
 
     if (renderedCount < filtered.length) {
-      // Defer next batch loading using requestAnimationFrame + setTimeout to keep UI completely responsive
       requestAnimationFrame(() => {
         setTimeout(renderNextBatch, 80);
       });
