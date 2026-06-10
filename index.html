@@ -380,80 +380,191 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
  
 <!-- ══════════════ SHOWROOM ══════════════ -->
 <main id="showroom" class="view-layer bg-[#6DAE5A] text-zinc-950 pt-32 pb-48 overflow-hidden min-h-screen">
+
   <div class="absolute inset-0 opacity-[.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
   <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-16">
+
     <div class="max-w-5xl mx-auto text-center">
+
       <span class="text-[9px] font-black text-zinc-900 uppercase tracking-[.8em] block mb-4 reveal">Comunidad Global</span>
+
       <h4 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-zinc-950 reveal reveal-d1">Únete al Movimiento</h4>
+
       <p class="text-zinc-900/80 text-base font-normal max-w-2xl mx-auto leading-relaxed mt-4 reveal reveal-d2">Nuestra narrativa visual se expande a diario. Sé el primero en presenciar los lanzamientos exclusivos, el detrás de escena de nuestros procesos de diseño y la evolución de la mística urbana.</p>
+
       <style>
+
         .social-pill{display:inline-block;font-size:8px;font-weight:800;letter-spacing:.4em;text-transform:uppercase;padding:3px 10px;border-radius:30px;background:rgba(109,174,90,.15);color:#6DAE5A;margin-bottom:16px}
+
         .soc-card{position:relative;overflow:hidden;border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;gap:20px;text-decoration:none;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1);cursor:pointer}
+
         .soc-card::before{content:'';position:absolute;inset:0;border-radius:16px;border:1px solid rgba(255,255,255,.1);z-index:1;transition:border-color .5s}
+
         .soc-card::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .5s;border-radius:16px}
+
         .soc-card:hover{transform:translateY(-6px);box-shadow:0 32px 64px rgba(0,0,0,.3)}
+
         .soc-card:hover::before{border-color:rgba(109,174,90,.5)}
+
         .soc-card:hover::after{opacity:1}
+
         .soc-ig{background:linear-gradient(135deg,#1a1a1a 0%,#0d0d0d 100%)}
+
         .soc-ig::after{background:linear-gradient(135deg,rgba(131,58,180,.08),rgba(253,29,29,.06),rgba(252,176,69,.05))}
+
         .soc-tt{background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 100%)}
+
         .soc-tt::after{background:linear-gradient(135deg,rgba(0,0,0,.1),rgba(105,201,208,.06))}
+
         .soc-fb{background:linear-gradient(135deg,#111827 0%,#0d0d0d 100%)}
+
         .soc-fb::after{background:linear-gradient(135deg,rgba(24,119,242,.08),rgba(0,0,0,.05))}
+
         .soc-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:2;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+
         .soc-card:hover .soc-icon-wrap{transform:scale(1.1) rotate(-3deg)}
+
         .soc-ig .soc-icon-wrap{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
+
         .soc-tt .soc-icon-wrap{background:#000;border:1px solid rgba(255,255,255,.1)}
+
         .soc-fb .soc-icon-wrap{background:#1877f2}
+
         .soc-icon-wrap img{width:26px;height:26px;object-fit:contain;filter:brightness(10);pointer-events:none}
+
         .soc-info{position:relative;z-index:2;flex:1}
+
         .soc-name{font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-family:'Urbanist',sans-serif}
+
         .soc-handle{font-size:11px;font-weight:400;color:rgba(255,255,255,.4);margin-top:3px;letter-spacing:.02em}
+
         .soc-desc{font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:10px;line-height:1.6;letter-spacing:.02em}
+
         .soc-arrow{position:relative;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.3);transition:all .4s cubic-bezier(.16,1,.3,1);flex-shrink:0;align-self:flex-start}
+
         .soc-card:hover .soc-arrow{background:#6DAE5A;border-color:#6DAE5A;color:#fff;transform:translate(3px,-3px)}
+
         .soc-top{display:flex;align-items:center;gap:16px}
+
         .soc-followers{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);position:relative;z-index:2}
+
         .soc-followers span{color:#6DAE5A}
+
       </style>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-12 max-w-4xl mx-auto reveal reveal-d3">
+
         <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" class="soc-card soc-ig">
+
           <div class="soc-top">
+
             <div class="soc-icon-wrap"><img src="assets/images/logos/instagram.png" alt="Instagram"></div>
+
             <div class="soc-info">
+
               <div class="soc-name">Instagram</div>
+
               <div class="soc-handle">@lemmoda.ec</div>
+
             </div>
+
             <div class="soc-arrow">↗</div>
+
           </div>
+
           <div class="soc-desc">Contenido diario, drops exclusivos y looks editoriales de la colección.</div>
+
           <div class="soc-followers">Síguenos y sé el primero en ver los <span>nuevos lanzamientos</span></div>
+
         </a>
+
         <a href="https://www.tiktok.com/@lem.moda?_r=1&_t=ZS-96Ta4XscpgC" target="_blank" rel="noopener noreferrer" class="soc-card soc-tt">
+
           <div class="soc-top">
+
             <div class="soc-icon-wrap"><img src="assets/images/logos/tiktok.png" alt="TikTok"></div>
+
             <div class="soc-info">
+
               <div class="soc-name">TikTok</div>
+
               <div class="soc-handle">@lem.moda</div>
+
             </div>
+
             <div class="soc-arrow">↗</div>
+
           </div>
+
           <div class="soc-desc">Outfits en movimiento, humor real y el detrás de escena de LEM Moda.</div>
+
           <div class="soc-followers">Únete a la comunidad <span>urbana de Quito</span></div>
+
         </a>
+
         <a href="https://www.facebook.com/822444230949437" target="_blank" rel="noopener noreferrer" class="soc-card soc-fb">
+
           <div class="soc-top">
+
             <div class="soc-icon-wrap"><img src="assets/images/logos/facebook.png" alt="Facebook"></div>
+
             <div class="soc-info">
+
               <div class="soc-name">Facebook</div>
+
               <div class="soc-handle">LEM MODA</div>
+
             </div>
+
             <div class="soc-arrow">↗</div>
+
           </div>
+
           <div class="soc-desc">Noticias, promociones especiales y eventos de la marca en Quito.</div>
+
           <div class="soc-followers">Síguenos para las <span>promos exclusivas</span></div>
+
         </a>
+
       </div>
+
+      <!-- SECCIÓN DE WIDGETS Y REPRODUCTORES EN VIVO DE REDES SOCIALES (REALES) -->
+      <div class="mt-20 max-w-5xl mx-auto text-left reveal reveal-d3">
+        <h5 class="text-center text-xs font-black uppercase tracking-[0.5em] text-zinc-950 mb-12">⚜️ LEM en Vivo desde las Redes ⚜️</h5>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center items-start">
+          
+          <!-- INSTAGRAM WIDGET -->
+          <div class="w-full max-w-[340px] bg-white p-4 rounded-2xl shadow-xl border border-zinc-100 flex flex-col items-center">
+            <span class="social-pill self-start">Instagram Profile</span>
+            <div class="w-full overflow-hidden rounded-xl bg-zinc-50 relative flex justify-center py-2" style="max-height: 520px; overflow-y: auto;">
+              <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DZY0lOSpIxQ/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DZY0lOSpIxQ/?utm_source=ig_embed&utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DZY0lOSpIxQ/?utm_source=ig_embed&utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida de Marca de Ropa | Tienda de ropa Sport (@lemmoda.ec)</a></p></div></blockquote> <script async src="//www.instagram.com/embed.js"></script>
+            </div>
+            <p class="text-[9px] text-zinc-500 font-bold uppercase mt-3 tracking-widest text-center">Post y Perfil de LEM MODA</p>
+          </div>
+
+          <!-- TIKTOK WIDGET -->
+          <div class="w-full max-w-[340px] bg-white p-4 rounded-2xl shadow-xl border border-zinc-100 flex flex-col items-center">
+            <span class="social-pill self-start">TikTok Profile</span>
+            <div class="w-full overflow-hidden rounded-xl bg-zinc-50 relative flex justify-center py-2" style="max-height: 520px; overflow-y: auto;">
+              <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@lemmoda" data-unique-id="lemmoda" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@lemmoda?refer=creator_embed">@lemmoda</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+            <p class="text-[9px] text-zinc-500 font-bold uppercase mt-3 tracking-widest text-center">Perfil oficial de TikTok @lemmoda</p>
+          </div>
+
+          <!-- FACEBOOK WIDGET -->
+          <div class="w-full max-w-[340px] bg-white p-4 rounded-2xl shadow-xl border border-zinc-100 flex flex-col items-center">
+            <span class="social-pill self-start">Facebook Feed</span>
+            <div class="w-full overflow-hidden rounded-xl bg-zinc-50 relative flex justify-center py-2" style="max-height: 520px; overflow-y: auto;">
+              <div style="position:relative;"><div class="fb-post" data-href="https://www.facebook.com/people/LEM-moda/61581406283301/#" data-width="500" data-show-text="true"></div><script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script><a href="https://embedcodesgenerator.com/tools/facebook-embed-code" rel="noopener" target="_blank" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">facebook embed code</a></div>
+            </div>
+            <p class="text-[9px] text-zinc-500 font-bold uppercase mt-3 tracking-widest text-center">Publicación oficial de Facebook</p>
+          </div>
+
+        </div>
+      </div>
+      
       <div class="mt-20 border-t border-zinc-950/20 pt-16 max-w-4xl mx-auto reveal">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
           <div class="space-y-6">
