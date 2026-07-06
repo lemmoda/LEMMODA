@@ -23,7 +23,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 :root{
-  --brand-green:#6DAE5A;
+  --brand-green:#111111;
   --brand-black:#080808;
   --brand-white:#ffffff;
   --brand-zinc-light:#f4f4f5;
@@ -86,10 +86,10 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .view-layer.active{display:block;opacity:1;transform:translateY(0)}
  
 /* ── MARQUEE ── */
-.marquee-wrap{overflow:hidden;background:var(--brand-green);padding:13px 0;border-top:1px solid rgba(0,0,0,.08);position:relative;z-index:1}
+.marquee-wrap{overflow:hidden;background:#000;padding:13px 0;border-top:1px solid rgba(255,255,255,.08);position:relative;z-index:1}
 .marquee-track{display:flex;animation:marqueeScroll 22s linear infinite;white-space:nowrap;width:max-content}
-.marquee-item{font-size:9px;font-weight:900;letter-spacing:.55em;text-transform:uppercase;color:var(--brand-black);padding:0 48px}
-.marquee-sep{font-size:9px;font-weight:900;letter-spacing:.55em;color:rgba(0,0,0,.3);padding:0 8px}
+.marquee-item{font-size:9px;font-weight:900;letter-spacing:.55em;text-transform:uppercase;color:#fff;padding:0 48px}
+.marquee-sep{font-size:9px;font-weight:900;letter-spacing:.55em;color:rgba(255,255,255,.3);padding:0 8px}
  
 /* ── SHOP HEADER ── */
 .filter-btn{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:3px;padding:10px 24px;border-radius:30px;transition:all .5s var(--ease-luxury);color:#8e8e93;background:transparent;border:1px solid transparent;white-space:nowrap;cursor:pointer}
@@ -99,7 +99,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 /* ── SEARCH ── */
 .search-wrap{position:relative;display:inline-block}
 .search-input{background:var(--brand-zinc-light);border:1px solid transparent;color:var(--brand-black);padding:11px 18px 11px 42px;font-family:'Urbanist',sans-serif;font-size:12px;font-weight:500;letter-spacing:.03em;width:240px;outline:none;border-radius:30px;transition:all .4s var(--ease-luxury)}
-.search-input:focus{border-color:var(--brand-green);background:#fff;box-shadow:0 0 0 3px rgba(109,174,90,.08)}
+.search-input:focus{border-color:var(--brand-green);background:#fff;box-shadow:0 0 0 3px rgba(17,17,17,.08)}
 .search-input::placeholder{color:#a1a1aa}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.4;pointer-events:none}
 .search-icon svg{width:15px;height:15px;stroke:var(--brand-black);fill:none;stroke-width:2}
@@ -142,7 +142,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 /* Product Info */
 .product-info{padding:14px 12px 12px;background:#fff}
 .prod-cat{font-size:8px;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:#a1a1aa;margin-bottom:4px}
-.prod-name{font-size:12px;font-weight:800;font-style:italic;text-transform:uppercase;color:var(--brand-black);line-height:1.2;letter-spacing:-.01em}
+.prod-name{font-size:12px;font-weight:800;font-style:;text-transform:uppercase;color:var(--brand-black);line-height:1.2;letter-spacing:-.01em}
 .prod-price{font-size:14px;font-weight:900;color:var(--brand-green);margin-top:6px;letter-spacing:-.01em}
  
 /* Size btns */
@@ -175,7 +175,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .reco-img-wrap{width:150px;aspect-ratio:3/4;background:radial-gradient(ellipse at center,#f7f7f8 0%,var(--brand-zinc-light) 70%);border-radius:6px;overflow:hidden;margin-bottom:8px}
 .reco-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-luxury)}
 .reco-card:hover .reco-img-wrap img{transform:scale(1.08)}
-.reco-name{font-size:10px;font-weight:800;text-transform:uppercase;font-style:italic;line-height:1.3;color:var(--brand-black)}
+.reco-name{font-size:10px;font-weight:800;text-transform:uppercase;font-style:;line-height:1.3;color:var(--brand-black)}
 .reco-price{font-size:11px;font-weight:900;color:var(--brand-green);margin-top:2px}
 .nav-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;z-index:40;font-size:13px;font-weight:bold;transition:all .4s var(--ease-luxury);box-shadow:0 6px 20px rgba(0,0,0,.06);border:none;cursor:pointer}
 .nav-arrow:hover{background:#000;color:#fff}
@@ -224,9 +224,9 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .btn-shine:hover::after{left:140%}
 
 /* ── BADGES PREMIUM ── */
-.badge-promo{background:linear-gradient(120deg,#e8c87a,#c9a84c 45%,#f0d896);color:#1a1400;box-shadow:0 4px 14px rgba(201,168,76,.35)}
+.badge-promo{background:#fff;color:#000;box-shadow:0 4px 14px rgba(0,0,0,.15)}
 .badge-hot{background:linear-gradient(120deg,#1a1a1a,#000);color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.3)}
-.badge-new{box-shadow:0 4px 14px rgba(109,174,90,.3)}
+.badge-new{box-shadow:0 4px 14px rgba(17,17,17,.3)}
 </style>
 </head>
 <body oncontextmenu="return false;">
@@ -242,7 +242,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 <!-- PRELOADER -->
 <div id="preloader">
   <div class="overflow-hidden">
-    <h2 class="text-white font-black italic tracking-[0.15em] uppercase" style="font-family:'Urbanist',sans-serif;font-size:clamp(2rem,8vw,5rem);animation:fadeBlurIn 1.5s var(--ease-luxury) forwards;opacity:0">LEM MODA</h2>
+    <h2 class="text-white font-black tracking-[0.15em] uppercase" style="font-family:'Urbanist',sans-serif;font-size:clamp(2rem,8vw,5rem);animation:fadeBlurIn 1.5s var(--ease-luxury) forwards;opacity:0">LEM MODA</h2>
   </div>
   <div class="loader-line"><div class="loader-fill"></div></div>
   <div class="pre-dots">
@@ -266,8 +266,8 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
   </div>
   <div class="flex items-center gap-8">
     <button onclick="toggleCartDrawer()" class="relative group p-2" aria-label="Carrito">
-      <svg class="w-5 h-5 group-hover:stroke-[#6DAE5A] transition-colors" style="stroke:currentColor;fill:none;stroke-width:1.5" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      <span id="cart-badge" class="absolute -top-1 -right-1 bg-[#6DAE5A] text-white text-[9px] w-5 h-5 rounded-full flex items-center justify-center font-black leading-none">0</span>
+      <svg class="w-5 h-5 group-hover:stroke-[#111111] transition-colors" style="stroke:currentColor;fill:none;stroke-width:1.5" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span id="cart-badge" class="absolute -top-1 -right-1 bg-[#111111] text-white text-[9px] w-5 h-5 rounded-full flex items-center justify-center font-black leading-none">0</span>
     </button>
   </div>
 </nav>
@@ -288,19 +288,19 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
       <source src="assets/images/videos/pasarela.mp4" type="video/mp4">
     </video>
     <div class="relative z-20 text-center text-white px-6 w-full max-w-5xl mx-auto flex flex-col items-center justify-center">
-      <p class="text-[9px] font-black uppercase tracking-[.65em] text-[#6DAE5A] mb-6" style="animation:revealUp .8s var(--ease-luxury) 2.4s both;display:flex;align-items:center;justify-content:center;gap:16px">
-        <span style="display:block;width:36px;height:1px;background:#6DAE5A"></span>
+      <p class="text-[9px] font-black uppercase tracking-[.65em] text-white/80 mb-6" style="animation:revealUp .8s var(--ease-luxury) 2.4s both;display:flex;align-items:center;justify-content:center;gap:16px">
+        <span style="display:block;width:36px;height:1px;background:#ffffff"></span>
         Nueva Colección 2026
-        <span style="display:block;width:36px;height:1px;background:#6DAE5A"></span>
+        <span style="display:block;width:36px;height:1px;background:#ffffff"></span>
       </p>
-      <h1 class="font-black italic uppercase leading-[.9] tracking-tighter mb-10 w-full text-center" style="font-size:clamp(3rem,10vw,9rem);animation:revealUp .9s var(--ease-luxury) 2.5s both">
-        Estás en tu<br><span style="color:#6DAE5A">Prime</span>
+      <h1 class="font-black uppercase leading-[.9] tracking-tighter mb-10 w-full text-center" style="font-size:clamp(3rem,10vw,9rem);animation:revealUp .9s var(--ease-luxury) 2.5s both">
+        Estás en tu<br><span style="color:#ffffff;text-decoration:underline;text-underline-offset:12px;text-decoration-thickness:4px">Prime</span>
       </h1>
       <p class="font-light text-white/50 max-w-md mx-auto leading-relaxed mb-10 text-sm" style="animation:revealUp .8s var(--ease-luxury) 2.7s both;letter-spacing:.06em">
         Ropa para los que no paran. Del gym a la calle, sin esfuerzo.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center" style="animation:revealUp .8s var(--ease-luxury) 2.9s both">
-        <button onclick="goTo('shop')" class="btn-shine bg-white text-black px-14 py-5 rounded-full font-black uppercase text-[9px] tracking-[.5em] hover:bg-[#6DAE5A] hover:text-white transition-all duration-500 shadow-xl">
+        <button onclick="goTo('shop')" class="btn-shine bg-white text-black px-14 py-5 rounded-full font-black uppercase text-[9px] tracking-[.5em] hover:bg-[#111111] hover:text-white transition-all duration-500 shadow-xl">
           Explorar Catálogo
         </button>
         <button onclick="goTo('essence')" class="border border-white/25 text-white px-10 py-5 rounded-full font-black uppercase text-[9px] tracking-[.4em] hover:border-white transition-all duration-500">
@@ -310,7 +310,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
     </div>
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2" style="animation:revealUp .6s var(--ease-luxury) 3.2s both;opacity:0">
       <span class="text-white/30 text-[8px] font-bold uppercase tracking-[.5em]"></span>
-      <div style="width:1px;height:50px;background:linear-gradient(to bottom,rgba(109,174,90,.8),transparent)"></div>
+      <div style="width:1px;height:50px;background:linear-gradient(to bottom,rgba(17,17,17,.8),transparent)"></div>
     </div>
   </div>
   <!-- MARQUEE -->
@@ -334,8 +334,8 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 <main id="shop" class="view-layer pt-36 lg:pt-52 pb-36">
   <div class="max-w-[1920px] mx-auto">
     <header class="px-6 lg:px-16 mb-12 lg:mb-20 text-center">
-      <h2 class="text-6xl md:text-[6rem] lg:text-[10rem] font-black italic uppercase leading-none tracking-tighter reveal">
-        Tienda<span class="text-[#6DAE5A]">.</span>
+      <h2 class="text-6xl md:text-[6rem] lg:text-[10rem] font-black uppercase leading-none tracking-tighter reveal">
+        Tienda<span class="text-[#111111]">.</span>
       </h2>
       <!-- SEARCH -->
       <div class="flex justify-center mt-8 mb-6 reveal reveal-d1">
@@ -366,9 +366,9 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
       <div class="mb-16 opacity-90 hover:opacity-100 transition-opacity duration-700 reveal">
         <img src="assets/images/logos/logo_lem-04.webp" alt="LEM Logo" class="h-44 md:h-60 lg:h-72 w-auto object-contain brightness-200">
       </div>
-      <span class="text-[10px] font-black text-[#6DAE5A] uppercase tracking-[1.2em] mb-8 reveal reveal-d1">Establecido en 2025</span>
-      <h2 class="text-5xl md:text-7xl lg:text-9xl font-black italic uppercase leading-none tracking-tighter mb-10 reveal reveal-d2">
-        Herencia <span class="text-[#6DAE5A]">Ambateña</span>
+      <span class="text-[10px] font-black text-zinc-400 uppercase tracking-[1.2em] mb-8 reveal reveal-d1">Establecido en 2025</span>
+      <h2 class="text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-none tracking-tighter mb-10 reveal reveal-d2">
+        Herencia <span class="text-white" style="text-decoration:underline;text-underline-offset:14px;text-decoration-thickness:5px">Ambateña</span>
       </h2>
       <p class="text-zinc-400 text-lg md:text-2xl font-light max-w-4xl leading-relaxed reveal reveal-d3">
         Nacimos en el epicentro y corazón de la industria textil de manufactura del Ecuador, Ambato, en el año 2025. Somos el resultado refinado de la evolución de nuestra tierra, unificando la excelencia técnica de producción local con la mística y los cortes contemporáneos del Streetwear de alta gama internacional.
@@ -381,45 +381,45 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
         </div>
       </div>
       <div class="order-1 lg:order-2 space-y-10">
-        <h3 class="text-4xl md:text-5xl font-black italic uppercase text-[#6DAE5A] tracking-tight">La Hormiga y La Hoja</h3>
+        <h3 class="text-4xl md:text-5xl font-black uppercase text-white tracking-tight">La Hormiga y La Hoja</h3>
         <p class="text-zinc-400 text-lg font-light leading-relaxed">Nuestro imagotipo es una abstracción conceptual y minimalista de la hormiga cargando la hoja. Una analogía directa de la ingeniería de la naturaleza adaptada a una comunidad global que viste con una firme determinación:</p>
         <div class="space-y-8 pt-4">
           <div class="flex items-start gap-6 group">
-            <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1 flex-shrink-0">01</span>
-            <div><h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Unidad y Fuerza Colectiva</h5><p class="text-zinc-500 font-light leading-relaxed">La persistencia inquebrantable, la organización perfecta y el soporte mutuo que consolida las bases de nuestra comunidad urbana.</p></div>
+            <span class="text-zinc-500 font-black text-sm tracking-widest pt-1 flex-shrink-0">01</span>
+            <div><h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-zinc-400 transition-colors">Unidad y Fuerza Colectiva</h5><p class="text-zinc-500 font-light leading-relaxed">La persistencia inquebrantable, la organización perfecta y el soporte mutuo que consolida las bases de nuestra comunidad urbana.</p></div>
           </div>
           <div class="flex items-start gap-6 group">
-            <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1 flex-shrink-0">02</span>
-            <div><h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Crecimiento Orgánico</h5><p class="text-zinc-500 font-light leading-relaxed">La hoja simboliza la regeneración, la evolución constante del estilo urbano y la capacidad adaptativa de destacar con sofisticación en el entorno.</p></div>
+            <span class="text-zinc-500 font-black text-sm tracking-widest pt-1 flex-shrink-0">02</span>
+            <div><h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-zinc-400 transition-colors">Crecimiento Orgánico</h5><p class="text-zinc-500 font-light leading-relaxed">La hoja simboliza la regeneración, la evolución constante del estilo urbano y la capacidad adaptativa de destacar con sofisticación en el entorno.</p></div>
           </div>
           <div class="flex items-start gap-6 group">
-            <span class="text-[#6DAE5A] font-black text-sm tracking-widest pt-1 flex-shrink-0">03</span>
-            <div><h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-[#6DAE5A] transition-colors">Esfuerzo Sobrenatural</h5><p class="text-zinc-500 font-light leading-relaxed">La cualidad innata de soportar y cargar pesos muy superiores a los propios sin perder jamás la postura, la elegancia, ni el enfoque táctico.</p></div>
+            <span class="text-zinc-500 font-black text-sm tracking-widest pt-1 flex-shrink-0">03</span>
+            <div><h5 class="text-white font-bold uppercase text-xs tracking-widest mb-2 group-hover:text-zinc-400 transition-colors">Esfuerzo Sobrenatural</h5><p class="text-zinc-500 font-light leading-relaxed">La cualidad innata de soportar y cargar pesos muy superiores a los propios sin perder jamás la postura, la elegancia, ni el enfoque táctico.</p></div>
           </div>
         </div>
       </div>
     </div>
     <div class="grid md:grid-cols-2 gap-px bg-zinc-800/40 border border-zinc-800/40 reveal">
       <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
-        <div class="h-1 w-16 bg-[#6DAE5A] mb-10 group-hover:w-full transition-all duration-1000"></div>
-        <h4 class="text-3xl font-black italic uppercase mb-6 tracking-tight">Misión</h4>
+        <div class="h-1 w-16 bg-[#111111] mb-10 group-hover:w-full transition-all duration-1000"></div>
+        <h4 class="text-3xl font-black uppercase mb-6 tracking-tight">Misión</h4>
         <p class="text-zinc-400 text-lg font-light leading-relaxed">En Lem Moda creamos prendas que compaginan la modernidad, la autenticidad y la elegancia, produciendo piezas versátiles que reflejan el estilo único de quienes las llevan. Buscamos brindar una experiencia de moda a la vanguardia que fomente la confianza y la identidad, bajo un firme compromiso con el medio ambiente, la creatividad, la innovación y el cuidado meticuloso de cada detalle a través del trabajo en equipo.</p>
       </div>
       <div class="bg-[#0b0b0d] p-12 lg:p-24 group">
         <div class="h-1 w-16 bg-white mb-10 group-hover:w-full transition-all duration-1000"></div>
-        <h4 class="text-3xl font-black italic uppercase mb-6 tracking-tight">Visión</h4>
+        <h4 class="text-3xl font-black uppercase mb-6 tracking-tight">Visión</h4>
         <p class="text-zinc-400 text-lg font-light leading-relaxed">Ser una marca de moda reconocida para convertir la autenticidad en estilo, sobresaliendo por nuestro diseño vanguardista, calidad y esencia atemporal. En Lem Moda aspiramos a consolidarnos como un símbolo de moda contemporánea y consciente, inspirando a una comunidad global que celebre la expresión personal, la unión y la creatividad a través de prendas con identidad propia.</p>
       </div>
     </div>
     <div class="mt-48 text-center border-t border-zinc-900 pt-24">
       <h6 class="text-xs font-black uppercase tracking-[.6em] text-zinc-600 mb-4">LEM MODA — Diseñado en Ambato, Ecuador</h6>
-      <p class="text-zinc-500 font-light italic text-sm">"Viste a la Moda."</p>
+      <p class="text-zinc-500 font-light text-sm">"Viste a la Moda."</p>
     </div>
   </div>
 </main>
  
 <!-- ══════════════ SHOWROOM ══════════════ -->
-<main id="showroom" class="view-layer bg-[#6DAE5A] text-zinc-950 pt-32 pb-48 overflow-hidden min-h-screen">
+<main id="showroom" class="view-layer bg-white text-zinc-950 pt-32 pb-48 overflow-hidden min-h-screen">
 
   <div class="absolute inset-0 opacity-[.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
@@ -429,13 +429,13 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 
       <span class="text-[9px] font-black text-zinc-900 uppercase tracking-[.8em] block mb-4 reveal">Comunidad Global</span>
 
-      <h4 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-zinc-950 reveal reveal-d1">Únete al Movimiento</h4>
+      <h4 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-zinc-950 reveal reveal-d1">Únete al Movimiento</h4>
 
       <p class="text-zinc-900/80 text-base font-normal max-w-2xl mx-auto leading-relaxed mt-4 reveal reveal-d2">Nuestra narrativa visual se expande a diario. Sé el primero en presenciar los lanzamientos exclusivos, el detrás de escena de nuestros procesos de diseño y la evolución de la mística urbana.</p>
 
       <style>
 
-        .social-pill{display:inline-block;font-size:8px;font-weight:800;letter-spacing:.4em;text-transform:uppercase;padding:3px 10px;border-radius:30px;background:rgba(109,174,90,.15);color:#6DAE5A;margin-bottom:16px}
+        .social-pill{display:inline-block;font-size:8px;font-weight:800;letter-spacing:.4em;text-transform:uppercase;padding:3px 10px;border-radius:30px;background:rgba(17,17,17,.15);color:#111111;margin-bottom:16px}
 
         .soc-card{position:relative;overflow:hidden;border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;gap:20px;text-decoration:none;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1);cursor:pointer}
 
@@ -445,7 +445,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 
         .soc-card:hover{transform:translateY(-6px);box-shadow:0 32px 64px rgba(0,0,0,.3)}
 
-        .soc-card:hover::before{border-color:rgba(109,174,90,.5)}
+        .soc-card:hover::before{border-color:rgba(17,17,17,.5)}
 
         .soc-card:hover::after{opacity:1}
 
@@ -483,13 +483,13 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 
         .soc-arrow{position:relative;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.3);transition:all .4s cubic-bezier(.16,1,.3,1);flex-shrink:0;align-self:flex-start}
 
-        .soc-card:hover .soc-arrow{background:#6DAE5A;border-color:#6DAE5A;color:#fff;transform:translate(3px,-3px)}
+        .soc-card:hover .soc-arrow{background:#111111;border-color:#111111;color:#fff;transform:translate(3px,-3px)}
 
         .soc-top{display:flex;align-items:center;gap:16px}
 
         .soc-followers{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);position:relative;z-index:2}
 
-        .soc-followers span{color:#6DAE5A}
+        .soc-followers span{color:#111111}
 
       </style>
 
@@ -647,7 +647,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
           <div class="space-y-6">
             <div class="inline-block bg-zinc-950 text-white px-3 py-1 text-[8px] font-black uppercase tracking-[.4em] rounded-sm">Atelier & Showroom</div>
-            <h4 class="text-3xl font-black italic uppercase tracking-tighter text-zinc-950 leading-none">Tienda Física LEM MODA</h4>
+            <h4 class="text-3xl font-black uppercase tracking-tighter text-zinc-950 leading-none">Tienda Física LEM MODA</h4>
             <p class="text-zinc-900/80 text-sm font-light leading-relaxed">Visita nuestro espacio de diseño urbano. Un entorno minimalista concebido exclusivamente para experimentar la textura, el gramaje pesado y la arquitectura de las prendas de LEM MODA antes de su adquisición.</p>
             <div class="space-y-4 text-zinc-900 pt-2">
               <div><p class="text-xs font-bold uppercase tracking-wider mb-0.5">📍 Ubicación</p><p class="text-sm font-light leading-relaxed">Av. Cristóbal Colón y Juan León Mera E4-434<br><span class="text-zinc-800/70 text-xs font-medium">Quito, Ecuador • Código Postal: 170524</span></p></div>
@@ -655,17 +655,17 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
             </div>
           </div>
           <div class="bg-zinc-950 text-white p-8 md:p-10 text-center space-y-6 rounded-sm shadow-xl border border-zinc-900 relative overflow-hidden group">
-            <div class="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-full flex items-center justify-center mx-auto group-hover:border-[#6DAE5A] transition-all duration-500">
-              <svg class="w-5 h-5 text-zinc-400 group-hover:text-[#6DAE5A] transition-all duration-500 fill-current" viewBox="0 0 24 24"><path d="M12 0C7.582 0 4 3.582 4 8c0 5.25 8 16 8 16s8-10.75 8-16c0-4.418-3.582-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+            <div class="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-full flex items-center justify-center mx-auto group-hover:border-white transition-all duration-500">
+              <svg class="w-5 h-5 text-zinc-400 group-hover:text-white transition-all duration-500 fill-current" viewBox="0 0 24 24"><path d="M12 0C7.582 0 4 3.582 4 8c0 5.25 8 16 8 16s8-10.75 8-16c0-4.418-3.582-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
             </div>
             <div class="space-y-1"><h5 class="text-white text-xs font-black uppercase tracking-[.3em]">Trazar Ruta de Acceso</h5><p class="text-zinc-500 text-[11px] font-light max-w-xs mx-auto">Conecta directamente con tu aplicación de GPS para guiarte hasta la tienda física de LEM MODA.</p></div>
-            <a href="https://maps.app.goo.gl/gXNaVhJqNaAbdHJ39" target="_blank" rel="noopener noreferrer" class="inline-block w-full bg-[#6DAE5A] text-zinc-950 py-4 rounded-full font-black uppercase text-[9px] tracking-[.4em] hover:bg-white hover:text-black transition-all duration-500 shadow-md">Iniciar Navegación</a>
+            <a href="https://maps.app.goo.gl/gXNaVhJqNaAbdHJ39" target="_blank" rel="noopener noreferrer" class="inline-block w-full bg-black text-white py-4 rounded-full font-black uppercase text-[9px] tracking-[.4em] hover:bg-zinc-800 transition-all duration-500 shadow-md">Iniciar Navegación</a>
           </div>
         </div>
       </div>
       <div class="mt-48 text-center border-t border-zinc-950/20 pt-24">
         <h6 class="text-xs font-black uppercase tracking-[.6em] text-zinc-800 mb-4">LEM MODA — Diseñado en Ambato, Ecuador</h6>
-        <p class="text-zinc-700 font-light italic text-sm">"Viste a la Moda."</p>
+        <p class="text-zinc-700 font-light text-sm">"Viste a la Moda."</p>
       </div>
     </div>
   </div>
@@ -685,10 +685,10 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
       <div id="modal-thumbnails" class="flex gap-3 mt-5 overflow-x-auto pb-2 no-scrollbar"></div>
     </div>
     <div class="w-full lg:w-1/2 p-8 lg:p-24 flex flex-col justify-center">
-      <span id="modal-category" class="text-[10px] font-black text-[#6DAE5A] uppercase tracking-[.4em] mb-4">Categoría</span>
-      <h2 id="modal-name" class="text-5xl lg:text-7xl font-black italic uppercase leading-[.95] tracking-tighter mb-4">Nombre</h2>
+      <span id="modal-category" class="text-[10px] font-black text-[#111111] uppercase tracking-[.4em] mb-4">Categoría</span>
+      <h2 id="modal-name" class="text-5xl lg:text-7xl font-black uppercase leading-[.95] tracking-tighter mb-4">Nombre</h2>
       <p id="modal-price" class="text-2xl font-light mb-2 text-zinc-400">$0.00</p>
-      <p id="modal-story" class="text-sm font-light text-zinc-500 leading-relaxed mb-6 border-l-2 border-[#6DAE5A] pl-4 italic"></p>
+      <p id="modal-story" class="text-sm font-light text-zinc-500 leading-relaxed mb-6 border-l-2 border-[#111111] pl-4"></p>
       <div class="mb-8">
         <p class="text-[10px] font-black uppercase mb-4 tracking-widest">Elegir Color</p>
         <div class="flex flex-wrap gap-3" id="modal-colors"></div>
@@ -708,7 +708,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
           <p id="modal-care" class="text-sm font-light text-zinc-600 leading-relaxed"></p>
         </div>
       </div>
-      <button id="modal-add-btn" class="btn-shine w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[11px] hover:bg-[#6DAE5A] transition-all duration-500">Añadir al Carrito</button>
+      <button id="modal-add-btn" class="btn-shine w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[11px] hover:bg-[#111111] transition-all duration-500">Añadir al Carrito</button>
     </div>
     </div>
     <div class="w-full px-4 lg:px-14 pb-16 pt-4">
@@ -721,7 +721,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 <!-- CART -->
 <aside id="cart-sidebar">
   <div class="flex justify-between items-center mb-10 border-b border-zinc-100 pb-6">
-    <h3 class="text-3xl font-black italic uppercase tracking-tighter">Mi Carrito</h3>
+    <h3 class="text-3xl font-black uppercase tracking-tighter">Mi Carrito</h3>
     <button onclick="toggleCartDrawer()" class="text-xl p-2 hover:scale-110 transition-transform w-10 h-10 flex items-center justify-center hover:bg-zinc-100 rounded-full">✕</button>
   </div>
   <div id="cart-list" class="flex-grow overflow-y-auto space-y-8 pr-2 no-scrollbar"></div>
@@ -730,7 +730,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
       <span class="text-[10px] font-black uppercase text-zinc-400 tracking-widest">Valor Total</span>
       <span id="cart-total" class="text-3xl font-black tracking-tighter">$0.00</span>
     </div>
-    <button onclick="sendOrder()" class="btn-shine w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[10px] hover:bg-[#6DAE5A] transition-colors duration-500">Finalizar Pedido</button>
+    <button onclick="sendOrder()" class="btn-shine w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[10px] hover:bg-[#111111] transition-colors duration-500">Finalizar Pedido</button>
   </div>
 </aside>
  
@@ -1174,9 +1174,9 @@ function renderCartUI() {
           <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover protected-img" loading="lazy" width="64" height="85" decoding="async">
         </div>
         <div class="flex-1 min-w-0">
-          <p class="text-[10px] font-black uppercase italic tracking-wide leading-tight">${item.name}</p>
+          <p class="text-[10px] font-black uppercase tracking-wide leading-tight">${item.name}</p>
           <p class="text-[9px] text-zinc-400 font-bold uppercase mt-1 tracking-wider">Talla: ${item.size} · ${item.color}</p>
-          <p class="text-sm font-black mt-1 text-[#6DAE5A]">$${item.price.toFixed(2)}</p>
+          <p class="text-sm font-black mt-1 text-[#111111]">$${item.price.toFixed(2)}</p>
         </div>
         <button onclick="removeCartItem(${item.uid})" class="text-zinc-300 hover:text-red-400 transition-colors p-1 text-lg flex-shrink-0">×</button>
       </div>
