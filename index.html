@@ -105,15 +105,16 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .search-icon svg{width:15px;height:15px;stroke:var(--brand-black);fill:none;stroke-width:2}
  
 /* ── GRID ── */
-.catalogue-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;padding:2px}
-@media(min-width:768px){.catalogue-grid{grid-template-columns:repeat(3,1fr)}}
+.catalogue-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:6px 18px}
+@media(min-width:768px){.catalogue-grid{grid-template-columns:repeat(3,1fr);gap:24px;padding:6px 24px}}
 @media(min-width:1024px){.catalogue-grid{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:1400px){.catalogue-grid{grid-template-columns:repeat(5,1fr)}}
  
 /* ── PRODUCT CARD ── */
-.product-card{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease-luxury),transform .7s var(--ease-luxury);background:var(--brand-zinc-light);position:relative}
+.product-card{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease-luxury),transform .7s var(--ease-luxury),box-shadow .5s var(--ease-luxury);background:var(--brand-zinc-light);position:relative;border-radius:8px;overflow:hidden}
 .product-card.visible{opacity:1;transform:translateY(0)}
-.img-container{width:100%;aspect-ratio:3/4;overflow:hidden;background:#ececec;position:relative}
+.product-card:hover{box-shadow:0 20px 45px rgba(0,0,0,.09)}
+.img-container{width:100%;aspect-ratio:3/4;overflow:hidden;background:radial-gradient(ellipse at center,#f7f7f8 0%,#ececec 70%);position:relative}
 .img-container img{width:100%;height:100%;object-fit:cover;transition:transform 2.2s var(--ease-luxury-slow),opacity .8s var(--ease-luxury),filter .6s;opacity:0;filter:grayscale(8%)}
 .img-container img.loaded{opacity:1}
 .product-card:hover .img-container img.loaded{transform:scale(1.06);filter:grayscale(0%)}
@@ -167,7 +168,15 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 /* ── MODAL ── */
 #product-modal{position:fixed;inset:0;background:#fff;z-index:7000;display:none;opacity:0;transition:all .6s var(--ease-luxury);overflow-y:auto}
 #product-modal.open{display:block;opacity:1}
-.modal-carousel-container{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--brand-zinc-light);border-radius:2px}
+.modal-carousel-container{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:radial-gradient(ellipse at center,#f7f7f8 0%,var(--brand-zinc-light) 70%);border-radius:2px}
+
+/* ── RECOMENDACIONES (rail estilo "You may like it") ── */
+.reco-card{flex:0 0 auto;width:150px;cursor:pointer;text-decoration:none}
+.reco-img-wrap{width:150px;aspect-ratio:3/4;background:radial-gradient(ellipse at center,#f7f7f8 0%,var(--brand-zinc-light) 70%);border-radius:6px;overflow:hidden;margin-bottom:8px}
+.reco-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-luxury)}
+.reco-card:hover .reco-img-wrap img{transform:scale(1.08)}
+.reco-name{font-size:10px;font-weight:800;text-transform:uppercase;font-style:italic;line-height:1.3;color:var(--brand-black)}
+.reco-price{font-size:11px;font-weight:900;color:var(--brand-green);margin-top:2px}
 .nav-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;z-index:40;font-size:13px;font-weight:bold;transition:all .4s var(--ease-luxury);box-shadow:0 6px 20px rgba(0,0,0,.06);border:none;cursor:pointer}
 .nav-arrow:hover{background:#000;color:#fff}
 .nav-arrow.prev{left:16px}
@@ -664,8 +673,9 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
  
 <!-- MODAL -->
 <div id="product-modal" class="overflow-y-auto">
-  <div class="max-w-[1500px] mx-auto min-h-screen flex flex-col lg:flex-row relative">
+  <div class="max-w-[1500px] mx-auto min-h-screen flex flex-col relative">
     <button onclick="history.back()" class="absolute top-8 right-8 z-[7005] w-10 h-10 flex items-center justify-center hover:bg-zinc-100 rounded-full transition-colors text-xl" aria-label="Cerrar">✕</button>
+    <div class="w-full flex flex-col lg:flex-row">
     <div class="w-full lg:w-1/2 p-4 lg:p-14 flex flex-col justify-center">
       <div class="modal-carousel-container" id="modal-carousel">
         <button class="nav-arrow prev" onclick="navigateModalGallery(-1)" aria-label="Anterior">❮</button>
@@ -698,7 +708,12 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
           <p id="modal-care" class="text-sm font-light text-zinc-600 leading-relaxed"></p>
         </div>
       </div>
-      <button id="modal-add-btn" class="w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[11px] hover:bg-[#6DAE5A] transition-all duration-500">Añadir al Carrito</button>
+      <button id="modal-add-btn" class="btn-shine w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[11px] hover:bg-[#6DAE5A] transition-all duration-500">Añadir al Carrito</button>
+    </div>
+    </div>
+    <div class="w-full px-4 lg:px-14 pb-16 pt-4">
+      <p class="text-[10px] font-black uppercase tracking-[.4em] text-zinc-400 mb-5">También te puede gustar</p>
+      <div id="modal-recommendations" class="flex gap-4 overflow-x-auto no-scrollbar pb-2"></div>
     </div>
   </div>
 </div>
@@ -950,6 +965,20 @@ function selectSize(el) {
 }
  
 /* ══════════ MODAL ══════════ */
+function renderModalRecommendations(currentId) {
+  const wrap = document.getElementById('modal-recommendations');
+  if (!wrap) return;
+  const otros = MOCK_DB.filter(p => p.id !== currentId);
+  const elegidos = otros.sort(() => Math.random() - 0.5).slice(0, 6);
+  wrap.innerHTML = elegidos.map(p => `
+    <div class="reco-card" onclick="openProductModal(${p.id})">
+      <div class="reco-img-wrap"><img src="${p.variants[0].img}" alt="${p.name}" loading="lazy"></div>
+      <p class="reco-name">${p.name}</p>
+      <p class="reco-price">$${parseFloat(p.price).toFixed(2)}</p>
+    </div>
+  `).join('');
+}
+
 function openProductModal(id) {
   const p = MOCK_DB.find(x => x.id === id);
   if(!p) return;
@@ -994,6 +1023,7 @@ function openProductModal(id) {
  
   document.getElementById('modal-add-btn').onclick = () => addToCartFromModal(id);
   renderModalGallery();
+  renderModalRecommendations(id);
  
   const modal = document.getElementById('product-modal');
   modal.style.display = 'block';
