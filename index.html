@@ -125,7 +125,9 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .overlay-colors-row{display:flex;gap:6px;justify-content:center;transform:translateY(8px);transition:transform .4s var(--ease-luxury)}
 .product-card:hover .overlay-colors-row{transform:translateY(0)}
 @media(max-width:1023px){.overlay-colors-row{transform:translateY(0)}}
-.btn-view-details{background:#fff;color:var(--brand-black);font-size:8px;font-weight:900;text-transform:uppercase;letter-spacing:2.5px;padding:12px 24px;border-radius:30px;transform:translateY(8px);transition:all .5s var(--ease-luxury);pointer-events:auto;border:none;cursor:pointer;white-space:nowrap}
+.btn-view-details{background:#fff;color:var(--brand-black);font-size:8px;font-weight:900;text-transform:uppercase;letter-spacing:2.5px;padding:12px 24px;border-radius:30px;transform:translateY(8px);transition:all .5s var(--ease-luxury);pointer-events:auto;border:none;cursor:pointer;white-space:nowrap;position:relative;overflow:hidden}
+.btn-view-details::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:left .85s var(--ease-luxury)}
+.btn-view-details:hover::after{left:140%}
 .product-card:hover .btn-view-details{transform:translateY(0)}
 .btn-view-details:hover{background:var(--brand-green);color:#fff}
 @media(max-width:1023px){.btn-view-details{transform:translateY(0);padding:9px 18px;font-size:7.5px}}
@@ -157,7 +159,9 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .color-dot.active{border-color:#000;transform:scale(1.2)}
  
 /* Add btn */
-.add-to-cart-trigger{width:100%;padding:14px;background:#000;color:#fff;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:3px;transition:all .5s var(--ease-luxury);margin-top:8px;border:none;cursor:pointer}
+.add-to-cart-trigger{width:100%;padding:14px;background:#000;color:#fff;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:3px;transition:all .5s var(--ease-luxury);margin-top:8px;border:none;cursor:pointer;position:relative;overflow:hidden}
+.add-to-cart-trigger::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .85s var(--ease-luxury)}
+.add-to-cart-trigger:hover::after{left:140%}
 .add-to-cart-trigger:hover{background:var(--brand-green)}
  
 /* ── MODAL ── */
@@ -175,7 +179,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .thumb-shield{position:absolute;inset:0;z-index:10}
  
 /* ── CART SIDEBAR ── */
-#cart-sidebar{position:fixed;top:0;right:-100%;width:100%;max-width:480px;height:100vh;background:#fff;z-index:6000;box-shadow:-40px 0 80px rgba(0,0,0,.04);transition:right .8s var(--ease-luxury);display:flex;flex-direction:column;padding:40px}
+#cart-sidebar{position:fixed;top:0;right:-100%;width:100%;max-width:480px;height:100vh;background:#fff;z-index:6000;box-shadow:-60px 0 100px rgba(0,0,0,.12),-1px 0 0 rgba(201,168,76,.15);transition:right .8s var(--ease-luxury);display:flex;flex-direction:column;padding:40px}
 #cart-sidebar.open{right:0}
 .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:5900;opacity:0;pointer-events:none;transition:opacity .5s;backdrop-filter:blur(2px)}
 .cart-overlay.open{opacity:1;pointer-events:auto}
@@ -198,9 +202,27 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
 .reveal-d3{transition-delay:.3s}
 .no-scrollbar{scrollbar-width:none}
 .no-scrollbar::-webkit-scrollbar{display:none}
+
+/* ── GRANO CINEMATOGRÁFICO (textura editorial sutil) ── */
+#film-grain{position:fixed;inset:0;z-index:99400;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ── BOTONES CON DESTELLO (efecto luxury al hover) ── */
+.btn-shine{position:relative;overflow:hidden}
+.btn-shine::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(115deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-20deg);transition:left .85s var(--ease-luxury)}
+.btn-shine:hover::after{left:140%}
+
+/* ── BADGES PREMIUM ── */
+.badge-promo{background:linear-gradient(120deg,#e8c87a,#c9a84c 45%,#f0d896);color:#1a1400;box-shadow:0 4px 14px rgba(201,168,76,.35)}
+.badge-hot{background:linear-gradient(120deg,#1a1a1a,#000);color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.badge-new{box-shadow:0 4px 14px rgba(109,174,90,.3)}
 </style>
 </head>
 <body oncontextmenu="return false;">
+
+<div id="film-grain"></div>
  
 <!-- TOAST -->
 <div id="toast-notif">Añadido a tu carrito</div>
@@ -269,7 +291,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
         Ropa para los que no paran. Del gym a la calle, sin esfuerzo.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center" style="animation:revealUp .8s var(--ease-luxury) 2.9s both">
-        <button onclick="goTo('shop')" class="bg-white text-black px-14 py-5 rounded-full font-black uppercase text-[9px] tracking-[.5em] hover:bg-[#6DAE5A] hover:text-white transition-all duration-500 shadow-xl">
+        <button onclick="goTo('shop')" class="btn-shine bg-white text-black px-14 py-5 rounded-full font-black uppercase text-[9px] tracking-[.5em] hover:bg-[#6DAE5A] hover:text-white transition-all duration-500 shadow-xl">
           Explorar Catálogo
         </button>
         <button onclick="goTo('essence')" class="border border-white/25 text-white px-10 py-5 rounded-full font-black uppercase text-[9px] tracking-[.4em] hover:border-white transition-all duration-500">
@@ -693,7 +715,7 @@ img,video{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-
       <span class="text-[10px] font-black uppercase text-zinc-400 tracking-widest">Valor Total</span>
       <span id="cart-total" class="text-3xl font-black tracking-tighter">$0.00</span>
     </div>
-    <button onclick="sendOrder()" class="w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[10px] hover:bg-[#6DAE5A] transition-colors duration-500">Finalizar Pedido</button>
+    <button onclick="sendOrder()" class="btn-shine w-full bg-black text-white py-6 font-black uppercase tracking-[.4em] text-[10px] hover:bg-[#6DAE5A] transition-colors duration-500">Finalizar Pedido</button>
   </div>
 </aside>
  
