@@ -3174,7 +3174,9 @@ function getRecoTitle(currentProduct) {
   return titles[currentProduct.type] || 'Piezas que combinan';
 }
 
-/* ═══════════ NAVIGATION SPA — FIX NAV VISIBILITY ═══════════ */
+/* ═══════════ NAVIGATION SPA — FIX DEFINITIVO ═══════════ */
+const VIEWS = ['home', 'shop', 'essence', 'showroom'];
+
 function goTo(id, push = true) {
   VIEWS.forEach(v => {
     document.getElementById(v)?.classList.remove('active');
@@ -3194,7 +3196,6 @@ function goTo(id, push = true) {
   
   if (push) history.pushState({ v: id }, '', '#' + id);
   
-  // ✅ FIX: Nav visible en TODAS las vistas que no son home
   const nav = document.getElementById('header-nav');
   if (nav) {
     if (id === 'home') {
@@ -3209,7 +3210,6 @@ function goTo(id, push = true) {
   if (id === 'shop') setTimeout(mountShop, 60);
   if (id === 'home') setTimeout(renderHomeHighlights, 100);
   
-  // Delay para que el DOM se actualice antes del reveal
   setTimeout(initReveal, 50);
   
   if (typeof gtag !== 'undefined') {
