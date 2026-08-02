@@ -129,8 +129,12 @@
   --lem-white: #FFFFFF;
   --lem-cream: #FAF9F6;
   --lem-stone: #F0EDE7;
-  --lem-ash: #9A9A9A;
-  --lem-graphite: #1C1C1C;
+--lem-ash: #5C5C5C;
+--lem-ash-soft: #7A7A7A;
+--lem-ash-strong: #3A3A3A;
+--lem-text-body: #2A2A2A;
+--lem-text-muted: #6B6B6B;
+--lem-graphite: #1C1C1C;
   --lem-line: rgba(10,10,10,0.08);
   
   --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
@@ -349,13 +353,23 @@ input, select, textarea {
 .nav-link {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--lem-black);
-  transition: opacity 0.3s ease;
+  color: var(--lem-text-body);
+  transition: color 0.3s ease;
   position: relative;
   padding: 8px 0;
   cursor: pointer;
+}
+
+.nav-link:hover { 
+  color: var(--lem-cafe);
+  opacity: 1;
+}
+
+.nav-link.active {
+  color: var(--lem-cafe);
+  font-weight: 900;
 }
 
 .site-header.transparent .nav-link {
@@ -743,10 +757,12 @@ input, select, textarea {
 .section-sub {
   font-family: var(--font-serif);
   font-style: italic;
-  color: var(--lem-ash);
-  font-size: 16px;
-  max-width: 500px;
+  color: var(--lem-text-muted);
+  font-size: 17px;
+  max-width: 540px;
   margin: 0 auto;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 /* ═══════════ SHOP HEADER ═══════════ */
@@ -776,9 +792,10 @@ input, select, textarea {
 .shop-subtitle {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 15px;
-  color: var(--lem-ash);
-  margin-bottom: 40px;
+  font-size: 18px;
+  color: var(--lem-text-muted);
+  margin-bottom: 48px;
+  font-weight: 400;
 }
 
 /* Filtros */
@@ -792,23 +809,33 @@ input, select, textarea {
 }
 
 .filter-btn {
-  padding: 12px 20px;
-  font-size: 10px;
+  padding: 12px 22px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--lem-ash);
-  transition: color 0.3s ease;
+  color: var(--lem-ash-strong);
+  transition: color 0.3s ease, background 0.3s ease;
   position: relative;
   white-space: nowrap;
+  border-radius: 100px;
 }
 
-.filter-btn:hover { color: var(--lem-black); }
+.filter-btn:hover { 
+  color: var(--lem-cafe);
+  background: rgba(120, 67, 17, 0.04);
+}
 
 .filter-btn.active {
-  color: var(--lem-black);
+  color: var(--lem-white);
+  background: var(--lem-black);
+  font-weight: 900;
 }
 
+.filter-btn.active::after {
+  display: none;
+}
+     
 .filter-btn.active::after {
   content: '';
   position: absolute;
@@ -821,12 +848,16 @@ input, select, textarea {
 
 .product-count {
   text-align: center;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  color: var(--lem-ash);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  color: var(--lem-cafe);
   text-transform: uppercase;
-  margin-top: 20px;
+  margin-top: 24px;
+  padding: 8px 20px;
+  display: inline-block;
+  background: rgba(120, 67, 17, 0.06);
+  border-radius: 100px;
 }
 
 /* ═══════════ GRID PRODUCTOS ═══════════ */
@@ -1890,9 +1921,8 @@ input, select, textarea {
           <svg style="position:absolute;left:16px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--lem-ash);fill:none;stroke-width:2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <input type="search" id="search-input" placeholder="Buscar en la colección..." oninput="doSearch()" aria-label="Buscar"
-            style="width:100%;padding:14px 20px 14px 44px;font-size:12px;border:1px solid var(--lem-line);border-radius:100px;background:var(--lem-white);letter-spacing:0.03em;font-family:inherit">
-        </div>
+         <input type="search" id="search-input" placeholder="Buscar en la colección..." oninput="doSearch()" aria-label="Buscar"
+  style="width:100%;padding:16px 20px 16px 48px;font-size:13px;color:var(--lem-black);font-weight:500;border:1.5px solid #E5E0D6;border-radius:100px;background:var(--lem-white);letter-spacing:0.02em;font-family:inherit;transition:border-color 0.3s ease,box-shadow 0.3s ease">
       </div>
       
       <!-- Filtros -->
@@ -1905,7 +1935,9 @@ input, select, textarea {
         <button class="filter-btn" data-cat="outfits" onclick="filterShop('outfits')">Conjuntos</button>
       </div>
       
-      <p class="product-count" id="product-count">Cargando...</p>
+<div style="text-align:center;margin-top:24px">
+  <span class="product-count" id="product-count">Cargando...</span>
+</div>
     </header>
     
     <!-- Grid -->
