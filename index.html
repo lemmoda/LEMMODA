@@ -1749,6 +1749,141 @@ input, select, textarea {
 @media (max-width: 640px) {
   .hide-mobile { display: none !important; }
 }
+
+     /* ═══════════ MEJORAS DE CONTRASTE ═══════════ */
+#search-input::placeholder {
+  color: #8A8A8A;
+  font-weight: 400;
+}
+
+#search-input:focus {
+  border-color: var(--lem-cafe) !important;
+  box-shadow: 0 0 0 4px rgba(120, 67, 17, 0.08);
+  outline: none;
+}
+
+/* Product info más legible */
+.product-name {
+  color: var(--lem-black) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+.product-category {
+  color: var(--lem-cafe) !important;
+  font-weight: 900 !important;
+  font-size: 9px !important;
+}
+
+.product-price {
+  color: var(--lem-black) !important;
+  font-weight: 900 !important;
+  font-size: 14px !important;
+}
+
+/* Cart más legible */
+.cart-item-name {
+  font-weight: 700 !important;
+  color: var(--lem-black) !important;
+}
+
+.cart-item-meta {
+  color: var(--lem-text-muted) !important;
+  font-weight: 500 !important;
+}
+
+/* Recomendaciones más legibles */
+.reco-name {
+  font-weight: 600 !important;
+  color: var(--lem-black) !important;
+}
+
+/* Section eyebrows más fuertes */
+.section-eyebrow {
+  color: var(--lem-cafe) !important;
+  font-weight: 900 !important;
+  font-size: 11px !important;
+}
+
+/* Modal texts */
+.modal-cat {
+  color: var(--lem-cafe) !important;
+  font-weight: 900 !important;
+}
+
+.modal-name {
+  color: var(--lem-black) !important;
+  font-weight: 700 !important;
+}
+
+.modal-story {
+  color: var(--lem-text-body) !important;
+  font-weight: 400 !important;
+}
+
+.spec-label {
+  color: var(--lem-cafe) !important;
+  font-weight: 900 !important;
+}
+
+.spec-value {
+  color: var(--lem-text-body) !important;
+  font-weight: 500 !important;
+}
+
+.modal-section-label {
+  color: var(--lem-cafe) !important;
+  font-weight: 900 !important;
+}
+
+.selected-color {
+  color: var(--lem-black) !important;
+  font-weight: 600 !important;
+}
+
+/* Trust badges más visibles */
+.trust-item {
+  color: var(--lem-text-body) !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+}
+
+/* Header con más presencia */
+.site-header:not(.transparent) {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-bottom: 1px solid #E8E0D2 !important;
+}
+
+/* Cart drawer texts */
+.cart-total-label {
+  color: var(--lem-ash-strong) !important;
+  font-weight: 900 !important;
+}
+
+/* Empty cart mensaje más visible */
+.cart-empty-msg {
+  color: var(--lem-text-body) !important;
+  font-weight: 400 !important;
+}
+
+/* Rail titles más firmes */
+.reco-title {
+  color: var(--lem-black) !important;
+  font-weight: 700 !important;
+  font-size: 22px !important;
+}
+
+/* See all más visible */
+.reco-see-all {
+  color: var(--lem-cafe) !important;
+  font-weight: 900 !important;
+}
+
+/* Icon buttons más firmes en header no-transparent */
+.site-header:not(.transparent) .icon-btn svg {
+  stroke: var(--lem-black) !important;
+  stroke-width: 1.75 !important;
+}
 </style>
 </head>
 <body>
