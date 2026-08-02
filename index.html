@@ -801,11 +801,12 @@ input, select, textarea {
 /* Filtros */
 .filters {
   display: flex;
-  flex-wrap: wrap;
+  gap: 6px;
   justify-content: center;
-  gap: 4px;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   padding: 0 12px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .filter-btn {
@@ -1980,6 +1981,157 @@ input, select, textarea {
   opacity: 1;
   transition: opacity 0.4s ease, background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
+     /* ═══════════ SHOP HEADER RESPONSIVE FIX ═══════════ */
+
+/* Wrapper del buscador */
+.search-wrap {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto 24px;
+  display: block;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--lem-ash);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 20px 16px 48px;
+  font-size: 14px;
+  color: var(--lem-black);
+  font-weight: 500;
+  border: 1.5px solid #E5E0D6;
+  border-radius: 100px;
+  background: var(--lem-white);
+  letter-spacing: 0.02em;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-input:focus {
+  border-color: var(--lem-cafe);
+  box-shadow: 0 0 0 4px rgba(120, 67, 17, 0.08);
+}
+
+.search-input::placeholder {
+  color: #8A8A8A;
+  font-weight: 400;
+}
+
+/* Wrapper de filtros con scroll horizontal en móvil */
+.filters-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-bottom: 8px;
+  padding: 4px 0;
+}
+
+.filters-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  padding: 0 20px;
+  justify-content: center;
+  min-width: min-content;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* En móvil los filtros scrollean horizontalmente */
+@media (max-width: 768px) {
+  .filters {
+    justify-content: flex-start;
+    padding: 0 16px;
+  }
+  
+  .filter-btn {
+    flex-shrink: 0;
+    padding: 10px 18px !important;
+    font-size: 10px !important;
+  }
+  
+  .search-wrap {
+    max-width: 92%;
+    margin: 0 auto 20px;
+  }
+  
+  .search-input {
+    font-size: 13px;
+    padding: 14px 18px 14px 46px;
+  }
+  
+  .search-icon {
+    left: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Contador de productos - siempre centrado */
+.count-wrap {
+  text-align: center;
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.product-count {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.35em;
+  color: var(--lem-cafe);
+  text-transform: uppercase;
+  padding: 8px 20px;
+  display: inline-block;
+  background: rgba(120, 67, 17, 0.06);
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .product-count {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    padding: 7px 16px;
+  }
+  
+  .shop-header {
+    margin-bottom: 40px;
+  }
+  
+  .shop-title {
+    font-size: clamp(2.5rem, 15vw, 5rem) !important;
+  }
+  
+  .shop-subtitle {
+    font-size: 15px !important;
+    padding: 0 24px;
+    margin-bottom: 32px !important;
+  }
+}
+     
 </style>
 </head>
 <body>
@@ -2151,30 +2303,36 @@ input, select, textarea {
 <main id="shop" class="view shop-view">
   <div class="container">
     
-    <header class="shop-header reveal">
-      <p class="section-eyebrow">Colección 2026</p>
-      <h1 class="shop-title">Tienda</h1>
-      <p class="shop-subtitle">Piezas para los que no se detienen.</p>
-      
-      <!-- Buscador -->
-      <div style="display:flex;justify-content:center;margin-bottom:32px">
-        <div style="position:relative;max-width:340px;width:100%">
-          <svg style="position:absolute;left:16px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--lem-ash);fill:none;stroke-width:2" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-         <input type="search" id="search-input" placeholder="Buscar en la colección..." oninput="doSearch()" aria-label="Buscar"
-  style="width:100%;padding:16px 20px 16px 48px;font-size:13px;color:var(--lem-black);font-weight:500;border:1.5px solid #E5E0D6;border-radius:100px;background:var(--lem-white);letter-spacing:0.02em;font-family:inherit;transition:border-color 0.3s ease,box-shadow 0.3s ease">
-      </div>
-      
-      <!-- Filtros -->
-      <div class="filters" role="tablist">
-        <button class="filter-btn active" data-cat="all" onclick="filterShop('all')">Todos</button>
-        <button class="filter-btn" data-cat="novedades" onclick="filterShop('novedades')">Novedades</button>
-        <button class="filter-btn" data-cat="hombre" onclick="filterShop('hombre')">Hombre</button>
-        <button class="filter-btn" data-cat="mujer" onclick="filterShop('mujer')">Mujer</button>
-        <button class="filter-btn" data-cat="boxifit" onclick="filterShop('boxifit')">Boxifit</button>
-        <button class="filter-btn" data-cat="outfits" onclick="filterShop('outfits')">Conjuntos</button>
-      </div>
+<header class="shop-header reveal">
+  <p class="section-eyebrow">Colección 2026</p>
+  <h1 class="shop-title">Tienda</h1>
+  <p class="shop-subtitle">Piezas para los que no se detienen.</p>
+  
+  <!-- Buscador -->
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="search" id="search-input" class="search-input" placeholder="Buscar en la colección..." oninput="doSearch()" aria-label="Buscar">
+  </div>
+  
+  <!-- Filtros -->
+  <div class="filters-scroll">
+    <div class="filters" role="tablist">
+      <button class="filter-btn active" data-cat="all" onclick="filterShop('all')">Todos</button>
+      <button class="filter-btn" data-cat="novedades" onclick="filterShop('novedades')">Novedades</button>
+      <button class="filter-btn" data-cat="hombre" onclick="filterShop('hombre')">Hombre</button>
+      <button class="filter-btn" data-cat="mujer" onclick="filterShop('mujer')">Mujer</button>
+      <button class="filter-btn" data-cat="boxifit" onclick="filterShop('boxifit')">Boxifit</button>
+      <button class="filter-btn" data-cat="outfits" onclick="filterShop('outfits')">Conjuntos</button>
+    </div>
+  </div>
+  
+  <div class="count-wrap">
+    <span class="product-count" id="product-count">Cargando...</span>
+  </div>
+</header>
       
 <div style="text-align:center;margin-top:24px">
   <span class="product-count" id="product-count">Cargando...</span>
