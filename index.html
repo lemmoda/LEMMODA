@@ -2180,6 +2180,112 @@ input, select, textarea {
     margin-bottom: 32px !important;
   }
 }
+     /* ═══════════ SUB-FILTROS DINÁMICOS ═══════════ */
+.subfilters-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease-luxury), opacity 0.4s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.subfilters-wrap.active {
+  max-height: 120px;
+  opacity: 1;
+  margin-top: 16px;
+}
+
+.subfilters-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 8px 0;
+}
+
+.subfilters-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.subfilters {
+  display: flex;
+  gap: 8px;
+  padding: 0 20px;
+  justify-content: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  min-width: min-content;
+}
+
+.subfilter-btn {
+  padding: 8px 18px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lem-ash-strong);
+  background: var(--lem-white);
+  border: 1px solid #E5E0D6;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.subfilter-btn:hover {
+  color: var(--lem-cafe);
+  border-color: var(--lem-cafe);
+  background: rgba(120, 67, 17, 0.04);
+}
+
+.subfilter-btn.active {
+  color: var(--lem-white);
+  background: var(--lem-cafe);
+  border-color: var(--lem-cafe);
+  font-weight: 900;
+}
+
+/* Label sutil arriba de los sub-filtros */
+.subfilter-label {
+  text-align: center;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: var(--lem-ash-strong);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+/* En móvil los subs también scrollean */
+@media (max-width: 768px) {
+  .subfilters {
+    justify-content: flex-start;
+    padding: 0 16px;
+  }
+  
+  .subfilter-btn {
+    padding: 7px 14px;
+    font-size: 9px;
+  }
+  
+  .subfilter-label {
+    font-size: 8px;
+  }
+}
+
+/* Animación entrada de sub-filtros */
+@keyframes slideDownSubs {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.subfilters-wrap.active .subfilter-btn {
+  animation: slideDownSubs 0.4s var(--ease-luxury) forwards;
+}
      
 </style>
 </head>
@@ -2367,20 +2473,24 @@ input, select, textarea {
   </div>
   
   <!-- Filtros -->
-  <div class="filters-scroll">
-    <div class="filters" role="tablist">
-      <button class="filter-btn active" data-cat="all" onclick="filterShop('all')">Todos</button>
-      <button class="filter-btn" data-cat="novedades" onclick="filterShop('novedades')">Novedades</button>
-      <button class="filter-btn" data-cat="hombre" onclick="filterShop('hombre')">Hombre</button>
-      <button class="filter-btn" data-cat="mujer" onclick="filterShop('mujer')">Mujer</button>
-      <button class="filter-btn" data-cat="boxifit" onclick="filterShop('boxifit')">Boxifit</button>
-      <button class="filter-btn" data-cat="outfits" onclick="filterShop('outfits')">Conjuntos</button>
-    </div>
+ <!-- Filtros Principales -->
+<div class="filters-scroll">
+  <div class="filters" role="tablist">
+    <button class="filter-btn active" data-cat="all" onclick="filterShop('all')">Todos</button>
+    <button class="filter-btn" data-cat="novedades" onclick="filterShop('novedades')">Novedades</button>
+    <button class="filter-btn" data-cat="hombre" onclick="filterShop('hombre')">Hombre</button>
+    <button class="filter-btn" data-cat="mujer" onclick="filterShop('mujer')">Mujer</button>
+    <button class="filter-btn" data-cat="boxifit" onclick="filterShop('boxifit')">Boxifit</button>
+    <button class="filter-btn" data-cat="outfits" onclick="filterShop('outfits')">Conjuntos</button>
   </div>
-  
-  <div class="count-wrap">
-    <span class="product-count" id="product-count">Cargando...</span>
-  </div>
+</div>
+
+<!-- Sub-filtros (se muestran dinámicamente) -->
+<div class="subfilters-wrap" id="subfilters-wrap"></div>
+
+<div class="count-wrap">
+  <span class="product-count" id="product-count">Cargando...</span>
+</div>
 </header>
       
 <div style="text-align:center;margin-top:24px">
@@ -2895,6 +3005,7 @@ let cart = [];
 try { cart = JSON.parse(localStorage.getItem('lem_cart_v2') || '[]'); } catch(e) { cart = []; }
 
 let currentCategory = localStorage.getItem('lem_filter_v2') || 'all';
+let currentSubFilter = 'all';
 let searchTerm = '';
 let currentModal = null;
 let modalGallery = [];
@@ -3453,9 +3564,12 @@ const doSearch = debounce(() => {
 /* ═══════════ SHOP ═══════════ */
 function filterShop(cat) {
   currentCategory = cat;
+  currentSubFilter = 'all'; // Reset sub-filter al cambiar categoría
   try { localStorage.setItem('lem_filter_v2', cat); } catch(e) {}
   $$('.filter-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`[data-cat="${cat}"]`)?.classList.add('active');
+  
+  renderSubfilters(cat); // ← Nueva línea: renderizar sub-filtros
   mountShop();
   
   if (typeof gtag !== 'undefined') {
@@ -3463,11 +3577,110 @@ function filterShop(cat) {
   }
 }
 
+/* ═══════════ SUB-CATEGORÍAS INTELIGENTES ═══════════ */
+const SUBCATEGORIES = {
+  'hombre': [
+    { id: 'all', label: 'Todo', filter: null },
+    { id: 'hoodie', label: 'Hoodies', filter: (p) => p.type === 'hoodie' },
+    { id: 'pantalon', label: 'Pantalones', filter: (p) => p.type === 'pantalon' },
+    { id: 'top', label: 'Tees', filter: (p) => p.type === 'top' }
+  ],
+  'mujer': [
+    { id: 'all', label: 'Todo', filter: null },
+    { id: 'hoodie', label: 'Hoodies', filter: (p) => p.type === 'hoodie' },
+    { id: 'pantalon', label: 'Pantalones', filter: (p) => p.type === 'pantalon' },
+    { id: 'top', label: 'Blusas & Tops', filter: (p) => p.type === 'top' }
+  ],
+  'boxifit': [
+    { id: 'all', label: 'Todo', filter: null },
+    { id: 'hombre', label: 'Hombre', filter: (p) => p.gender === 'hombre' },
+    { id: 'mujer', label: 'Mujer', filter: (p) => p.gender === 'mujer' },
+    { id: 'unisex', label: 'Unisex', filter: (p) => p.gender === 'unisex' }
+  ],
+  'outfits': [
+    { id: 'all', label: 'Todo', filter: null },
+    { id: 'hombre', label: 'Hombre', filter: (p) => p.gender === 'hombre' },
+    { id: 'mujer', label: 'Mujer', filter: (p) => p.gender === 'mujer' },
+    { id: 'unisex', label: 'Unisex', filter: (p) => p.gender === 'unisex' }
+  ],
+  'novedades': [
+    { id: 'all', label: 'Todo', filter: null },
+    { id: 'hombre', label: 'Hombre', filter: (p) => p.gender === 'hombre' },
+    { id: 'mujer', label: 'Mujer', filter: (p) => p.gender === 'mujer' },
+    { id: 'hoodie', label: 'Hoodies', filter: (p) => p.type === 'hoodie' },
+    { id: 'pantalon', label: 'Pantalones', filter: (p) => p.type === 'pantalon' },
+    { id: 'top', label: 'Tops', filter: (p) => p.type === 'top' }
+  ]
+};
+
+function renderSubfilters(category) {
+  const wrap = $('subfilters-wrap');
+  if (!wrap) return;
+  
+  // Si es "all", ocultar sub-filtros
+  if (category === 'all' || !SUBCATEGORIES[category]) {
+    wrap.classList.remove('active');
+    wrap.innerHTML = '';
+    currentSubFilter = 'all';
+    return;
+  }
+  
+  const subs = SUBCATEGORIES[category];
+  const labels = {
+    'hombre': 'Explora Hombre',
+    'mujer': 'Explora Mujer',
+    'boxifit': 'Explora Boxifit',
+    'outfits': 'Explora Conjuntos',
+    'novedades': 'Explora Novedades'
+  };
+  
+  const html = `
+    <p class="subfilter-label">${labels[category] || 'Explora'}</p>
+    <div class="subfilters-scroll">
+      <div class="subfilters">
+        ${subs.map(s => `
+          <button class="subfilter-btn ${s.id === currentSubFilter ? 'active' : ''}" 
+                  data-sub="${escapeHTML(s.id)}" 
+                  onclick="filterSub('${escapeHTML(s.id)}')">
+            ${escapeHTML(s.label)}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  
+  wrap.innerHTML = html;
+  
+  // Animar aparición
+  requestAnimationFrame(() => {
+    wrap.classList.add('active');
+  });
+}
+
+function filterSub(subId) {
+  currentSubFilter = subId;
+  document.querySelectorAll('.subfilter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[data-sub="${subId}"]`)?.classList.add('active');
+  mountShop();
+  
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'subfilter_shop', { subfilter: subId, main_category: currentCategory });
+  }
+}
+     
 function getFiltered() {
   let list;
   if (currentCategory === 'all') list = [...DB];
   else if (currentCategory === 'novedades') list = DB.filter(p => p.badge === 'new' || p.category === 'novedades');
   else list = DB.filter(p => p.category === currentCategory);
+  
+  // Aplicar sub-filtro si no es "all"
+  if (currentSubFilter && currentSubFilter !== 'all' && SUBCATEGORIES[currentCategory]) {
+    const subConfig = SUBCATEGORIES[currentCategory].find(s => s.id === currentSubFilter);
+    if (subConfig && subConfig.filter) {
+      list = list.filter(subConfig.filter);
+    }
+  }
   
   if (searchTerm) list = list.filter(p => p.name.toLowerCase().includes(searchTerm));
   return list;
@@ -3942,8 +4155,8 @@ function init() {
   if (currentCategory !== 'all') {
     $$('.filter-btn').forEach(b => b.classList.remove('active'));
     document.querySelector(`[data-cat="${currentCategory}"]`)?.classList.add('active');
+    renderSubfilters(currentCategory); // ← Nueva línea
   }
-  
   // Estado inicial
   history.replaceState({ v: 'home' }, '', '#home');
   
