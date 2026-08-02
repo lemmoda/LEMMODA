@@ -1884,6 +1884,102 @@ input, select, textarea {
   stroke: var(--lem-black) !important;
   stroke-width: 1.75 !important;
 }
+     /* ═══════════ FLECHAS DE NAVEGACIÓN RAIL ═══════════ */
+.reco-rail-wrap {
+  position: relative;
+}
+
+/* Gradientes sutiles en los bordes (indican "hay más") */
+.reco-rail-wrap::before,
+.reco-rail-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 20px;
+  width: 80px;
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.reco-rail-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--lem-white) 20%, transparent);
+}
+
+.reco-rail-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--lem-white) 20%, transparent);
+}
+
+.reco-rail-wrap.at-start::before { opacity: 0; }
+.reco-rail-wrap.at-end::after { opacity: 0; }
+
+/* Flechas de navegación */
+.rail-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  background: var(--lem-white);
+  border: 1px solid var(--lem-line);
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(120, 67, 17, 0.12);
+  color: var(--lem-black);
+}
+
+.rail-arrow:hover {
+  background: var(--lem-black);
+  color: var(--lem-white);
+  border-color: var(--lem-black);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 10px 30px rgba(120, 67, 17, 0.25);
+}
+
+.rail-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.rail-arrow svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+
+.rail-arrow-prev { left: 12px; }
+.rail-arrow-next { right: 12px; }
+
+/* Ocultar flechas cuando se llega al borde */
+.reco-rail-wrap.at-start .rail-arrow-prev,
+.reco-rail-wrap.at-end .rail-arrow-next {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.8);
+}
+
+/* En móvil: ocultar flechas (usar swipe táctil natural) */
+@media (max-width: 768px) {
+  .rail-arrow { display: none; }
+  .reco-rail-wrap::before,
+  .reco-rail-wrap::after { width: 40px; }
+}
+
+/* Estado inicial - flechas visibles */
+.reco-rail-wrap {
+  transition: none;
+}
+
+.reco-rail-wrap .rail-arrow {
+  opacity: 1;
+  transition: opacity 0.4s ease, background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
 </style>
 </head>
 <body>
@@ -2013,9 +2109,19 @@ input, select, textarea {
         <p class="section-sub">Los favoritos de la comunidad LEM.</p>
       </div>
       
-      <div class="reco-rail-wrap reveal reveal-d1">
-        <div class="reco-rail" id="home-featured"></div>
-      </div>
+    <div class="reco-rail-wrap reveal reveal-d1" data-rail="home-featured">
+  <button class="rail-arrow rail-arrow-prev" onclick="scrollRail('home-featured', -1)" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+  <div class="reco-rail" id="home-featured"></div>
+  <button class="rail-arrow rail-arrow-next" onclick="scrollRail('home-featured', 1)" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+</div>
       
       <div style="text-align:center;margin-top:60px" class="reveal reveal-d2">
         <button class="hero-cta" style="background:var(--lem-black);color:var(--lem-white)" onclick="goTo('shop')">
@@ -2491,9 +2597,19 @@ input, select, textarea {
       </h3>
       <span class="reco-see-all" onclick="closeProductModal();goTo('shop')">Ver todo →</span>
     </div>
-    <div class="reco-rail-wrap">
-      <div class="reco-rail" id="modal-reco"></div>
-    </div>
+    <div class="reco-rail-wrap" data-rail="modal-reco">
+  <button class="rail-arrow rail-arrow-prev" onclick="scrollRail('modal-reco', -1)" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+  <div class="reco-rail" id="modal-reco"></div>
+  <button class="rail-arrow rail-arrow-next" onclick="scrollRail('modal-reco', 1)" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+</div>
   </div>
   
 </div>
@@ -3213,6 +3329,8 @@ function renderFeatured() {
       <p class="reco-price">$${p.price.toFixed(2)}</p>
     </div>
   `).join('');
+  
+  setTimeout(updateRailArrows, 100);  // ← NUEVA LÍNEA
 }
 
 /* ═══════════ MODAL PRODUCTO ═══════════ */
@@ -3329,6 +3447,11 @@ function renderModalRecs(id) {
       <p class="reco-price">$${r.price.toFixed(2)}</p>
     </div>
   `).join('');
+  
+  setTimeout(() => {
+    initRailListeners();
+    updateRailArrows();
+  }, 100);
 }
 
 function jumpToProduct(id) {
@@ -3550,6 +3673,46 @@ const handleScroll = throttleRAF(() => {
 });
 
 window.addEventListener('scroll', handleScroll, { passive: true });
+     
+     /* ═══════════ RAIL NAVIGATION (Flechas) ═══════════ */
+function scrollRail(railId, direction) {
+  const rail = $(railId);
+  if (!rail) return;
+  
+  // Calcula el ancho a scrollear (2 productos a la vez)
+  const cardWidth = 216; // 200px card + 16px gap
+  const scrollAmount = cardWidth * 2 * direction;
+  
+  rail.scrollBy({
+    left: scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+// Detectar cuando el rail está al inicio o al final
+function updateRailArrows() {
+  document.querySelectorAll('.reco-rail-wrap').forEach(wrap => {
+    const rail = wrap.querySelector('.reco-rail');
+    if (!rail) return;
+    
+    const atStart = rail.scrollLeft <= 5;
+    const atEnd = rail.scrollLeft >= (rail.scrollWidth - rail.clientWidth - 5);
+    
+    wrap.classList.toggle('at-start', atStart);
+    wrap.classList.toggle('at-end', atEnd);
+  });
+}
+
+// Escuchar scroll en todos los rails
+function initRailListeners() {
+  document.querySelectorAll('.reco-rail').forEach(rail => {
+    rail.addEventListener('scroll', throttleRAF(updateRailArrows), { passive: true });
+  });
+  // Estado inicial
+  setTimeout(updateRailArrows, 500);
+  // Actualizar en resize
+  window.addEventListener('resize', throttleRAF(updateRailArrows), { passive: true });
+}
 
 /* ═══════════ INIT ═══════════ */
 function init() {
@@ -3565,6 +3728,7 @@ function init() {
   renderCart();
   renderFeatured();
   observeReveal();
+  initRailListeners();  // ← NUEVA LÍNEA
   
   // Ocultar preloader
   setTimeout(() => {
