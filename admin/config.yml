@@ -3,7 +3,6 @@ backend:
   repo: lemmoda/LEMMODA
   branch: main
 
-# Aquí le decimos dónde guardar las fotos que subas
 media_folder: "assets/images/productos"
 public_folder: "assets/images/productos"
 
@@ -13,7 +12,7 @@ collections:
     files:
       - label: "Todos los Productos"
         name: "productos"
-        file: "productos.json" # El archivo que guardará todo
+        file: "productos.json"
         fields:
           - label: "Lista de Prendas"
             name: "items"
@@ -22,10 +21,10 @@ collections:
               - {label: "ID del Producto (Número)", name: "id", widget: "number"}
               - {label: "Nombre de la Prenda", name: "name", widget: "string"}
               - {label: "Precio ($)", name: "price", widget: "number", value_type: "float"}
-              - {label: "Categoría", name: "category", widget: "select", options: ["hombre", "mujer", "unisex"]}
-              - {label: "Tipo (ej. hoodie)", name: "type", widget: "string"}
+              - {label: "Categoría", name: "category", widget: "select", options: ["hombre", "mujer", "unisex", "boxifit", "conjuntos"]}
+              - {label: "Tipo / Subcategoría (ej: hoodie, pantalones, tees, tops)", name: "type", widget: "string"}
               - {label: "Género", name: "gender", widget: "select", options: ["hombre", "mujer", "unisex"]}
-              - {label: "Etiqueta (Badge)", name: "badge", widget: "select", options: ["new", "hot", "sale", "premium", "agotado", "none"]}
+              - {label: "Etiqueta (Badge)", name: "badge", widget: "select", options: ["new", "hot", "sale", "premium", "none"]}
               - {label: "Historia / Descripción", name: "story", widget: "text"}
               - {label: "Composición", name: "composition", widget: "string"}
               - {label: "Cuidados", name: "care", widget: "string"}
