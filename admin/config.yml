@@ -1,0 +1,38 @@
+backend:
+  name: github
+  repo: TU_USUARIO_DE_GITHUB/TU_REPOSITORIO # ⚠️ IMPORTANTE: Cambia esto por tu repo real, ej: lemmoda/LEMMODA-WEB
+  branch: main # o "master" si tu rama principal se llama así
+
+# Aquí le decimos dónde guardar las fotos que subas
+media_folder: "assets/images/productos"
+public_folder: "assets/images/productos"
+
+collections:
+  - name: "catalogo"
+    label: "Catálogo de Tienda"
+    files:
+      - label: "Todos los Productos"
+        name: "productos"
+        file: "productos.json" # El archivo que guardará todo
+        fields:
+          - label: "Lista de Prendas"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "ID del Producto (Número)", name: "id", widget: "number"}
+              - {label: "Nombre de la Prenda", name: "name", widget: "string"}
+              - {label: "Precio ($)", name: "price", widget: "number", value_type: "float"}
+              - {label: "Categoría", name: "category", widget: "select", options: ["hombre", "mujer", "unisex"]}
+              - {label: "Tipo (ej. hoodie)", name: "type", widget: "string"}
+              - {label: "Género", name: "gender", widget: "select", options: ["hombre", "mujer", "unisex"]}
+              - {label: "Etiqueta (Badge)", name: "badge", widget: "select", options: ["new", "hot", "sale", "premium", "agotado", "none"]}
+              - {label: "Historia / Descripción", name: "story", widget: "text"}
+              - {label: "Composición", name: "composition", widget: "string"}
+              - {label: "Cuidados", name: "care", widget: "string"}
+              - label: "Variantes (Colores y Fotos)"
+                name: "variants"
+                widget: "list"
+                fields:
+                  - {label: "Nombre del Color", name: "color", widget: "string"}
+                  - {label: "Código HEX (Ej: #0A0A0A)", name: "hex", widget: "color"}
+                  - {label: "Foto de la prenda", name: "img", widget: "image"}
