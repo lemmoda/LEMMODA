@@ -3023,19 +3023,9 @@ function getSizes(p) {
   return SIZES_U;
 }
 
-let productos = [];
-
-// Cargar catálogo dinámicamente desde productos.json
-fetch('productos.json')
-  .then(response => response.json())
-  .then(data => {
-    productos = data.items;
-    
-    // ⚠️ REEMPLAZA "inicializarTienda" POR EL NOMBRE DE TU FUNCIÓN PRINCIPAL
-    // (Ejemplo: renderProducts(productos) o initShop() o la función que renderiza las prendas)
-    inicializarTienda(); 
-  })
-  .catch(err => console.error('Error cargando el catálogo:', err));
+// Declaramos las variables globales para que todo el sitio las encuentre
+var DB = [];
+var productos = [];
 
 /* ═══════════════════════════════════════════════════════════
    ALGORITMO IA · RECOMENDACIONES INTELIGENTES
@@ -3106,7 +3096,6 @@ function goTo(id, push = true) {
   
   if (push) history.pushState({ v: id }, '', '#' + id);
   
-  // Nav siempre visible con fondo blanco excepto en home (transparent)
   const header = $('header');
   if (header) {
     if (id === 'home') header.classList.add('transparent');
@@ -3151,12 +3140,12 @@ const doSearch = debounce(() => {
 /* ═══════════ SHOP ═══════════ */
 function filterShop(cat) {
   currentCategory = cat;
-  currentSubFilter = 'all'; // Reset sub-filter al cambiar categoría
+  currentSubFilter = 'all'; 
   try { localStorage.setItem('lem_filter_v2', cat); } catch(e) {}
   $$('.filter-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`[data-cat="${cat}"]`)?.classList.add('active');
   
-  renderSubfilters(cat); // ← Nueva línea: renderizar sub-filtros
+  renderSubfilters(cat); 
   mountShop();
   
   if (typeof gtag !== 'undefined') {
@@ -3204,7 +3193,6 @@ function renderSubfilters(category) {
   const wrap = $('subfilters-wrap');
   if (!wrap) return;
   
-  // Si es "all", ocultar sub-filtros
   if (category === 'all' || !SUBCATEGORIES[category]) {
     wrap.classList.remove('active');
     wrap.innerHTML = '';
@@ -3238,7 +3226,6 @@ function renderSubfilters(category) {
   
   wrap.innerHTML = html;
   
-  // Animar aparición
   requestAnimationFrame(() => {
     wrap.classList.add('active');
   });
@@ -3261,7 +3248,6 @@ function getFiltered() {
   else if (currentCategory === 'novedades') list = DB.filter(p => p.badge === 'new' || p.category === 'novedades');
   else list = DB.filter(p => p.category === currentCategory);
   
-  // Aplicar sub-filtro si no es "all"
   if (currentSubFilter && currentSubFilter !== 'all' && SUBCATEGORIES[currentCategory]) {
     const subConfig = SUBCATEGORIES[currentCategory].find(s => s.id === currentSubFilter);
     if (subConfig && subConfig.filter) {
@@ -3316,7 +3302,6 @@ function mountShop() {
   
   grid.innerHTML = html;
   
-  // Reveal progresivo suave
   const cards = grid.querySelectorAll('.product-card');
   cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), Math.min(i * 40, 800)));
 }
@@ -3337,7 +3322,7 @@ function renderFeatured() {
     </div>
   `).join('');
   
-  setTimeout(updateRailArrows, 100);  // ← NUEVA LÍNEA
+  setTimeout(updateRailArrows, 100); 
 }
 
 /* ═══════════ MODAL PRODUCTO ═══════════ */
@@ -3367,18 +3352,15 @@ function openProductModal(id) {
   if (p.care) { $('modal-care').textContent = p.care; careWrap.style.display = 'block'; }
   else careWrap.style.display = 'none';
   
-  // Colores
   $('modal-colors').innerHTML = p.variants.map((v, i) => 
     `<div class="color-option ${i===0?'active':''}" style="background:${escapeHTML(v.hex)}" title="${escapeHTML(v.color)}" onclick="selectModalColor(this,'${escapeHTML(v.color)}','${escapeHTML(v.img)}')"></div>`
   ).join('');
   
-  // Tallas
   const sizes = getSizes(p);
   $('modal-sizes').innerHTML = sizes.map(s => 
     `<button class="size-option" onclick="selectSize(this)">${escapeHTML(s.l)}</button>`
   ).join('');
   
-  // Thumbnails
   $('modal-thumbs').innerHTML = p.variants.map((v, i) => 
     `<div class="thumb ${i===0?'active':''}" onclick="jumpModalImg(${i})">
       <img src="${escapeHTML(v.img)}" alt="${escapeHTML(v.color)}" loading="lazy" onerror="this.src='assets/images/logos/icono-color.webp'">
@@ -3471,7 +3453,6 @@ function closeProductModal(back = true) {
   modal.classList.remove('open');
   currentModal = null;
   
-  // Solo restaurar scroll si el carrito NO está abierto
   if (!$('cartDrawer')?.classList.contains('open')) {
     document.body.style.overflow = 'auto';
   }
@@ -3481,7 +3462,6 @@ function closeProductModal(back = true) {
   }
 }
 
-// Swipe táctil
 let _tx = 0, _ty = 0;
 function setupSwipe() {
   const c = $('modal-main-img')?.parentElement;
@@ -3494,7 +3474,6 @@ function setupSwipe() {
   };
 }
 
-// ESC para cerrar
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     const modal = $('product-modal');
@@ -3525,11 +3504,9 @@ function addToCartFromModal() {
   badge?.classList.add('bump');
   setTimeout(() => badge?.classList.remove('bump'), 500);
   
-  // Cerrar modal PRIMERO, luego abrir cart con delay suficiente
-  closeProductModal(false); // false = no hacer history.back()
+  closeProductModal(false); 
   
   setTimeout(() => {
-    // Asegurar que el cart esté cerrado antes de abrirlo
     const drawer = $('cartDrawer');
     if (!drawer?.classList.contains('open')) {
       toggleCart();
@@ -3601,15 +3578,12 @@ function toggleCart() {
   const isOpen = drawer?.classList.contains('open');
   
   if (isOpen) {
-    // CERRAR carrito
     drawer.classList.remove('open');
     overlay?.classList.remove('open');
-    // Restaurar scroll solo si no hay modal producto abierto
     if (!$('product-modal')?.classList.contains('open')) {
       document.body.style.overflow = 'auto';
     }
   } else {
-    // ABRIR carrito
     drawer?.classList.add('open');
     overlay?.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -3659,7 +3633,7 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2400);
 }
 
-/* ═══════════ SCROLL REVEAL (Un solo observer) ═══════════ */
+/* ═══════════ SCROLL REVEAL ═══════════ */
 let revealObs = null;
 function observeReveal() {
   if (!revealObs) {
@@ -3675,7 +3649,7 @@ function observeReveal() {
   $$('.reveal:not(.in)').forEach(el => revealObs.observe(el));
 }
 
-/* ═══════════ HEADER SCROLL (Throttled) ═══════════ */
+/* ═══════════ HEADER SCROLL ═══════════ */
 const handleScroll = throttleRAF(() => {
   const header = $('header');
   const isHome = $('home')?.classList.contains('active');
@@ -3686,7 +3660,6 @@ const handleScroll = throttleRAF(() => {
     header?.classList.add('transparent');
   }
   
-  // Cerrar menú móvil al scroll
   const nav = $('mobileNav');
   if (nav?.classList.contains('open')) {
     nav.classList.remove('open');
@@ -3696,13 +3669,12 @@ const handleScroll = throttleRAF(() => {
 
 window.addEventListener('scroll', handleScroll, { passive: true });
      
-     /* ═══════════ RAIL NAVIGATION (Flechas) ═══════════ */
+/* ═══════════ RAIL NAVIGATION ═══════════ */
 function scrollRail(railId, direction) {
   const rail = $(railId);
   if (!rail) return;
   
-  // Calcula el ancho a scrollear (2 productos a la vez)
-  const cardWidth = 216; // 200px card + 16px gap
+  const cardWidth = 216; 
   const scrollAmount = cardWidth * 2 * direction;
   
   rail.scrollBy({
@@ -3711,7 +3683,6 @@ function scrollRail(railId, direction) {
   });
 }
 
-// Detectar cuando el rail está al inicio o al final
 function updateRailArrows() {
   document.querySelectorAll('.reco-rail-wrap').forEach(wrap => {
     const rail = wrap.querySelector('.reco-rail');
@@ -3725,40 +3696,33 @@ function updateRailArrows() {
   });
 }
 
-// Escuchar scroll en todos los rails
 function initRailListeners() {
   document.querySelectorAll('.reco-rail').forEach(rail => {
     rail.addEventListener('scroll', throttleRAF(updateRailArrows), { passive: true });
   });
-  // Estado inicial
   setTimeout(updateRailArrows, 500);
-  // Actualizar en resize
   window.addEventListener('resize', throttleRAF(updateRailArrows), { passive: true });
 }
 
 /* ═══════════ INIT ═══════════ */
 function init() {
-  // Restaurar filtro
-  if (currentCategory !== 'all') {
+  if (typeof currentCategory !== 'undefined' && currentCategory !== 'all') {
     $$('.filter-btn').forEach(b => b.classList.remove('active'));
     document.querySelector(`[data-cat="${currentCategory}"]`)?.classList.add('active');
-    renderSubfilters(currentCategory); // ← Nueva línea
+    renderSubfilters(currentCategory);
   }
-  // Estado inicial
   history.replaceState({ v: 'home' }, '', '#home');
   
   renderCart();
   renderFeatured();
   observeReveal();
-  initRailListeners();  // ← NUEVA LÍNEA
+  initRailListeners(); 
   
-  // Ocultar preloader
   setTimeout(() => {
     $('preloader')?.classList.add('hidden');
     setTimeout(observeReveal, 400);
   }, 800);
   
-  // Behold widget dinámico
   const beholdScript = document.createElement('script');
   beholdScript.type = 'module';
   beholdScript.src = 'https://w.behold.so/widget.js';
@@ -3769,12 +3733,29 @@ function init() {
   }
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
+/* ═══════════ CARGA FINAL DESDE JSON ═══════════ */
+// Aquí leemos los productos y LUEGO iniciamos la web
+fetch('productos.json')
+  .then(response => response.json())
+  .then(data => {
+    DB = data.items;
+    productos = data.items;
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })
+  .catch(err => {
+    console.error('Error cargando los productos:', err);
+    // Para que no se congele si falla la carga:
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  });
 </script>
-
 </body>
 </html>
