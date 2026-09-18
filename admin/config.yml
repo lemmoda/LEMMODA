@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: TU_USUARIO_DE_GITHUB/TU_REPOSITORIO # ⚠️ IMPORTANTE: Cambia esto por tu repo real, ej: lemmoda/LEMMODA-WEB
-  branch: main # o "master" si tu rama principal se llama así
+  repo: lemmoda/LEMMODA
+  branch: main
 
 # Aquí le decimos dónde guardar las fotos que subas
 media_folder: "assets/images/productos"
