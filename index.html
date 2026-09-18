@@ -3018,6 +3018,12 @@ const SIZES_H = [{l:'S',n:'44-46'},{l:'M',n:'48-50'},{l:'L',n:'52-54'},{l:'XL',n
 const SIZES_U = [{l:'S',n:'S'},{l:'M',n:'M'},{l:'L',n:'L'},{l:'XL',n:'XL'}];
 
 function getSizes(p) {
+  // 1. Si marcaste tallas en el Admin para esta prenda, usa esas:
+  if (p.sizes && Array.isArray(p.sizes) && p.sizes.length > 0) {
+    return p.sizes.map(s => ({ l: String(s), n: String(s) }));
+  }
+  
+  // 2. Si no seleccionaste nada en el Admin, mantiene tu lógica original:
   if (p.gender === 'mujer') return SIZES_M;
   if (p.gender === 'hombre') return SIZES_H;
   return SIZES_U;
