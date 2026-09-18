@@ -17,21 +17,100 @@ collections:
           - label: "Lista de Prendas"
             name: "items"
             widget: "list"
+            summary: "{{fields.name}} — ${{fields.price}} ({{fields.category}})"
             fields:
-              - {label: "ID del Producto (Número)", name: "id", widget: "number"}
-              - {label: "Nombre de la Prenda", name: "name", widget: "string"}
-              - {label: "Precio ($)", name: "price", widget: "number", value_type: "float"}
-              - {label: "Categoría", name: "category", widget: "select", options: ["hombre", "mujer", "unisex", "boxifit", "conjuntos"]}
-              - {label: "Tipo / Subcategoría (ej: hoodie, pantalones, tees, tops)", name: "type", widget: "string"}
-              - {label: "Género", name: "gender", widget: "select", options: ["hombre", "mujer", "unisex"]}
-              - {label: "Etiqueta (Badge)", name: "badge", widget: "select", options: ["new", "hot", "sale", "premium", "none"]}
-              - {label: "Historia / Descripción", name: "story", widget: "text"}
-              - {label: "Composición", name: "composition", widget: "string"}
-              - {label: "Cuidados", name: "care", widget: "string"}
+              - label: "ID del Producto"
+                name: "id"
+                widget: "number"
+                value_type: "int"
+                hint: "Usa el siguiente número libre (ej: 61, 62...)"
+
+              - label: "Nombre de la Prenda"
+                name: "name"
+                widget: "string"
+
+              - label: "Precio ($)"
+                name: "price"
+                widget: "number"
+                value_type: "float"
+                min: 0
+
+              - label: "Categoría principal"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "Hombre", value: "hombre" }
+                  - { label: "Mujer", value: "mujer" }
+                  - { label: "Boxifit", value: "boxifit" }
+                  - { label: "Conjuntos / Outfits", value: "outfits" }
+                  - { label: "Novedades", value: "novedades" }
+                  - { label: "Unisex", value: "unisex" }
+
+              - label: "Tipo / Subcategoría"
+                name: "type"
+                widget: "select"
+                options:
+                  - { label: "Hoodie", value: "hoodie" }
+                  - { label: "Pantalón", value: "pantalon" }
+                  - { label: "Top / Tee / Blusa", value: "top" }
+                  - { label: "Outfit / Conjunto", value: "outfit" }
+                hint: "Si necesitas una subcategoría nueva (ej: gorras), avísame y la agregamos"
+
+              - label: "Género"
+                name: "gender"
+                widget: "select"
+                options:
+                  - { label: "Hombre", value: "hombre" }
+                  - { label: "Mujer", value: "mujer" }
+                  - { label: "Unisex", value: "unisex" }
+
+              - label: "Etiqueta (Badge)"
+                name: "badge"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "Ninguna", value: "" }
+                  - { label: "Nuevo", value: "new" }
+                  - { label: "Hot", value: "hot" }
+                  - { label: "Premium", value: "premium" }
+                  - { label: "Promo / Sale", value: "sale" }
+                  - { label: "Agotado", value: "agotado" }
+
+              - label: "Historia / Descripción"
+                name: "story"
+                widget: "text"
+                required: false
+
+              - label: "Composición"
+                name: "composition"
+                widget: "string"
+                required: false
+
+              - label: "Cuidados"
+                name: "care"
+                widget: "string"
+                required: false
+
               - label: "Variantes (Colores y Fotos)"
                 name: "variants"
                 widget: "list"
+                summary: "{{fields.color}} ({{fields.hex}})"
+                min: 1
                 fields:
-                  - {label: "Nombre del Color", name: "color", widget: "string"}
-                  - {label: "Código HEX (Ej: #0A0A0A)", name: "hex", widget: "color"}
-                  - {label: "Foto de la prenda", name: "img", widget: "image"}
+                  - label: "Nombre del Color"
+                    name: "color"
+                    widget: "string"
+                    hint: "Ej: Obsidian, Habano, Café LEM"
+
+                  - label: "Código HEX Exacto"
+                    name: "hex"
+                    widget: "string"
+                    default: "#0A0A0A"
+                    pattern: ['^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$', 'Debe llevar el # al inicio. Ej: #0A0A0A']
+                    hint: "Obsidian: #0A0A0A | Habano: #C89660 | Café: #784311 | Verde: #2D8C3C | Blanco: #FAFAFA | Cream: #FAF6F0"
+
+                  - label: "Foto de la prenda"
+                    name: "img"
+                    widget: "image"
+                    media_folder: "assets/images/productos"
+                    public_folder: "assets/images/productos"
