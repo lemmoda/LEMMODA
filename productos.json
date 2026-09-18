@@ -12,11 +12,31 @@
       "composition": "80% Algodón peinado premium · 20% Poliéster reciclado · French Terry 320g/m²",
       "care": "Lavado a mano o ciclo delicado 30°C · Secar al aire · No planchar sobre bordado",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" },
-        { "color": "Blanco Puro", "hex": "#FAFAFA", "img": "assets/images/productos/1000813673.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        },
+        {
+          "color": "Blanco Puro",
+          "hex": "#FAFAFA",
+          "img": "assets/images/productos/1000813673.webp"
+        }
       ]
     },
     {
@@ -31,10 +51,26 @@
       "composition": "80% Algodón · 20% Poliéster · French Terry 320g/m²",
       "care": "Lavado delicado en frío · Secar al aire",
       "variants": [
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Blanco Puro", "hex": "#FAFAFA", "img": "assets/images/productos/1000813673.webp" }
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Blanco Puro",
+          "hex": "#FAFAFA",
+          "img": "assets/images/productos/1000813673.webp"
+        }
       ]
     },
     {
@@ -44,10 +80,26 @@
       "category": "hombre",
       "type": "hoodie",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        }
       ]
     },
     {
@@ -57,10 +109,26 @@
       "category": "hombre",
       "type": "hoodie",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        }
       ]
     },
     {
@@ -75,10 +143,26 @@
       "composition": "85% Algodón orgánico · 15% Poliéster · Heavyweight 380g/m²",
       "care": "Solo lavado a mano en frío · Secar horizontal · Producción limitada, cuidar con esmero",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        }
       ]
     },
     {
@@ -93,9 +177,21 @@
       "composition": "85% Algodón orgánico · 15% Poliéster · Heavyweight 380g/m²",
       "care": "Lavado a mano en frío · Producción limitada",
       "variants": [
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" }
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        }
       ]
     },
     {
@@ -106,10 +202,25 @@
       "type": "hoodie",
       "gender": "unisex",
       "badge": "premium",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -120,10 +231,25 @@
       "type": "hoodie",
       "gender": "unisex",
       "badge": "premium",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -134,10 +260,25 @@
       "type": "hoodie",
       "gender": "hombre",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/1000813673.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/1000813673.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -147,10 +288,26 @@
       "category": "hombre",
       "type": "hoodie",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -160,10 +317,26 @@
       "category": "hombre",
       "type": "hoodie",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/1000813673.webp" }
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/1000813673.webp"
+        }
       ]
     },
     {
@@ -178,9 +351,21 @@
       "composition": "80% Algodón · 20% Poliéster · Cierre YKK premium",
       "care": "Ciclo delicado · Cerrar cremallera antes de lavar",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        }
       ]
     },
     {
@@ -190,10 +375,26 @@
       "category": "hombre",
       "type": "hoodie",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        }
       ]
     },
     {
@@ -208,10 +409,26 @@
       "composition": "95% Algodón técnico · 5% Elastano · Canvas 260g/m²",
       "care": "Lavado 30°C ciclo delicado · Planchar por el interior",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813675.webp" },
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813701.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813675.webp"
+        },
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813701.webp"
+        }
       ]
     },
     {
@@ -221,10 +438,26 @@
       "category": "hombre",
       "type": "pantalon",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813675.webp" }
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813675.webp"
+        }
       ]
     },
     {
@@ -234,10 +467,26 @@
       "category": "hombre",
       "type": "pantalon",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" },
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813701.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        },
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813701.webp"
+        }
       ]
     },
     {
@@ -248,10 +497,25 @@
       "type": "pantalon",
       "gender": "hombre",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813701.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813701.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        }
       ]
     },
     {
@@ -261,10 +525,26 @@
       "category": "hombre",
       "type": "pantalon",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813675.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813675.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        }
       ]
     },
     {
@@ -274,10 +554,26 @@
       "category": "hombre",
       "type": "pantalon",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813675.webp" },
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813701.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813675.webp"
+        },
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813701.webp"
+        }
       ]
     },
     {
@@ -287,10 +583,26 @@
       "category": "hombre",
       "type": "top",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Blanco Puro", "hex": "#FAFAFA", "img": "assets/images/productos/1000813673.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" }
+        {
+          "color": "Blanco Puro",
+          "hex": "#FAFAFA",
+          "img": "assets/images/productos/1000813673.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        }
       ]
     },
     {
@@ -301,10 +613,25 @@
       "type": "top",
       "gender": "hombre",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Blanco Puro", "hex": "#FAFAFA", "img": "assets/images/productos/1000813673.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Blanco Puro",
+          "hex": "#FAFAFA",
+          "img": "assets/images/productos/1000813673.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -314,10 +641,26 @@
       "category": "hombre",
       "type": "top",
       "gender": "hombre",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Blanco Puro", "hex": "#FAFAFA", "img": "assets/images/productos/1000813673.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Blanco Puro",
+          "hex": "#FAFAFA",
+          "img": "assets/images/productos/1000813673.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        }
       ]
     },
     {
@@ -332,10 +675,26 @@
       "composition": "75% Algodón · 25% Poliéster · Ribbed 280g/m²",
       "care": "Lavado 30°C · No blanqueador · Secar al aire",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/mila-vino.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/mila-marino.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/mila-vino.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/mila-marino.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        }
       ]
     },
     {
@@ -345,10 +704,26 @@
       "category": "mujer",
       "type": "hoodie",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/gaia-sandbeige.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/gaia-sandbeige.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        }
       ]
     },
     {
@@ -358,10 +733,26 @@
       "category": "mujer",
       "type": "hoodie",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/mila-vino.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/mila-marino.webp" }
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/mila-vino.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/mila-marino.webp"
+        }
       ]
     },
     {
@@ -372,10 +763,25 @@
       "type": "hoodie",
       "gender": "mujer",
       "badge": "hot",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/gaia-arena.webp" },
-        { "color": "Rosa Cuarzo", "hex": "#D1918B", "img": "assets/images/productos/gaia-rosacuarzo.webp" }
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/gaia-arena.webp"
+        },
+        {
+          "color": "Rosa Cuarzo",
+          "hex": "#D1918B",
+          "img": "assets/images/productos/gaia-rosacuarzo.webp"
+        }
       ]
     },
     {
@@ -385,10 +791,26 @@
       "category": "mujer",
       "type": "hoodie",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/mila-marino.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/mila-vino.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/mila-marino.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/mila-vino.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        }
       ]
     },
     {
@@ -403,9 +825,21 @@
       "composition": "85% Algodón orgánico · 15% Poliéster · 380g/m² premium",
       "care": "Lavado a mano en frío · Producción limitada",
       "variants": [
-        { "color": "Rosa Cuarzo", "hex": "#D1918B", "img": "assets/images/productos/gaia-rosacuarzo.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/gaia-arena.webp" }
+        {
+          "color": "Rosa Cuarzo",
+          "hex": "#D1918B",
+          "img": "assets/images/productos/gaia-rosacuarzo.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/gaia-arena.webp"
+        }
       ]
     },
     {
@@ -416,10 +850,25 @@
       "type": "hoodie",
       "gender": "mujer",
       "badge": "premium",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/mila-vino.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/mila-marino.webp" }
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/mila-vino.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/mila-marino.webp"
+        }
       ]
     },
     {
@@ -430,10 +879,25 @@
       "type": "hoodie",
       "gender": "mujer",
       "badge": "hot",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/mila-vino.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/mila-vino.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        }
       ]
     },
     {
@@ -443,10 +907,26 @@
       "category": "mujer",
       "type": "hoodie",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/gaia-sandbeige.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/mila-marino.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/gaia-sandbeige.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/mila-marino.webp"
+        }
       ]
     },
     {
@@ -457,10 +937,25 @@
       "type": "hoodie",
       "gender": "mujer",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Sky Blue", "hex": "#7CDFFF", "img": "assets/images/productos/gaia-skyblue.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/gaia-arena.webp" }
+        {
+          "color": "Sky Blue",
+          "hex": "#7CDFFF",
+          "img": "assets/images/productos/gaia-skyblue.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/gaia-arena.webp"
+        }
       ]
     },
     {
@@ -470,10 +965,26 @@
       "category": "mujer",
       "type": "hoodie",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Pastel Lemon", "hex": "#FFF4A3", "img": "assets/images/productos/gaia-pastellemon.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" },
-        { "color": "Sand Beige", "hex": "#D6C7A7", "img": "assets/images/productos/gaia-sandbeige.webp" }
+        {
+          "color": "Pastel Lemon",
+          "hex": "#FFF4A3",
+          "img": "assets/images/productos/gaia-pastellemon.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        },
+        {
+          "color": "Sand Beige",
+          "hex": "#D6C7A7",
+          "img": "assets/images/productos/gaia-sandbeige.webp"
+        }
       ]
     },
     {
@@ -488,9 +999,21 @@
       "composition": "75% Algodón · 25% Poliéster",
       "care": "Lavado 30°C · Planchar máx 150°C",
       "variants": [
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/chaqueta-mila-esencial-vino.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/chaqueta-mila-esencial-arena.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/chaqueta-mila-esencial-marino.webp" }
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/chaqueta-mila-esencial-vino.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/chaqueta-mila-esencial-arena.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/chaqueta-mila-esencial-marino.webp"
+        }
       ]
     },
     {
@@ -500,13 +1023,26 @@
       "category": "mujer",
       "type": "pantalon",
       "gender": "mujer",
+      "badge": "",
       "story": "Legging de compresión. Modela la silueta con costuras estratégicas. Del yoga a la calle.",
       "composition": "88% Poliamida · 12% Elastano · Compresión media",
       "care": "Lavado en frío · No secadora",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" },
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813701.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        },
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813701.webp"
+        }
       ]
     },
     {
@@ -516,10 +1052,26 @@
       "category": "mujer",
       "type": "pantalon",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813675.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" }
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813675.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        }
       ]
     },
     {
@@ -530,10 +1082,25 @@
       "type": "pantalon",
       "gender": "mujer",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813675.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813675.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        }
       ]
     },
     {
@@ -543,10 +1110,26 @@
       "category": "mujer",
       "type": "pantalon",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" },
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813701.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        },
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813701.webp"
+        }
       ]
     },
     {
@@ -556,10 +1139,26 @@
       "category": "mujer",
       "type": "pantalon",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813701.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813701.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        }
       ]
     },
     {
@@ -569,10 +1168,26 @@
       "category": "mujer",
       "type": "pantalon",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813675.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Rosa Cuarzo", "hex": "#D1918B", "img": "assets/images/productos/gaia-rosacuarzo.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813675.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Rosa Cuarzo",
+          "hex": "#D1918B",
+          "img": "assets/images/productos/gaia-rosacuarzo.webp"
+        }
       ]
     },
     {
@@ -587,12 +1202,36 @@
       "composition": "75% Algodón · 25% Poliéster",
       "care": "Lavado 30°C · Secado a la sombra",
       "variants": [
-        { "color": "Sky Blue", "hex": "#7CDFFF", "img": "assets/images/productos/gaia-skyblue.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" },
-        { "color": "Rosa Cuarzo", "hex": "#D1918B", "img": "assets/images/productos/gaia-rosacuarzo.webp" },
-        { "color": "Pastel Lemon", "hex": "#FFF4A3", "img": "assets/images/productos/gaia-pastellemon.webp" },
-        { "color": "Sand Beige", "hex": "#D6C7A7", "img": "assets/images/productos/gaia-sandbeige.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/gaia-arena.webp" }
+        {
+          "color": "Sky Blue",
+          "hex": "#7CDFFF",
+          "img": "assets/images/productos/gaia-skyblue.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        },
+        {
+          "color": "Rosa Cuarzo",
+          "hex": "#D1918B",
+          "img": "assets/images/productos/gaia-rosacuarzo.webp"
+        },
+        {
+          "color": "Pastel Lemon",
+          "hex": "#FFF4A3",
+          "img": "assets/images/productos/gaia-pastellemon.webp"
+        },
+        {
+          "color": "Sand Beige",
+          "hex": "#D6C7A7",
+          "img": "assets/images/productos/gaia-sandbeige.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/gaia-arena.webp"
+        }
       ]
     },
     {
@@ -602,10 +1241,26 @@
       "category": "mujer",
       "type": "top",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/gaia-arena.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" },
-        { "color": "Sand Beige", "hex": "#D6C7A7", "img": "assets/images/productos/gaia-sandbeige.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/gaia-arena.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        },
+        {
+          "color": "Sand Beige",
+          "hex": "#D6C7A7",
+          "img": "assets/images/productos/gaia-sandbeige.webp"
+        }
       ]
     },
     {
@@ -616,10 +1271,25 @@
       "type": "top",
       "gender": "mujer",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/gaia-arena.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/mila-marino.webp" }
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/gaia-arena.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/mila-marino.webp"
+        }
       ]
     },
     {
@@ -629,10 +1299,26 @@
       "category": "mujer",
       "type": "top",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/mila-marino.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" },
-        { "color": "Rosa Cuarzo", "hex": "#D1918B", "img": "assets/images/productos/gaia-rosacuarzo.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/mila-marino.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        },
+        {
+          "color": "Rosa Cuarzo",
+          "hex": "#D1918B",
+          "img": "assets/images/productos/gaia-rosacuarzo.webp"
+        }
       ]
     },
     {
@@ -642,10 +1328,26 @@
       "category": "mujer",
       "type": "top",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/gaia-sandbeige.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/gaia-arena.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/gaia-sandbeige.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/gaia-arena.webp"
+        }
       ]
     },
     {
@@ -655,10 +1357,26 @@
       "category": "mujer",
       "type": "top",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Rosa Cuarzo", "hex": "#D1918B", "img": "assets/images/productos/gaia-rosacuarzo.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/gaia-arena.webp" }
+        {
+          "color": "Rosa Cuarzo",
+          "hex": "#D1918B",
+          "img": "assets/images/productos/gaia-rosacuarzo.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/gaia-arena.webp"
+        }
       ]
     },
     {
@@ -668,10 +1386,26 @@
       "category": "mujer",
       "type": "top",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/mila-vino.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/gaia-blanco.webp" }
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/mila-vino.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/gaia-blanco.webp"
+        }
       ]
     },
     {
@@ -686,10 +1420,26 @@
       "composition": "Hoodie: 80% Algodón · 20% Poliéster · Jogger: 95% Algodón · 5% Elastano",
       "care": "Lavar piezas por separado · Ciclo delicado",
       "variants": [
-        { "color": "Full Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Full Café", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Full Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Full Verde", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" }
+        {
+          "color": "Full Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Full Café",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Full Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Full Verde",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        }
       ]
     },
     {
@@ -700,10 +1450,25 @@
       "type": "outfit",
       "gender": "unisex",
       "badge": "premium",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Full Café", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Café/Habano", "hex": "#8F5A28", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Café/Obsidian", "hex": "#5C3309", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Full Café",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Café/Habano",
+          "hex": "#8F5A28",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Café/Obsidian",
+          "hex": "#5C3309",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -714,10 +1479,25 @@
       "type": "outfit",
       "gender": "unisex",
       "badge": "hot",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Full Verde", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" },
-        { "color": "Verde/Café", "hex": "#4A5F2D", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Verde/Obsidian", "hex": "#1F6A2C", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Full Verde",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        },
+        {
+          "color": "Verde/Café",
+          "hex": "#4A5F2D",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Verde/Obsidian",
+          "hex": "#1F6A2C",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -727,10 +1507,26 @@
       "category": "outfits",
       "type": "outfit",
       "gender": "unisex",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Full Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Habano/Café", "hex": "#A67A48", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Habano/Obsidian", "hex": "#8F6E44", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Full Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Habano/Café",
+          "hex": "#A67A48",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Habano/Obsidian",
+          "hex": "#8F6E44",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -741,10 +1537,25 @@
       "type": "outfit",
       "gender": "unisex",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Full Cream", "hex": "#FAF6F0", "img": "assets/images/productos/1000813673.webp" },
-        { "color": "Cream/Habano", "hex": "#DBB388", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Cream/Café", "hex": "#B8865E", "img": "assets/images/productos/1000813684.webp" }
+        {
+          "color": "Full Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/1000813673.webp"
+        },
+        {
+          "color": "Cream/Habano",
+          "hex": "#DBB388",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Cream/Café",
+          "hex": "#B8865E",
+          "img": "assets/images/productos/1000813684.webp"
+        }
       ]
     },
     {
@@ -754,10 +1565,26 @@
       "category": "outfits",
       "type": "outfit",
       "gender": "mujer",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Café/Cream", "hex": "#784311", "img": "assets/images/productos/mila-vino.webp" },
-        { "color": "Habano/Cream", "hex": "#C89660", "img": "assets/images/productos/mila-arena.webp" },
-        { "color": "Rosa/Cream", "hex": "#D1918B", "img": "assets/images/productos/gaia-rosacuarzo.webp" }
+        {
+          "color": "Café/Cream",
+          "hex": "#784311",
+          "img": "assets/images/productos/mila-vino.webp"
+        },
+        {
+          "color": "Habano/Cream",
+          "hex": "#C89660",
+          "img": "assets/images/productos/mila-arena.webp"
+        },
+        {
+          "color": "Rosa/Cream",
+          "hex": "#D1918B",
+          "img": "assets/images/productos/gaia-rosacuarzo.webp"
+        }
       ]
     },
     {
@@ -768,10 +1595,25 @@
       "type": "outfit",
       "gender": "hombre",
       "badge": "hot",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Habano/Café", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Café/Habano", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Full Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Habano/Café",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Café/Habano",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Full Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -781,10 +1623,26 @@
       "category": "outfits",
       "type": "outfit",
       "gender": "unisex",
+      "badge": "",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Sand Beige", "hex": "#D6C7A7", "img": "assets/images/productos/gaia-sandbeige.webp" },
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/1000813673.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" }
+        {
+          "color": "Sand Beige",
+          "hex": "#D6C7A7",
+          "img": "assets/images/productos/gaia-sandbeige.webp"
+        },
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/1000813673.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        }
       ]
     },
     {
@@ -795,10 +1653,25 @@
       "type": "outfit",
       "gender": "unisex",
       "badge": "premium",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Full Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" },
-        { "color": "Full Café", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Full Verde", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" }
+        {
+          "color": "Full Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        },
+        {
+          "color": "Full Café",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Full Verde",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        }
       ]
     },
     {
@@ -809,10 +1682,25 @@
       "type": "outfit",
       "gender": "unisex",
       "badge": "premium",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde/Café", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" },
-        { "color": "Café/Habano", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Obsidian/Habano", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Verde/Café",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        },
+        {
+          "color": "Café/Habano",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Obsidian/Habano",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -823,10 +1711,25 @@
       "type": "top",
       "gender": "unisex",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Cream", "hex": "#FAF6F0", "img": "assets/images/productos/1000813673.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" },
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813670.webp" }
+        {
+          "color": "Cream",
+          "hex": "#FAF6F0",
+          "img": "assets/images/productos/1000813673.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        },
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813670.webp"
+        }
       ]
     },
     {
@@ -837,10 +1740,25 @@
       "type": "hoodie",
       "gender": "unisex",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Verde Selva", "hex": "#2D8C3C", "img": "assets/images/productos/1000813700.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813684.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813683.webp" }
+        {
+          "color": "Verde Selva",
+          "hex": "#2D8C3C",
+          "img": "assets/images/productos/1000813700.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813684.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813683.webp"
+        }
       ]
     },
     {
@@ -851,10 +1769,44 @@
       "type": "pantalon",
       "gender": "unisex",
       "badge": "new",
+      "story": "",
+      "composition": "",
+      "care": "",
       "variants": [
-        { "color": "Obsidian", "hex": "#0A0A0A", "img": "assets/images/productos/1000813651.webp" },
-        { "color": "Café LEM", "hex": "#784311", "img": "assets/images/productos/1000813672.webp" },
-        { "color": "Habano", "hex": "#C89660", "img": "assets/images/productos/1000813675.webp" }
+        {
+          "color": "Obsidian",
+          "hex": "#0A0A0A",
+          "img": "assets/images/productos/1000813651.webp"
+        },
+        {
+          "color": "Café LEM",
+          "hex": "#784311",
+          "img": "assets/images/productos/1000813672.webp"
+        },
+        {
+          "color": "Habano",
+          "hex": "#C89660",
+          "img": "assets/images/productos/1000813675.webp"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "name": "Prueba",
+      "price": 1,
+      "category": "hombre",
+      "type": "pantalon",
+      "gender": "hombre",
+      "badge": "new",
+      "story": "Prueba",
+      "composition": "Prueba",
+      "care": "Prueba",
+      "variants": [
+        {
+          "color": "Celeste",
+          "hex": "#92C5FC",
+          "img": "/assets/images/productos/46590.png"
+        }
       ]
     }
   ]
