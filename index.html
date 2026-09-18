@@ -3023,22 +3023,19 @@ function getSizes(p) {
   return SIZES_U;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   MOCK_DB · 60 PRODUCTOS · Precios reales · Nombres premium
-   ═══════════════════════════════════════════════════════════ */
-  // CÓDIGO NUEVO (Lee desde productos.json):
 let productos = [];
 
+// Cargar catálogo dinámicamente desde productos.json
 fetch('productos.json')
   .then(response => response.json())
   .then(data => {
     productos = data.items;
     
-    // ⚠️ IMPORTANTE: Aquí llamas a la función que ya tenías para pintar tus productos en pantalla.
-    // Cambia "renderProducts" o "mostrarProductos" por el nombre real de tu función:
-    renderProducts(productos); 
+    // ⚠️ REEMPLAZA "inicializarTienda" POR EL NOMBRE DE TU FUNCIÓN PRINCIPAL
+    // (Ejemplo: renderProducts(productos) o initShop() o la función que renderiza las prendas)
+    inicializarTienda(); 
   })
-  .catch(error => console.error('Error cargando el catálogo:', error));
+  .catch(err => console.error('Error cargando el catálogo:', err));
 
 /* ═══════════════════════════════════════════════════════════
    ALGORITMO IA · RECOMENDACIONES INTELIGENTES
