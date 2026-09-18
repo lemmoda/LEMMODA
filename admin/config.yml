@@ -54,7 +54,6 @@ collections:
                   - { label: "Pantalón", value: "pantalon" }
                   - { label: "Top / Tee / Blusa", value: "top" }
                   - { label: "Outfit / Conjunto", value: "outfit" }
-                hint: "Si necesitas una subcategoría nueva (ej: gorras), avísame y la agregamos"
 
               - label: "Género"
                 name: "gender"
@@ -63,6 +62,26 @@ collections:
                   - { label: "Hombre", value: "hombre" }
                   - { label: "Mujer", value: "mujer" }
                   - { label: "Unisex", value: "unisex" }
+
+              - label: "Tallas disponibles"
+                name: "sizes"
+                widget: "select"
+                multiple: true
+                required: false
+                options:
+                  - "XS"
+                  - "S"
+                  - "M"
+                  - "L"
+                  - "XL"
+                  - "XXL"
+                  - "28"
+                  - "30"
+                  - "32"
+                  - "34"
+                  - "36"
+                  - "Única"
+                hint: "Puedes marcar varias. Si no eliges ninguna, la web usará tallas por defecto según el tipo de prenda."
 
               - label: "Etiqueta (Badge)"
                 name: "badge"
