@@ -1849,6 +1849,30 @@
           "img": "assets/images/productos/1000813675.webp"
         }
       ]
+    },
+    {
+      "id": 61,
+      "name": "Prueb",
+      "price": 1,
+      "category": "hombre",
+      "type": "pantalon",
+      "gender": "hombre",
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "badge": "hot",
+      "story": "Prueba",
+      "composition": "Prueba",
+      "care": "Prueba",
+      "variants": [
+        {
+          "color": "Blanco",
+          "hex": "#0A0A0A",
+          "img": "/assets/images/productos/46590.png"
+        }
+      ]
     }
   ]
 }
