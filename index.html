@@ -3609,7 +3609,8 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ═══════════ AÑADIR AL CARRITO DESDE MODAL ═══════════ */
+/* ═══════════ FUNCIONES DE CARRITO COMPLETO ═══════════ */
+
 function addToCartFromModal() {
   const size = document.querySelector('#modal-sizes .size-option.active');
   if (!size) { showToast('Selecciona una talla'); return; }
@@ -3617,22 +3618,29 @@ function addToCartFromModal() {
   const p = currentModal;
   if (!p) return;
   
-  // Buscar la variante de color seleccionada
   const variant = p.variants.find(v => v.color === selectedColor) || p.variants[0];
-  
-  // Obtener la 1ra foto usando la función que apoya ambos formatos
   const variantImgs = getVariantImages(variant);
   const cartImg = variantImgs[0] || 'assets/images/logos/icono-color.webp';
-  
-  cart.push({
-    id: p.id, 
-    name: p.name, 
-    price: p.price,
-    size: size.textContent, 
-    color: selectedColor,
-    img: cartImg, 
-    uid: Date.now()
-  });
+  const sizeText = size.textContent;
+
+  // Si la prenda con misma talla y color ya está en el carrito, le suma +1
+  const existingIndex = cart.findIndex(i => i.id === p.id && i.size === sizeText && i.color === selectedColor);
+
+  if (existingIndex > -1) {
+    cart[existingIndex].qty = (cart[existingIndex].qty || 1) + 1;
+    cart[existingIndex].img = cartImg; 
+  } else {
+    cart.push({
+      id: p.id, 
+      name: p.name, 
+      price: p.price,
+      size: sizeText, 
+      color: selectedColor,
+      img: cartImg,
+      qty: 1,
+      uid: Date.now()
+    });
+  }
   
   saveCart();
   showToast('✦ Añadido');
@@ -3658,7 +3666,6 @@ function addToCartFromModal() {
   }
 }
 
-/* ═══════════ RECOMENDACIONES EN EL MODAL ═══════════ */
 function renderModalRecs(id) {
   const wrap = $('modal-reco');
   const p = DB.find(x => x.id === id);
@@ -3686,6 +3693,21 @@ function renderModalRecs(id) {
   }, 100);
 }
 
+// Botones [+] y [-] para modificar cantidad en el carrito
+function updateCartQty(uid, change) {
+  const item = cart.find(i => i.uid === uid);
+  if (!item) return;
+  
+  item.qty = (item.qty || 1) + change;
+  
+  if (item.qty <= 0) {
+    removeCartItem(uid);
+    return;
+  }
+  
+  saveCart();
+}
+
 function removeCartItem(uid) {
   cart = cart.filter(i => i.uid !== uid);
   saveCart();
@@ -3700,11 +3722,13 @@ function renderCart() {
   const list = $('cart-items');
   const footer = $('cart-footer');
   const badge = $('cart-badge');
-  const total = cart.reduce((a, i) => a + i.price, 0);
+  
+  const totalItems = cart.reduce((a, i) => a + (i.qty || 1), 0);
+  const total = cart.reduce((a, i) => a + (i.price * (i.qty || 1)), 0);
   
   if (badge) {
-    badge.textContent = cart.length;
-    if (cart.length === 0) badge.classList.add('empty');
+    badge.textContent = totalItems;
+    if (totalItems === 0) badge.classList.add('empty');
     else badge.classList.remove('empty');
   }
   
@@ -3719,19 +3743,32 @@ function renderCart() {
     return;
   }
   
-  list.innerHTML = cart.map(item => `
-    <div class="cart-item">
-      <div class="cart-item-img">
-        <img src="${escapeHTML(item.img)}" alt="${escapeHTML(item.name)}" loading="lazy" onerror="this.src='assets/images/logos/icono-color.webp'">
+  list.innerHTML = cart.map(item => {
+    const qty = item.qty || 1;
+    const itemTotal = item.price * qty;
+    
+    return `
+      <div class="cart-item">
+        <div class="cart-item-img">
+          <img src="${escapeHTML(item.img)}" alt="${escapeHTML(item.name)}" loading="lazy" onerror="this.src='assets/images/logos/icono-color.webp'">
+        </div>
+        <div class="cart-item-body">
+          <p class="cart-item-name">${escapeHTML(item.name)}</p>
+          <p class="cart-item-meta">Talla ${escapeHTML(item.size)} · ${escapeHTML(item.color)}</p>
+          
+          <div class="cart-item-price-row">
+            <p class="cart-item-price">$${itemTotal.toFixed(2)}</p>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="updateCartQty(${item.uid}, -1)">-</button>
+              <span class="qty-val">${qty}</span>
+              <button class="qty-btn" onclick="updateCartQty(${item.uid}, 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <button class="cart-item-del" onclick="removeCartItem(${item.uid})" aria-label="Eliminar">×</button>
       </div>
-      <div class="cart-item-body">
-        <p class="cart-item-name">${escapeHTML(item.name)}</p>
-        <p class="cart-item-meta">Talla ${escapeHTML(item.size)} · ${escapeHTML(item.color)}</p>
-        <p class="cart-item-price">$${item.price.toFixed(2)}</p>
-      </div>
-      <button class="cart-item-del" onclick="removeCartItem(${item.uid})" aria-label="Eliminar">×</button>
-    </div>
-  `).join('');
+    `;
+  }).join('');
   
   if (footer) footer.style.display = 'block';
   $('cart-total').textContent = '$' + total.toFixed(2);
@@ -3767,15 +3804,17 @@ function closeCart() {
 
 function sendOrder() {
   if (!cart.length) { showToast('Tu carrito está vacío'); return; }
-  const total = cart.reduce((a, i) => a + i.price, 0);
+  const total = cart.reduce((a, i) => a + (i.price * (i.qty || 1)), 0);
   const line = '━━━━━━━━━━━━━━━━━━━━';
   
   let msg = `⚜️ *LEM MODA · #PonteLEM* ⚜️\n${line}\n`;
   msg += `Hola! Quiero estas piezas de la Colección 2026:\n\n`;
   cart.forEach((p, i) => {
-    msg += `${String(i+1).padStart(2,'0')}. *${p.name}*\n`;
+    const qty = p.qty || 1;
+    const subtotal = p.price * qty;
+    msg += `${String(i+1).padStart(2,'0')}. *${p.name}* (x${qty})\n`;
     msg += `    ↳ Talla ${p.size} · ${p.color}\n`;
-    msg += `    ↳ $${p.price.toFixed(2)}\n\n`;
+    msg += `    ↳ $${subtotal.toFixed(2)}\n\n`;
   });
   msg += `${line}\n💰 *TOTAL: $${total.toFixed(2)}*\n\n`;
   msg += `¿Me confirmas disponibilidad y datos de pago? 🙏\n\n_#PonteLEM · Estás en tu Prime_`;
@@ -3785,7 +3824,7 @@ function sendOrder() {
   if (typeof gtag !== 'undefined') {
     gtag('event', 'begin_checkout', {
       currency: 'USD', value: total,
-      items: cart.map(i => ({ item_id: i.id, item_name: i.name, price: i.price }))
+      items: cart.map(i => ({ item_id: i.id, item_name: i.name, price: i.price, quantity: i.qty || 1 }))
     });
   }
 }
