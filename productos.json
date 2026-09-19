@@ -18,7 +18,11 @@
         {
           "color": "Celeste Cielo / Azul Sereno",
           "hex": "#92BCE6",
-          "img": "assets/images/productos/Max_a_eliminale_los_gordos.png"
+          "images": [
+            "assets/images/productos/Max_a_el_cabello_que_tiene.png",
+            "assets/images/productos/Max_a_eliminale_los_gordos-1.png",
+            "assets/images/productos/Max_a_cambiales_que_el_pis (1).png"
+          ]
         }
       ]
     }
