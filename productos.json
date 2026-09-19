@@ -25,6 +25,34 @@
           ]
         }
       ]
+    },
+    {
+      "id": 2,
+      "name": "LEM Set Rosewood Flare 002",
+      "price": 27.74,
+      "category": "outfits",
+      "type": "outfit",
+      "gender": "mujer",
+      "sizes": [
+        "XS",
+        "M"
+      ],
+      "badge": "premium",
+      "story": "Prendas que lo componen:\nTop strapless estructurado (Rosewood Tube Top)\nLicra acampanada de talle alto (Rosewood Flare Leggings)\n\nHistoria del Concepto:\nInspirado en la sutileza terrosa y la elegancia cálida del tono palo de rosa, este conjunto redefine la comodidad activa bajo un concepto de sofisticación sin esfuerzo. Diseñado para la mujer que busca una silueta estilizadora y fluida, fusiona líneas limpias con una adaptabilidad superior. La tecnología invisible se manifiesta en la armonía visual de sus costuras y la suavidad de sus texturas, logrando que la transición entre la movilidad diaria y el descanso de élite sea impecable.\n\nMensaje de marca: \"LEM surge del talento ecuatoriano, reflejado en cada prenda que creamos con dedicación y esmero, cuidando cada costura y detalle. Lo que vistes también forma parte de tu historia.\"",
+      "composition": "Top (Imagen 3): 75% Algodón / 25% Poliéster   Licra acampanada (Imagen 4): 50% Poliéster / 25% Poliamida / 25% Spandex",
+      "care": "Temperatura máxima de lavado 30°C, proceso normal.   No usar blanqueador.   Secado en tendedero a la sombra.   Planchar a temperatura máxima de la base de 150°C.   Limpieza en húmedo profesional (proceso moderado/normal).",
+      "variants": [
+        {
+          "color": "Palo de Rosa / Rosewood",
+          "hex": "#C48684",
+          "images": [
+            "assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (9).jpeg",
+            "assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (8).jpeg",
+            "assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (3).jpeg",
+            "assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (4).jpeg"
+          ]
+        }
+      ]
     }
   ]
 }
