@@ -3290,6 +3290,7 @@ function getFiltered() {
   return list;
 }
 
+/* ═══════════ SHOP (Catálogo Principal) ═══════════ */
 function mountShop() {
   const grid = $('products-grid');
   const noRes = $('no-results');
@@ -3307,7 +3308,14 @@ function mountShop() {
   
   const html = filtered.map(p => {
     const v0 = p.variants[0];
-    const v1 = p.variants[1] || v0;
+    const imgs0 = getVariantImages(v0);
+    const imgMain = imgs0[0] || 'assets/images/logos/icono-color.webp';
+    
+    // Foto para el efecto Hover (al pasar el mouse): toma la 2da foto o la del 2do color
+    const v1 = p.variants[1];
+    const imgs1 = v1 ? getVariantImages(v1) : imgs0;
+    const imgHover = imgs0[1] || imgs1[0] || imgMain;
+    
     const badgeLabels = { new:'Nuevo', hot:'Hot', premium:'Premium', promo:'Promo' };
     const badge = p.badge ? `<span class="product-badge ${escapeHTML(p.badge)}">${escapeHTML(badgeLabels[p.badge] || p.badge)}</span>` : '';
     const colors = p.variants.slice(0, 4).map(v => 
@@ -3318,8 +3326,8 @@ function mountShop() {
       <div class="product-card" data-id="${p.id}" onclick="openProductModal(${p.id})">
         <div class="product-image-wrap">
           ${badge}
-          <img src="${escapeHTML(v0.img)}" alt="${escapeHTML(p.name)}" class="product-image" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.src='assets/images/logos/icono-color.webp'">
-          <img src="${escapeHTML(v1.img)}" alt="" class="product-image-hover" loading="lazy" decoding="async">
+          <img src="${escapeHTML(imgMain)}" alt="${escapeHTML(p.name)}" class="product-image" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.src='assets/images/logos/icono-color.webp'">
+          <img src="${escapeHTML(imgHover)}" alt="" class="product-image-hover" loading="lazy" decoding="async">
         </div>
         <div class="product-info">
           <p class="product-category">${escapeHTML(p.category)}</p>
@@ -3337,21 +3345,26 @@ function mountShop() {
   cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), Math.min(i * 40, 800)));
 }
 
-/* ═══════════ HOME FEATURED ═══════════ */
+/* ═══════════ HOME FEATURED (Novedades en el Inicio) ═══════════ */
 function renderFeatured() {
   const rail = $('home-featured');
   if (!rail) return;
   const featured = DB.filter(p => p.badge === 'premium' || p.badge === 'hot' || p.badge === 'new').slice(0, 12);
   
-  rail.innerHTML = featured.map(p => `
-    <div class="reco-card" onclick="openProductModal(${p.id})">
-      <div class="reco-img">
-        <img src="${escapeHTML(p.variants[0].img)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.src='assets/images/logos/icono-color.webp'">
+  rail.innerHTML = featured.map(p => {
+    const imgs = getVariantImages(p.variants[0]);
+    const mainImg = imgs[0] || 'assets/images/logos/icono-color.webp';
+    
+    return `
+      <div class="reco-card" onclick="openProductModal(${p.id})">
+        <div class="reco-img">
+          <img src="${escapeHTML(mainImg)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.src='assets/images/logos/icono-color.webp'">
+        </div>
+        <p class="reco-name">${escapeHTML(p.name)}</p>
+        <p class="reco-price">$${p.price.toFixed(2)}</p>
       </div>
-      <p class="reco-name">${escapeHTML(p.name)}</p>
-      <p class="reco-price">$${p.price.toFixed(2)}</p>
-    </div>
-  `).join('');
+    `;
+  }).join('');
   
   setTimeout(updateRailArrows, 100); 
 }
