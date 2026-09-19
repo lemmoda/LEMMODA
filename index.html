@@ -1103,13 +1103,19 @@ input, select, textarea {
   color: var(--lem-black);
 }
 
-.modal-story {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 14px;
-  color: var(--lem-ash);
-  line-height: 1.7;
-  margin-bottom: 24px;
+#modal-story {
+  font-family: inherit;
+  font-style: normal !important; /* Quita el italic para que se lea mucho más claro */
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #333333 !important;   /* Color de letra más oscuro y nítido */
+  margin-bottom: 1.5rem;
+}
+
+/* Permitir que la composición y los textos respeten los saltos de línea */
+#modal-comp,
+#modal-story {
+  white-space: pre-line !important; 
 }
 
 .modal-specs {
@@ -3331,6 +3337,36 @@ function renderFeatured() {
   setTimeout(updateRailArrows, 100); 
 }
 
+/* ═══════════ FUNCIONES AUXILIARES DE GALERÍA Y COMPOSICIÓN ═══════════ */
+
+// Extrae las imágenes de una variante (sea 1 foto antigua o un listado nuevo)
+function getVariantImages(variant) {
+  if (!variant) return ['assets/images/logos/icono-color.webp'];
+  
+  // Si usas el formato nuevo (varias fotos en "images")
+  if (variant.images && Array.isArray(variant.images) && variant.images.length > 0) {
+    return variant.images.map(item => (typeof item === 'string' ? item : (item.img || item)));
+  }
+  
+  // Si usas el formato antiguo (una sola foto en "img")
+  if (variant.img) {
+    return [variant.img];
+  }
+  
+  return ['assets/images/logos/icono-color.webp'];
+}
+
+// Formatea la composición para separar Top / Pantalón en líneas diferentes
+function formatComposition(text) {
+  if (!text) return '';
+  return String(text)
+    .replace(/\s*(Pantal[oó]n\s*:)/gi, '\n$1')
+    .replace(/\s*(Top\s*:)/gi, '\n$1')
+    .replace(/\s*(Hoodie\s*:)/gi, '\n$1')
+    .replace(/\s*(Short\s*:)/gi, '\n$1')
+    .trim();
+}
+
 /* ═══════════ MODAL PRODUCTO ═══════════ */
 function openProductModal(id) {
   const p = DB.find(x => x.id === id);
@@ -3338,7 +3374,9 @@ function openProductModal(id) {
   
   currentModal = p;
   selectedColor = p.variants[0].color;
-  modalGallery = p.variants.map(v => v.img);
+  
+  // Obtenemos la galería de fotos del PRIMER color seleccionado
+  modalGallery = getVariantImages(p.variants[0]);
   modalImgIndex = 0;
   
   $('modal-cat').textContent = p.category;
@@ -3346,32 +3384,49 @@ function openProductModal(id) {
   $('modal-price').textContent = '$' + p.price.toFixed(2);
   $('modal-color-name').textContent = selectedColor;
   
+  // Historia / Descripción
   const storyEl = $('modal-story');
-  if (p.story) { storyEl.textContent = p.story; storyEl.style.display = 'block'; }
-  else storyEl.style.display = 'none';
+  if (p.story) { 
+    storyEl.textContent = p.story; 
+    storyEl.style.display = 'block'; 
+  } else {
+    storyEl.style.display = 'none';
+  }
   
+  // Composición (Formateada con saltos de línea)
   const compWrap = $('spec-comp');
-  if (p.composition) { $('modal-comp').textContent = p.composition; compWrap.style.display = 'block'; }
-  else compWrap.style.display = 'none';
+  if (p.composition) { 
+    $('modal-comp').textContent = formatComposition(p.composition); 
+    compWrap.style.display = 'block'; 
+  } else {
+    compWrap.style.display = 'none';
+  }
   
+  // Cuidados
   const careWrap = $('spec-care');
-  if (p.care) { $('modal-care').textContent = p.care; careWrap.style.display = 'block'; }
-  else careWrap.style.display = 'none';
+  if (p.care) { 
+    $('modal-care').textContent = p.care; 
+    careWrap.style.display = 'block'; 
+  } else {
+    careWrap.style.display = 'none';
+  }
   
+  // Selector de Colores (Pasamos el índice 'i' en lugar de la foto)
   $('modal-colors').innerHTML = p.variants.map((v, i) => 
-    `<div class="color-option ${i===0?'active':''}" style="background:${escapeHTML(v.hex)}" title="${escapeHTML(v.color)}" onclick="selectModalColor(this,'${escapeHTML(v.color)}','${escapeHTML(v.img)}')"></div>`
+    `<div class="color-option ${i===0 ? 'active' : ''}" 
+          style="background:${escapeHTML(v.hex)}" 
+          title="${escapeHTML(v.color)}" 
+          onclick="selectModalColor(this, '${escapeHTML(v.color)}', ${i})"></div>`
   ).join('');
   
+  // Selector de Tallas
   const sizes = getSizes(p);
   $('modal-sizes').innerHTML = sizes.map(s => 
     `<button class="size-option" onclick="selectSize(this)">${escapeHTML(s.l)}</button>`
   ).join('');
   
-  $('modal-thumbs').innerHTML = p.variants.map((v, i) => 
-    `<div class="thumb ${i===0?'active':''}" onclick="jumpModalImg(${i})">
-      <img src="${escapeHTML(v.img)}" alt="${escapeHTML(v.color)}" loading="lazy" onerror="this.src='assets/images/logos/icono-color.webp'">
-    </div>`
-  ).join('');
+  // Render de Miniaturas (Thumbnails de las fotos del color activo)
+  renderModalThumbs();
   
   $('modal-add-btn').onclick = () => addToCartFromModal();
   
@@ -3391,6 +3446,32 @@ function openProductModal(id) {
       items: [{ item_id: p.id, item_name: p.name, item_category: p.category, price: p.price }]
     });
   }
+}
+
+/* ═══════════ CAMBIO DE COLOR EN EL MODAL ═══════════ */
+function selectModalColor(el, name, variantIndex) {
+  $$('.color-option').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  
+  selectedColor = name;
+  $('modal-color-name').textContent = name;
+  
+  // Cargar las fotos de la variante seleccionada
+  const variant = currentModal.variants[variantIndex];
+  modalGallery = getVariantImages(variant);
+  modalImgIndex = 0;
+  
+  renderModalImage();
+  renderModalThumbs();
+}
+
+// Renderiza las miniaturas según las fotos que tenga el color seleccionado
+function renderModalThumbs() {
+  $('modal-thumbs').innerHTML = modalGallery.map((img, i) => 
+    `<div class="thumb ${i === modalImgIndex ? 'active' : ''}" onclick="jumpModalImg(${i})">
+      <img src="${escapeHTML(img)}" alt="${escapeHTML(selectedColor)}" loading="lazy" onerror="this.src='assets/images/logos/icono-color.webp'">
+    </div>`
+  ).join('');
 }
 
 function renderModalImage() {
