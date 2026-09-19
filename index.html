@@ -3369,7 +3369,7 @@ function renderFeatured() {
   setTimeout(updateRailArrows, 100); 
 }
 
-/* ═══════════ MODAL, GALERÍA, TALLAS Y SWIPE (LIMPIO Y COMPLETO) ═══════════ */
+/* ═══════════ MODAL, GALERÍA, TALLAS, SWIPE Y CARRITO COMPLETO ═══════════ */
 
 let _tx = 0, _ty = 0;
 
@@ -3473,7 +3473,8 @@ function formatComposition(text) {
     .trim();
 }
 
-/* ═══════════ ABRIR MODAL DEL PRODUCTO ═══════════ */
+/* ═══════════ ABRIR Y CERRAR MODAL DEL PRODUCTO ═══════════ */
+
 function openProductModal(id) {
   const p = DB.find(x => x.id === id);
   if (!p) return;
@@ -3560,7 +3561,23 @@ function openProductModal(id) {
   }
 }
 
-/* ═══════════ CAMBIAR COLOR ═══════════ */
+// CERRAR MODAL (Accionado por la 'X' o por la tecla Escape)
+function closeProductModal(back = true) {
+  const modal = $('product-modal');
+  if (modal) modal.classList.remove('open');
+  currentModal = null;
+  
+  const cartDrawer = $('cartDrawer');
+  if (!cartDrawer || !cartDrawer.classList.contains('open')) {
+    document.body.style.overflow = 'auto';
+  }
+  
+  if (back && window.location.hash.startsWith('#producto')) {
+    history.back();
+  }
+}
+
+/* ═══════════ CAMBIAR COLOR EN EL MODAL ═══════════ */
 function selectModalColor(el, variantIndex) {
   $$('.color-option').forEach(c => c.classList.remove('active'));
   if (el) el.classList.add('active');
@@ -3579,7 +3596,37 @@ function selectModalColor(el, variantIndex) {
   renderModalThumbs();
 }
 
-/* ═══════════ FUNCIONES DE CARRITO COMPLETO ═══════════ */
+/* ═══════════ CONTROL DEL CARRITO DE COMPRAS ═══════════ */
+
+function toggleCart() {
+  const drawer = $('cartDrawer');
+  const overlay = $('cartOverlay');
+  if (!drawer) return;
+
+  const isOpen = drawer.classList.contains('open');
+  
+  if (isOpen) {
+    drawer.classList.remove('open');
+    overlay?.classList.remove('open');
+    if (!$('product-modal')?.classList.contains('open')) {
+      document.body.style.overflow = 'auto';
+    }
+  } else {
+    drawer.classList.add('open');
+    overlay?.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeCart() {
+  const drawer = $('cartDrawer');
+  const overlay = $('cartOverlay');
+  if (drawer) drawer.classList.remove('open');
+  if (overlay) overlay.classList.remove('open');
+  if (!$('product-modal')?.classList.contains('open')) {
+    document.body.style.overflow = 'auto';
+  }
+}
 
 function addToCartFromModal() {
   const size = document.querySelector('#modal-sizes .size-option.active');
@@ -3593,7 +3640,6 @@ function addToCartFromModal() {
   const cartImg = variantImgs[0] || 'assets/images/logos/icono-color.webp';
   const sizeText = size.textContent;
 
-  // Si la prenda con misma talla y color ya está en el carrito, le suma +1
   const existingIndex = cart.findIndex(i => i.id === p.id && i.size === sizeText && i.color === selectedColor);
 
   if (existingIndex > -1) {
@@ -3616,17 +3662,18 @@ function addToCartFromModal() {
   showToast('✦ Añadido');
   
   const badge = $('cart-badge');
-  badge?.classList.add('bump');
-  setTimeout(() => badge?.classList.remove('bump'), 500);
+  if (badge) {
+    badge.classList.add('bump');
+    setTimeout(() => badge.classList.remove('bump'), 500);
+  }
   
+  // Cierra el modal de detalles
   closeProductModal(false);
   
+  // Despliega el carrito de compras
   setTimeout(() => {
-    const drawer = $('cartDrawer');
-    if (!drawer?.classList.contains('open')) {
-      toggleCart();
-    }
-  }, 600);
+    toggleCart();
+  }, 300);
   
   if (typeof gtag !== 'undefined') {
     gtag('event', 'add_to_cart', {
@@ -3639,7 +3686,8 @@ function addToCartFromModal() {
 function renderModalRecs(id) {
   const wrap = $('modal-reco');
   const p = DB.find(x => x.id === id);
-  if (!wrap || !p) return;
+  if (!wrap || !p || typeof getSmartRecs !== 'function') return;
+  
   const recs = getSmartRecs(p);
   
   wrap.innerHTML = recs.map(r => {
@@ -3658,12 +3706,11 @@ function renderModalRecs(id) {
   }).join('');
   
   setTimeout(() => {
-    initRailListeners();
-    updateRailArrows();
+    if (typeof initRailListeners === 'function') initRailListeners();
+    if (typeof updateRailArrows === 'function') updateRailArrows();
   }, 100);
 }
 
-// Botones [+] y [-] para modificar cantidad en el carrito
 function updateCartQty(uid, change) {
   const item = cart.find(i => i.uid === uid);
   if (!item) return;
@@ -3692,6 +3739,7 @@ function renderCart() {
   const list = $('cart-items');
   const footer = $('cart-footer');
   const badge = $('cart-badge');
+  if (!list) return;
   
   const totalItems = cart.reduce((a, i) => a + (i.qty || 1), 0);
   const total = cart.reduce((a, i) => a + (i.price * (i.qty || 1)), 0);
@@ -3741,35 +3789,7 @@ function renderCart() {
   }).join('');
   
   if (footer) footer.style.display = 'block';
-  $('cart-total').textContent = '$' + total.toFixed(2);
-}
-
-function toggleCart() {
-  const drawer = $('cartDrawer');
-  const overlay = $('cartOverlay');
-  const isOpen = drawer?.classList.contains('open');
-  
-  if (isOpen) {
-    drawer.classList.remove('open');
-    overlay?.classList.remove('open');
-    if (!$('product-modal')?.classList.contains('open')) {
-      document.body.style.overflow = 'auto';
-    }
-  } else {
-    drawer?.classList.add('open');
-    overlay?.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeCart() {
-  const drawer = $('cartDrawer');
-  const overlay = $('cartOverlay');
-  drawer?.classList.remove('open');
-  overlay?.classList.remove('open');
-  if (!$('product-modal')?.classList.contains('open')) {
-    document.body.style.overflow = 'auto';
-  }
+  if ($('cart-total')) $('cart-total').textContent = '$' + total.toFixed(2);
 }
 
 function sendOrder() {
