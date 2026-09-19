@@ -111,25 +111,31 @@ collections:
                 required: false
 
               - label: "Variantes (Colores y Fotos)"
-                name: "variants"
-                widget: "list"
-                summary: "{{fields.color}} ({{fields.hex}})"
-                min: 1
-                fields:
-                  - label: "Nombre del Color"
-                    name: "color"
-                    widget: "string"
-                    hint: "Ej: Obsidian, Habano, Café LEM"
+  name: "variants"
+  widget: "list"
+  summary: "{{fields.color}} ({{fields.hex}})"
+  min: 1
+  fields:
+    - label: "Nombre del Color"
+      name: "color"
+      widget: "string"
+      hint: "Ej: Celeste Cielo / Azul Sereno"
 
-                  - label: "Código HEX Exacto"
-                    name: "hex"
-                    widget: "string"
-                    default: "#0A0A0A"
-                    pattern: ['^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$', 'Debe llevar el # al inicio. Ej: #0A0A0A']
-                    hint: "Obsidian: #0A0A0A | Habano: #C89660 | Café: #784311 | Verde: #2D8C3C | Blanco: #FAFAFA | Cream: #FAF6F0"
+    - label: "Código HEX Exacto"
+      name: "hex"
+      widget: "string"
+      default: "#0A0A0A"
+      pattern: ['^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$', 'Debe llevar el # al inicio. Ej: #A8C5D4']
+      hint: "Obsidian: #0A0A0A | Habano: #C89660 | Café: #784311 | Verde: #2D8C3C | Cream: #FAF6F0"
 
-                  - label: "Foto de la prenda"
-                    name: "img"
-                    widget: "image"
-                    media_folder: "assets/images/productos"
-                    public_folder: "assets/images/productos"
+    - label: "Fotos de este color (puedes subir varias)"
+      name: "images"
+      widget: "list"
+      summary: "Imagen"
+      min: 1
+      field:
+        label: "Foto"
+        name: "img"
+        widget: "image"
+        media_folder: "assets/images/productos"
+        public_folder: "assets/images/productos"
