@@ -3377,7 +3377,15 @@ function getVariantImages(variant) {
   
   // Si usas el formato nuevo (varias fotos en "images")
   if (variant.images && Array.isArray(variant.images) && variant.images.length > 0) {
-    return variant.images.map(item => (typeof item === 'string' ? item : (item.img || item)));
+    const list = variant.images.map(item => {
+      if (typeof item === 'string') return item;
+      if (typeof item === 'object' && item !== null) {
+        return item.img || item.image || item.url || Object.values(item)[0] || '';
+      }
+      return String(item);
+    }).filter(Boolean);
+    
+    if (list.length > 0) return list;
   }
   
   // Si usas el formato antiguo (una sola foto en "img")
@@ -3387,7 +3395,6 @@ function getVariantImages(variant) {
   
   return ['assets/images/logos/icono-color.webp'];
 }
-
 // Formatea la composición para separar Top / Pantalón en líneas diferentes
 function formatComposition(text) {
   if (!text) return '';
