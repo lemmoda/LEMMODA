@@ -3369,33 +3369,70 @@ function renderFeatured() {
   setTimeout(updateRailArrows, 100); 
 }
 
-/* ═══════════ FUNCIONES AUXILIARES DE GALERÍA Y COMPOSICIÓN ═══════════ */
+/* ═══════════ GALERÍA Y NAVEGACIÓN DE FOTOS DEL MODAL ═══════════ */
 
-// Extrae las imágenes de una variante (sea 1 foto antigua o un listado nuevo)
+// Extrae las imágenes de una variante
 function getVariantImages(variant) {
   if (!variant) return ['assets/images/logos/icono-color.webp'];
   
-  // Si usas el formato nuevo (varias fotos en "images")
   if (variant.images && Array.isArray(variant.images) && variant.images.length > 0) {
     const list = variant.images.map(item => {
       if (typeof item === 'string') return item;
-      if (typeof item === 'object' && item !== null) {
+      if (item && typeof item === 'object' && item !== null) {
         return item.img || item.image || item.url || Object.values(item)[0] || '';
       }
-      return String(item);
+      return '';
     }).filter(Boolean);
     
     if (list.length > 0) return list;
   }
   
-  // Si usas el formato antiguo (una sola foto en "img")
   if (variant.img) {
     return [variant.img];
   }
   
   return ['assets/images/logos/icono-color.webp'];
 }
-// Formatea la composición para separar Top / Pantalón en líneas diferentes
+
+// Muestra la foto grande activa
+function renderModalImage() {
+  const img = $('modal-main-img');
+  if (!img) return;
+  
+  img.style.opacity = '0';
+  setTimeout(() => {
+    if (modalGallery && modalGallery[modalImgIndex]) {
+      img.src = modalGallery[modalImgIndex];
+    }
+    img.style.opacity = '1';
+  }, 150);
+  
+  $$('.thumb').forEach((t, i) => t.classList.toggle('active', i === modalImgIndex));
+}
+
+// Flechas anterior / siguiente en la foto grande
+function navModal(dir) {
+  if (!modalGallery || !modalGallery.length) return;
+  modalImgIndex = (modalImgIndex + dir + modalGallery.length) % modalGallery.length;
+  renderModalImage();
+}
+
+// Clic en una miniatura de abajo
+function jumpModalImg(i) {
+  modalImgIndex = i;
+  renderModalImage();
+}
+
+// Dibuja las miniaturas de abajo según las fotos del color activo
+function renderModalThumbs() {
+  $('modal-thumbs').innerHTML = modalGallery.map((img, i) => 
+    `<div class="thumb ${i === modalImgIndex ? 'active' : ''}" onclick="jumpModalImg(${i})">
+      <img src="${escapeHTML(img)}" alt="${escapeHTML(selectedColor)}" loading="lazy" onerror="this.src='assets/images/logos/icono-color.webp'">
+    </div>`
+  ).join('');
+}
+
+// Formato de composición con saltos de línea
 function formatComposition(text) {
   if (!text) return '';
   return String(text)
@@ -3404,6 +3441,104 @@ function formatComposition(text) {
     .replace(/\s*(Hoodie\s*:)/gi, '\n$1')
     .replace(/\s*(Short\s*:)/gi, '\n$1')
     .trim();
+}
+
+/* ═══════════ ABRIR MODAL DEL PRODUCTO ═══════════ */
+function openProductModal(id) {
+  const p = DB.find(x => x.id === id);
+  if (!p) return;
+  
+  currentModal = p;
+  selectedColor = p.variants[0]?.color || 'Único';
+  
+  modalGallery = getVariantImages(p.variants[0]);
+  modalImgIndex = 0;
+  
+  $('modal-cat').textContent = p.category;
+  $('modal-name').textContent = p.name;
+  $('modal-price').textContent = '$' + p.price.toFixed(2);
+  $('modal-color-name').textContent = selectedColor;
+  
+  // Historia
+  const storyEl = $('modal-story');
+  if (p.story) { 
+    storyEl.textContent = p.story; 
+    storyEl.style.display = 'block'; 
+  } else {
+    storyEl.style.display = 'none';
+  }
+  
+  // Composición
+  const compWrap = $('spec-comp');
+  if (p.composition) { 
+    $('modal-comp').textContent = formatComposition(p.composition); 
+    compWrap.style.display = 'block'; 
+  } else {
+    compWrap.style.display = 'none';
+  }
+  
+  // Cuidados
+  const careWrap = $('spec-care');
+  if (p.care) { 
+    $('modal-care').textContent = p.care; 
+    careWrap.style.display = 'block'; 
+  } else {
+    careWrap.style.display = 'none';
+  }
+  
+  // Bolitas de Colores
+  $('modal-colors').innerHTML = p.variants.map((v, i) => 
+    `<div class="color-option ${i === 0 ? 'active' : ''}" 
+          style="background:${escapeHTML(v.hex || '#0A0A0A')}" 
+          title="${escapeHTML(v.color || '')}" 
+          onclick="selectModalColor(this, ${i})"></div>`
+  ).join('');
+  
+  // Tallas
+  const sizes = getSizes(p);
+  $('modal-sizes').innerHTML = sizes.map(s => 
+    `<button class="size-option" onclick="selectSize(this)">${escapeHTML(s.l)}</button>`
+  ).join('');
+  
+  renderModalThumbs();
+  renderModalImage();
+  
+  $('modal-add-btn').onclick = () => addToCartFromModal();
+  
+  renderModalRecs(id);
+  
+  const modal = $('product-modal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  
+  history.pushState({ v: 'modal' }, '', '#producto-' + id);
+  setupSwipe();
+  
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'view_item', {
+      currency: 'USD', value: p.price,
+      items: [{ item_id: p.id, item_name: p.name, item_category: p.category, price: p.price }]
+    });
+  }
+}
+
+/* ═══════════ CAMBIAR COLOR ═══════════ */
+function selectModalColor(el, variantIndex) {
+  $$('.color-option').forEach(c => c.classList.remove('active'));
+  if (el) el.classList.add('active');
+  
+  if (!currentModal || !currentModal.variants || !currentModal.variants[variantIndex]) return;
+  
+  const variant = currentModal.variants[variantIndex];
+  
+  selectedColor = variant.color || 'Color';
+  $('modal-color-name').textContent = selectedColor;
+  
+  modalGallery = getVariantImages(variant);
+  modalImgIndex = 0;
+  
+  renderModalImage();
+  renderModalThumbs();
 }
 
 /* ═══════════ MODAL Y GALERÍA POR COLOR ═══════════ */
