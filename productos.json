@@ -51,6 +51,22 @@
             "assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (3).jpeg",
             "assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (4).jpeg"
           ]
+        },
+        {
+          "color": "x",
+          "hex": "#0A0A0A",
+          "images": [
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo.jpeg",
+            "assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (7).jpeg"
+          ]
+        },
+        {
+          "color": "y",
+          "hex": "#0A0A0A",
+          "images": [
+            "assets/images/productos/flux-2-pro_b_Actúa_como_un_softwa.jpeg",
+            "assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (2).jpeg"
+          ]
         }
       ]
     }
