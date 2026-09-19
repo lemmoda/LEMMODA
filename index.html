@@ -3602,20 +3602,31 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ═══════════ CART ═══════════ */
+/* ═══════════ AÑADIR AL CARRITO DESDE MODAL ═══════════ */
 function addToCartFromModal() {
   const size = document.querySelector('#modal-sizes .size-option.active');
   if (!size) { showToast('Selecciona una talla'); return; }
   
   const p = currentModal;
   if (!p) return;
+  
+  // Buscar la variante de color seleccionada
   const variant = p.variants.find(v => v.color === selectedColor) || p.variants[0];
   
+  // Obtener la 1ra foto usando la función que apoya ambos formatos
+  const variantImgs = getVariantImages(variant);
+  const cartImg = variantImgs[0] || 'assets/images/logos/icono-color.webp';
+  
   cart.push({
-    id: p.id, name: p.name, price: p.price,
-    size: size.textContent, color: selectedColor,
-    img: variant.img, uid: Date.now()
+    id: p.id, 
+    name: p.name, 
+    price: p.price,
+    size: size.textContent, 
+    color: selectedColor,
+    img: cartImg, 
+    uid: Date.now()
   });
+  
   saveCart();
   showToast('✦ Añadido');
   
@@ -3623,7 +3634,7 @@ function addToCartFromModal() {
   badge?.classList.add('bump');
   setTimeout(() => badge?.classList.remove('bump'), 500);
   
-  closeProductModal(false); 
+  closeProductModal(false);
   
   setTimeout(() => {
     const drawer = $('cartDrawer');
@@ -3638,6 +3649,34 @@ function addToCartFromModal() {
       items: [{ item_id: p.id, item_name: p.name, price: p.price }]
     });
   }
+}
+
+/* ═══════════ RECOMENDACIONES EN EL MODAL ═══════════ */
+function renderModalRecs(id) {
+  const wrap = $('modal-reco');
+  const p = DB.find(x => x.id === id);
+  if (!wrap || !p) return;
+  const recs = getSmartRecs(p);
+  
+  wrap.innerHTML = recs.map(r => {
+    const rImgs = getVariantImages(r.variants[0]);
+    const rImgMain = rImgs[0] || 'assets/images/logos/icono-color.webp';
+    
+    return `
+      <div class="reco-card" onclick="jumpToProduct(${r.id})">
+        <div class="reco-img">
+          <img src="${escapeHTML(rImgMain)}" alt="${escapeHTML(r.name)}" loading="lazy" decoding="async" onerror="this.src='assets/images/logos/icono-color.webp'">
+        </div>
+        <p class="reco-name">${escapeHTML(r.name)}</p>
+        <p class="reco-price">$${r.price.toFixed(2)}</p>
+      </div>
+    `;
+  }).join('');
+  
+  setTimeout(() => {
+    initRailListeners();
+    updateRailArrows();
+  }, 100);
 }
 
 function removeCartItem(uid) {
