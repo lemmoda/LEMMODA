@@ -81,7 +81,6 @@ collections:
                   - "34"
                   - "36"
                   - "Única"
-                hint: "Puedes marcar varias. Si no eliges ninguna, la web usará tallas por defecto según el tipo de prenda."
 
               - label: "Etiqueta (Badge)"
                 name: "badge"
@@ -119,13 +118,11 @@ collections:
                   - label: "Nombre del Color"
                     name: "color"
                     widget: "string"
-                    hint: "Ej: Celeste Cielo / Azul Sereno"
 
                   - label: "Código HEX Exacto"
                     name: "hex"
                     widget: "string"
                     default: "#0A0A0A"
-                    hint: "Obsidian: #0A0A0A | Habano: #C89660 | Café: #784311 | Verde: #2D8C3C | Cream: #FAF6F0"
 
                   - label: "Fotos de este color (puedes subir varias)"
                     name: "images"
@@ -133,6 +130,7 @@ collections:
                     required: false
                     field:
                       label: "Foto"
+                      name: "img"
                       widget: "image"
                       media_folder: "assets/images/productos"
                       public_folder: "assets/images/productos"
