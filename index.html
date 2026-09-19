@@ -3595,23 +3595,16 @@ function selectModalColor(el, variantIndex) {
   renderModalImage();
   renderModalThumbs();
 
-    // 📱 En celular: subir el scroll interno del modal
+  // 📱 En celulares: Subir automáticamente a la foto grande
   if (window.innerWidth <= 768) {
-    const scrollBox =
-      document.querySelector('#product-modal .modal-body') ||
-      document.querySelector('#product-modal .modal-content') ||
-      document.querySelector('#product-modal .modal-scroll') ||
-      document.getElementById('product-modal');
-
-    if (scrollBox) {
+    const modalEl = document.getElementById('product-modal') || document.querySelector('.product-modal');
+    if (modalEl) {
       setTimeout(() => {
-        scrollBox.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        modalEl.scrollTo({ top: 0, behavior: 'smooth' });
       }, 50);
     }
   }
+}
 
 /* ═══════════ CONTROL DEL CARRITO DE COMPRAS ═══════════ */
 
@@ -3967,6 +3960,7 @@ fetch('productos.json')
       init();
     }
   });
+     
 </script>
 </body>
 </html>
