@@ -53,6 +53,39 @@
           ]
         }
       ]
+    },
+    {
+      "id": 3,
+      "name": "LEM Set Senda 003",
+      "price": 53.73,
+      "category": "outfits",
+      "type": "outfit",
+      "gender": "mujer",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "badge": "premium",
+      "story": "Prendas que lo componen:\n\nBividi acanalado en tono verde botella con escote sutil y tirantes.\n\nSudadera con capucha (Hoodie) en tono camel / piel a juego (versátil para llevar puesta o sobre los hombros).\n\nLicra acampanada de talle alto (Flare Leggings) en tono camel / piel.\n\nHistoria del Concepto y Filosofía de Marca:\nUna combinación sofisticada que traza su propia dirección al fusionar la neutralidad atemporal del tono camel con la profundidad magnética del verde botella. Este conjunto redefine el athleisure bajo el concepto de Quiet Luxury, donde la simplicidad y la armonía de los tonos transmiten una presencia de élite y sin esfuerzo. La tecnología es invisible, cuidando que cada costura y transición realce la silueta con absoluta comodidad.\n\nMensaje de marca: \"LEM surge del talento ecuatoriano, reflejado en cada prenda que creamos con dedicación y esmero, cuidando cada costura y detalle. Lo que vistes también forma parte de tu historia.\"",
+      "composition": "Bividi (Verde Botella): 75% Algodón / 25% Poliéster   Hoodie (Camel): 75% Algodón / 25% Poliéster   Licra acampanada (Camel): 50% Poliéster / 25% Poliamida / 25% Spandex",
+      "care": "Temperatura máxima de lavado 30°C, proceso normal.   No usar blanqueador.   Secado en tendedero a la sombra (o temperatura ambiente bajo sombra).   Planchar a una temperatura máxima de la base de 150°C.   Limpieza en húmedo profesional (proceso normal/moderado).",
+      "variants": [
+        {
+          "color": "Camel / Tono Piel",
+          "hex": "#C19A6B",
+          "images": [
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo-1.jpeg",
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (2).jpeg",
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (8).jpeg",
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (10).jpeg",
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (1).jpeg",
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (9).jpeg"
+          ]
+        }
+      ]
     }
   ]
 }
