@@ -101,12 +101,12 @@ collections:
 
               - label: "Composición"
                 name: "composition"
-                widget: "string"
+                widget: "text"
                 required: false
 
               - label: "Cuidados"
                 name: "care"
-                widget: "string"
+                widget: "text"
                 required: false
 
               - label: "Variantes (Colores y Fotos)"
