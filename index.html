@@ -2303,6 +2303,20 @@ input, select, textarea {
   overflow-wrap: anywhere !important;
   word-break: break-word !important;
 }     
+
+/* Composición y Cuidados en varias líneas */
+#modal-comp,
+#modal-care,
+#spec-comp,
+#spec-care,
+.modal-composition,
+.modal-care {
+  white-space: pre-line !important;   /* Respeta Enter / saltos de línea */
+  line-height: 1.55 !important;
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
      
 </style>
 
@@ -3473,14 +3487,22 @@ function renderModalThumbs() {
   ).join('');
 }
 
-// Salto de línea para composición
 function formatComposition(text) {
   if (!text) return '';
   return String(text)
-    .replace(/\s*(Pantal[oó]n\s*:)/gi, '\n$1')
-    .replace(/\s*(Top\s*:)/gi, '\n$1')
-    .replace(/\s*(Hoodie\s*:)/gi, '\n$1')
-    .replace(/\s*(Short\s*:)/gi, '\n$1')
+    .replace(/\s*(Bividi\s*[:\(])/gi, '\n$1')
+    .replace(/\s*(Hoodie\s*[:\(])/gi, '\n$1')
+    .replace(/\s*(Licra\s*[:\(])/gi, '\n$1')
+    .replace(/\s*(Top\s*[:\(])/gi, '\n$1')
+    .replace(/\s*(Pantal[oó]n\s*[:\(])/gi, '\n$1')
+    .replace(/\s*(Short\s*[:\(])/gi, '\n$1')
+    .trim();
+}
+
+function formatCare(text) {
+  if (!text) return '';
+  return String(text)
+    .replace(/\.\s+/g, '.\n')  // punto + espacio → nueva línea
     .trim();
 }
 
@@ -3570,6 +3592,13 @@ function openProductModal(id) {
       items: [{ item_id: p.id, item_name: p.name, item_category: p.category, price: p.price }]
     });
   }
+}
+
+if (p.composition && $('modal-comp')) {
+  $('modal-comp').textContent = formatComposition(p.composition);
+}
+if (p.care && $('modal-care')) {
+  $('modal-care').textContent = formatCare(p.care);
 }
 
 // CERRAR MODAL (Accionado por la 'X' o por la tecla Escape)
