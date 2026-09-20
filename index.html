@@ -2292,6 +2292,17 @@ input, select, textarea {
 .subfilters-wrap.active .subfilter-btn {
   animation: slideDownSubs 0.4s var(--ease-luxury) forwards;
 }
+
+/* BLINDAJE DE TEXTO: Obliga a cualquier texto largo a mantenerse dentro de la pantalla */
+#modal-story, 
+#modal-comp, 
+#spec-comp, 
+#spec-care,
+.modal-details {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}     
      
 </style>
 
