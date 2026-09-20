@@ -54,6 +54,32 @@
           ]
         }
       ]
+    },
+    {
+      "id": 3,
+      "name": "prueba",
+      "price": 1,
+      "category": "hombre",
+      "type": "pantalon",
+      "gender": "hombre",
+      "sizes": [
+        "S"
+      ],
+      "badge": "new",
+      "story": "prueba",
+      "composition": "prueba",
+      "care": "prueba",
+      "variants": [
+        {
+          "color": "prueba ax",
+          "hex": "#0A0A0A",
+          "images": [
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo-3.jpeg",
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (2)-1.jpeg",
+            "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (9)-1.jpeg"
+          ]
+        }
+      ]
     }
   ]
 }
