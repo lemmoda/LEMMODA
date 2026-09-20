@@ -3594,13 +3594,6 @@ function openProductModal(id) {
   }
 }
 
-if (p.composition && $('modal-comp')) {
-  $('modal-comp').textContent = formatComposition(p.composition);
-}
-if (p.care && $('modal-care')) {
-  $('modal-care').textContent = formatCare(p.care);
-}
-
 // CERRAR MODAL (Accionado por la 'X' o por la tecla Escape)
 function closeProductModal(back = true) {
   const modal = $('product-modal');
