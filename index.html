@@ -2830,6 +2830,88 @@ input, select, textarea {
 
 <style>
 
+/* ═══════════════════════════════════════════════════════════
+   DISEÑO PERFECTO DE MODAL PARA CELULARES (RESPONSIVE)
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* 1. BARRA SUPERIOR FIJA Y CON FONDO BLANCO (VOLVER / LOGO / X) */
+  #product-modal .modal-header,
+  #product-modal .modal-nav,
+  .modal-top-bar {
+    position: sticky !important;
+    top: 0 !important;
+    background: #ffffff !important;
+    z-index: 999 !important;
+    padding: 10px 16px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+  }
+
+  /* 2. MARCO DE FOTO PRINCIPAL (Nunca ocupa toda la pantalla) */
+  #modal-main-img {
+    max-height: 42vh !important; /* Límite de alto perfecto */
+    width: 100% !important;
+    object-fit: contain !important; /* Muestra la foto entera sin deformar */
+    background-color: #f7f7f5 !important;
+    border-radius: 8px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .modal-main-img-wrap,
+  #modal-main-img-container {
+    max-height: 42vh !important;
+    background: #f7f7f5 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }
+
+  /* 3. REORDENAR ELEMENTOS EN MÓVIL: COMPRA PRIMERO, TEXTO DESPUÉS */
+  .product-modal-content,
+  .modal-body,
+  #product-modal .store-grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Contenedor de fotos (Queda arriba de primero) */
+  .product-modal-left,
+  #modal-left-col {
+    order: 1 !important;
+  }
+
+  /* Caja de Compra: Precio, Color, Tallas y Botón (Sube de segundo) */
+  .modal-buy-box,
+  .product-modal-right,
+  #modal-right-col {
+    order: 2 !important;
+    padding-top: 10px !important;
+  }
+
+  /* Historias y Detalles largos (Bajan al final de tercero) */
+  #modal-story,
+  #spec-comp,
+  #spec-care,
+  .modal-details-extra {
+    order: 3 !important;
+    margin-top: 20px !important;
+    padding-top: 15px !important;
+    border-top: 1px solid #f0f0f0 !important;
+  }
+
+  /* Botón AÑADIR AL CARRITO grande y cómodo */
+  #modal-add-btn,
+  .add-to-cart-btn {
+    width: 100% !important;
+    padding: 16px !important;
+    font-size: 0.95rem !important;
+    margin-top: 12px !important;
+  }
+}
+     
 /* ═══════════ MARCO INTELIGENTE DE FOTOS EN EL MODAL ═══════════ */
 
 /* 1. Límite y proporción para la foto principal */
