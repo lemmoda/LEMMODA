@@ -2831,11 +2831,18 @@ input, select, textarea {
 <style>
 
 /* ═══════════════════════════════════════════════════════════
-   DISEÑO PERFECTO DE MODAL PARA CELULARES (RESPONSIVE)
+   DISEÑO MÓVIL EXACTO Y SIN CORTAR FOTOS (RESPONSIVE)
    ═══════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-  /* 1. BARRA SUPERIOR FIJA Y CON FONDO BLANCO (VOLVER / LOGO / X) */
+  /* Prevenir que el modal cree scroll horizontal en la pantalla del celular */
+  #product-modal,
+  .product-modal-content {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  /* 1. BARRA SUPERIOR FIJA (VOLVER / LOGO / X) */
   #product-modal .modal-header,
   #product-modal .modal-nav,
   .modal-top-bar {
@@ -2847,68 +2854,54 @@ input, select, textarea {
     border-bottom: 1px solid #f0f0f0 !important;
   }
 
-  /* 2. MARCO DE FOTO PRINCIPAL (Nunca ocupa toda la pantalla) */
-  #modal-main-img {
-    max-height: 42vh !important; /* Límite de alto perfecto */
-    width: 100% !important;
-    object-fit: contain !important; /* Muestra la foto entera sin deformar */
-    background-color: #f7f7f5 !important;
-    border-radius: 8px !important;
-    margin: 0 auto !important;
-    display: block !important;
-  }
-
+  /* 2. MARCO DE FOTO PRINCIPAL (Muestra la foto 100% entera) */
   .modal-main-img-wrap,
   #modal-main-img-container {
-    max-height: 42vh !important;
-    background: #f7f7f5 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 48vh !important; /* Altura ideal en pantalla de celular */
+    background-color: #e5e5e3 !important; /* Tono gris exacto del fondo de tu estudio */
+    border-radius: 12px !important;
+    overflow: hidden !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: 8px !important;
+    margin: 0 auto 10px auto !important;
+  }
+
+  #modal-main-img {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 48vh !important;
+    object-fit: contain !important; /* 👈 NUNCA RECORTA NI ZOOMUEA LA FOTO */
+    object-position: center !important;
+    border-radius: 12px !important;
+  }
+
+  /* 3. MINIATURAS EN FILA HORIZONTAL LIMPIA */
+  #modal-thumbs {
+    display: flex !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    padding: 4px 2px 12px 2px !important;
+    max-width: 100% !important;
+  }
+
+  #modal-thumbs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .thumb {
+    flex: 0 0 58px !important;
+    height: 72px !important;
+    border-radius: 6px !important;
     overflow: hidden !important;
   }
 
-  /* 3. REORDENAR ELEMENTOS EN MÓVIL: COMPRA PRIMERO, TEXTO DESPUÉS */
-  .product-modal-content,
-  .modal-body,
-  #product-modal .store-grid {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  /* Contenedor de fotos (Queda arriba de primero) */
-  .product-modal-left,
-  #modal-left-col {
-    order: 1 !important;
-  }
-
-  /* Caja de Compra: Precio, Color, Tallas y Botón (Sube de segundo) */
-  .modal-buy-box,
-  .product-modal-right,
-  #modal-right-col {
-    order: 2 !important;
-    padding-top: 10px !important;
-  }
-
-  /* Historias y Detalles largos (Bajan al final de tercero) */
-  #modal-story,
-  #spec-comp,
-  #spec-care,
-  .modal-details-extra {
-    order: 3 !important;
-    margin-top: 20px !important;
-    padding-top: 15px !important;
-    border-top: 1px solid #f0f0f0 !important;
-  }
-
-  /* Botón AÑADIR AL CARRITO grande y cómodo */
-  #modal-add-btn,
-  .add-to-cart-btn {
+  .thumb img {
     width: 100% !important;
-    padding: 16px !important;
-    font-size: 0.95rem !important;
-    margin-top: 12px !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
 }
      
