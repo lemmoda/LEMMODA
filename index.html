@@ -2831,132 +2831,57 @@ input, select, textarea {
 <style>
 
 /* ═══════════════════════════════════════════════════════════
-   DISEÑO MÓVIL EXACTO Y SIN CORTAR FOTOS (RESPONSIVE)
+   DISEÑO DE FOTOS Y MARGENES PERFECTOS (DESKTOP Y MÓVIL)
    ═══════════════════════════════════════════════════════════ */
 
-@media (max-width: 768px) {
-  /* Prevenir que el modal cree scroll horizontal en la pantalla del celular */
-  #product-modal,
-  .product-modal-content {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-  }
-
-  /* 1. BARRA SUPERIOR FIJA (VOLVER / LOGO / X) */
-  #product-modal .modal-header,
-  #product-modal .modal-nav,
-  .modal-top-bar {
-    position: sticky !important;
-    top: 0 !important;
-    background: #ffffff !important;
-    z-index: 999 !important;
-    padding: 10px 16px !important;
-    border-bottom: 1px solid #f0f0f0 !important;
-  }
-
-  /* 2. MARCO DE FOTO PRINCIPAL (Muestra la foto 100% entera) */
-  .modal-main-img-wrap,
-  #modal-main-img-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 48vh !important; /* Altura ideal en pantalla de celular */
-    background-color: #e5e5e3 !important; /* Tono gris exacto del fondo de tu estudio */
-    border-radius: 12px !important;
-    overflow: hidden !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 auto 10px auto !important;
-  }
-
-  #modal-main-img {
-    width: 100% !important;
-    height: 100% !important;
-    max-height: 48vh !important;
-    object-fit: contain !important; /* 👈 NUNCA RECORTA NI ZOOMUEA LA FOTO */
-    object-position: center !important;
-    border-radius: 12px !important;
-  }
-
-  /* 3. MINIATURAS EN FILA HORIZONTAL LIMPIA */
-  #modal-thumbs {
-    display: flex !important;
-    gap: 8px !important;
-    overflow-x: auto !important;
-    padding: 4px 2px 12px 2px !important;
-    max-width: 100% !important;
-  }
-
-  #modal-thumbs::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  .thumb {
-    flex: 0 0 58px !important;
-    height: 72px !important;
-    border-radius: 6px !important;
-    overflow: hidden !important;
-  }
-
-  .thumb img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
-}
-     
-/* ═══════════ MARCO INTELIGENTE DE FOTOS EN EL MODAL ═══════════ */
-
-/* 1. Límite y proporción para la foto principal */
+/* --- ESTILOS GENERALES Y DESKTOP --- */
 #modal-main-img {
   width: 100% !important;
   height: 100% !important;
-  max-height: 55vh !important; /* Nunca ocupa más del 55% de la pantalla en celular */
-  object-fit: cover !important; /* Adapta la foto perfectamente sin deformarla */
-  object-position: center top !important; /* Centra la toma enfocado arriba (rostro/prenda) */
+  max-height: 52vh !important;
+  object-fit: contain !important; /* Nunca recorta ni deforma la foto */
+  object-position: center !important;
   border-radius: 12px;
 }
 
-/* Envolver el contenedor de la imagen */
 .modal-main-img-wrap,
 #modal-main-img-container {
   width: 100%;
-  max-height: 55vh;
-  aspect-ratio: 4 / 5; /* Proporción estándar de catálogo de moda */
-  background-color: #f4f4f0;
+  max-height: 52vh;
+  background-color: #e5e5e3 !important; /* Tono gris exacto de tu estudio */
   border-radius: 12px;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 2. Miniaturas de abajo organizadas en fila desplazable */
 #modal-thumbs {
   display: flex !important;
   gap: 8px !important;
-  overflow-x: auto !important; /* Scroll de lado si hay muchas fotos */
+  overflow-x: auto !important;
   padding: 10px 2px !important;
   margin-top: 8px !important;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Ocultar la barra de scroll fea en miniaturas */
 #modal-thumbs::-webkit-scrollbar {
   display: none !important;
 }
 
 .thumb {
-  flex: 0 0 62px !important; /* Ancho fijo para cada miniatura */
-  height: 78px !important;
+  flex: 0 0 60px !important;
+  height: 76px !important;
   border-radius: 8px !important;
   overflow: hidden !important;
-  scroll-snap-align: start;
-  border: 1.5px solid transparent;
+  border: 2px solid transparent;
   transition: border-color 0.2s;
+  cursor: pointer;
 }
 
 .thumb.active {
-  border-color: #c89660 !important; /* Borde dorado LEM para la foto activa */
+  border-color: #c89660 !important; /* Borde dorado LEM */
 }
 
 .thumb img {
@@ -2964,7 +2889,71 @@ input, select, textarea {
   height: 100% !important;
   object-fit: cover !important;
 }
-     
+
+/* --- AJUSTES EXCLUSIVOS PARA CELULARES --- */
+@media (max-width: 768px) {
+  /* Impide que la pantalla se mueva hacia los lados */
+  html, body, #product-modal, .product-modal-content, .modal-body {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Márgenes limpios en móviles */
+  .product-modal-content,
+  .product-modal-left,
+  .product-modal-right,
+  .modal-body,
+  .modal-details {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Todo texto da salto de línea y no se sale */
+  #product-modal p,
+  #product-modal span,
+  #product-modal div,
+  #modal-story,
+  #modal-comp,
+  #spec-comp,
+  #spec-care {
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: pre-line !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Tallas pasan a 2da fila si no caben */
+  #modal-sizes {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .size-option {
+    flex: 1 1 calc(25% - 8px) !important;
+    min-width: 48px !important;
+    text-align: center !important;
+  }
+
+  /* Foto principal en celulares */
+  .modal-main-img-wrap,
+  #modal-main-img-container {
+    height: 45vh !important;
+  }
+
+  #modal-main-img {
+    max-height: 45vh !important;
+  }
+}
+
+/* --- COMPUTADORAS Y PANTALLAS GRANDES --- */
 @media (min-width: 900px) {
   .store-grid {
     grid-template-columns: 1.3fr 1fr !important;
@@ -2973,7 +2962,7 @@ input, select, textarea {
     min-height: 500px !important;
   }
 }
-</style>
+     
 </main>
 
 <!-- ═══════════════════════════════════════════════════════════
