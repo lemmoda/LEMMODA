@@ -3423,27 +3423,22 @@ function selectSize(el) {
   el.classList.add('active');
 }
 
-/* ═══════════ DETECTOR DE COLOR INDIVIDUAL O BICOLOR ═══════════ */
+/* ═══════════ LÓGICA DE COLOR, MODAL Y CARRITO (COMPLETA Y BLINDADA) ═══════════ */
+
+// Detector de color individual o bicolor (gradiente 50/50 si pones 2 HEX con coma)
 function getColorStyle(hexStr) {
-  if (!hexStr) return 'background: #0A0A0A;';
+  if (!hexStr || typeof hexStr !== 'string') return 'background: #0A0A0A;';
   
-  // Si pusiste 2 colores separados por coma (ej: #1E392A, #9AB3C7)
-  const colors = hexStr.split(/[,/]/).map(c => c.trim()).filter(Boolean);
+  const colors = String(hexStr).split(/[,/]/).map(c => c.trim()).filter(Boolean);
 
   if (colors.length >= 2) {
-    // Círculo dividido exacto a la mitad con línea blanca
     return `background: linear-gradient(90deg, ${colors[0]} 49%, #ffffff 49%, #ffffff 51%, ${colors[1]} 51%);`;
   }
   
-  // Si es 1 solo color normal
-  return `background: ${colors[0]};`;
+  return `background: ${colors[0] || '#0A0A0A'};`;
 }
 
-// ABAJO DE ESTA FUNCIÓN CONTINÚA TU CÓDIGO NORMAL:
-function getVariantImages(variant) {
-  ...
-
-// Extrae fotos (compatibilidad 1 foto o múltiples fotos)
+// Extrae fotos (compatibilidad 1 foto antigua o múltiples fotos nuevas)
 function getVariantImages(variant) {
   if (!variant) return ['assets/images/logos/icono-color.webp'];
   
@@ -3466,7 +3461,7 @@ function getVariantImages(variant) {
   return ['assets/images/logos/icono-color.webp'];
 }
 
-// Muestra la foto grande
+// Muestra la foto grande activa
 function renderModalImage() {
   const img = $('modal-main-img');
   if (!img) return;
@@ -3507,6 +3502,7 @@ function renderModalThumbs() {
   ).join('');
 }
 
+// Formato con saltos de línea para Composición y Cuidados
 function formatComposition(text) {
   if (!text) return '';
   return String(text)
@@ -3521,9 +3517,7 @@ function formatComposition(text) {
 
 function formatCare(text) {
   if (!text) return '';
-  return String(text)
-    .replace(/\.\s+/g, '.\n')  // punto + espacio → nueva línea
-    .trim();
+  return String(text).replace(/\.\s+/g, '.\n').trim();
 }
 
 /* ═══════════ ABRIR Y CERRAR MODAL DEL PRODUCTO ═══════════ */
@@ -3543,7 +3537,7 @@ function openProductModal(id) {
   if ($('modal-price')) $('modal-price').textContent = '$' + p.price.toFixed(2);
   if ($('modal-color-name')) $('modal-color-name').textContent = selectedColor;
   
-  // Descripción
+  // Descripción / Historia
   const storyEl = $('modal-story');
   if (storyEl) {
     if (p.story) { storyEl.textContent = p.story; storyEl.style.display = 'block'; }
@@ -3565,14 +3559,14 @@ function openProductModal(id) {
   const careWrap = $('spec-care');
   if (careWrap) {
     if (p.care) { 
-      if ($('modal-care')) $('modal-care').textContent = p.care; 
+      if ($('modal-care')) $('modal-care').textContent = formatCare(p.care); 
       careWrap.style.display = 'block'; 
     } else { 
       careWrap.style.display = 'none'; 
     }
   }
   
-  // Opciones de Color
+  // Bolitas de Colores (Soporta 1 color o Bicolor)
   if ($('modal-colors')) {
     $('modal-colors').innerHTML = p.variants.map((v, i) => 
       `<div class="color-option ${i === 0 ? 'active' : ''}" 
@@ -3582,7 +3576,7 @@ function openProductModal(id) {
     ).join('');
   }
   
-  // Opciones de Talla
+  // Tallas
   const sizes = getSizes(p);
   if ($('modal-sizes')) {
     $('modal-sizes').innerHTML = sizes.map(s => 
@@ -3595,7 +3589,7 @@ function openProductModal(id) {
   
   if ($('modal-add-btn')) $('modal-add-btn').onclick = () => addToCartFromModal();
   
-  renderModalRecs(id);
+  if (typeof renderModalRecs === 'function') renderModalRecs(id);
   
   const modal = $('product-modal');
   if (modal) {
@@ -3604,7 +3598,7 @@ function openProductModal(id) {
   }
   
   history.pushState({ v: 'modal' }, '', '#producto-' + id);
-  setupSwipe();
+  if (typeof setupSwipe === 'function') setupSwipe();
   
   if (typeof gtag !== 'undefined') {
     gtag('event', 'view_item', {
@@ -3614,7 +3608,6 @@ function openProductModal(id) {
   }
 }
 
-// CERRAR MODAL (Accionado por la 'X' o por la tecla Escape)
 function closeProductModal(back = true) {
   const modal = $('product-modal');
   if (modal) modal.classList.remove('open');
@@ -3648,7 +3641,7 @@ function selectModalColor(el, variantIndex) {
   renderModalImage();
   renderModalThumbs();
 
-  // 📱 En celulares: Subir automáticamente a la foto grande
+  // 📱 En celulares: subir automáticamente a la foto grande
   if (window.innerWidth <= 768) {
     const modalEl = document.getElementById('product-modal') || document.querySelector('.product-modal');
     if (modalEl) {
@@ -3659,7 +3652,7 @@ function selectModalColor(el, variantIndex) {
   }
 }
 
-/* ═══════════ CONTROL DEL CARRITO DE COMPRAS ═══════════ */
+/* ═══════════ CONTROL DEL CARRITO ═══════════ */
 
 function toggleCart() {
   const drawer = $('cartDrawer');
@@ -3730,10 +3723,8 @@ function addToCartFromModal() {
     setTimeout(() => badge.classList.remove('bump'), 500);
   }
   
-  // Cierra el modal de detalles
   closeProductModal(false);
   
-  // Despliega el carrito de compras
   setTimeout(() => {
     toggleCart();
   }, 300);
