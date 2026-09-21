@@ -3423,21 +3423,35 @@ function selectSize(el) {
   el.classList.add('active');
 }
 
-/* ═══════════ LÓGICA DE COLOR, MODAL Y CARRITO (COMPLETA Y BLINDADA) ═══════════ */
-
-// Detector de color individual o bicolor (gradiente 50/50 si pones 2 HEX con coma)
+/* ═══════════ DETECTOR MULTICOLOR UNIVERSAL (1 A N COLORES) ═══════════ */
 function getColorStyle(hexStr) {
   if (!hexStr || typeof hexStr !== 'string') return 'background: #0A0A0A;';
   
+  // Limpia y separa los colores por coma o barra
   const colors = String(hexStr).split(/[,/]/).map(c => c.trim()).filter(Boolean);
 
-  if (colors.length >= 2) {
-    return `background: linear-gradient(90deg, ${colors[0]} 49%, #ffffff 49%, #ffffff 51%, ${colors[1]} 51%);`;
-  }
+  if (colors.length === 0) return 'background: #0A0A0A;';
   
-  return `background: ${colors[0] || '#0A0A0A'};`;
-}
+  // 1 solo color (Sólido)
+  if (colors.length === 1) return `background: ${colors[0]};`;
+  
+  // 2 o más colores (División dinámica exacta con líneas divisorias blancas)
+  const step = 100 / colors.length;
+  let stops = [];
 
+  colors.forEach((col, idx) => {
+    const start = idx * step;
+    const end = (idx + 1) * step;
+    
+    if (idx === colors.length - 1) {
+      stops.push(`${col} ${start}%`, `${col} 100%`);
+    } else {
+      stops.push(`${col} ${start}%`, `${col} ${end - 0.8}%`, `#ffffff ${end - 0.8}%`, `#ffffff ${end}%`);
+    }
+  });
+
+  return `background: linear-gradient(90deg, ${stops.join(', ')});`;
+}
 // Extrae fotos (compatibilidad 1 foto antigua o múltiples fotos nuevas)
 function getVariantImages(variant) {
   if (!variant) return ['assets/images/logos/icono-color.webp'];
