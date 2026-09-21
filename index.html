@@ -3344,7 +3344,7 @@ function mountShop() {
     const badgeLabels = { new:'Nuevo', hot:'Hot', premium:'Premium', promo:'Promo' };
     const badge = p.badge ? `<span class="product-badge ${escapeHTML(p.badge)}">${escapeHTML(badgeLabels[p.badge] || p.badge)}</span>` : '';
     const colors = p.variants.slice(0, 4).map(v => 
-      `<div class="color-swatch" style="background:${escapeHTML(v.hex)}" title="${escapeHTML(v.color)}"></div>`
+      `<div class="color-swatch" style="${getColorStyle(v.hex)}" title="${escapeHTML(v.color)}"></div>`
     ).join('');
     
     return `
@@ -3422,6 +3422,26 @@ function selectSize(el) {
   }
   el.classList.add('active');
 }
+
+/* ═══════════ DETECTOR DE COLOR INDIVIDUAL O BICOLOR ═══════════ */
+function getColorStyle(hexStr) {
+  if (!hexStr) return 'background: #0A0A0A;';
+  
+  // Si pusiste 2 colores separados por coma (ej: #1E392A, #9AB3C7)
+  const colors = hexStr.split(/[,/]/).map(c => c.trim()).filter(Boolean);
+
+  if (colors.length >= 2) {
+    // Círculo dividido exacto a la mitad con línea blanca
+    return `background: linear-gradient(90deg, ${colors[0]} 49%, #ffffff 49%, #ffffff 51%, ${colors[1]} 51%);`;
+  }
+  
+  // Si es 1 solo color normal
+  return `background: ${colors[0]};`;
+}
+
+// ABAJO DE ESTA FUNCIÓN CONTINÚA TU CÓDIGO NORMAL:
+function getVariantImages(variant) {
+  ...
 
 // Extrae fotos (compatibilidad 1 foto o múltiples fotos)
 function getVariantImages(variant) {
@@ -3556,7 +3576,7 @@ function openProductModal(id) {
   if ($('modal-colors')) {
     $('modal-colors').innerHTML = p.variants.map((v, i) => 
       `<div class="color-option ${i === 0 ? 'active' : ''}" 
-            style="background:${escapeHTML(v.hex || '#0A0A0A')}" 
+            style="${getColorStyle(v.hex)}" 
             title="${escapeHTML(v.color || '')}" 
             onclick="selectModalColor(this, ${i})"></div>`
     ).join('');
