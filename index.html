@@ -3754,6 +3754,21 @@ function renderModalRecs(id) {
   }, 100);
 }
 
+// Esta es la función que faltaba para saltar de un producto a otro:
+function jumpToProduct(id) {
+  closeProductModal(false);
+  
+  setTimeout(() => {
+    openProductModal(id);
+    
+    // Subir el scroll al inicio para ver el nuevo producto desde arriba
+    const modalEl = document.getElementById('product-modal') || document.querySelector('.product-modal');
+    if (modalEl) {
+      modalEl.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, 200);
+}
+
 function updateCartQty(uid, change) {
   const item = cart.find(i => i.uid === uid);
   if (!item) return;
