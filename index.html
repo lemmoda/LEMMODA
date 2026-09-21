@@ -3726,6 +3726,45 @@ function addToCartFromModal() {
   }
 }
 
+/* ═══════════ RECOMENDACIONES CON CARRUSEL AUTOMÁTICO ═══════════ */
+
+let recoAutoScrollTimer = null;
+
+function startRecoAutoScroll() {
+  stopRecoAutoScroll();
+  const wrap = $('modal-reco');
+  if (!wrap) return;
+
+  // Si el cliente pone la mano o el mouse encima, se detiene
+  wrap.onmouseenter = stopRecoAutoScroll;
+  wrap.onmouseleave = startRecoAutoScroll;
+  wrap.ontouchstart = stopRecoAutoScroll;
+
+  recoAutoScrollTimer = setInterval(() => {
+    const modal = $('product-modal');
+    if (!modal || !modal.classList.contains('open')) {
+      stopRecoAutoScroll();
+      return;
+    }
+
+    const maxScroll = wrap.scrollWidth - wrap.clientWidth;
+    
+    // Si llega al final, regresa suavemente al inicio; de lo contrario, avanza
+    if (wrap.scrollLeft >= maxScroll - 15) {
+      wrap.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      wrap.scrollBy({ left: 220, behavior: 'smooth' });
+    }
+  }, 3500); // Avanza automáticamente cada 3.5 segundos
+}
+
+function stopRecoAutoScroll() {
+  if (recoAutoScrollTimer) {
+    clearInterval(recoAutoScrollTimer);
+    recoAutoScrollTimer = null;
+  }
+}
+
 function renderModalRecs(id) {
   const wrap = $('modal-reco');
   const p = DB.find(x => x.id === id);
@@ -3751,17 +3790,17 @@ function renderModalRecs(id) {
   setTimeout(() => {
     if (typeof initRailListeners === 'function') initRailListeners();
     if (typeof updateRailArrows === 'function') updateRailArrows();
-  }, 100);
+    startRecoAutoScroll(); // Inicia el carrusel solo
+  }, 300);
 }
 
-// Esta es la función que faltaba para saltar de un producto a otro:
 function jumpToProduct(id) {
+  stopRecoAutoScroll();
   closeProductModal(false);
   
   setTimeout(() => {
     openProductModal(id);
     
-    // Subir el scroll al inicio para ver el nuevo producto desde arriba
     const modalEl = document.getElementById('product-modal') || document.querySelector('.product-modal');
     if (modalEl) {
       modalEl.scrollTo({ top: 0, behavior: 'smooth' });
