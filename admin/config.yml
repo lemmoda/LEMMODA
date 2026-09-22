@@ -1,180 +1,186 @@
 backend:
-  name: github
-  repo: lemmoda/LEMMODA
-  branch: main
+name: github
+repo: lemmoda/LEMMODA
+branch: main
 
 media_folder: "assets/images/productos"
 public_folder: "assets/images/productos"
 
 collections:
-  - name: "catalogo"
-    label: "Catálogo de Tienda"
-    files:
-      - label: "Todos los Productos"
-        name: "productos"
-        file: "productos.json"
-        fields:
-          - label: "Lista de Prendas"
-            name: "items"
-            widget: "list"
-            summary: "{{fields.name}} — ${{fields.price}} ({{fields.category}})"
-            fields:
-              - label: "ID del Producto"
-                name: "id"
-                widget: "number"
-                value_type: "int"
-                hint: "Usa el siguiente número libre (ej: 61, 62...)"
 
-              - label: "Nombre de la Prenda"
-                name: "name"
-                widget: "string"
+name: "catalogo"
+label: "Catálogo de Tienda"
+files:
+label: "Todos los Productos"
+name: "productos"
+file: "productos.json"
+fields:
 
-              - label: "Precio ($)"
-                name: "price"
-                widget: "number"
-                value_type: "float"
-                min: 0
+label: "Lista de Prendas"
+name: "items"
+widget: "list"
+summary: "{{fields.name}} — ${{fields.price}} ({{fields.category}})"
+fields:
+label: "ID del Producto"
+name: "id"
+widget: "number"
+value_type: "int"
+hint: "Usa el siguiente número libre (ej: 61, 62...)"
 
-              - label: "Categoría principal"
-                name: "category"
-                widget: "select"
-                options:
-                  - { label: "Hombre", value: "hombre" }
-                  - { label: "Mujer", value: "mujer" }
-                  - { label: "Boxifit", value: "boxifit" }
-                  - { label: "Conjuntos / Outfits", value: "outfits" }
-                  - { label: "Novedades", value: "novedades" }
-                  - { label: "Unisex", value: "unisex" }
+label: "Nombre de la Prenda"
+name: "name"
+widget: "string"
 
-              - label: "Tipo / Subcategoría"
-                name: "type"
-                widget: "select"
-                options:
-                  - { label: "Hoodie", value: "hoodie" }
-                  - { label: "Pantalón", value: "pantalon" }
-                  - { label: "Top / Tee / Blusa", value: "top" }
-                  - { label: "Outfit / Conjunto", value: "outfit" }
+label: "Precio ($)"
+name: "price"
+widget: "number"
+value_type: "float"
+min: 0
 
-              - label: "Género"
-                name: "gender"
-                widget: "select"
-                options:
-                  - { label: "Hombre", value: "hombre" }
-                  - { label: "Mujer", value: "mujer" }
-                  - { label: "Unisex", value: "unisex" }
+label: "Categoría principal"
+name: "category"
+widget: "select"
+options:
 
-              - label: "Tallas disponibles"
-                name: "sizes"
-                widget: "select"
-                multiple: true
-                required: false
-                options:
-                  - "XS"
-                  - "S"
-                  - "M"
-                  - "L"
-                  - "XL"
-                  - "XXL"
-                  - "28"
-                  - "30"
-                  - "32"
-                  - "34"
-                  - "36"
-                  - "Única"
+{ label: "Hombre", value: "hombre" }
+{ label: "Mujer", value: "mujer" }
+{ label: "Boxifit", value: "boxifit" }
+{ label: "Conjuntos / Outfits", value: "outfits" }
+{ label: "Novedades", value: "novedades" }
+{ label: "Unisex", value: "unisex" }
+label: "Tipo / Subcategoría"
+name: "type"
+widget: "select"
+options:
 
-              - label: "Etiqueta (Badge)"
-                name: "badge"
-                widget: "select"
-                required: false
-                options:
-                  - { label: "Ninguna", value: "" }
-                  - { label: "Nuevo", value: "new" }
-                  - { label: "Hot", value: "hot" }
-                  - { label: "Premium", value: "premium" }
-                  - { label: "Promo / Sale", value: "sale" }
-                  - { label: "Agotado", value: "agotado" }
+{ label: "Hoodie", value: "hoodie" }
+{ label: "Pantalón", value: "pantalon" }
+{ label: "Top / Tee / Blusa", value: "top" }
+{ label: "Outfit / Conjunto", value: "outfit" }
+label: "Género"
+name: "gender"
+widget: "select"
+options:
 
-              - label: "Historia / Descripción"
-                name: "story"
-                widget: "text"
-                required: false
+{ label: "Hombre", value: "hombre" }
+{ label: "Mujer", value: "mujer" }
+{ label: "Unisex", value: "unisex" }
+label: "Tallas disponibles"
+name: "sizes"
+widget: "select"
+multiple: true
+required: false
+options:
 
-              - label: "Composición"
-                name: "composition"
-                widget: "text"
-                required: false
+"XS"
+"S"
+"M"
+"L"
+"XL"
+"XXL"
+"28"
+"30"
+"32"
+"34"
+"36"
+"Única"
+label: "Etiqueta (Badge)"
+name: "badge"
+widget: "select"
+required: false
+options:
 
-              - label: "Cuidados"
-                name: "care"
-                widget: "text"
-                required: false
+{ label: "Ninguna", value: "" }
+{ label: "Nuevo", value: "new" }
+{ label: "Hot", value: "hot" }
+{ label: "Premium", value: "premium" }
+{ label: "Promo / Sale", value: "sale" }
+{ label: "Agotado", value: "agotado" }
+label: "Historia / Descripción"
+name: "story"
+widget: "text"
+required: false
 
-              - label: "Variantes (Colores y Fotos)"
-                name: "variants"
-                widget: "list"
-                summary: "{{fields.color}} ({{fields.hex}})"
-                min: 1
-                fields:
-                  - label: "Nombre del Color"
-                    name: "color"
-                    widget: "string"
+label: "Composición"
+name: "composition"
+widget: "text"
+required: false
 
-                  - label: "Código HEX Exacto"
-                    name: "hex"
-                    widget: "string"
-                    default: "#0A0A0A"
+label: "Cuidados"
+name: "care"
+widget: "text"
+required: false
 
-                  - label: "Fotos de este color (puedes subir varias)"
-                    name: "images"
-                    widget: "list"
-                    required: false
-                    field:
-                      label: "Foto"
-                      name: "img"
-                      widget: "image"
-                      media_folder: "assets/images/productos"
-                      public_folder: "assets/images/productos"
+label: "Variantes (Colores y Fotos)"
+name: "variants"
+widget: "list"
+summary: "{{fields.color}} ({{fields.hex}})"
+min: 1
+fields:
 
-  - name: "config_web"
-    label: "Banners & Configuración"
-    files:
-      - label: "Banners, Franja y Promo"
-        name: "banners_config"
-        file: "banners.json"
-        fields:
-          - label: "Franja inferior (marquee)"
-            name: "franja"
-            widget: "object"
-            fields:
-              - { label: "Activa", name: "activo", widget: "boolean", default: true }
-              - { label: "Velocidad (segundos del ciclo)", name: "velocidad", widget: "number", default: 28, value_type: "int" }
-              - label: "Textos de la franja"
-                name: "textos"
-                widget: "list"
-                allow_add: true
-                field: { label: "Texto", name: "texto", widget: "string" }
+label: "Nombre del Color"
+name: "color"
+widget: "string"
 
-          - label: "Barra promo superior (Aniversario / ofertas)"
-            name: "promoBar"
-            widget: "object"
-            fields:
-              - { label: "Activa", name: "activo", widget: "boolean", default: true }
-              - { label: "Texto del mensaje", name: "texto", widget: "string" }
-              - { label: "Link (ej: #shop o URL)", name: "link", widget: "string", required: false }
-              - { label: "Texto del botón", name: "textoBoton", widget: "string", required: false, default: "Ver oferta" }
-              - { label: "Color de fondo (HEX)", name: "fondo", widget: "string", default: "#784311" }
-              - { label: "Color del texto (HEX)", name: "colorTexto", widget: "string", default: "#FAF6F0" }
+label: "Código HEX Exacto"
+name: "hex"
+widget: "string"
+default: "#0A0A0A"
 
-          - label: "Banners de campaña (Hero / Aniversario)"
-            name: "banners"
-            widget: "list"
-            summary: "{{fields.titulo}} — orden {{fields.orden}}"
-            fields:
-              - { label: "ID", name: "id", widget: "number", value_type: "int" }
-              - { label: "Activo", name: "activo", widget: "boolean", default: true }
-              - { label: "Título", name: "titulo", widget: "string" }
-              - { label: "Subtítulo", name: "subtitulo", widget: "text", required: false }
-              - { label: "Texto del botón", name: "boton", widget: "string", required: false }
-              - { label: "Link del botón", name: "link", widget: "string", required: false }
-              - { label: "Imagen de fondo", name: "imagen", widget: "image", required: false, media_folder: "assets/images/banners", public_folder: "assets/images/banners" }
-              - { label: "Orden (1 = primero)", name: "orden", widget: "number", value_type: "int", default: 1 }
+label: "Fotos de este color (puedes subir varias)"
+name: "images"
+widget: "list"
+required: false
+field:
+label: "Foto"
+name: "img"
+widget: "image"
+media_folder: "assets/images/productos"
+public_folder: "assets/images/productos"
+
+name: "config_web"
+label: "Banners & Configuración"
+files:
+
+label: "Banners, Franja y Promo"
+name: "banners_config"
+file: "banners.json"
+fields:
+
+label: "Franja inferior (marquee)"
+name: "franja"
+widget: "object"
+fields:
+
+{ label: "Activa", name: "activo", widget: "boolean", default: true }
+{ label: "Velocidad (segundos del ciclo)", name: "velocidad", widget: "number", default: 28, value_type: "int" }
+label: "Textos de la franja"
+name: "textos"
+widget: "list"
+allow_add: true
+field: { label: "Texto", name: "texto", widget: "string" }
+label: "Barra promo superior (Aniversario / ofertas)"
+name: "promoBar"
+widget: "object"
+fields:
+
+{ label: "Activa", name: "activo", widget: "boolean", default: true }
+{ label: "Texto del mensaje", name: "texto", widget: "string" }
+{ label: "Link (ej: #shop o URL)", name: "link", widget: "string", required: false }
+{ label: "Texto del botón", name: "textoBoton", widget: "string", required: false, default: "Ver oferta" }
+{ label: "Color de fondo (HEX)", name: "fondo", widget: "string", default: "#784311" }
+{ label: "Color del texto (HEX)", name: "colorTexto", widget: "string", default: "#FAF6F0" }
+label: "Banners de campaña (Hero / Aniversario)"
+name: "banners"
+widget: "list"
+summary: "{{fields.titulo}} — orden {{fields.orden}}"
+fields:
+
+{ label: "ID", name: "id", widget: "number", value_type: "int" }
+{ label: "Activo", name: "activo", widget: "boolean", default: true }
+{ label: "Título", name: "titulo", widget: "string" }
+{ label: "Subtítulo", name: "subtitulo", widget: "text", required: false }
+{ label: "Texto del botón", name: "boton", widget: "string", required: false }
+{ label: "Link del botón", name: "link", widget: "string", required: false }
+{ label: "Imagen de fondo", name: "imagen", widget: "image", required: false, media_folder: "assets/images/banners", public_folder: "assets/images/banners" }
+{ label: "Orden (1 = primero)", name: "orden", widget: "number", value_type: "int", default: 1 }
