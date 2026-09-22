@@ -135,7 +135,7 @@ collections:
                       media_folder: "assets/images/productos"
                       public_folder: "assets/images/productos"
 
-      - name: "config_web"
+  - name: "config_web"
     label: "Banners & Configuración"
     files:
       - label: "Banners, Franja y Promo"
