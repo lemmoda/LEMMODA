@@ -1,6 +1,6 @@
 {
   "franja": {
-    "activo": true,
+    "activo": false,
     "velocidad": 28,
     "textos": [
       "DISEÑADO EN AMBATO",
@@ -12,7 +12,7 @@
     ]
   },
   "promoBar": {
-    "activo": true,
+    "activo": false,
     "texto": "✦ ANIVERSARIO LEM · 15% OFF en sets seleccionados · Usa el código PRIME15",
     "link": "#shop",
     "textoBoton": "Ver oferta",
