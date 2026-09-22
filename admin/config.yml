@@ -134,3 +134,47 @@ collections:
                       widget: "image"
                       media_folder: "assets/images/productos"
                       public_folder: "assets/images/productos"
+
+      - name: "config_web"
+    label: "Banners & Configuración"
+    files:
+      - label: "Banners, Franja y Promo"
+        name: "banners_config"
+        file: "banners.json"
+        fields:
+          - label: "Franja inferior (marquee)"
+            name: "franja"
+            widget: "object"
+            fields:
+              - { label: "Activa", name: "activo", widget: "boolean", default: true }
+              - { label: "Velocidad (segundos del ciclo)", name: "velocidad", widget: "number", default: 28, value_type: "int" }
+              - label: "Textos de la franja"
+                name: "textos"
+                widget: "list"
+                allow_add: true
+                field: { label: "Texto", name: "texto", widget: "string" }
+
+          - label: "Barra promo superior (Aniversario / ofertas)"
+            name: "promoBar"
+            widget: "object"
+            fields:
+              - { label: "Activa", name: "activo", widget: "boolean", default: true }
+              - { label: "Texto del mensaje", name: "texto", widget: "string" }
+              - { label: "Link (ej: #shop o URL)", name: "link", widget: "string", required: false }
+              - { label: "Texto del botón", name: "textoBoton", widget: "string", required: false, default: "Ver oferta" }
+              - { label: "Color de fondo (HEX)", name: "fondo", widget: "string", default: "#784311" }
+              - { label: "Color del texto (HEX)", name: "colorTexto", widget: "string", default: "#FAF6F0" }
+
+          - label: "Banners de campaña (Hero / Aniversario)"
+            name: "banners"
+            widget: "list"
+            summary: "{{fields.titulo}} — orden {{fields.orden}}"
+            fields:
+              - { label: "ID", name: "id", widget: "number", value_type: "int" }
+              - { label: "Activo", name: "activo", widget: "boolean", default: true }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Subtítulo", name: "subtitulo", widget: "text", required: false }
+              - { label: "Texto del botón", name: "boton", widget: "string", required: false }
+              - { label: "Link del botón", name: "link", widget: "string", required: false }
+              - { label: "Imagen de fondo", name: "imagen", widget: "image", required: false, media_folder: "assets/images/banners", public_folder: "assets/images/banners" }
+              - { label: "Orden (1 = primero)", name: "orden", widget: "number", value_type: "int", default: 1 }
