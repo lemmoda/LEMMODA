@@ -4333,48 +4333,172 @@ function renderCampaignBanners(banners) {
   }).join('');
 }
 
+/* ═══════════ SEGURO BLINDADO ANTI-CONGELAMIENTO DE PRELOADER ═══════════ */
+
+function forceHidePreloader() {
+  const loader = document.getElementById('preloader');
+  if (loader && !loader.classList.contains('hidden')) {
+    loader.classList.add('hidden');
+    if (typeof observeReveal === 'function') observeReveal();
+  }
+}
+
+// Desactiva la hormiguita SÍ O SÍ a los 1.2 segundos
+setTimeout(forceHidePreloader, 1200);
+
+/* ═══════════ BANNERS & FRANJA PROMO (DESDE BANNERS.JSON) ═══════════ */
+
+function closePromoBar() {
+  const bar = document.getElementById('promo-bar');
+  if (bar) bar.style.display = 'none';
+  try { sessionStorage.setItem('lem_promo_closed', '1'); } catch (e) {}
+}
+
+function renderPromoBar(promo) {
+  try {
+    const bar = document.getElementById('promo-bar');
+    if (!bar || !promo || promo.activo === false) {
+      if (bar) bar.style.display = 'none';
+      return;
+    }
+    if (sessionStorage.getItem('lem_promo_closed') === '1') {
+      bar.style.display = 'none';
+      return;
+    }
+    bar.style.display = 'block';
+    bar.style.background = promo.fondo || '#784311';
+    bar.style.color = promo.colorTexto || '#FAF6F0';
+
+    const textEl = document.getElementById('promo-bar-text');
+    if (textEl) textEl.textContent = promo.texto || '';
+
+    const btn = document.getElementById('promo-bar-btn');
+    if (btn) {
+      if (promo.link && promo.textoBoton) {
+        btn.style.display = 'inline-flex';
+        btn.href = promo.link;
+        btn.textContent = promo.textoBoton;
+        btn.style.color = promo.colorTexto || '#FAF6F0';
+      } else {
+        btn.style.display = 'none';
+      }
+    }
+  } catch (e) {
+    console.warn('Error PromoBar:', e);
+  }
+}
+
+function renderMarquee(franja) {
+  try {
+    const strip = document.getElementById('marquee-strip');
+    const track = document.getElementById('marquee-track');
+    if (!strip || !track) return;
+
+    if (!franja || franja.activo === false || !franja.textos) {
+      strip.style.display = 'none';
+      return;
+    }
+
+    let list = Array.isArray(franja.textos) ? franja.textos : [];
+    const textos = list.map(t => {
+      if (typeof t === 'string') return t;
+      if (t && typeof t === 'object') return t.texto || t.text || Object.values(t)[0] || '';
+      return '';
+    }).filter(Boolean);
+
+    if (!textos.length) {
+      strip.style.display = 'none';
+      return;
+    }
+
+    const buildItems = () => textos.map(t =>
+      `<span class="marquee-item">${escapeHTML(t)} <span class="marquee-diamond">◆</span></span>`
+    ).join('');
+
+    track.innerHTML = buildItems() + buildItems();
+    const speed = Number(franja.velocidad) > 0 ? Number(franja.velocidad) : 28;
+    track.style.animationDuration = speed + 's';
+    strip.style.display = 'block';
+  } catch (e) {
+    console.warn('Error Marquee:', e);
+  }
+}
+
+function renderCampaignBanners(banners) {
+  try {
+    const wrap = document.getElementById('campaign-banners');
+    if (!wrap) return;
+
+    let list = Array.isArray(banners) ? banners : [];
+    list = list.filter(b => b && b.activo !== false).sort((a, b) => (a.orden || 0) - (b.orden || 0));
+
+    if (!list.length) {
+      wrap.innerHTML = '';
+      wrap.style.display = 'none';
+      return;
+    }
+
+    wrap.style.display = 'grid';
+    wrap.innerHTML = list.map(b => {
+      const img = b.imagen
+        ? `<img src="${escapeHTML(b.imagen)}" alt="${escapeHTML(b.titulo || 'Campaña')}" loading="lazy">`
+        : '';
+      const btn = (b.boton && b.link)
+        ? `<a href="${escapeHTML(b.link)}">${escapeHTML(b.boton)}</a>`
+        : '';
+      return `
+        <article class="campaign-card">
+          ${img}
+          <div class="campaign-card-content">
+            <h3>${escapeHTML(b.titulo || '')}</h3>
+            ${b.subtitulo ? `<p>${escapeHTML(b.subtitulo)}</p>` : ''}
+            ${btn}
+          </div>
+        </article>
+      `;
+    }).join('');
+  } catch (e) {
+    console.warn('Error CampaignBanners:', e);
+  }
+}
+
 function loadBannersConfig() {
   fetch('banners.json')
     .then(r => r.ok ? r.json() : null)
     .then(data => {
       if (!data) return;
-      if (data.promoBar && typeof renderPromoBar === 'function') renderPromoBar(data.promoBar);
-      if (data.franja && typeof renderMarquee === 'function') renderMarquee(data.franja);
-      if (data.banners && typeof renderCampaignBanners === 'function') renderCampaignBanners(data.banners);
+      renderPromoBar(data.promoBar);
+      renderMarquee(data.franja);
+      renderCampaignBanners(data.banners);
     })
-    .catch(e => console.warn('banners.json opcional:', e));
+    .catch(e => console.warn('banners.json no cargó:', e));
 }
 
-// Ejecutar carga de banners
+// Cargar banners
 loadBannersConfig();
 
-// Lanzar al inicio (junto a tus otros inits)
-loadBannersConfig();
-     
-/* ═══════════ CARGA FINAL DESDE JSON ═══════════ */
-// Aquí leemos los productos y LUEGO iniciamos la web
+/* ═══════════ CARGA FINAL DESDE JSON (PRODUCTOS) ═══════════ */
+
 fetch('productos.json')
   .then(response => response.json())
   .then(data => {
-    DB = data.items;
-    productos = data.items;
+    DB = data.items || [];
+    productos = data.items || [];
     
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
-      init();
+      if (typeof init === 'function') init();
     }
   })
   .catch(err => {
     console.error('Error cargando los productos:', err);
-    // Para que no se congele si falla la carga:
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
-      init();
+      if (typeof init === 'function') init();
     }
   });
-     
 </script>
 </body>
 </html>
