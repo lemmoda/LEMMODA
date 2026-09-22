@@ -32,3 +32,26 @@
     }
   ]
 }
+
+{
+  "franja": {
+    "activo": true,
+    "velocidad": 28,
+    "textos": [
+      "DISEÑADO EN AMBATO",
+      "ESTÁS EN TU PRIME",
+      "#PONTELEM",
+      "COLECCIÓN 2026",
+      "ATHLEISURE DE ALTA GAMA"
+    ]
+  },
+  "promoBar": {
+    "activo": false,
+    "texto": "✦ ANIVERSARIO LEM",
+    "link": "#shop",
+    "textoBoton": "Ver oferta",
+    "fondo": "#784311",
+    "colorTexto": "#FAF6F0"
+  },
+  "banners": []
+}
