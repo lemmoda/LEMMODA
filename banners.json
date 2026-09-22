@@ -22,7 +22,7 @@
   "banners": [
     {
       "id": 1,
-      "activo": true,
+      "activo": false,
       "titulo": "Aniversario LEM",
       "subtitulo": "Athleisure de alta gama. Piezas limitadas para celebrar tu Prime.",
       "boton": "Explorar colección",
