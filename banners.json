@@ -1,6 +1,6 @@
 {
   "franja": {
-    "activo": false,
+    "activo": true,
     "velocidad": 28,
     "textos": [
       "DISEÑADO EN AMBATO",
@@ -12,7 +12,7 @@
     ]
   },
   "promoBar": {
-    "activo": false,
+    "activo": true,
     "texto": "✦ ANIVERSARIO LEM · 15% OFF en sets seleccionados · Usa el código PRIME15",
     "link": "#shop",
     "textoBoton": "Ver oferta",
@@ -22,7 +22,7 @@
   "banners": [
     {
       "id": 1,
-      "activo": false,
+      "activo": true,
       "titulo": "Aniversario LEM",
       "subtitulo": "Athleisure de alta gama. Piezas limitadas para celebrar tu Prime.",
       "boton": "Explorar colección",
@@ -31,27 +31,4 @@
       "orden": 1
     }
   ]
-}
-
-{
-  "franja": {
-    "activo": true,
-    "velocidad": 28,
-    "textos": [
-      "DISEÑADO EN AMBATO",
-      "ESTÁS EN TU PRIME",
-      "#PONTELEM",
-      "COLECCIÓN 2026",
-      "ATHLEISURE DE ALTA GAMA"
-    ]
-  },
-  "promoBar": {
-    "activo": false,
-    "texto": "✦ ANIVERSARIO LEM",
-    "link": "#shop",
-    "textoBoton": "Ver oferta",
-    "fondo": "#784311",
-    "colorTexto": "#FAF6F0"
-  },
-  "banners": []
 }
