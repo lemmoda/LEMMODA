@@ -11,7 +11,18 @@
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-55JW26D8"></script>
+     
 <script>
+
+/* ═══════════ SEGURO ANTI-CONGELAMIENTO DEL PRELOADER ═══════════ */
+setTimeout(() => {
+  const loader = document.getElementById('preloader');
+  if (loader && !loader.classList.contains('hidden')) {
+    loader.classList.add('hidden');
+    if (typeof observeReveal === 'function') observeReveal();
+  }
+}, 1500); // 👈 Quita la pantalla de carga sí o sí a los 1.5s
+     
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -4324,20 +4335,18 @@ function renderCampaignBanners(banners) {
 
 function loadBannersConfig() {
   fetch('banners.json')
-    .then(r => {
-      if (!r.ok) throw new Error('No banners.json');
-      return r.json();
-    })
+    .then(r => r.ok ? r.json() : null)
     .then(data => {
-      renderPromoBar(data.promoBar);
-      renderMarquee(data.franja);
-      renderCampaignBanners(data.banners);
+      if (!data) return;
+      if (data.promoBar && typeof renderPromoBar === 'function') renderPromoBar(data.promoBar);
+      if (data.franja && typeof renderMarquee === 'function') renderMarquee(data.franja);
+      if (data.banners && typeof renderCampaignBanners === 'function') renderCampaignBanners(data.banners);
     })
-    .catch(() => {
-      // Si no existe el archivo, no rompe la web
-      console.warn('banners.json no cargó (opcional)');
-    });
+    .catch(e => console.warn('banners.json opcional:', e));
 }
+
+// Ejecutar carga de banners
+loadBannersConfig();
 
 // Lanzar al inicio (junto a tus otros inits)
 loadBannersConfig();
