@@ -114,6 +114,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 
 <style>
+
+/* Acento temporada (suave) */
+:root {
+  --season-accent: #c89660; /* dorado LEM */
+  --season-dark: #1a120c;   /* fondo aniversario/halloween */
+}
+.hero-cta {
+  box-shadow: 0 0 0 1px rgba(200,150,96,0.25);
+}     
+     
 /* ═══════════════════════════════════════════════════════════
    LEM MODA · Represent #PonteLEM
    Sistema de diseño premium editorial minimalista
@@ -2317,10 +2327,88 @@ input, select, textarea {
   overflow-wrap: break-word !important;
   word-break: break-word !important;
 }
+
+/* BANNER FLOTANTE */
+.float-banner {
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  z-index: 9999;
+  width: min(300px, calc(100vw - 24px));
+  background: linear-gradient(160deg, #1a120c 0%, #2b1a12 55%, #3a2214 100%);
+  color: #f7efe6;
+  border: 1px solid rgba(200, 150, 96, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+  padding: 16px 16px 14px;
+  animation: floatIn 0.45s ease both;
+}
+.float-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  color: #f7efe6;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.float-close:hover { opacity: 1; }
+.float-kicker {
+  margin: 0 0 6px;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c89660;
+  font-weight: 700;
+}
+.float-title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.float-text {
+  margin: 0 0 12px;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  opacity: 0.92;
+}
+.float-btn {
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #c89660;
+  color: #1a120c;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.float-btn:hover { filter: brightness(1.05); }
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 768px) {
+  .float-banner {
+    right: 12px;
+    left: 12px;
+    bottom: 14px;
+    width: auto;
+  }
+}
      
 </style>
+     
+ <style>
 
-     <style>
+
   /* Mejorar legibilidad de la Historia / Descripción */
   #modal-story {
     font-family: inherit;
@@ -2340,6 +2428,15 @@ input, select, textarea {
      
 </head>
 <body>
+
+<!-- BANNER FLOTANTE TEMPORADA -->
+<div id="float-banner" class="float-banner">
+  <button class="float-close" onclick="document.getElementById('float-banner').style.display='none'" aria-label="Cerrar">×</button>
+  <p class="float-kicker">LEM · ANIVERSARIO + HALLOWEEN</p>
+  <p class="float-title">Drop especial de temporada</p>
+  <p class="float-text">Sets seleccionados con beneficio de aniversario. Piezas limitadas.</p>
+  <button class="float-btn" onclick="goTo('shop')">Ver colección</button>
+</div>
 
 <!-- ═══════════ PRELOADER ═══════════ -->
 <div id="preloader">
@@ -2438,20 +2535,23 @@ input, select, textarea {
   </section>
   
   <!-- MARQUEE -->
-  <div class="marquee-band" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-item">#PonteLEM</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Colección 2026</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Athleisure de Alta Gama</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Diseñado en Ambato</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Estás en tu Prime</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">#PonteLEM</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Colección 2026</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Athleisure de Alta Gama</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Diseñado en Ambato</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Estás en tu Prime</span><span class="marquee-sep">◆</span>
-    </div>
+  <!-- MARQUEE TEMPORADA -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">ANIVERSARIO LEM - OCTUBRE</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">HALLOWEEN DROP</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">#PONTELEM</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">OFERTA ESPECIAL</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">COLECCIÓN 2026</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">ESTÁS EN TU PRIME</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">DISEÑADO EN AMBATO</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">ANIVERSARIO LEM - OCTUBRE</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">HALLOWEEN DROP</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">#PONTELEM</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">OFERTA ESPECIAL</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item">COLECCIÓN 2026</span><span class="marquee-sep">◆</span>
   </div>
+</div>
   
   <!-- FEATURED PRODUCTS -->
   <section class="section">
