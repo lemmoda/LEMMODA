@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es-EC">
 <head>
+
+<section id="campaign-banners" class="campaign-banners" aria-label="Campañas"></section>
+     
 <!-- ═══════════════════════════════════════════════════════════
      LEM MODA · #PonteLEM · Athleisure Premium Ecuador
      Diseñado en Ambato · Estás en tu Prime
@@ -2341,6 +2344,25 @@ input, select, textarea {
 </head>
 <body>
 
+</head>
+<body>
+
+  <!-- BARRA PROMO / ANIVERSARIO -->
+  <div id="promo-bar" class="promo-bar" style="display:none;" role="region" aria-label="Promoción">
+    <div class="promo-bar-inner">
+      <p id="promo-bar-text" class="promo-bar-text"></p>
+      <a id="promo-bar-btn" class="promo-bar-btn" href="#shop" style="display:none;"></a>
+      <button type="button" class="promo-bar-close" onclick="closePromoBar()" aria-label="Cerrar">×</button>
+    </div>
+  </div>
+
+  <!-- ═══════════ PRELOADER ═══════════ -->
+  <div id="preloader">
+    <img src="assets/images/logos/icono-color.webp" alt="LEM MODA" class="preloader-logo">
+    <p class="preloader-brand">LEM MODA</p>
+    <div class="preloader-line"></div>
+  </div>
+     
 <!-- ═══════════ PRELOADER ═══════════ -->
 <div id="preloader">
   <img src="assets/images/logos/icono-color.webp" alt="LEM MODA" class="preloader-logo">
@@ -2437,21 +2459,10 @@ input, select, textarea {
     <div class="hero-scroll" aria-hidden="true">Scroll</div>
   </section>
   
-  <!-- MARQUEE -->
-  <div class="marquee-band" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-item">#PonteLEM</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Colección 2026</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Athleisure de Alta Gama</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Diseñado en Ambato</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Estás en tu Prime</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">#PonteLEM</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Colección 2026</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Athleisure de Alta Gama</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Diseñado en Ambato</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Estás en tu Prime</span><span class="marquee-sep">◆</span>
-    </div>
-  </div>
+  <!-- MARQUEE CONFIGURABLE DESDE EL ADMIN -->
+<div id="marquee-strip" class="marquee-strip" style="display:none;" aria-hidden="true">
+  <div id="marquee-track" class="marquee-track"></div>
+</div>
   
   <!-- FEATURED PRODUCTS -->
   <section class="section">
@@ -2745,6 +2756,8 @@ input, select, textarea {
         
       </div>
     </div>
+
+       
     
 <!-- Tienda física · Mapa Real -->
 <div style="max-width:1200px;margin:100px auto 0;padding:80px 0;border-top:1px solid var(--lem-line)" class="reveal">
@@ -2777,7 +2790,9 @@ input, select, textarea {
         title="LEM MODA - Ubicación tienda física">
       </iframe>
     </div>
-    
+
+
+       
     <!-- INFO Y CTA -->
     <div style="padding:50px 40px;background:var(--lem-white);display:flex;flex-direction:column;justify-content:center">
       
@@ -2854,6 +2869,157 @@ input, select, textarea {
 </div>
 
 <style>
+     
+/* ═══════════ PROMO BAR (ANIVERSARIO) ═══════════ */
+.promo-bar {
+  width: 100%;
+  z-index: 1000;
+  position: relative;
+}
+.promo-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 40px 10px 16px;
+  text-align: center;
+  position: relative;
+}
+.promo-bar-text {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+.promo-bar-btn {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: 0.95;
+}
+.promo-bar-btn:hover { opacity: 1; }
+.promo-bar-close {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 4px 8px;
+}
+.promo-bar-close:hover { opacity: 1; }
+
+/* ═══════════ FRANJA / MARQUEE ═══════════ */
+.marquee-strip {
+  width: 100%;
+  overflow: hidden;
+  background: #0A0A0A;
+  color: #C89660;
+  border-top: 1px solid rgba(200,150,96,0.25);
+  border-bottom: 1px solid rgba(200,150,96,0.25);
+  padding: 10px 0;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: marquee-scroll linear infinite;
+  will-change: transform;
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 18px;
+  white-space: nowrap;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.marquee-diamond {
+  opacity: 0.85;
+  font-size: 0.65rem;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ═══════════ BANNERS CAMPAÑA ═══════════ */
+.campaign-banners {
+  display: grid;
+  gap: 16px;
+  padding: 24px 16px 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.campaign-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 220px;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+}
+.campaign-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+.campaign-card-content {
+  position: relative;
+  z-index: 1;
+  padding: 22px 20px;
+  max-width: 520px;
+}
+.campaign-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+.campaign-card p {
+  margin: 0 0 14px;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  opacity: 0.92;
+}
+.campaign-card a {
+  display: inline-block;
+  text-decoration: none;
+  background: #C89660;
+  color: #0A0A0A;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+@media (min-width: 900px) {
+  .campaign-banners { grid-template-columns: 1fr 1fr; padding: 32px 24px 12px; }
+  .campaign-card { min-height: 280px; }
+}
+       
+<style>
+     
 @media (min-width: 900px) {
   .store-grid {
     grid-template-columns: 1.3fr 1fr !important;
@@ -4049,6 +4215,130 @@ function init() {
   }
 }
 
+/* ═══════════ BANNERS + FRANJA DESDE banners.json ═══════════ */
+
+function closePromoBar() {
+  const bar = document.getElementById('promo-bar');
+  if (bar) bar.style.display = 'none';
+  try { sessionStorage.setItem('lem_promo_closed', '1'); } catch (e) {}
+}
+
+function renderPromoBar(promo) {
+  const bar = document.getElementById('promo-bar');
+  if (!bar || !promo || !promo.activo) {
+    if (bar) bar.style.display = 'none';
+    return;
+  }
+  try {
+    if (sessionStorage.getItem('lem_promo_closed') === '1') {
+      bar.style.display = 'none';
+      return;
+    }
+  } catch (e) {}
+
+  bar.style.display = 'block';
+  bar.style.background = promo.fondo || '#784311';
+  bar.style.color = promo.colorTexto || '#FAF6F0';
+
+  const textEl = document.getElementById('promo-bar-text');
+  if (textEl) textEl.textContent = promo.texto || '';
+
+  const btn = document.getElementById('promo-bar-btn');
+  if (btn) {
+    if (promo.link && promo.textoBoton) {
+      btn.style.display = 'inline-flex';
+      btn.href = promo.link;
+      btn.textContent = promo.textoBoton;
+      btn.style.color = promo.colorTexto || '#FAF6F0';
+    } else {
+      btn.style.display = 'none';
+    }
+  }
+}
+
+function renderMarquee(franja) {
+  const strip = document.getElementById('marquee-strip');
+  const track = document.getElementById('marquee-track');
+  if (!strip || !track) return;
+
+  if (!franja || !franja.activo || !Array.isArray(franja.textos) || !franja.textos.length) {
+    strip.style.display = 'none';
+    return;
+  }
+
+  // Soporta ["texto"] o [{texto:"..."}] según cómo guarde el CMS
+  const textos = franja.textos.map(t => (typeof t === 'string' ? t : (t?.texto || t?.text || ''))).filter(Boolean);
+  if (!textos.length) {
+    strip.style.display = 'none';
+    return;
+  }
+
+  const buildItems = () => textos.map(t =>
+    `<span class="marquee-item">${escapeHTML(t)} <span class="marquee-diamond">◆</span></span>`
+  ).join('');
+
+  // Duplicamos para loop infinito suave
+  track.innerHTML = buildItems() + buildItems();
+  const speed = Number(franja.velocidad) > 0 ? Number(franja.velocidad) : 28;
+  track.style.animationDuration = speed + 's';
+  strip.style.display = 'block';
+}
+
+function renderCampaignBanners(banners) {
+  const wrap = document.getElementById('campaign-banners');
+  if (!wrap) return;
+
+  const list = (Array.isArray(banners) ? banners : [])
+    .filter(b => b && b.activo !== false)
+    .sort((a, b) => (a.orden || 0) - (b.orden || 0));
+
+  if (!list.length) {
+    wrap.innerHTML = '';
+    wrap.style.display = 'none';
+    return;
+  }
+
+  wrap.style.display = 'grid';
+  wrap.innerHTML = list.map(b => {
+    const img = b.imagen
+      ? `<img src="${escapeHTML(b.imagen)}" alt="${escapeHTML(b.titulo || 'Campaña')}" loading="lazy">`
+      : '';
+    const btn = (b.boton && b.link)
+      ? `<a href="${escapeHTML(b.link)}">${escapeHTML(b.boton)}</a>`
+      : '';
+    return `
+      <article class="campaign-card">
+        ${img}
+        <div class="campaign-card-content">
+          <h3>${escapeHTML(b.titulo || '')}</h3>
+          ${b.subtitulo ? `<p>${escapeHTML(b.subtitulo)}</p>` : ''}
+          ${btn}
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function loadBannersConfig() {
+  fetch('banners.json')
+    .then(r => {
+      if (!r.ok) throw new Error('No banners.json');
+      return r.json();
+    })
+    .then(data => {
+      renderPromoBar(data.promoBar);
+      renderMarquee(data.franja);
+      renderCampaignBanners(data.banners);
+    })
+    .catch(() => {
+      // Si no existe el archivo, no rompe la web
+      console.warn('banners.json no cargó (opcional)');
+    });
+}
+
+// Lanzar al inicio (junto a tus otros inits)
+loadBannersConfig();
+     
 /* ═══════════ CARGA FINAL DESDE JSON ═══════════ */
 // Aquí leemos los productos y LUEGO iniciamos la web
 fetch('productos.json')
