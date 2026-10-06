@@ -131,14 +131,19 @@ collections:
                     widget: "string"
                     default: "#0A0A0A"
 
-                  - label: "Fotos de este color (puedes subir varias)"
+                  - label: "Foto Principal"
+                    name: "img"
+                    widget: "image"
+                    required: false
+                    media_folder: "assets/images/productos"
+                    public_folder: "assets/images/productos"
+
+                  - label: "Fotos Adicionales (Galería)"
                     name: "images"
                     widget: "list"
                     required: false
-                    summary: "{{fields.img}}"
-                    fields:
-                      - label: "Foto"
-                        name: "img"
-                        widget: "image"
-                        media_folder: "assets/images/productos"
-                        public_folder: "assets/images/productos"
+                    field:
+                      label: "Foto Extra"
+                      widget: "image"
+                      media_folder: "assets/images/productos"
+                      public_folder: "assets/images/productos"
