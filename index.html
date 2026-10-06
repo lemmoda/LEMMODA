@@ -2403,6 +2403,105 @@ input, select, textarea {
     width: auto;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   🛡️ ESCUDO BLINDADO ANTI-DESBORDAMIENTO EN MÓVILES (DEFINITIVO)
+   ═══════════════════════════════════════════════════════════ */
+
+/* 1. FORZAR A QUE NADA DENTRO DEL MODAL MIDA MÁS DE LA PANTALLA */
+#product-modal,
+#product-modal *,
+.product-modal-content,
+.modal-body {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#product-modal {
+  overflow-x: hidden !important;
+}
+
+/* 2. ARREGLO DE FLEXBOX (Impide que los textos o botones estiren la pantalla) */
+.product-modal-left,
+.product-modal-right,
+.modal-gallery,
+.store-grid,
+#modal-sizes,
+#modal-colors {
+  min-width: 0 !important; /* Fix maestro para que nada empuje la pantalla */
+}
+
+/* 3. REPARACIÓN DE BOTONES LARGOS (Ej: "A coordinar por WhatsApp") */
+.size-option {
+  max-width: 100% !important;
+  white-space: normal !important; /* Permite que el texto dé salto de línea */
+  word-break: break-word !important;
+  height: auto !important;
+  min-height: 38px !important;
+  padding: 6px 12px !important;
+  font-size: 0.8rem !important;
+  line-height: 1.2 !important;
+}
+
+/* 4. MARCO DE IMAGEN PRINCIPAL (Totalmente contenido en pantalla) */
+.modal-main-img-wrap,
+#modal-main-img-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 45vh !important;
+  max-height: 45vh !important;
+  background-color: #e5e5e3 !important; /* Tono gris de tu estudio */
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 10px auto !important;
+}
+
+#modal-main-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 45vh !important;
+  object-fit: contain !important; /* Muestra la foto entera sin recortar */
+  object-position: center !important;
+}
+
+/* 5. CINTA DE MINIATURAS EN FILA LIMPIA */
+#modal-thumbs {
+  display: flex !important;
+  gap: 8px !important;
+  overflow-x: auto !important;
+  max-width: 100% !important;
+  padding-bottom: 8px !important;
+}
+
+#modal-thumbs::-webkit-scrollbar {
+  display: none !important;
+}
+
+.thumb {
+  flex: 0 0 58px !important;
+  height: 72px !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* 6. BLINDAJE DE TEXTOS LARGOS (HISTORIA Y COMPOSICIÓN) */
+#modal-story,
+#modal-comp,
+#spec-comp,
+#spec-care {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: pre-line !important;
+}
      
 </style>
      
