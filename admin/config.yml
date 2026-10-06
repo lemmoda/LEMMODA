@@ -135,15 +135,13 @@ collections:
                     name: "img"
                     widget: "image"
                     required: false
-                    media_folder: "assets/images/productos"
-                    public_folder: "assets/images/productos"
 
                   - label: "Fotos Adicionales (Galería)"
                     name: "images"
                     widget: "list"
                     required: false
-                    field:
-                      label: "Foto Extra"
-                      widget: "image"
-                      media_folder: "assets/images/productos"
-                      public_folder: "assets/images/productos"
+                    summary: "{{fields.img}}"
+                    fields:
+                      - label: "Foto"
+                        name: "img"
+                        widget: "image"
