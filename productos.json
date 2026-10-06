@@ -64,7 +64,7 @@
     },
     {
       "id": 3,
-      "name": "LEM Set Senda 002",
+      "name": "LEM Set Senda 003",
       "price": 53.73,
       "category": "outfits",
       "type": "outfit",
@@ -88,6 +88,37 @@
             "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo-3.jpeg",
             "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (2)-1.jpeg",
             "assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (9)-1.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "LEM Rust Vibe Set",
+      "price": 95.96,
+      "category": "unisex",
+      "type": "match",
+      "gender": "unisex",
+      "sizes": [
+        "A coordinar por WhatsApp"
+      ],
+      "badge": "new",
+      "story": "Prendas que lo componen:\n\n- Hoodie con cremallera y capucha estructurada (Rust Vibe Full-Zip Hoodie)\n- Jogger de ajuste relajado (Rust Vibe Relaxed Jogger)\n\nHistoria del Concepto:\n\nInspirado en la fuerza de la tierra y la elegancia cálida del tono óxido, este conjunto redefine la comodidad urbana bajo un concepto de sofisticación sin esfuerzo. Diseñado para quienes buscan una silueta estructurada pero fluida, fusiona líneas limpias con una adaptabilidad superior. La tecnología invisible se manifiesta en la armonía visual de sus costuras y la suavidad de sus texturas, logrando que la transición entre la movilidad diaria y el descanso de élite sea impecable.\n\nMensaje de marca:\n\n\"LEM surge del talento ecuatoriano, reflejado en cada prenda que creamos con dedicación y esmero, cuidando cada costura y detalle. Lo que vistes también forma parte de tu historia.\"",
+      "composition": "Temperatura máxima de lavado 30°C, proceso normal.\n\n- No usar blanqueador.\n- Secado en tendedero a la sombra.\n- Planchar a temperatura máxima de la base de 150°C.\n- Limpieza en húmedo profesional (proceso moderado/normal).",
+      "care": "",
+      "variants": [
+        {
+          "color": "Rust Terracota",
+          "hex": "#B7410E",
+          "images": [
+            "assets/images/productos/28.png",
+            "assets/images/productos/21.png",
+            "assets/images/productos/22.png",
+            "assets/images/productos/24.png",
+            "assets/images/productos/27.png",
+            "assets/images/productos/26.png",
+            "assets/images/productos/25.png",
+            "assets/images/productos/23.png"
           ]
         }
       ]
