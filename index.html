@@ -3333,7 +3333,8 @@ const SUBCATEGORIES = {
     { id: 'all', label: 'Todo', filter: null },
     { id: 'hombre', label: 'Hombre', filter: (p) => p.gender === 'hombre' },
     { id: 'mujer', label: 'Mujer', filter: (p) => p.gender === 'mujer' },
-    { id: 'unisex', label: 'Unisex', filter: (p) => p.gender === 'unisex' }
+    { id: 'unisex', label: 'Unisex', filter: (p) => p.gender === 'unisex' },
+    { id: 'match', label: 'Sets Match / Parejas ✦', filter: (p) => p.type === 'match' || p.badge === 'match' }
   ],
   'novedades': [
     { id: 'all', label: 'Todo', filter: null },
