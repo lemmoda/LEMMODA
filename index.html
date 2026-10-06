@@ -2443,37 +2443,37 @@ input, select, textarea {
   line-height: 1.2 !important;
 }
 
-/* 4. MARCO DE IMAGEN PRINCIPAL (Totalmente contenido en pantalla) */
+/* ═══════════════════════════════════════════════════════════
+   ✨ DISEÑO FINAL PERFECTO (ESTILO IMAGEN 4) - PC Y MÓVIL
+   ═══════════════════════════════════════════════════════════ */
+
+/* 1. CONTENEDOR DE FOTO PRINCIPAL (Llena el marco limpio sin franjas grises) */
 .modal-main-img-wrap,
 #modal-main-img-container {
   width: 100% !important;
-  max-width: 100% !important;
-  height: 45vh !important;
-  max-height: 45vh !important;
-  background-color: #e5e5e3 !important; /* Tono gris de tu estudio */
+  aspect-ratio: 4 / 5 !important;
   border-radius: 12px !important;
   overflow: hidden !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 auto 10px auto !important;
+  position: relative !important;
+  background-color: #f4f4f0 !important;
+  margin: 0 auto !important;
 }
 
 #modal-main-img {
   width: 100% !important;
   height: 100% !important;
-  max-height: 45vh !important;
-  object-fit: contain !important; /* Muestra la foto entera sin recortar */
-  object-position: center !important;
+  object-fit: cover !important; /* 👈 Llena el marco como en tu Imagen 4 */
+  object-position: center top !important;
+  border-radius: 12px !important;
 }
 
-/* 5. CINTA DE MINIATURAS EN FILA LIMPIA */
+/* 2. MINIATURAS EN FILA LIMPIA */
 #modal-thumbs {
   display: flex !important;
   gap: 8px !important;
   overflow-x: auto !important;
-  max-width: 100% !important;
-  padding-bottom: 8px !important;
+  padding: 8px 2px !important;
+  margin-top: 6px !important;
 }
 
 #modal-thumbs::-webkit-scrollbar {
@@ -2481,10 +2481,16 @@ input, select, textarea {
 }
 
 .thumb {
-  flex: 0 0 58px !important;
-  height: 72px !important;
+  flex: 0 0 62px !important;
+  height: 78px !important;
   border-radius: 8px !important;
   overflow: hidden !important;
+  border: 1.5px solid transparent !important;
+  cursor: pointer !important;
+}
+
+.thumb.active {
+  border-color: #c89660 !important;
 }
 
 .thumb img {
@@ -2493,7 +2499,40 @@ input, select, textarea {
   object-fit: cover !important;
 }
 
-/* 6. BLINDAJE DE TEXTOS LARGOS (HISTORIA Y COMPOSICIÓN) */
+/* 3. ARREGLO DE BOTONES DE TALLAS (Impide que textos largos se aplasten) */
+#modal-sizes {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.size-option {
+  min-width: 48px !important;
+  height: 44px !important;
+  padding: 0 16px !important;
+  white-space: nowrap !important; /* 👈 Texto horizontal legible */
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+  border: 1px solid #e4e4e7 !important;
+  background: #ffffff !important;
+  color: #18181b !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.size-option.active {
+  background: #18181b !important;
+  color: #ffffff !important;
+  border-color: #18181b !important;
+}
+
+/* 4. BLINDAJE DE TEXTOS LARGOS */
 #modal-story,
 #modal-comp,
 #spec-comp,
@@ -2502,11 +2541,20 @@ input, select, textarea {
   overflow-wrap: break-word !important;
   white-space: pre-line !important;
 }
-     
-</style>
-     
- <style>
 
+/* 5. AJUSTE DE MÓVIL */
+@media (max-width: 768px) {
+  .modal-main-img-wrap,
+  #modal-main-img-container {
+    max-height: 52vh !important;
+  }
+  
+  #product-modal,
+  .product-modal-content {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+}
 
   /* Mejorar legibilidad de la Historia / Descripción */
   #modal-story {
