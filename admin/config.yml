@@ -140,8 +140,7 @@ collections:
                     name: "images"
                     widget: "list"
                     required: false
-                    summary: "{{fields.img}}"
-                    fields:
-                      - label: "Foto"
-                        name: "img"
-                        widget: "image"
+                    field:
+                      label: "Foto"
+                      name: "img"
+                      widget: "image"
