@@ -18,16 +18,10 @@
         {
           "color": "Celeste Cielo / Azul Sereno",
           "hex": "#92BCE6",
+          "img": "/assets/images/productos/Max_a_el_cabello_que_tiene.png",
           "images": [
-            {
-              "img": "/assets/images/productos/Max_a_el_cabello_que_tiene.png"
-            },
-            {
-              "img": "/assets/images/productos/Max_a_eliminale_los_gordos-1.png"
-            },
-            {
-              "img": "/assets/images/productos/Max_a_cambiales_que_el_pis (1).png"
-            }
+            "/assets/images/productos/Max_a_eliminale_los_gordos-1.png",
+            "/assets/images/productos/Max_a_cambiales_que_el_pis (1).png"
           ]
         }
       ]
@@ -51,31 +45,19 @@
         {
           "color": "Palo de Rosa / Rosewood",
           "hex": "#C48684",
+          "img": "/assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (9).jpeg",
           "images": [
-            {
-              "img": "/assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (9).jpeg"
-            },
-            {
-              "img": "/assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (8).jpeg"
-            },
-            {
-              "img": "/assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (3).jpeg"
-            },
-            {
-              "img": "/assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (4).jpeg"
-            }
+            "/assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (8).jpeg",
+            "/assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (3).jpeg",
+            "/assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (4).jpeg"
           ]
         },
         {
           "color": "Azul Petróleo / Marino (Top) - Gris Perla / Niebla (Licra)",
           "hex": "#0F2A38, #B7B8BC",
+          "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (12).jpeg",
           "images": [
-            {
-              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (12).jpeg"
-            },
-            {
-              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (13).jpeg"
-            }
+            "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (13).jpeg"
           ]
         }
       ]
@@ -102,19 +84,11 @@
         {
           "color": "Camel / Tono Piel",
           "hex": "#C19A6B, #004225",
+          "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo-1.jpeg",
           "images": [
-            {
-              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo-1.jpeg"
-            },
-            {
-              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (2).jpeg"
-            },
-            {
-              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (9)-1.jpeg"
-            },
-            {
-              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (8).jpeg"
-            }
+            "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (2)-1.jpeg",
+            "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (9)-1.jpeg",
+            "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (8).jpeg"
           ]
         }
       ]
@@ -137,28 +111,14 @@
         {
           "color": "Rust Terracota",
           "hex": "#B7410E",
+          "img": "/assets/images/productos/28.png",
           "images": [
-            {
-              "img": "assets/images/productos/55249.jpg"
-            },
-            {
-              "img": "assets/images/productos/55248.jpg"
-            },
-            {
-              "img": "assets/images/productos/55241.jpg"
-            },
-            {
-              "img": "assets/images/productos/55240.jpg"
-            },
-            {
-              "img": "assets/images/productos/55237.jpg"
-            },
-            {
-              "img": "assets/images/productos/55239.jpg"
-            },
-            {
-              "img": "assets/images/productos/55238.jpg"
-            }
+            "/assets/images/productos/55248.jpg",
+            "/assets/images/productos/55241.jpg",
+            "/assets/images/productos/25.png",
+            "/assets/images/productos/55237.jpg",
+            "/assets/images/productos/55239.jpg",
+            "/assets/images/productos/55238.jpg"
           ]
         }
       ]
