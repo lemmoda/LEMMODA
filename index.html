@@ -3546,23 +3546,35 @@ function filterSub(subId) {
   }
 }
      
+/* ═══════════ FILTRADO INTELIGENTE DE PRODUCTOS ═══════════ */
 function getFiltered() {
-  let list;
-  if (currentCategory === 'all') list = [...DB];
-  else if (currentCategory === 'novedades') list = DB.filter(p => p.badge === 'new' || p.category === 'novedades');
-  else list = DB.filter(p => p.category === currentCategory);
-  
+  let list = [];
+
+  if (currentCategory === 'all') {
+    list = [...DB];
+  } else if (currentCategory === 'novedades') {
+    list = DB.filter(p => p.badge === 'new' || p.category === 'novedades');
+  } else if (currentCategory === 'outfits') {
+    // BLINDAJE: Incluye prendas con categoría 'outfits', tipo 'outfit', tipo 'match' o badge 'match'
+    list = DB.filter(p => p.category === 'outfits' || p.type === 'outfit' || p.type === 'match' || p.badge === 'match');
+  } else {
+    list = DB.filter(p => p.category === currentCategory);
+  }
+
+  // Aplicar sub-filtro
   if (currentSubFilter && currentSubFilter !== 'all' && SUBCATEGORIES[currentCategory]) {
     const subConfig = SUBCATEGORIES[currentCategory].find(s => s.id === currentSubFilter);
     if (subConfig && subConfig.filter) {
       list = list.filter(subConfig.filter);
     }
   }
-  
-  if (searchTerm) list = list.filter(p => p.name.toLowerCase().includes(searchTerm));
+
+  if (searchTerm) {
+    list = list.filter(p => p.name.toLowerCase().includes(searchTerm));
+  }
+
   return list;
 }
-
 /* ═══════════ SHOP (Catálogo Principal) ═══════════ */
 function mountShop() {
   const grid = $('products-grid');
