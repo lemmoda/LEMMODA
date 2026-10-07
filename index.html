@@ -3712,27 +3712,45 @@ function getColorStyle(hexStr) {
 
   return `background: linear-gradient(90deg, ${stops.join(', ')});`;
 }
+/* ═══════════ LIMPIADOR DE RUTAS Y GALERÍA DE FOTOS ═══════════ */
+
+// Limpia tildes y caracteres especiales en las fotos para evitar el error 404 de la hormiguita
+function cleanImgPath(src) {
+  if (!src) return 'assets/images/logos/icono-color.webp';
+  if (src.startsWith('http') || src.startsWith('data:')) return src;
+  
+  let clean = src.replace(/^\/+/, '');
+  try {
+    return encodeURI(clean);
+  } catch (e) {
+    return clean;
+  }
+}
+
 // Extrae fotos (compatibilidad 1 foto antigua o múltiples fotos nuevas)
 function getVariantImages(variant) {
   if (!variant) return ['assets/images/logos/icono-color.webp'];
   
+  let list = [];
+
   if (variant.images && Array.isArray(variant.images) && variant.images.length > 0) {
-    const list = variant.images.map(item => {
+    list = variant.images.map(item => {
       if (typeof item === 'string') return item;
       if (item && typeof item === 'object' && item !== null) {
         return item.img || item.image || item.url || Object.values(item)[0] || '';
       }
       return '';
     }).filter(Boolean);
-    
-    if (list.length > 0) return list;
+  } else if (variant.img) {
+    list = [variant.img];
   }
   
-  if (variant.img) {
-    return [variant.img];
+  if (list.length === 0) {
+    return ['assets/images/logos/icono-color.webp'];
   }
-  
-  return ['assets/images/logos/icono-color.webp'];
+
+  // Procesa cada ruta con la limpieza de tildes y espacios
+  return list.map(cleanImgPath);
 }
 
 // Muestra la foto grande activa
