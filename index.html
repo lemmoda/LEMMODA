@@ -3339,28 +3339,6 @@ function getSizes(p) {
 var DB = [];
 var productos = [];
 
-/* ═══════════════════════════════════════════════════════════
-   ALGORITMO IA · RECOMENDACIONES INTELIGENTES
-   ═══════════════════════════════════════════════════════════ */
-const COMPLEMENT = {
-  'pantalon': ['hoodie', 'top'],
-  'hoodie':   ['pantalon', 'top'],
-  'top':      ['pantalon', 'hoodie'],
-  'outfit':   ['outfit', 'top']
-};
-
-const COLOR_MATCH = {
-  'Obsidian':      ['Habano','Café LEM','Cream','Verde Selva','Blanco Puro'],
-  'Café LEM':      ['Habano','Cream','Obsidian','Verde Selva','Sand Beige'],
-  'Habano':        ['Café LEM','Obsidian','Cream','Verde Selva','Sand Beige'],
-  'Verde Selva':   ['Café LEM','Habano','Obsidian','Cream'],
-  'Cream':         ['Café LEM','Habano','Obsidian','Verde Selva','Rosa Cuarzo'],
-  'Rosa Cuarzo':   ['Cream','Habano','Café LEM'],
-  'Sky Blue':      ['Cream','Habano','Obsidian'],
-  'Pastel Lemon':  ['Cream','Habano','Sand Beige'],
-  'Sand Beige':    ['Cream','Habano','Café LEM','Verde Selva'],
-  'Blanco Puro':   ['Obsidian','Café LEM','Habano','Verde Selva']
-};
 
 function getSmartRecs(product) {
   if (!product) return [];
