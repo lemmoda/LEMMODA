@@ -400,29 +400,35 @@ input, select, textarea {
   background: currentColor;
 }
 
-/* Logo centrado */
+/* Logo centrado - Agrandado y Nítido */
 .logo-center {
   justify-self: center;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
-.logo-center:hover { opacity: 0.7; }
+.logo-center:hover { 
+  opacity: 0.85; 
+  transform: scale(1.03);
+}
 
 .logo-center img {
-  height: 32px;
+  height: 48px; /* 👈 Aumentado de 32px a 48px en PC para que resalte */
   width: auto;
   display: block;
+  object-fit: contain;
 }
 
 .site-header.transparent .logo-dark { display: none; }
 .site-header:not(.transparent) .logo-light { display: none; }
 
 @media (max-width: 768px) {
-  .logo-center img { height: 26px; }
+  .logo-center img { 
+    height: 38px; /* 👈 Aumentado de 26px a 38px en celulares */
+  }
 }
 
 /* Acciones derecha */
