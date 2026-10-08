@@ -2577,6 +2577,186 @@ input, select, textarea {
   #modal-story {
     white-space: pre-line !important; 
   }
+
+/* ═══════════ ESTADO DEL SHOWROOM (ABIERTO / CERRADO) ═══════════ */
+.status-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 16px !important;
+  border-radius: 999px !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Estado ABIERTO */
+.status-badge.open {
+  background: #e6f4ea !important;
+  color: #137333 !important;
+  border: 1px solid rgba(45, 140, 60, 0.3) !important;
+}
+
+.status-badge.open .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2d8c3c;
+  box-shadow: 0 0 0 0 rgba(45, 140, 60, 0.5);
+  animation: statusPulse 2s infinite;
+}
+
+/* Estado CERRADO */
+.status-badge.closed {
+  background: #fef2f2 !important;
+  color: #991b1b !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+.status-badge.closed .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+@keyframes statusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(45, 140, 60, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(45, 140, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 140, 60, 0); }
+}
+
+/* ═══════════ DISEÑO ESTILO INSTAGRAM ═══════════ */
+.lem-live-section {
+  padding: 40px 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.insta-card-container {
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.insta-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.insta-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #c89660;
+  padding: 2px;
+}
+
+.insta-profile-info {
+  flex: 1;
+}
+
+.insta-handle {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #18181b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.insta-badge-check {
+  background: #38bdf8;
+  color: #fff;
+  font-size: 0.65rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insta-bio {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #71717a;
+}
+
+.insta-follow-btn {
+  background: #784311;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 8px 22px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.insta-follow-btn:hover {
+  background: #c89660;
+}
+
+/* Grilla de publicaciones */
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.insta-post {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  display: block;
+}
+
+.insta-post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.insta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.insta-post:hover img {
+  transform: scale(1.05);
+}
+
+.insta-post:hover .insta-overlay {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+     
 </style>
      
 </head>
@@ -2901,7 +3081,7 @@ input, select, textarea {
 </main>
 
 <!-- ═══════════════════════════════════════════════════════════
-     SHOWROOM
+     SHOWROOM (CON INSTAGRAM EN VIVO INQUEBRANTABLE + HORARIO)
      ═══════════════════════════════════════════════════════════ -->
 <main id="showroom" class="view showroom-view">
   <div class="container">
@@ -2915,7 +3095,7 @@ input, select, textarea {
       <p class="section-sub">La familia LEM crece cada día. Sé parte del movimiento.</p>
     </div>
     
-    <!-- Redes Sociales -->
+    <!-- Redes Sociales Oficiales -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1000px;margin:60px auto 0" class="reveal reveal-d1">
       
       <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" 
@@ -2964,148 +3144,165 @@ input, select, textarea {
       </a>
     </div>
     
-    <!-- Widgets sociales (Instagram + TikTok) -->
+    <!-- LEM EN VIVO: Instagram Perfil Nativo (Rápido, Elegante e Inquebrantable) -->
     <div style="max-width:900px;margin:100px auto 0;text-align:center" class="reveal">
-      <p class="section-eyebrow" style="margin-bottom:40px">LEM en Vivo</p>
+      <p class="section-eyebrow" style="margin-bottom:20px;color:var(--lem-habano);font-weight:800">LEM EN VIVO</p>
       
-      <div style="display:grid;grid-template-columns:1fr;gap:24px;margin-top:40px" id="social-widgets">
+      <div style="background:var(--lem-white);border:1px solid var(--lem-line);border-radius:16px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,0.03)" id="social-widgets">
         
-        <!-- Instagram Widget -->
-        <div style="background:var(--lem-white);border:1px solid var(--lem-line);border-radius:12px;padding:24px">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--lem-line)">
-            <div style="width:44px;height:44px;padding:2px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);border-radius:50%">
-              <div style="width:100%;height:100%;background:#fff;padding:2px;border-radius:50%">
-                <img src="assets/images/logos/icono-color.webp" alt="LEM" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
-              </div>
+        <!-- Header Perfil -->
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--lem-line);flex-wrap:wrap">
+          <div style="width:52px;height:52px;padding:2px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);border-radius:50%;flex-shrink:0">
+            <div style="width:100%;height:100%;background:#fff;padding:2px;border-radius:50%">
+              <img src="assets/images/logos/icono-color.webp" alt="LEM MODA" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
             </div>
-            <div style="flex:1;text-align:left">
-              <div style="font-weight:700;font-size:14px">lemmoda.ec</div>
-              <div style="font-size:11px;color:var(--lem-ash)">Marca de Ropa · Ambato · Quito</div>
+          </div>
+          <div style="flex:1;text-align:left;min-width:180px">
+            <div style="font-weight:900;font-size:15px;color:var(--lem-black);display:flex;align-items:center;gap:6px">
+              lemmoda.ec <span style="background:#38bdf8;color:#fff;font-size:10px;width:15px;height:15px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center">✓</span>
             </div>
-            <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" 
-               style="padding:6px 16px;background:var(--lem-cafe);color:var(--lem-white);font-size:11px;font-weight:700;border-radius:6px;text-decoration:none">Seguir</a>
+            <div style="font-size:12px;color:var(--lem-ash);margin-top:2px">Marca de Ropa · Ambato · Quito · #PonteLEM</div>
           </div>
-          
-          <div style="display:flex;justify-content:space-around;padding:12px 0;border-bottom:1px solid var(--lem-line);text-align:center;font-size:12px">
-            <div><strong style="display:block;font-size:14px">58</strong><span style="color:var(--lem-ash);font-size:10px;letter-spacing:0.15em;text-transform:uppercase">Posts</span></div>
-            <div><strong style="display:block;font-size:14px">306</strong><span style="color:var(--lem-ash);font-size:10px;letter-spacing:0.15em;text-transform:uppercase">Seguidores</span></div>
-            <div><strong style="display:block;font-size:14px">86</strong><span style="color:var(--lem-ash);font-size:10px;letter-spacing:0.15em;text-transform:uppercase">Sigue</span></div>
-          </div>
-          
-          <div style="padding-top:16px;min-height:200px">
-            <behold-widget feed-id="9wDdne8IHA2IjhNJCQ46"></behold-widget>
-          </div>
+          <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" 
+             style="padding:8px 22px;background:var(--lem-cafe);color:var(--lem-white);font-size:12px;font-weight:800;border-radius:8px;text-decoration:none;transition:background 0.2s">
+            Seguir
+          </a>
+        </div>
+        
+        <!-- Métricas -->
+        <div style="display:flex;justify-content:space-around;padding:10px 0 20px 0;border-bottom:1px solid var(--lem-line);text-align:center">
+          <div><strong style="display:block;font-size:15px;color:var(--lem-black)">58</strong><span style="color:var(--lem-ash);font-size:10px;letter-spacing:0.15em;text-transform:uppercase">Posts</span></div>
+          <div><strong style="display:block;font-size:15px;color:var(--lem-black)">306</strong><span style="color:var(--lem-ash);font-size:10px;letter-spacing:0.15em;text-transform:uppercase">Seguidores</span></div>
+          <div><strong style="display:block;font-size:15px;color:var(--lem-black)">86</strong><span style="color:var(--lem-ash);font-size:10px;letter-spacing:0.15em;text-transform:uppercase">Sigue</span></div>
+        </div>
+        
+        <!-- Grilla de Fotos de la Colección (Carga Instantánea) -->
+        <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;margin-top:20px" class="insta-native-grid">
+          <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" style="aspect-ratio:1/1;border-radius:10px;overflow:hidden;display:block">
+            <img src="assets/images/productos/1000813670.webp" alt="LEM MODA" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" style="aspect-ratio:1/1;border-radius:10px;overflow:hidden;display:block">
+            <img src="assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo.jpeg" alt="LEM Set Match" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" style="aspect-ratio:1/1;border-radius:10px;overflow:hidden;display:block">
+            <img src="assets/images/productos/1000813684.webp" alt="LEM Outfit" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/lemmoda.ec?igsh=c2xvZnZ2a3Izcmxj" target="_blank" rel="noopener noreferrer" style="aspect-ratio:1/1;border-radius:10px;overflow:hidden;display:block">
+            <img src="assets/images/productos/1000813700.webp" alt="LEM Verde Prime" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s" loading="lazy">
+          </a>
         </div>
         
       </div>
     </div>
     
-<!-- Tienda física · Mapa Real -->
-<div style="max-width:1200px;margin:100px auto 0;padding:80px 0;border-top:1px solid var(--lem-line)" class="reveal">
-  
-  <!-- Título -->
-  <div style="text-align:center;margin-bottom:60px">
-    <p class="section-eyebrow">Atelier Físico</p>
-    <h3 style="font-family:var(--font-sans);font-weight:900;font-size:clamp(2.2rem,5vw,4rem);line-height:1;text-transform:uppercase;margin:16px 0 12px;letter-spacing:-0.02em">
-      Visítanos en
-      <span style="font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--lem-cafe);text-transform:none">Quito.</span>
-    </h3>
-    <p style="font-family:var(--font-serif);font-style:italic;color:var(--lem-ash);font-size:16px;max-width:540px;margin:0 auto">
-      Vive la experiencia LEM en persona. Textura, ajuste y la mística de cada pieza.
-    </p>
-  </div>
-  
-  <!-- Grid con Mapa Real + Info -->
-  <div style="display:grid;grid-template-columns:1fr;gap:0;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(120,67,17,0.1);border:1px solid var(--lem-line)" class="store-grid">
-    
-    <!-- MAPA REAL DE GOOGLE -->
-    <div style="position:relative;min-height:400px;background:var(--lem-cream)">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.3831858536407!2d-78.4952777!3d-0.1959444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a4a3a80b7d5%3A0x0!2sAv.%20Crist%C3%B3bal%20Col%C3%B3n%20E4-434%20y%20Juan%20Le%C3%B3n%20Mera%2C%20Quito!5e0!3m2!1ses!2sec!4v1735000000000!5m2!1ses!2sec"
-        width="100%" 
-        height="100%" 
-        style="border:0;position:absolute;inset:0;filter:contrast(1.05) saturate(0.95)"
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"
-        title="LEM MODA - Ubicación tienda física">
-      </iframe>
-    </div>
-    
-    <!-- INFO Y CTA -->
-    <div style="padding:50px 40px;background:var(--lem-white);display:flex;flex-direction:column;justify-content:center">
-      
-      <!-- Badge dorado -->
-      <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(120,67,17,0.08);border-radius:100px;margin-bottom:24px;align-self:flex-start">
-        <span style="width:8px;height:8px;background:var(--lem-verde);border-radius:50%;box-shadow:0 0 8px var(--lem-verde);animation:spotlight 2s ease-in-out infinite"></span>
-        <span style="font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--lem-cafe)">Abierto Ahora</span>
-      </div>
+    <!-- Tienda física · Mapa Real -->
+    <div style="max-width:1200px;margin:100px auto 0;padding:80px 0;border-top:1px solid var(--lem-line)" class="reveal">
       
       <!-- Título -->
-      <h4 style="font-family:var(--font-sans);font-weight:900;font-size:24px;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.1;margin-bottom:16px">
-        Showroom<br>LEM MODA
-      </h4>
+      <div style="text-align:center;margin-bottom:60px">
+        <p class="section-eyebrow">Atelier Físico</p>
+        <h3 style="font-family:var(--font-sans);font-weight:900;font-size:clamp(2.2rem,5vw,4rem);line-height:1;text-transform:uppercase;margin:16px 0 12px;letter-spacing:-0.02em">
+          Visítanos en
+          <span style="font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--lem-cafe);text-transform:none">Quito.</span>
+        </h3>
+        <p style="font-family:var(--font-serif);font-style:italic;color:var(--lem-ash);font-size:16px;max-width:540px;margin:0 auto">
+          Vive la experiencia LEM en persona. Textura, ajuste y la mística de cada pieza.
+        </p>
+      </div>
+      
+      <!-- Grid con Mapa Real + Info -->
+      <div style="display:grid;grid-template-columns:1fr;gap:0;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(120,67,17,0.1);border:1px solid var(--lem-line)" class="store-grid">
+        
+        <!-- MAPA REAL DE GOOGLE -->
+        <div style="position:relative;min-height:400px;background:var(--lem-cream)">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.3831858536407!2d-78.4952777!3d-0.1959444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a4a3a80b7d5%3A0x0!2sAv.%20Crist%C3%B3bal%20Col%C3%B3n%20E4-434%20y%20Juan%20Le%C3%B3n%20Mera%2C%20Quito!5e0!3m2!1ses!2sec!4v1735000000000!5m2!1ses!2sec"
+            width="100%" 
+            height="100%" 
+            style="border:0;position:absolute;inset:0;filter:contrast(1.05) saturate(0.95)"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="LEM MODA - Ubicación tienda física">
+          </iframe>
+        </div>
+        
+        <!-- INFO Y CTA -->
+        <div style="padding:50px 40px;background:var(--lem-white);display:flex;flex-direction:column;justify-content:center">
+          
+          <!-- BADGE DINÁMICO DE ESTADO (SE ACTUALIZA SOLO SEGÚN EL HORARIO DE ECUADOR) -->
+          <div id="showroom-status-badge" class="status-badge open" style="margin-bottom:24px; align-self:flex-start;">
+            <span class="status-dot"></span>
+            <span id="status-text">CARGANDO...</span>
+          </div>
+          
+          <!-- Título -->
+          <h4 style="font-family:var(--font-sans);font-weight:900;font-size:24px;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.1;margin-bottom:16px">
+            Showroom<br>LEM MODA
+          </h4>
 
-      <!-- Info bloques -->
-      <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:32px">
-        
-        <div>
-          <p style="font-size:10px;font-weight:900;letter-spacing:0.35em;color:var(--lem-cafe);text-transform:uppercase;margin-bottom:6px">
-            📍 Dirección
-          </p>
-          <p style="font-size:14px;color:var(--lem-black);line-height:1.5;font-weight:500">
-            Av. Cristóbal Colón y Juan León Mera<br>
-            <span style="color:var(--lem-ash);font-weight:400;font-size:13px">E4-434 · Quito, Ecuador · CP 170524</span>
-          </p>
+          <!-- Info bloques -->
+          <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:32px">
+            
+            <div>
+              <p style="font-size:10px;font-weight:900;letter-spacing:0.35em;color:var(--lem-cafe);text-transform:uppercase;margin-bottom:6px">
+                📍 Dirección
+              </p>
+              <p style="font-size:14px;color:var(--lem-black);line-height:1.5;font-weight:500">
+                Av. Cristóbal Colón y Juan León Mera<br>
+                <span style="color:var(--lem-ash);font-weight:400;font-size:13px">E4-434 · Quito, Ecuador · CP 170524</span>
+              </p>
+            </div>
+            
+            <div>
+              <p style="font-size:10px;font-weight:900;letter-spacing:0.35em;color:var(--lem-cafe);text-transform:uppercase;margin-bottom:6px">
+                ⏱ Horarios
+              </p>
+              <p style="font-size:14px;color:var(--lem-black);font-weight:500;line-height:1.6">
+                Lun – Sáb · <span style="color:var(--lem-ash);font-weight:400">9:00 – 19:00</span><br>
+                Domingo · <span style="color:var(--lem-cafe);font-weight:700">10:30 – 18:00</span>
+              </p>
+            </div>
+            
+            <div>
+              <p style="font-size:10px;font-weight:900;letter-spacing:0.35em;color:var(--lem-cafe);text-transform:uppercase;margin-bottom:6px">
+                📞 Contacto
+              </p>
+              <p style="font-size:14px;color:var(--lem-black);font-weight:500">
+                +593 98 490 9967
+              </p>
+            </div>
+            
+          </div>
+          
+          <!-- CTAs -->
+          <div style="display:flex;flex-direction:column;gap:10px">
+            
+            <a href="https://maps.app.goo.gl/gXNaVhJqNaAbdHJ39" target="_blank" rel="noopener noreferrer"
+               style="display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;background:var(--lem-black);color:var(--lem-white);font-size:11px;font-weight:900;letter-spacing:0.3em;text-transform:uppercase;border-radius:100px;text-decoration:none;transition:background 0.3s ease">
+              <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 0C7.582 0 4 3.582 4 8c0 5.25 8 16 8 16s8-10.75 8-16c0-4.418-3.582-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+              Cómo Llegar
+            </a>
+            
+            <a href="https://wa.me/593984909967?text=Hola!%20Quiero%20visitar%20el%20showroom%20de%20LEM%20MODA%20%F0%9F%99%8C%20%23PonteLEM" target="_blank" rel="noopener noreferrer"
+               style="display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;background:transparent;color:var(--lem-cafe);font-size:11px;font-weight:900;letter-spacing:0.3em;text-transform:uppercase;border:1.5px solid var(--lem-cafe);border-radius:100px;text-decoration:none;transition:background 0.3s ease,color 0.3s ease">
+              <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411l.015-.039zM12.05 21.785h-.004c-1.784 0-3.534-.482-5.055-1.386l-.36-.214-3.766.982 1.005-3.669-.235-.377c-.992-1.573-1.514-3.39-1.514-5.26.002-5.446 4.455-9.885 9.933-9.885 2.653.001 5.145 1.031 7.021 2.901 1.876 1.87 2.909 4.352 2.908 6.995-.003 5.445-4.456 9.881-9.933 9.881l-.001.032zm5.448-7.403c-.299-.15-1.767-.867-2.041-.966-.273-.099-.473-.15-.673.15-.198.298-.771.966-.945 1.164-.173.199-.347.223-.646.075-.297-.149-1.259-.463-2.397-1.475-.887-.788-1.487-1.762-1.661-2.06-.174-.299-.019-.46.13-.608.134-.135.298-.35.446-.524.152-.174.202-.298.301-.497.099-.198.05-.373-.025-.522-.075-.15-.673-1.611-.921-2.206-.242-.579-.487-.5-.671-.51-.174-.008-.372-.01-.571-.01-.198 0-.522.074-.796.372-.273.298-1.045 1.017-1.045 2.479 0 1.462 1.069 2.875 1.219 3.074.149.198 2.096 3.2 5.078 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
+            Solicitar información por WhatsApp
+          </a>
         </div>
         
-        <div>
-          <p style="font-size:10px;font-weight:900;letter-spacing:0.35em;color:var(--lem-cafe);text-transform:uppercase;margin-bottom:6px">
-            ⏱ Horarios
-          </p>
-          <p style="font-size:14px;color:var(--lem-black);font-weight:500;line-height:1.6">
-            Lun – Sáb · <span style="color:var(--lem-ash);font-weight:400">9:00 – 19:00</span><br>
-            Domingo · <span style="color:var(--lem-cafe);font-weight:700">10:30 – 18:00</span>
-          </p>
-        </div>
-        
-        <div>
-          <p style="font-size:10px;font-weight:900;letter-spacing:0.35em;color:var(--lem-cafe);text-transform:uppercase;margin-bottom:6px">
-            📞 Contacto
-          </p>
-          <p style="font-size:14px;color:var(--lem-black);font-weight:500">
-            +593 98 490 9967
-          </p>
-        </div>
+        <!-- Hashtag firma -->
+        <p style="text-align:center;margin-top:24px;padding-top:24px;border-top:1px solid var(--lem-line);font-size:10px;font-weight:900;letter-spacing:0.5em;color:var(--lem-cafe);text-transform:uppercase">
+          #PonteLEM
+        </p>
         
       </div>
-      
-      <!-- CTAs -->
-      <div style="display:flex;flex-direction:column;gap:10px">
-        
-        <a href="https://maps.app.goo.gl/gXNaVhJqNaAbdHJ39" target="_blank" rel="noopener noreferrer"
-           style="display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;background:var(--lem-black);color:var(--lem-white);font-size:11px;font-weight:900;letter-spacing:0.3em;text-transform:uppercase;border-radius:100px;text-decoration:none;transition:background 0.3s ease">
-          <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 0C7.582 0 4 3.582 4 8c0 5.25 8 16 8 16s8-10.75 8-16c0-4.418-3.582-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
-          Cómo Llegar
-        </a>
-        
-        <a href="https://wa.me/593984909967?text=Hola!%20Quiero%20visitar%20el%20showroom%20de%20LEM%20MODA%20%F0%9F%99%8C%20%23PonteLEM" target="_blank" rel="noopener noreferrer"
-           style="display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;background:transparent;color:var(--lem-cafe);font-size:11px;font-weight:900;letter-spacing:0.3em;text-transform:uppercase;border:1.5px solid var(--lem-cafe);border-radius:100px;text-decoration:none;transition:background 0.3s ease,color 0.3s ease">
-          <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411l.015-.039zM12.05 21.785h-.004c-1.784 0-3.534-.482-5.055-1.386l-.36-.214-3.766.982 1.005-3.669-.235-.377c-.992-1.573-1.514-3.39-1.514-5.26.002-5.446 4.455-9.885 9.933-9.885 2.653.001 5.145 1.031 7.021 2.901 1.876 1.87 2.909 4.352 2.908 6.995-.003 5.445-4.456 9.881-9.933 9.881l-.001.032zm5.448-7.403c-.299-.15-1.767-.867-2.041-.966-.273-.099-.473-.15-.673.15-.198.298-.771.966-.945 1.164-.173.199-.347.223-.646.075-.297-.149-1.259-.463-2.397-1.475-.887-.788-1.487-1.762-1.661-2.06-.174-.299-.019-.46.13-.608.134-.135.298-.35.446-.524.152-.174.202-.298.301-.497.099-.198.05-.373-.025-.522-.075-.15-.673-1.611-.921-2.206-.242-.579-.487-.5-.671-.51-.174-.008-.372-.01-.571-.01-.198 0-.522.074-.796.372-.273.298-1.045 1.017-1.045 2.479 0 1.462 1.069 2.875 1.219 3.074.149.198 2.096 3.2 5.078 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
-          Solicitar información por WhatsApp
-        </a>
-      </div>
-      
-      <!-- Hashtag firma -->
-      <p style="text-align:center;margin-top:24px;padding-top:24px;border-top:1px solid var(--lem-line);font-size:10px;font-weight:900;letter-spacing:0.5em;color:var(--lem-cafe);text-transform:uppercase">
-        #PonteLEM
-      </p>
       
     </div>
     
   </div>
-  
-</div>
+       
+</main>
 
 <style>
 @media (min-width: 900px) {
@@ -4435,6 +4632,51 @@ fetch('productos.json')
     console.error('Error cargando los productos:', err);
     init(); // Ejecuta init de todos modos para que abra la web
   });
+
+/* ═══════════ VERIFICADOR DE HORARIO SHOWROOM ═══════════ */
+function checkShowroomStatus() {
+  const badge = document.getElementById('showroom-status-badge');
+  const textEl = document.getElementById('status-text');
+  if (!badge || !textEl) return;
+
+  // Obtener hora exacta de Ecuador (UTC-5)
+  const now = new Date();
+  const ecDateStr = now.toLocaleString("en-US", { timeZone: "America/Guayaquil" });
+  const ecDate = new Date(ecDateStr);
+  
+  const day = ecDate.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+  const hours = ecDate.getHours();
+  const minutes = ecDate.getMinutes();
+  const timeInDec = hours + (minutes / 60);
+
+  let isOpen = false;
+
+  // Lunes a Sábado: 9:00 AM (9.0) a 7:00 PM (19.0)
+  if (day >= 1 && day <= 6) {
+    if (timeInDec >= 9.0 && timeInDec < 19.0) {
+      isOpen = true;
+    }
+  } 
+  // Domingo: 10:30 AM (10.5) a 6:00 PM (18.0)
+  else if (day === 0) {
+    if (timeInDec >= 10.5 && timeInDec < 18.0) {
+      isOpen = true;
+    }
+  }
+
+  if (isOpen) {
+    badge.className = 'status-badge open';
+    textEl.textContent = 'ABIERTO AHORA';
+  } else {
+    badge.className = 'status-badge closed';
+    textEl.textContent = 'CERRADO AHORA';
+  }
+}
+
+// Ejecutar al cargar la página
+checkShowroomStatus();
+setInterval(checkShowroomStatus, 60000); // Revisa cada minuto por si cambia la hora
+     
 </script>
 </body>
 </html>
