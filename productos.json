@@ -125,7 +125,7 @@
     },
     {
       "id": 5,
-      "name": "LEM Dark Grunge Tee 005",
+      "name": "LEM Dark Grunge Tee 106",
       "price": 23.99,
       "category": "hombre",
       "type": "top",
@@ -150,6 +150,36 @@
             "/assets/images/productos/31.png",
             "/assets/images/productos/30.png",
             "/assets/images/productos/29.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "LEM Midnight Sport Set 005",
+      "price": 19.98,
+      "category": "outfits",
+      "type": "outfit",
+      "gender": "mujer",
+      "sizes": [
+        "XS",
+        "M"
+      ],
+      "badge": "hot",
+      "story": "Prendas que lo componen:\n- Top strapless de canalé estructurado en tono Azul Marino (Midnight Ribbed Tube Top)\n- Biker short de talle alto y soporte activo en tono Negro Profundo (Midnight High-Waist Biker Shorts)\n\nHistoria del Concepto:\nInspirado en la sobriedad de la medianoche y la elegancia atemporal de la fusión entre el Azul Marino y el Negro Profundo, este conjunto redefine la indumentaria deportiva bajo un concepto de sofisticación sin esfuerzo. Diseñado para la mujer que busca una silueta estilizadora, limpia y fluida, fusiona la comodidad de alto rendimiento con líneas arquitectónicas impecables. La tecnología invisible se manifiesta en la armonía visual de sus costuras de precisión y la adaptabilidad superior de sus texturas, logrando que la transición entre el movimiento activo y el descanso de élite sea perfecta.\n\nMensaje de marca:\n\"LEM surge del talento ecuatoriano, reflejado en cada prenda que creamos con dedicación y esmero, cuidando cada costura y detalle. Lo que vistes también forma parte de tu historia.\"",
+      "composition": "",
+      "care": "- Temperatura máxima de lavado 30°C, proceso normal.\n- No usar blanqueador.\n- Secado en tendedero a la sombra.\n- Planchar a temperatura máxima de la base de 150°C.\n- Limpieza en húmedo profesional (proceso moderado/normal).",
+      "variants": [
+        {
+          "color": "Midnight",
+          "hex": "#12192C, #0A0A0A",
+          "img": "/assets/images/productos/lv_0_20261008160949.jpg",
+          "images": [
+            "/assets/images/productos/lv_0_20261008160949.jpg",
+            "/assets/images/productos/lv_0_20261008161035.jpg",
+            "/assets/images/productos/lv_0_20261008161114.jpg",
+            "/assets/images/productos/lv_0_20261008161057.jpg",
+            "/assets/images/productos/lv_0_20261008160851.jpg"
           ]
         }
       ]
