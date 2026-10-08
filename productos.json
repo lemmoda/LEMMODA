@@ -122,6 +122,37 @@
           ]
         }
       ]
+    },
+    {
+      "id": 5,
+      "name": "LEM Dark Grunge Tee 005",
+      "price": 23.99,
+      "category": "hombre",
+      "type": "top",
+      "gender": "hombre",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "badge": "new",
+      "story": "Prendas que lo componen:\n- Camiseta oversize con efecto deslavado texturizado en tono Carbón Mineral (Dark Grunge Oversized Tee)  \n \nHistoria del Concepto:\nInspirado en la crudeza estética del grunge urbano y la sofisticación del diseño contemporáneo, este concepto redefine la identidad casual bajo una perspectiva de lujo silencioso. Diseñado para quienes buscan una silueta relajada con carácter, fusiona un acabado deslavado profundo en tono Carbón Mineral con una textura visual única. La tecnología invisible se manifiesta en la armonía de sus costuras limpias y el peso ideal de su tejido, logrando que la actitud rebelde conviva con una elegancia de élite.   \n\nMensaje de marca:\n\"LEM surge del talento ecuatoriano, reflejado en cada prenda que creamos con dedicación y esmero, cuidando cada costura y detalle. Lo que vistes también forma parte de tu historia.\"",
+      "composition": "",
+      "care": "CUIDADO\n\n- Temperatura máxima de lavado 30°C, proceso normal.\n- No usar blanqueador.\n- Secado en tendedero a la sombra.\n- Planchar a temperatura máxima de la base de 150°C.\n- Limpieza en húmedo profesional (proceso moderado/normal).",
+      "variants": [
+        {
+          "color": "Carbón Mineral",
+          "hex": "#3B3C36",
+          "img": "/assets/images/productos/32.png",
+          "images": [
+            "/assets/images/productos/32.png",
+            "/assets/images/productos/31.png",
+            "/assets/images/productos/30.png",
+            "/assets/images/productos/29.png"
+          ]
+        }
+      ]
     }
   ]
 }
