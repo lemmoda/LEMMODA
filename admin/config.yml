@@ -29,11 +29,20 @@ collections:
                 name: "name"
                 widget: "string"
 
-              - label: "Precio ($)"
+              - label: "Precio Oferta / Venta ($)"
                 name: "price"
                 widget: "number"
                 value_type: "float"
                 min: 0
+                hint: "Este es el precio final que pagará el cliente (Ej: 22.99)"
+
+              - label: "Precio Anterior / Normal ($) (Opcional)"
+                name: "originalPrice"
+                widget: "number"
+                value_type: "float"
+                required: false
+                min: 0
+                hint: "Escribe el precio original sin descuento (Ej: 29.99). La web calculará el % tachado solo."
 
               - label: "Categoría principal"
                 name: "category"
@@ -140,7 +149,8 @@ collections:
                     name: "images"
                     widget: "list"
                     required: false
-                    field:
-                      label: "Foto"
-                      name: "img"
-                      widget: "image"
+                    summary: "{{fields.img}}"
+                    fields:
+                      - label: "Foto"
+                        name: "img"
+                        widget: "image"
