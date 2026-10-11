@@ -115,6 +115,39 @@
 
 <style>
 
+     /* ═══════════ ESTILOS DE PRECIOS EN OFERTA Y DESCUENTOS ═══════════ */
+
+/* Badge de Descuento en Rojo */
+.product-badge.sale,
+.product-badge.promo {
+  background: #dc2626 !important; /* Rojo oferta llamativo */
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+/* Precios en las Tarjetas y Modales */
+.price-box {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+.price-current {
+  font-weight: 800 !important;
+}
+
+.price-current.has-discount {
+  color: #dc2626 !important; /* Precio final en rojo cuando hay oferta */
+}
+
+.price-old {
+  font-size: 0.85em !important;
+  color: #a1a1aa !important;
+  text-decoration: line-through !important; /* Texto tachado estilo Imagen 1 */
+  font-weight: 500 !important;
+}
+
 /* Acento temporada (suave) */
 :root {
   --season-accent: #c89660; /* dorado LEM */
@@ -3771,6 +3804,35 @@ function getFiltered() {
 
   return list;
 }
+/* ═══════════ AYUDANTES DE PRECIO TACHADO Y DESCUENTOS ═══════════ */
+function renderPriceHTML(price, originalPrice) {
+  const pVal = Number(price) || 0;
+  const origVal = Number(originalPrice) || 0;
+
+  if (origVal > pVal) {
+    return `<span class="price-box">
+      <span class="price-current has-discount">$${pVal.toFixed(2)}</span>
+      <span class="price-old">$${origVal.toFixed(2)}</span>
+    </span>`;
+  }
+  
+  return `<span class="price-current">$${pVal.toFixed(2)}</span>`;
+}
+
+function renderBadgeHTML(p) {
+  const pVal = Number(p.price) || 0;
+  const origVal = Number(p.originalPrice) || 0;
+
+  if (origVal > pVal) {
+    const discountPct = Math.round(((origVal - pVal) / origVal) * 100);
+    return `<span class="product-badge sale">-${discountPct}%</span>`;
+  }
+
+  if (!p.badge) return '';
+  const badgeLabels = { new:'Nuevo', hot:'Hot', premium:'Premium', promo:'Promo', match:'Match', sale:'Oferta', agotado:'Agotado' };
+  return `<span class="product-badge ${escapeHTML(p.badge)}">${escapeHTML(badgeLabels[p.badge] || p.badge)}</span>`;
+}
+
 /* ═══════════ SHOP (Catálogo Principal) ═══════════ */
 function mountShop() {
   const grid = $('products-grid');
@@ -3781,7 +3843,7 @@ function mountShop() {
   if (count) count.textContent = filtered.length + ' pieza' + (filtered.length !== 1 ? 's' : '') + ' disponibles';
   
   if (!filtered.length) {
-    grid.innerHTML = '';
+    if (grid) grid.innerHTML = '';
     noRes?.classList.remove('hidden');
     return;
   }
@@ -3792,15 +3854,14 @@ function mountShop() {
     const imgs0 = getVariantImages(v0);
     const imgMain = imgs0[0] || 'assets/images/logos/icono-color.webp';
     
-    // Foto para el efecto Hover (al pasar el mouse): toma la 2da foto o la del 2do color
     const v1 = p.variants[1];
     const imgs1 = v1 ? getVariantImages(v1) : imgs0;
     const imgHover = imgs0[1] || imgs1[0] || imgMain;
     
-    const badgeLabels = { new:'Nuevo', hot:'Hot', premium:'Premium', promo:'Promo' };
-    const badge = p.badge ? `<span class="product-badge ${escapeHTML(p.badge)}">${escapeHTML(badgeLabels[p.badge] || p.badge)}</span>` : '';
+    const badge = renderBadgeHTML(p);
+    const priceHTML = renderPriceHTML(p.price, p.originalPrice);
     const colors = p.variants.slice(0, 4).map(v => 
-      `<div class="color-swatch" style="${getColorStyle(v.hex)}" title="${escapeHTML(v.color)}"></div>`
+      `<div class="color-swatch" style="${getColorStyle(v.hex)}" title="${escapeHTML(v.color || '')}"></div>`
     ).join('');
     
     return `
@@ -3813,17 +3874,18 @@ function mountShop() {
         <div class="product-info">
           <p class="product-category">${escapeHTML(p.category)}</p>
           <p class="product-name">${escapeHTML(p.name)}</p>
-          <p class="product-price">$${p.price.toFixed(2)}</p>
+          <p class="product-price">${priceHTML}</p>
           <div class="product-colors">${colors}</div>
         </div>
       </div>
     `;
   }).join('');
   
-  grid.innerHTML = html;
-  
-  const cards = grid.querySelectorAll('.product-card');
-  cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), Math.min(i * 40, 800)));
+  if (grid) {
+    grid.innerHTML = html;
+    const cards = grid.querySelectorAll('.product-card');
+    cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), Math.min(i * 40, 800)));
+  }
 }
 
 /* ═══════════ HOME FEATURED (Novedades en el Inicio) ═══════════ */
@@ -4022,7 +4084,7 @@ function openProductModal(id) {
   
   if ($('modal-cat')) $('modal-cat').textContent = p.category;
   if ($('modal-name')) $('modal-name').textContent = p.name;
-  if ($('modal-price')) $('modal-price').textContent = '$' + p.price.toFixed(2);
+  if ($('modal-price')) $('modal-price').innerHTML = renderPriceHTML(p.price, p.originalPrice);
   if ($('modal-color-name')) $('modal-color-name').textContent = selectedColor;
   
   // Descripción / Historia
@@ -4681,6 +4743,40 @@ function checkShowroomStatus() {
 // Ejecutar al cargar la página
 checkShowroomStatus();
 setInterval(checkShowroomStatus, 60000); // Revisa cada minuto por si cambia la hora
+
+     /* ═══════════ MOSTRAR PRECIO CON TACHADO Y BADGE DE DESCUENTO ═══════════ */
+
+// Genera el HTML de precio tachado ($69.00 $199.00)
+function renderPriceHTML(price, originalPrice) {
+  const pVal = Number(price) || 0;
+  const origVal = Number(originalPrice) || 0;
+
+  if (origVal > pVal) {
+    return `<span class="price-box">
+      <span class="price-current has-discount">$${pVal.toFixed(2)}</span>
+      <span class="price-old">$${origVal.toFixed(2)}</span>
+    </span>`;
+  }
+  
+  return `<span class="price-current">$${pVal.toFixed(2)}</span>`;
+}
+
+// Genera el badge de porcentaje (-20%) o la etiqueta seleccionada
+function renderBadgeHTML(p) {
+  const pVal = Number(p.price) || 0;
+  const origVal = Number(p.originalPrice) || 0;
+
+  // Si tiene precio anterior, calcula el % de descuento automático
+  if (origVal > pVal) {
+    const discountPct = Math.round(((origVal - pVal) / origVal) * 100);
+    return `<span class="product-badge sale">-${discountPct}%</span>`;
+  }
+
+  // Si no tiene descuento, usa la etiqueta normal (Nuevo, Hot, Premium, etc.)
+  if (!p.badge) return '';
+  const badgeLabels = { new:'Nuevo', hot:'Hot', premium:'Premium', promo:'Promo', match:'Match', sale:'Oferta', agotado:'Agotado' };
+  return `<span class="product-badge ${escapeHTML(p.badge)}">${escapeHTML(badgeLabels[p.badge] || p.badge)}</span>`;
+}
      
 </script>
 </body>
