@@ -3,7 +3,8 @@
     {
       "id": 1,
       "name": "LEM Set Serenity Breeze 001",
-      "price": 29.98,
+      "price": 25.48,
+      "originalPrice": 29.98,
       "category": "outfits",
       "type": "outfit",
       "gender": "mujer",
@@ -20,8 +21,15 @@
           "hex": "#92BCE6",
           "img": "/assets/images/productos/Max_a_el_cabello_que_tiene.png",
           "images": [
-            "/assets/images/productos/Max_a_eliminale_los_gordos-1.png",
-            "/assets/images/productos/Max_a_cambiales_que_el_pis (1).png"
+            {
+              "img": "/assets/images/productos/Max_a_cambiales_que_el_pis (1).png"
+            },
+            {
+              "img": "/assets/images/productos/Max_a_el_cabello_que_tiene.png"
+            },
+            {
+              "img": "/assets/images/productos/Max_a_eliminale_los_gordos-1.png"
+            }
           ]
         }
       ]
@@ -30,6 +38,7 @@
       "id": 2,
       "name": "LEM Set Rosewood Flare 002",
       "price": 27.74,
+      "originalPrice": null,
       "category": "outfits",
       "type": "outfit",
       "gender": "mujer",
@@ -47,9 +56,15 @@
           "hex": "#C48684",
           "img": "/assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (9).jpeg",
           "images": [
-            "/assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (8).jpeg",
-            "/assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (3).jpeg",
-            "/assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (4).jpeg"
+            {
+              "img": "/assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (9).jpeg"
+            },
+            {
+              "img": "/assets/images/productos/Max_a_INSTRUCCIONES_DE_RET (4).jpeg"
+            },
+            {
+              "img": "/assets/images/productos/Max_a_INSTRUCCIONES_DE_EDI (8).jpeg"
+            }
           ]
         },
         {
@@ -57,7 +72,12 @@
           "hex": "#0F2A38, #B7B8BC",
           "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (12).jpeg",
           "images": [
-            "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (13).jpeg"
+            {
+              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (13).jpeg"
+            },
+            {
+              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (12).jpeg"
+            }
           ]
         }
       ]
@@ -66,6 +86,7 @@
       "id": 3,
       "name": "LEM Set Senda 003",
       "price": 53.73,
+      "originalPrice": null,
       "category": "outfits",
       "type": "outfit",
       "gender": "mujer",
@@ -86,9 +107,15 @@
           "hex": "#C19A6B, #004225",
           "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo-1.jpeg",
           "images": [
-            "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (2)-1.jpeg",
-            "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (9)-1.jpeg",
-            "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (8).jpeg"
+            {
+              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo-1.jpeg"
+            },
+            {
+              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (2)-1.jpeg"
+            },
+            {
+              "img": "/assets/images/productos/seedream-5.0-pro_a_Actúa_como_un_equipo (8).jpeg"
+            }
           ]
         }
       ]
@@ -97,6 +124,7 @@
       "id": 4,
       "name": "LEM Rust Vibe Set 004",
       "price": 95.96,
+      "originalPrice": null,
       "category": "unisex",
       "type": "match",
       "gender": "unisex",
@@ -113,12 +141,24 @@
           "hex": "#B7410E",
           "img": "/assets/images/productos/28.png",
           "images": [
-            "/assets/images/productos/55248.jpg",
-            "/assets/images/productos/55241.jpg",
-            "/assets/images/productos/25.png",
-            "/assets/images/productos/55237.jpg",
-            "/assets/images/productos/55239.jpg",
-            "/assets/images/productos/55238.jpg"
+            {
+              "img": "/assets/images/productos/21.png"
+            },
+            {
+              "img": "/assets/images/productos/55249.jpg"
+            },
+            {
+              "img": "/assets/images/productos/22.png"
+            },
+            {
+              "img": "/assets/images/productos/24.png"
+            },
+            {
+              "img": "/assets/images/productos/27.png"
+            },
+            {
+              "img": "/assets/images/productos/26.png"
+            }
           ]
         }
       ]
@@ -127,6 +167,7 @@
       "id": 5,
       "name": "LEM Dark Grunge Tee 106",
       "price": 23.99,
+      "originalPrice": null,
       "category": "hombre",
       "type": "top",
       "gender": "hombre",
@@ -146,10 +187,18 @@
           "hex": "#3B3C36",
           "img": "/assets/images/productos/32.png",
           "images": [
-            "/assets/images/productos/32.png",
-            "/assets/images/productos/31.png",
-            "/assets/images/productos/30.png",
-            "/assets/images/productos/29.png"
+            {
+              "img": "/assets/images/productos/32.png"
+            },
+            {
+              "img": "/assets/images/productos/30.png"
+            },
+            {
+              "img": "/assets/images/productos/31.png"
+            },
+            {
+              "img": "/assets/images/productos/29.png"
+            }
           ]
         }
       ]
@@ -157,7 +206,8 @@
     {
       "id": 6,
       "name": "LEM Midnight Sport Set 005",
-      "price": 19.98,
+      "price": 16.98,
+      "originalPrice": 19.98,
       "category": "outfits",
       "type": "outfit",
       "gender": "mujer",
@@ -175,11 +225,21 @@
           "hex": "#12192C, #0A0A0A",
           "img": "/assets/images/productos/lv_0_20261008160949.jpg",
           "images": [
-            "/assets/images/productos/lv_0_20261008160949.jpg",
-            "/assets/images/productos/lv_0_20261008161035.jpg",
-            "/assets/images/productos/lv_0_20261008161114.jpg",
-            "/assets/images/productos/lv_0_20261008161057.jpg",
-            "/assets/images/productos/lv_0_20261008160851.jpg"
+            {
+              "img": "/assets/images/productos/lv_0_20261008160949.jpg"
+            },
+            {
+              "img": "/assets/images/productos/lv_0_20261008161035.jpg"
+            },
+            {
+              "img": "/assets/images/productos/lv_0_20261008160851.jpg"
+            },
+            {
+              "img": "/assets/images/productos/lv_0_20261008161114.jpg"
+            },
+            {
+              "img": "/assets/images/productos/lv_0_20261008161057.jpg"
+            }
           ]
         }
       ]
