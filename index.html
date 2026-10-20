@@ -4796,5 +4796,72 @@ function renderBadgeHTML(p) {
 }
      
 </script>
+
+<!-- SCRIPT AUTOMÁTICO DE ANIVERSARIO LEM MODA (30 OCT - 01 NOV 2026) -->
+<script>
+(function() {
+  try {
+    // Obtener la fecha actual del cliente en zona horaria local
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1; // Octubre es 10, Noviembre es 11
+    const day = now.getDate();
+
+    // Solo ejecutar si estamos en Octubre/Noviembre de 2026
+    if (year === 2026) {
+      const marqueeTrack = document.querySelector('.marquee-track') || document.querySelector('.marquee');
+
+      // FASE 1: TEASER (20 al 29 de Octubre)
+      if (month === 10 && day >= 20 && day <= 29) {
+        if (marqueeTrack) {
+          marqueeTrack.innerHTML = `
+            <span>✦ ALGO GRANDE SE APROXIMA · ANIVERSARIO LEM MODA ✦</span>
+            <span>✦ SHOWROOM QUITO & ONLINE · RESERVA LA FECHA: 30 OCT - 01 NOV ✦</span>
+            <span>✦ ESTÁS EN TU PRIME · #PONTELEM ✦</span>
+          `;
+        }
+      }
+
+      // FASE 2: DÍA 1 ANIVERSARIO (30 de Octubre) - 15% OFF
+      else if (month === 10 && day === 30) {
+        if (marqueeTrack) {
+          marqueeTrack.innerHTML = `
+            <span>🔥 ANIVERSARIO LEM MODA · 15% OFF EN TODA LA TIENDA 🔥</span>
+            <span>✦ SHOWROOM QUITO (AV. COLÓN Y JUAN LEÓN MERA) & ONLINE ✦</span>
+            <span>🔥 VÁLIDO HOY 30 DE OCTUBRE · #PONTELEM 🔥</span>
+          `;
+        }
+      }
+
+      // FASE 3: DÍA CENTRAL ANIVERSARIO (31 de Octubre) - 30% OFF
+      else if (month === 10 && day === 31) {
+        if (marqueeTrack) {
+          marqueeTrack.innerHTML = `
+            <span>🎉 DÍA CENTRAL DE ANIVERSARIO · 30% OFF EN TODO 🎉</span>
+            <span>🔥 HOY 31 DE OCTUBRE · EL DESCUENTO MÁS GRANDE DEL AÑO 🔥</span>
+            <span>✦ SHOWROOM QUITO & LEMMODA.STORE · #PONTELEM ✦</span>
+          `;
+        }
+      }
+
+      // FASE 4: ÚLTIMO DÍA ANIVERSARIO (01 de Noviembre) - 15% OFF
+      else if (month === 11 && day === 1) {
+        if (marqueeTrack) {
+          marqueeTrack.innerHTML = `
+            <span>🔥 ÚLTIMO DÍA DE ANIVERSARIO · 15% OFF FINAL 🔥</span>
+            <span>✦ ÚLTIMAS HORAS EN SHOWROOM QUITO & ONLINE ✦</span>
+            <span>🔥 CIERRE DE CELEBRACIÓN · #PONTELEM 🔥</span>
+          `;
+        }
+      }
+    }
+  } catch (e) {
+    // Failsafe para evitar congelamientos si un elemento no existe
+    console.log("Modo Aniversario preparado.");
+  }
+})();
+</script>
+  
+  
 </body>
 </html>
