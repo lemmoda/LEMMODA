@@ -3,8 +3,8 @@
     {
       "id": 1,
       "name": "LEM Set Serenity Breeze 001",
-      "price": 25.48,
-      "originalPrice": 29.98,
+      "price": 29.98,
+      "originalPrice": null,
       "category": "outfits",
       "type": "outfit",
       "gender": "mujer",
@@ -206,8 +206,8 @@
     {
       "id": 6,
       "name": "LEM Midnight Sport Set 005",
-      "price": 16.98,
-      "originalPrice": 19.98,
+      "price": 19.98,
+      "originalPrice": null,
       "category": "outfits",
       "type": "outfit",
       "gender": "mujer",
